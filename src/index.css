@@ -1,0 +1,574 @@
+/** Generic **/
+.html {
+  font-family: "Raleway", "Arial", serif; 
+  color: #37474f;
+  font-size: 15px;
+  /**   background-color: white; **/
+}
+
+body {
+  height: 100%;
+  background-image: url("https://media.istockphoto.com/vectors/vector-pet-pattern-pet-seamless-background-vector-id944743364");
+  position:relative;
+
+}
+
+button {
+  font-family: "Raleway", "Arial", serif;
+  color: darkgrey;
+  padding: 1em;
+}
+
+
+input {
+  outline: none;
+  border: none;
+}
+
+textarea {
+  outline: none;
+  border: none;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+a:visited {
+  text-decoration: none !important;
+}
+
+.footer {
+  padding: 20px;
+  background: #ffc107;
+  text-align: center;
+  margin: 10px;
+  color: white;
+}
+
+.body {
+  overflow: auto;
+}
+
+/* ----------------- Main page -----------------*/
+.message {
+  color: #00796b;
+  padding: 10px;
+  text-align: center;
+}
+
+.main_header {
+  text-align: center;
+}
+
+
+/* ------------- Navigation bar ------------- */
+
+.nav_bar {
+  position: sticky;
+  top: 0;
+}
+
+.nav_bar > a {
+  color: #37474f;
+}
+
+.navbar-nav > li {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+
+.container_navbar {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  margin: 2% 10%;
+  align-items: center;
+  align-content: center;
+  z-index: 1;
+}
+
+
+/* ---------- End navigation bar ------------- */
+
+/* ------------- End My account navigation bar ------------- */
+
+/* ------------- My account section  ------------- */
+
+
+/** --------- Login and sign up modals ------------*/
+.login_modal {
+  color: grey;
+  text-align: center;
+  border-radius: 15px;
+}
+
+
+.login_modal.input {
+  padding: 5fr;
+  margin: 5px;
+}
+
+.visible {
+  display: flex;
+}
+
+
+
+.cancel {
+  background-color: red;
+  border: 2px solid white;
+  border-radius: 30px;
+  padding: 10px 28px;
+  color: white;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 15px;
+}
+
+.cancel:hover {
+  background-color: white;
+  border: 2px solid red;
+  border-radius: 30px;
+  padding: 10px 28px;
+  color: red;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 15px;
+}
+.button {
+  background-color: #ffca28;
+  border-radius: 2px;
+  padding: 10px;
+  color: white;
+  display: inline-block;
+  font-weight: bold; 
+  box-shadow: none;
+  border: none; 
+  margin:10px;
+}
+
+.button:hover {
+  background-color: white;
+  color: #ffca28;
+  border: #ffca28 2px solid;
+  margin:8px;
+  
+}
+
+.modal_title_bg {
+  background-color: #ffca28;
+  color: white;
+  padding: 30px;
+  font-size: 20px;
+  width:100%;
+  text-align: center;
+}
+
+.input_form {
+  font-size: 12px;
+  color: #1b3815;
+  background: #ebebeb;
+  border-radius: 27px;
+  padding: 15px;
+  margin: 10px;
+  width: 80%;
+  font-family: inherit;
+}
+
+.link_modal {
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.forgot_pass_username {
+  padding: 10px;
+  color: darkgrey;
+}
+
+.link_title {
+  padding: 10px;
+}
+
+.error_login {
+  color: red;
+  text-align: center;
+}
+
+#error_login {
+  display: inline-block;
+  margin: auto;
+}
+
+/** User profile **/
+
+
+.profile_pic {
+  text-align: center;
+}
+
+.profile_image {
+  text-align: center;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+
+.dark_button {
+  color: #37474f;
+}
+
+select {
+  outline: none;
+  border: none;
+}
+
+
+option {
+  padding: 20px;
+}
+
+
+.container_div {
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  margin: 30px;
+  padding: 30px;
+  background: white;
+  height: 100%;
+
+}
+
+.add_animal_form {
+  padding: 30px;
+}
+
+.subtitle {
+  text-shadow: 1px 1px 2px lightgrey;
+  font-family: 'Open Sans Condensed', sans-serif ;
+  font-family:40px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.important {
+  color: #ffca28 !important;
+}
+
+.centered {
+  text-align: center;
+  align-items: center;
+}
+
+.modal {
+  overflow: auto !important;
+}
+
+.brand-link{
+  font-size:15px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size:30px;
+  padding:20px !important;
+
+}
+
+.brand-link:hover{
+  font-weight: bold;
+}
+
+.my_account_div {
+  padding: 20px;
+}
+
+.my_account_titles {
+  font-size: 17px;
+}
+
+.selected navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffca28 !important;
+}
+
+.nav-link{
+  vertical-align: middle;
+  padding:10px;
+}
+
+.selected:visited {
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffca28;
+}
+
+.personal_information {
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.required_input {
+  color: darkred;
+}
+
+.submit_center {
+  text-align: center;
+}
+
+.animal_container {
+  padding: 30px 50px;
+  border-radius: 17px;
+  margin: 20px;
+  border: 0.5px solid lightgrey;
+}
+
+
+
+.status {
+  border-radius: 30px;
+  padding: 10px 28px;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 10px;
+  background-color: green;
+  color: white !important;
+}
+
+.detail_animal {
+  border-radius: 30px;
+  padding: 10px 28px;
+  margin-top: 10px;
+  display: inline-block;
+  font-size: 10px;
+  background-color: #ffca28;
+  color: white !important;
+}
+
+.detail_animal:hover {
+  background-color: white;
+  color: #ffca28;
+  border: 2px solid #ffca28;
+}
+
+.status_area {
+  padding: 20px;
+  text-align: center;
+}
+
+.back {
+  cursor: pointer;
+}
+
+.right-center {
+  text-align: right;
+  margin: 20px;
+}
+
+.bagdeCustom{
+  padding:5px !important; 
+  font-size:12px !important;
+  margin:5px;
+}
+
+.subtitle_font{
+  font-family: 'Open Sans Condensed', sans-serif ;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.button_custom{
+  font-weight: bold;
+  color:white;
+  background-color: #ffca28;
+  border-radius: 2px;
+  box-shadow: none;
+  border: none;
+  padding:10px;
+}
+
+
+
+/** Delete button **/
+.delete {
+  background-color: red;
+}
+
+.delete:hover {
+  background-color: white;
+  color: red !important;
+  border: 2px solid red;
+}
+
+.added_pictures_div{
+  border: lightgray 2px solid;
+  padding:20px;
+  margin:10px;
+}
+
+.added_pictures{
+  width:100px;
+  height: 100px;
+  border-radius: 1px;
+}
+
+.animal_picture_detail{
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+  padding:10px;
+  border-radius: 30px;
+  align-items: center;
+}
+
+.home_image{
+  width:250px;
+  height: 250px;
+  object-fit: cover;
+  padding-bottom:10px;
+  border-radius: 10px !important;
+
+}
+
+.animal_container_recent {
+  /* padding: 20px; */
+  border-radius: 17px;
+  margin: 20px;
+  border: 1px solid lightgrey;
+   width: 251px;
+   border-radius: 10px !important;
+
+}
+.animal_container_recent:hover{
+  opacity: .5;
+}
+
+.cap{
+  text-transform: capitalize;
+}
+
+.small_subtitle{
+  font-size:17px;
+}
+
+.bold {
+  font-weight: bold;
+
+}
+.animalResultInfo{
+  padding:10px;
+  color: #37474f;
+}
+
+.animal_pic_div{
+  text-align: center;
+  align-items: center;
+  display: block;
+}
+
+.uppercase{
+  text-transform: uppercase;
+}
+
+.animal_name_title{
+  padding:10px;
+  text-shadow: 1px 1px 2px #ffca28;
+  border-radius: 20px;
+  margin:10px 30px;
+}
+
+.center_row{
+  align-items: center;
+}
+
+.title {
+  text-shadow: 1px 1px 2px lightgrey;
+  text-transform: uppercase;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size:65px;
+  margin:20px;
+  padding: 20px;
+}
+
+.notlink{
+  cursor: pointer;
+  color: #37474f;
+}
+.notlink:hover{
+  font-weight: bold;
+}
+
+.SearchFilter{
+  padding:40px;
+  border-radius: 17px;
+  border: 2px #ffca28 solid;
+}
+
+.title_filter{
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size:37px;
+  padding:10px;
+}
+
+.animal_name_result{
+  font-family: 'Open Sans Condensed', sans-serif ;
+  font-size:37px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+}
+
+.about{
+  padding:30px;
+}
+
+.info{
+  padding: 0px 30px;
+  margin:10px
+}
+
+.petsbyuser_title{
+  padding:30px;
+  text-align: center;
+}
+
+.contact_button{
+  cursor: pointer;
+}
+
+.footer {
+  color: white;
+  padding: 50px 20px;
+  background-color: #ffca28;
+  text-align: center;
+  width: 100%;
+  margin:0px;
+  bottom: 0;
+  position: absolute;
+  height: 2.5rem; 
+  margin-top: 10px;
+}
+
+.footer a {
+  color: white;
+  font-weight: bold;
+}
+
+.alertCustom{
+  text-align: center;
+  padding:20px;
+  margin:20px;
+  font-size:25px;
+}
+
+.formAnimal{
+  padding:30px;
+}
+
+.userForm{
+  padding: 0 50px;
+  padding-bottom: 20px;
+}
+/* 
+.inputForm{
+  padding:20px;
+} */
