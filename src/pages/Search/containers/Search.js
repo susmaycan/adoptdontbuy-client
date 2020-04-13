@@ -1,17 +1,17 @@
 import { connect } from 'react-redux'
 import {
-    filterAnimals
-} from '../../../actions/Animal'
+    filter
+} from '../../../actions/animalList'
 import Search from '../components'
 
 const mapStateToProps = state => ({
-    animalList: state.filterReducer.animalList,
-    isLoading: state.filterReducer.isLoading,
-    error: state.filterReducer.error
+    animalList: state.animalListReducer.filteredList,
+    isLoading: state.animalListReducer.isLoading,
+    error: state.animalListReducer.error
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    filterAnimals: (query) => dispatch(filterAnimals(query))
+    filterAnimals: (query) => dispatch(filter(query))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

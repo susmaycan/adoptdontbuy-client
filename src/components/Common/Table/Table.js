@@ -7,8 +7,9 @@ import {
 } from 'react-bootstrap'
 import Age from '../../Common/Age';
 import {Link} from "react-router-dom";
+import PropTypes from 'prop-types'
 
-const AnimalTable = ({elements, title}) => (
+const CustomTable = ({elements, title}) => (
     <div>
         <h3 className="subtitle">{title}</h3>
         <Table responsive>
@@ -97,7 +98,18 @@ const AnimalTable = ({elements, title}) => (
             </tbody>
         </Table>
     </div>
-);
+)
+CustomTable.propTypes = {
+    elements: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        value: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number,
+            PropTypes.object,
+            PropTypes.bool
+        ])
+    }).isRequired).isRequired,
+    title: PropTypes.string
+}
 
-
-export default AnimalTable
+export default CustomTable

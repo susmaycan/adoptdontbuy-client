@@ -1,27 +1,37 @@
 import React from 'react'
-import { provinces, ccaa } from '../../../constants'
+import {
+    provinceList,
+    regionList
+} from '../../../constants'
+import PropTypes from 'prop-types'
 
 class Location extends React.Component {
 
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
             province: '',
             region: ''
         }
     }
-    componentDidMount(){
+
+    isNotEmpty(location) {
+        return location !== "-1" && location !== "unknown" && location !== undefined && location !== 'undefined'
+    }
+
+    componentDidMount() {
         let provinceResult = 'unknown', regionResult = 'unknown'
-        if (this.props.province !== "-1" && this.props.province !== "unknown" && this.props.province !== undefined && this.props.province !== 'undefined') {
-            provinceResult = provinces.filter((prov) => {
-                return prov.id === this.props.province
-            })[0].nm
+
+        if (this.isNotEmpty(this.props.province)) {
+            provinceResult = provinceList.filter((prov) => {
+                return prov.value === this.props.province
+            })[0].name
         }
 
-        if (this.props.region !== "-1" && this.props.region !== "unknown" && this.props.region !== undefined && this.props.region !== 'undefined'){
-            regionResult = ccaa.filter((region) => {
-                return region.autonomia_id === this.props.region
-            })[0].nombre
+        if (this.isNotEmpty(this.props.region)) {
+            regionResult = regionList.filter((region) => {
+                return region.value === this.props.region
+            })[0].name
         }
 
         this.setState({
@@ -31,10 +41,11 @@ class Location extends React.Component {
 
 
     }
+
     render() {
         return (
             <span>
-                <i className="fas fa-map-marker-alt" />
+                <i className="fas fa-map-marker-alt"/>
                 <> </>
                 {this.props.city !== undefined ? this.props.city + ', ' : ''}
                 {this.state.province}
@@ -45,5 +56,12 @@ class Location extends React.Component {
         )
 
     }
+}
+
+Location.propTypes = {
+    city: PropTypes.string,
+    province: PropTypes.string,
+    region: PropTypes.string,
+    country: PropTypes.string
 }
 export default Location

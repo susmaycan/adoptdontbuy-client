@@ -8,17 +8,14 @@ export async function getAnimals() {
     const response = await fetch(url + animal_url)
     const body = await response.json()
     if (response.status !== 200) {
-        console.log("Error ", body.message)
         throw Error(body.message)
     }
-    console.log("Response" + body)
     return body
 }
 
 export async function getAnimal(animalId) {
     const response = await fetch(url + animal_url + '/' + animalId)
     const body = await response.json()
-    console.log('Response ', body)
     if (response.status !== 200) throw Error(body.message)
     return body
 }
@@ -37,7 +34,7 @@ export async function addAnimalAPI(animal) {
     return body
 }
 
-export async function uploadAnimal(animal) {
+export async function updateAnimal(animal) {
     const response = await fetch(url + animal_url + '/' + animal._id, {
         method: 'PUT',
         mode: 'cors',
@@ -55,13 +52,11 @@ export async function removeAnimal(animalId) {
         method: 'DELETE',
         mode: 'cors',
     });
-    console.log("Response", response);
     return response;
 }
 
 /* - - - - - FILTER - - - - - */
 export async function filterAnimal(query) {
-    console.log("Call API ", query);
     const response = await fetch(url + search_url + '?' + query);
     const body = await response.json();
     if (response.status !== 200) throw Error(body.message);

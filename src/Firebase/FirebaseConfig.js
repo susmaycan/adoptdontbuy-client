@@ -5,7 +5,8 @@ const firebaseConfig = {
   projectId: process.env.REACT_APP_projectId,
   storageBucket: process.env.REACT_APP_storageBucket,
   messagingSenderId: process.env.REACT_APP_messagingSenderId,
-};
-export default firebaseConfig;
+}
+
+export default firebaseConfig
 
 

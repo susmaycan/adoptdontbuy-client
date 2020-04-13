@@ -21,7 +21,7 @@ class Form extends Component {
 
     onChange(e) {
         if (e.target.type === FILE_TYPE) {
-            const file = e.target.files[0];
+            const file = e.target.files[0]
             this.props.uploadPhoto(file, this.state._id)
             this.setState({
                 ...this.state,
@@ -41,7 +41,6 @@ class Form extends Component {
         return (
             <UserForm
                 user={this.state}
-                loggedUser={this.props.loggedUser}
                 handleForm={this.onSubmit}
                 handleChange={this.onChange}
             />

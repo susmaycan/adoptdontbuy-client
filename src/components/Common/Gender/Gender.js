@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Gender extends React.Component {
 
@@ -35,8 +36,13 @@ class Gender extends React.Component {
 
     render() {
         return (
-            <p>{this.state.name} <i className={this.state.icon}></i></p>
+            <p>{this.state.name} <i className={this.state.icon}/></p>
         )
     }
 }
+
+Gender.propTypes = {
+    gender: PropTypes.string
+}
+
 export default Gender

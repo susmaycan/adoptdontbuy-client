@@ -3,7 +3,9 @@ import {
     Form,
     Col,
 } from 'react-bootstrap'
-import {ccaa, provinces} from "../../constants";
+import ProvinceSelect from '../Common/ProvinceSelect'
+import PropTypes from 'prop-types'
+import Select from '../Common/Select'
 
 const MIN_YEAR = 2000
 const MAX_YEAR = 3000 //TODO change this
@@ -16,14 +18,13 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
         </Form.Group>
 
         <Form.Row>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridSpecie">
+            <Form.Group as={Col} onChange={updateInput} controlId="formGridSpecie">
                 <Form.Label>Specie</Form.Label>
-                <Form.Control required value={animal.specie} name="specie" as="select">
-                    <option value="-1">Choose...</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="other">Other</option>
-                </Form.Control>
+                <Select
+                    value={animal.specie}
+                    name='specie'
+                    handleChange={updateInput}
+                />
             </Form.Group>
 
             <Form.Group onChange={updateInput} as={Col} controlId="formGridBreed">
@@ -33,23 +34,22 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
         </Form.Row>
 
         <Form.Row>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridGenre">
+            <Form.Group as={Col} controlId="formGridGenre">
                 <Form.Label>Gender</Form.Label>
-                <Form.Control required value={animal.gender} name="gender" as="select">
-                    <option value="-1">Choose...</option>
-                    <option value="M">Male</option>
-                    <option value="F">Female</option>
-                </Form.Control>
+                <Select
+                    value={animal.gender}
+                    name='gender'
+                    handleChange={updateInput}
+                />
             </Form.Group>
 
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridSize">
+            <Form.Group as={Col} controlId="formGridSize">
                 <Form.Label>Size</Form.Label>
-                <Form.Control required value={animal.size} name="size" as="select">
-                    <option value="-1">Choose...</option>
-                    <option value="small">Small</option>
-                    <option value="medium">Medium</option>
-                    <option value="big">Big</option>
-                </Form.Control>
+                <Select
+                    value={animal.size}
+                    name='size'
+                    handleChange={updateInput}
+                />
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridYearBorn">
                 <Form.Label>Year Born</Form.Label>
@@ -61,21 +61,19 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
         <Form.Row>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridRegion">
                 <Form.Label>Region</Form.Label>
-                <Form.Control required value={animal.region} name="region" as="select">
-                    <option value="-1">Select one</option>
-                    {ccaa.map(region =>
-                        <option key={region.autonomia_id} value={region.autonomia_id}>{region.nombre}</option>
-                    )}
-                </Form.Control>
+                <Select
+                    value={animal.region}
+                    name='region'
+                    handleChange={updateInput}
+                />
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridProvince">
                 <Form.Label>Province</Form.Label>
-                <Form.Control required value={animal.province} name="province" as="select">
-                    <option value="-1">Select one</option>
-                    {provinces.map(prov =>
-                        <option key={prov.id} value={prov.id}>{prov.nm}</option>
-                    )};
-                </Form.Control>
+                <ProvinceSelect
+                    province={animal.province}
+                    region={animal.region}
+                    handleChange={updateInput}
+                />
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridCity">
                 <Form.Label>City</Form.Label>
@@ -137,6 +135,16 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             </Form.Group>
         </Form.Row>
         <Form.Row>
+            <Form.Group as={Col} controlId="formGridPicture">
+                <Form.Label>Picture</Form.Label>
+                <input type='file'
+                       id="picture"
+                       name="picture"
+                       onChange={updateInput}
+                />
+            </Form.Group>
+        </Form.Row>
+        <Form.Row>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridsocialLevel">
                 <Form.Label>Social Level</Form.Label>
                 <Form.Control min="0" max="5" placeholder="From to 0 to 5" type="number" name="socialLevel"
@@ -157,10 +165,70 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             </Form.Group>
         </Form.Row>
         {action === "add" ?
-            <button className="button" type="submit">Next step</button>
+            <button className="button" type="submit">Upload</button>
             :
             <button className="button" type="submit">Finish</button>
         }
     </Form>
 )
+AnimalForm.propTypes = {
+    animal: PropTypes.shape({
+        name: PropTypes.string,
+        specie: PropTypes.string,
+        breed: PropTypes.string,
+        gender: PropTypes.string,
+        size: PropTypes.string,
+        yearBorn: PropTypes.string,
+        country: PropTypes.string,
+        region: PropTypes.string,
+        province: PropTypes.string,
+        city: PropTypes.string,
+        about: PropTypes.string,
+        castrated: PropTypes.bool,
+        vaccinated: PropTypes.bool,
+        alongWithDogs: PropTypes.bool,
+        alongWithCats: PropTypes.bool,
+        alongWithKids: PropTypes.bool,
+        socialLevel: PropTypes.number,
+        traumaLevel: PropTypes.number,
+        energyLevel: PropTypes.number,
+        picture: PropTypes.arrayOf(PropTypes.string),
+        status: PropTypes.string,
+        createdAt: PropTypes.string,
+        updatedAt: PropTypes.string,
+        __v: PropTypes.any,
+        owner: PropTypes.oneOfType([
+            PropTypes.shape({
+                picture: PropTypes.string,
+                _id: PropTypes.string.isRequired,
+                name: PropTypes.string.isRequired,
+                inAdoption: PropTypes.arrayOf(PropTypes.string),
+                adoptedByOthers: PropTypes.arrayOf(PropTypes.string),
+                reserved: PropTypes.arrayOf(PropTypes.string),
+                favourites: PropTypes.arrayOf(PropTypes.string),
+                adoptedByMe: PropTypes.arrayOf(PropTypes.string),
+                reviews: PropTypes.arrayOf(PropTypes.string),
+                likedAnimals: PropTypes.arrayOf(PropTypes.string),
+                adopted: PropTypes.arrayOf(PropTypes.string),
+                phone: PropTypes.string,
+                animal_shetter: PropTypes.bool,
+                website: PropTypes.string,
+                address_line: PropTypes.string,
+                country: PropTypes.string,
+                region: PropTypes.string,
+                province: PropTypes.string,
+                city: PropTypes.string,
+                description: PropTypes.string,
+                first_name: PropTypes.string,
+                last_name: PropTypes.string,
+                email: PropTypes.string.isRequired,
+                username: PropTypes.string.isRequired,
+                createdAt: PropTypes.string,
+                updatedAt: PropTypes.string,
+                __v: PropTypes.any,
+            }),
+            PropTypes.string
+        ])
+    }).isRequired
+}
 export default AnimalForm

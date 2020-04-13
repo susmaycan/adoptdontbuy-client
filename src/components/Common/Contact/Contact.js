@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Contact extends React.Component {
 
@@ -33,6 +34,10 @@ class Contact extends React.Component {
             </a>
         )
     }
+}
+Contact.propTypes = {
+    emailDst: PropTypes.string.isRequired,
+    animalName: PropTypes.string
 }
 
 export default Contact

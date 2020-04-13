@@ -3,6 +3,7 @@ import './Message.scss'
 import {
     Alert
 } from "react-bootstrap"
+import PropTypes from 'prop-types'
 
 class Message extends React.Component {
     render() {
@@ -12,5 +13,8 @@ class Message extends React.Component {
             </div>
         );
     }
+}
+Message.propTypes = {
+    children: PropTypes.any.isRequired,
 }
 export default Message

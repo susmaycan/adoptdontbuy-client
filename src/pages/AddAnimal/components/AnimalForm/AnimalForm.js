@@ -3,6 +3,7 @@ import Form from '../../../../components/AnimalForm'
 
 const ACTION_ADD = "add"
 const CHECKBOX_TYPE = "checkbox"
+const FILE_TYPE = 'file'
 
 class AnimalForm extends Component {
 
@@ -24,7 +25,13 @@ class AnimalForm extends Component {
     }
 
     updateInput(e) {
-        const value = e.target.type === CHECKBOX_TYPE ? e.target.checked : e.target.value
+        let value = ''
+        if (e.target.type === FILE_TYPE) {
+            value = e.target.files[0]
+        } else {
+            value = e.target.type === CHECKBOX_TYPE ? e.target.checked : e.target.value
+        }
+
         this.setState({
             animal: {
                 ...this.state.animal,

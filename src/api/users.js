@@ -55,7 +55,6 @@ export async function animalByUser(userId) {
     const response = await fetch(url + user_url + '/' + userId + '/' + animal_url);
     const body = await response.json();
     if (response.status !== 200) {
-        console.log("Error ", body.message);
         throw Error(body.message);
     }
     return body;

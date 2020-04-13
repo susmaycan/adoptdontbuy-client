@@ -2,7 +2,8 @@ import { connect } from 'react-redux'
 import {
     fetchUser,
     fetchAnimalsUser
-} from '../../../actions/User/getUser'
+} from '../../../actions/user'
+
 import User from '../components/UserView'
 
 const mapStateToProps = state => ({

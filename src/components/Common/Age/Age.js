@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Age extends React.Component {
 
@@ -25,5 +26,8 @@ class Age extends React.Component {
             )
         }
     }
+}
+Age.propTypes = {
+    yearBorn: PropTypes.string
 }
 export default Age

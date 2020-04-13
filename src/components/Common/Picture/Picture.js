@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Picture extends React.Component {
 
@@ -9,5 +10,9 @@ class Picture extends React.Component {
             </div>
         )
     }
+}
+Picture.propTypes = {
+    name: PropTypes.string.isRequired,
+    picture: PropTypes.string.isRequired,
 }
 export default Picture

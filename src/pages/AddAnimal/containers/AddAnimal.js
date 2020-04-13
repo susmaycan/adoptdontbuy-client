@@ -1,13 +1,13 @@
 import { connect } from 'react-redux'
 import {
     addAnimal
-} from '../../../actions/Animal'
+} from '../../../actions/animal'
 import AddAnimalView from '../components/AddAnimalView'
 
 const mapStateToProps = state => ({
-    animals: state.animalListReducer.animals || [],
-    isLoading: state.animalListReducer.isLoading,
-    error: state.animalListReducer.error,
+    isLoading: state.animalReducer.isLoading,
+    error: state.animalReducer.error,
+    errorMsg: state.animalReducer.errorMsg,
     loggedUser: state.loginReducer.user,
     isLoggedIn: state.loginReducer.isLoggedIn
 })

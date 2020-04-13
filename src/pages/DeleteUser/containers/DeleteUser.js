@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import {
     deleteUser
-} from '../../../actions/User'
+} from '../../../actions/user'
 
 import {
     logout

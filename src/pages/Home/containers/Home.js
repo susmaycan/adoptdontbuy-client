@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import {
-    getAnimals
-} from '../../../actions/Animal'
+    fetchAnimals
+} from '../../../actions/animalList'
 import Homepage from '../components/HomeView'
 
 const mapStateToProps = state => ({
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    getAnimals: () => dispatch(getAnimals())
+    getAnimals: () => dispatch(fetchAnimals())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Homepage);

@@ -6,8 +6,9 @@ import {
 } from 'react-bootstrap'
 import AnimalTable from '../../../../components/Common/Table'
 import Badge from '../Badge'
+import DeleteAnimal from '../../../DeleteAnimal/containers/DeleteAnimal'
 
-const Animal = ({animal, user}) => (
+const Animal = ({animal, user, deleteAnimal}) => (
     <div className="container_div">
         <div className="centered">
             <h1 className="title">{animal.name}</h1>
@@ -80,14 +81,15 @@ const Animal = ({animal, user}) => (
                 user !== null && animal.owner !== undefined && user._id === animal.owner._id ?
                     <>
                         <Link className="button" to={{pathname: `/updateAnimal/${animal._id}`}}>
-                            <i className="fas fa-edit"></i> Edit details
+                            <i className="fas fa-edit"/> Edit details
                         </Link>
-                        <button className="button delete">
-                            <i className="fas fa-trash-alt"></i> Delete
-                        </button>
+
+                        <DeleteAnimal
+                            redirect={deleteAnimal}
+                        />
                     </>
                     :
-                    <button className="button"><i className="fas fa-envelope"></i> Request adoption</button>
+                    <button className="button"><i className="fas fa-envelope" /> Request adoption</button>
             }
         </div>
     </div>

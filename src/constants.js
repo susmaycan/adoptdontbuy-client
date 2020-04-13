@@ -1,343 +1,384 @@
-export const provinces = [{
-    "id": "04",
-    "nm": "Almería",
-    "autonomia_id": "01",
+export const provinceList = [{
+    "value": "04",
+    "name": "Almería",
+    "region": "01",
     "country": "Spain"
 }, {
-    "id": "11",
-    "nm": "Cádiz",
-    "autonomia_id": "01",
+    "value": "11",
+    "name": "Cádiz",
+    "region": "01",
     "country": "Spain"
 }, {
-    "id": "14",
-    "nm": "Córdoba",
-    "autonomia_id": "01",
+    "value": "14",
+    "name": "Córdoba",
+    "region": "01",
     "country": "Spain"
 }, {
-    "id": "18",
-    "nm": "Granada",
-    "autonomia_id": "01",
+    "value": "18",
+    "name": "Granada",
+    "region": "01",
     "country": "Spain"
 }, {
-    "id": "21",
-    "nm": "Huelva",
-    "autonomia_id": "01",
+    "value": "21",
+    "name": "Huelva",
+    "region": "01",
     "country": "Spain"
 }, {
-    "id": "23",
-    "nm": "Jaén",
-    "autonomia_id": "01",
+    "value": "23",
+    "name": "Jaén",
+    "region": "01",
     "country": "Spain"
 }, {
-    "id": "29",
-    "nm": "Málaga",
-    "autonomia_id": "01",
+    "value": "29",
+    "name": "Málaga",
+    "region": "01",
     "country": "Spain"
 }, {
-    "id": "41",
-    "nm": "Sevilla",
-    "autonomia_id": "01",
+    "value": "41",
+    "name": "Sevilla",
+    "region": "01",
     "country": "Spain"
 }, {
-    "id": "22",
-    "nm": "Huesca",
-    "autonomia_id": "02",
+    "value": "22",
+    "name": "Huesca",
+    "region": "02",
     "country": "Spain"
 }, {
-    "id": "44",
-    "nm": "Teruel",
-    "autonomia_id": "02",
+    "value": "44",
+    "name": "Teruel",
+    "region": "02",
     "country": "Spain"
 }, {
-    "id": "50",
-    "nm": "Zaragoza",
-    "autonomia_id": "02",
+    "value": "50",
+    "name": "Zaragoza",
+    "region": "02",
     "country": "Spain"
 }, {
-    "id": "33",
-    "nm": "Asturias",
-    "autonomia_id": "03",
+    "value": "33",
+    "name": "Asturias",
+    "region": "03",
     "country": "Spain"
 }, {
-    "id": "07",
-    "nm": "Islas Baleares",
-    "autonomia_id": "04",
+    "value": "07",
+    "name": "Islas Baleares",
+    "region": "04",
     "country": "Spain"
 }, {
-    "id": "35",
-    "nm": "Las Palmas",
-    "autonomia_id": "05",
+    "value": "35",
+    "name": "Las Palmas",
+    "region": "05",
     "country": "Spain"
 }, {
-    "id": "38",
-    "nm": "Santa Cruz de Tenerife",
-    "autonomia_id": "05",
+    "value": "38",
+    "name": "Santa Cruz de Tenerife",
+    "region": "05",
     "country": "Spain"
 }, {
-    "id": "39",
-    "nm": "Cantabria",
-    "autonomia_id": "06",
+    "value": "39",
+    "name": "Cantabria",
+    "region": "06",
     "country": "Spain"
 }, {
-    "id": "05",
-    "nm": "Ávila",
-    "autonomia_id": "07",
+    "value": "05",
+    "name": "Ávila",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "09",
-    "nm": "Burgos",
-    "autonomia_id": "07",
+    "value": "09",
+    "name": "Burgos",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "24",
-    "nm": "León",
-    "autonomia_id": "07",
+    "value": "24",
+    "name": "León",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "34",
-    "nm": "Palencia",
-    "autonomia_id": "07",
+    "value": "34",
+    "name": "Palencia",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "37",
-    "nm": "Salamanca",
-    "autonomia_id": "07",
+    "value": "37",
+    "name": "Salamanca",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "40",
-    "nm": "Segovia",
-    "autonomia_id": "07",
+    "value": "40",
+    "name": "Segovia",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "42",
-    "nm": "Soria",
-    "autonomia_id": "07",
+    "value": "42",
+    "name": "Soria",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "47",
-    "nm": "Valladolid",
-    "autonomia_id": "07",
+    "value": "47",
+    "name": "Valladolid",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "49",
-    "nm": "Zamora",
-    "autonomia_id": "07",
+    "value": "49",
+    "name": "Zamora",
+    "region": "07",
     "country": "Spain"
 }, {
-    "id": "02",
-    "nm": "Albacete",
-    "autonomia_id": "08",
+    "value": "02",
+    "name": "Albacete",
+    "region": "08",
     "country": "Spain"
 }, {
-    "id": "13",
-    "nm": "Ciudad Real",
-    "autonomia_id": "08",
+    "value": "13",
+    "name": "Ciudad Real",
+    "region": "08",
     "country": "Spain"
 }, {
-    "id": "16",
-    "nm": "Cuenca",
-    "autonomia_id": "08",
+    "value": "16",
+    "name": "Cuenca",
+    "region": "08",
     "country": "Spain"
 }, {
-    "id": "19",
-    "nm": "Guadalajara",
-    "autonomia_id": "08",
+    "value": "19",
+    "name": "Guadalajara",
+    "region": "08",
     "country": "Spain"
 }, {
-    "id": "45",
-    "nm": "Toledo",
-    "autonomia_id": "08",
+    "value": "45",
+    "name": "Toledo",
+    "region": "08",
     "country": "Spain"
 }, {
-    "id": "08",
-    "nm": "Barcelona",
-    "autonomia_id": "09",
+    "value": "08",
+    "name": "Barcelona",
+    "region": "09",
     "country": "Spain"
 }, {
-    "id": "17",
-    "nm": "Girona",
-    "autonomia_id": "09",
+    "value": "17",
+    "name": "Girona",
+    "region": "09",
     "country": "Spain"
 }, {
-    "id": "25",
-    "nm": "Lleida",
-    "autonomia_id": "09",
+    "value": "25",
+    "name": "Lleida",
+    "region": "09",
     "country": "Spain"
 }, {
-    "id": "43",
-    "nm": "Tarragona",
-    "autonomia_id": "09",
+    "value": "43",
+    "name": "Tarragona",
+    "region": "09",
     "country": "Spain"
 }, {
-    "id": "03",
-    "nm": "Alicante",
-    "autonomia_id": "10",
+    "value": "03",
+    "name": "Alicante",
+    "region": "10",
     "country": "Spain"
 }, {
-    "id": "12",
-    "nm": "Castellón",
-    "autonomia_id": "10",
+    "value": "12",
+    "name": "Castellón",
+    "region": "10",
     "country": "Spain"
 }, {
-    "id": "46",
-    "nm": "Valencia",
-    "autonomia_id": "10",
+    "value": "46",
+    "name": "Valencia",
+    "region": "10",
     "country": "Spain"
 }, {
-    "id": "06",
-    "nm": "Badajoz",
-    "autonomia_id": "11",
+    "value": "06",
+    "name": "Badajoz",
+    "region": "11",
     "country": "Spain"
 }, {
-    "id": "10",
-    "nm": "Cáceres",
-    "autonomia_id": "11",
+    "value": "10",
+    "name": "Cáceres",
+    "region": "11",
     "country": "Spain"
 }, {
-    "id": "15",
-    "nm": "Coruña, A",
-    "autonomia_id": "12",
+    "value": "15",
+    "name": "Coruña, A",
+    "region": "12",
     "country": "Spain"
 }, {
-    "id": "27",
-    "nm": "Lugo",
-    "autonomia_id": "12",
+    "value": "27",
+    "name": "Lugo",
+    "region": "12",
     "country": "Spain"
 }, {
-    "id": "32",
-    "nm": "Ourense",
-    "autonomia_id": "12",
+    "value": "32",
+    "name": "Ourense",
+    "region": "12",
     "country": "Spain"
 }, {
-    "id": "36",
-    "nm": "Pontevedra",
-    "autonomia_id": "12",
+    "value": "36",
+    "name": "Pontevedra",
+    "region": "12",
     "country": "Spain"
 }, {
-    "id": "28",
-    "nm": "Madrid",
-    "autonomia_id": "13",
+    "value": "28",
+    "name": "Madrid",
+    "region": "13",
     "country": "Spain"
 }, {
-    "id": "30",
-    "nm": "Murcia",
-    "autonomia_id": "14",
+    "value": "30",
+    "name": "Murcia",
+    "region": "14",
     "country": "Spain"
 }, {
-    "id": "31",
-    "nm": "Navarra",
-    "autonomia_id": "15",
+    "value": "31",
+    "name": "Navarra",
+    "region": "15",
     "country": "Spain"
 }, {
-    "id": "01",
-    "nm": "Araba/Álava",
-    "autonomia_id": "16",
+    "value": "01",
+    "name": "Araba/Álava",
+    "region": "16",
     "country": "Spain"
 }, {
-    "id": "48",
-    "nm": "Bizkaia",
-    "autonomia_id": "16",
+    "value": "48",
+    "name": "Bizkaia",
+    "region": "16",
     "country": "Spain"
 }, {
-    "id": "20",
-    "nm": "Gipuzkoa",
-    "autonomia_id": "16",
+    "value": "20",
+    "name": "Gipuzkoa",
+    "region": "16",
     "country": "Spain"
 }, {
-    "id": "26",
-    "nm": "La Rioja",
-    "autonomia_id": "17",
+    "value": "26",
+    "name": "La Rioja",
+    "region": "17",
     "country": "Spain"
 }, {
-    "id": "51",
-    "nm": "Ceuta",
-    "autonomia_id": "18",
+    "value": "51",
+    "name": "Ceuta",
+    "region": "18",
     "country": "Spain"
 }, {
-    "id": "52",
-    "nm": "Melilla",
-    "autonomia_id": "19",
+    "value": "52",
+    "name": "Melilla",
+    "region": "19",
     "country": "Spain"
 }];
 
 
- export const ccaa = [
+export const regionList = [
     {
-        "autonomia_id": "01",
-        "nombre": "Andalucía"
+        "value": "01",
+        "name": "Andalucía"
     },
     {
-        "autonomia_id": "02",
-        "nombre": "Aragón"
+        "value": "02",
+        "name": "Aragón"
     },
     {
-        "autonomia_id": "03",
-        "nombre": "Asturias, Principado de"
+        "value": "03",
+        "name": "Asturias, Principado de"
     },
     {
-        "autonomia_id": "04",
-        "nombre": "Balears, Illes"
+        "value": "04",
+        "name": "Balears, Illes"
     },
     {
-        "autonomia_id": "05",
-        "nombre": "Canarias"
+        "value": "05",
+        "name": "Canarias"
     },
     {
-        "autonomia_id": "06",
-        "nombre": "Cantabria"
+        "value": "06",
+        "name": "Cantabria"
     },
     {
-        "autonomia_id": "07",
-        "nombre": "Castilla y León"
+        "value": "07",
+        "name": "Castilla y León"
     },
     {
-        "autonomia_id": "08",
-        "nombre": "Castilla - La Mancha"
+        "value": "08",
+        "name": "Castilla - La Mancha"
     },
     {
-        "autonomia_id": "09",
-        "nombre": "Cataluña"
+        "value": "09",
+        "name": "Cataluña"
     },
     {
-        "autonomia_id": "10",
-        "nombre": "Comunitat Valenciana"
+        "value": "10",
+        "name": "Comunitat Valenciana"
     },
     {
-        "autonomia_id": "11",
-        "nombre": "Extremadura"
+        "value": "11",
+        "name": "Extremadura"
     },
     {
-        "autonomia_id": "12",
-        "nombre": "Galicia"
+        "value": "12",
+        "name": "Galicia"
     },
     {
-        "autonomia_id": "13",
-        "nombre": "Madrid, Comunidad de"
+        "value": "13",
+        "name": "Madrid, Comunidad de"
     },
     {
-        "autonomia_id": "14",
-        "nombre": "Murcia, Región de"
+        "value": "14",
+        "name": "Murcia, Región de"
     },
     {
-        "autonomia_id": "15",
-        "nombre": "Navarra, Comunidad Foral de"
+        "value": "15",
+        "name": "Navarra, Comunidad Foral de"
     },
     {
-        "autonomia_id": "16",
-        "nombre": "País Vasco"
+        "value": "16",
+        "name": "País Vasco"
     },
     {
-        "autonomia_id": "17",
-        "nombre": "Rioja, La"
+        "value": "17",
+        "name": "Rioja, La"
     },
     {
-        "autonomia_id": "18",
-        "nombre": "Ceuta"
+        "value": "18",
+        "name": "Ceuta"
     },
     {
-        "autonomia_id": "19",
-        "nombre": "Melilla"
+        "value": "19",
+        "name": "Melilla"
     }
-];
+]
 
-export const cities=[];
+export const sizeList =
+    [
+        {
+            "value": "small",
+            "name": "Small"
+        },
+        {
+            "value": "medium",
+            "name": "Medium"
+        },
+        {
+            "value": "big",
+            "name": "Big"
+        },
+    ]
+
+export const genderList = [
+    {
+        "value": "M",
+        "name": "Male"
+    },
+    {
+        "value": "F",
+        "name": "Female"
+    }
+]
+
+export const specieList = [
+    {
+        "value": "dog",
+        "name": "Dog"
+    },
+    {
+        "value": "cat",
+        "name": "Cat"
+    },
+    {
+        "value": "other",
+        "name": "Other"
+    }
+]
+

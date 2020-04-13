@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import
 {
     Link
@@ -23,7 +24,6 @@ class Button extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.onAction)
         switch (this.props.type) {
             case DELETE:
                 this.setState({
@@ -81,5 +81,9 @@ class Button extends React.Component {
         }
     }
 }
-
+Button.propTypes = {
+    type: PropTypes.string,
+    onAction: PropTypes.func,
+    url: PropTypes.string
+}
 export default Button

@@ -3,7 +3,8 @@ import {
     fetchUser,
     updateUser,
     updatePhotoUser
-} from '../../../actions/User/getUser'
+} from '../../../actions/user'
+
 import EditUser from '../components/EditUser'
 
 const mapStateToProps = state => ({
