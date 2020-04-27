@@ -1,12 +1,18 @@
 import React from 'react'
+import './Footer.scss'
+import LanguageSelector from '../../pages/LanguageSelector'
 
-class Footer extends React.Component {
+class CustomFooter extends React.Component {
     render() {
         return (
-            <div className="footer" >
-                <p>© adoptdontbuy made by <a target="_blank" rel="noopener noreferrer" href="https://susmaycan.dev">Susana</a> with <strong>React</strong>.</p>
-            </div>
+            <footer className="footer">
+                    <LanguageSelector/>
+                    <p>© adoptdontbuy made by <a target="_blank" rel="noopener noreferrer"
+                                                 href="https://susmaycan.dev">Susana</a> with <strong>React</strong>.
+                    </p>
+            </footer>
         );
     }
 }
-export default Footer
+
+export default CustomFooter

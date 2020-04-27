@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import User from '../User'
-import Loading from '../../../../components/Common/Loading'
-import Message from '../../../../components/Common/Message'
+import Loading from '../../../../components/Loading'
+import Message from '../../../../components/Message'
 
 class UserDetail extends Component {
 
@@ -30,6 +30,7 @@ class UserDetail extends Component {
                     <User
                         user={this.props.user}
                         loggedUser={this.props.loggedUser}
+                        isLoggedIn={this.props.isLoggedIn}
                         animalList={this.props.animalList}
                         isLoadingList={this.props.isLoadingList}
                         errorList={this.props.errorList}

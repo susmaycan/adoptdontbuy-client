@@ -1,0 +1,12 @@
+@import "../../../styles/base";
+
+.table-col-bold{
+  font-family: $title-font;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.table-col{
+  text-transform: capitalize;
+}
+

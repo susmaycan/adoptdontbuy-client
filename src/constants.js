@@ -230,7 +230,7 @@ export const provinceList = [{
     "country": "Spain"
 }, {
     "value": "01",
-    "name": "Araba/Álava",
+    "name": "Álava",
     "region": "16",
     "country": "Spain"
 }, {
@@ -272,11 +272,11 @@ export const regionList = [
     },
     {
         "value": "03",
-        "name": "Asturias, Principado de"
+        "name": "Asturias"
     },
     {
         "value": "04",
-        "name": "Balears, Illes"
+        "name": "Islas Baleares"
     },
     {
         "value": "05",
@@ -300,7 +300,7 @@ export const regionList = [
     },
     {
         "value": "10",
-        "name": "Comunitat Valenciana"
+        "name": "Comunitad Valenciana"
     },
     {
         "value": "11",
@@ -312,15 +312,15 @@ export const regionList = [
     },
     {
         "value": "13",
-        "name": "Madrid, Comunidad de"
+        "name": "Madrid"
     },
     {
         "value": "14",
-        "name": "Murcia, Región de"
+        "name": "Murcia"
     },
     {
         "value": "15",
-        "name": "Navarra, Comunidad Foral de"
+        "name": "Navarra"
     },
     {
         "value": "16",
@@ -328,7 +328,7 @@ export const regionList = [
     },
     {
         "value": "17",
-        "name": "Rioja, La"
+        "name": "La Rioja"
     },
     {
         "value": "18",
@@ -381,4 +381,94 @@ export const specieList = [
         "name": "Other"
     }
 ]
+
+export const ageList = [
+    {
+        "value": "puppy",
+        "name": "Puppy"
+    },
+    {
+        "value": "youngAdult",
+        "name": "Young Adult"
+    },
+    {
+        "value": "adult",
+        "name": "Adult"
+    },
+    {
+        "value": "senior",
+        "name": "Senior"
+    }
+]
+
+export const codeError = {
+    NOT_FOUND: '404',
+    SERVER_UNAVAILABLE: '500',
+    FORBIDDEN: '403'
+}
+
+export const input = {
+    CHECKBOX: 'checkbox',
+    FILE: 'file',
+}
+
+export const tableElements = {
+    ANIMAL_TYPE: 'animal',
+    TYPE_USER: 'user',
+    GENDER: 'gender',
+    AGE: 'age',
+    SIZE: 'size',
+    CREATED_AT: 'createdAt',
+    SPECIE: 'specie',
+    BREED: 'breed',
+    OWNER: 'owner',
+    LOCATION: 'location',
+    TYPE_OF_USER: 'typeOfUser',
+    SOCIAL_LEVEL: 'socialLevel',
+    ENERGY_LEVEL: 'energyLevel',
+    TRAUMA_LEVEL: 'traumaLevel',
+    FULL_NAME: 'fullName',
+    ADDRESS_LINE: 'address_line',
+    PHONE: 'phone',
+    EMAIL: 'email',
+    WEBSITE: 'website'
+}
+
+export const filterElements = {
+    GENDER: 'gender',
+    AGE: 'age',
+    SIZE: 'size',
+    SPECIE: 'specie',
+    BREED: 'breed',
+    OWNER: 'owner',
+    LOCATION: 'location',
+    REGION: 'region',
+    CITY: 'city',
+    PROVINCE: 'province',
+    SOCIAL_LEVEL: 'socialLevel',
+    ENERGY_LEVEL: 'energyLevel',
+    TRAUMA_LEVEL: 'traumaLevel',
+    CASTRATED: 'castrated',
+    VACCINATED: 'vaccinated',
+    ALONG_WITH_DOGS: 'alongWithDogs',
+    ALONG_WITH_CATS: 'alongWithCats',
+    ALONG_WITH_KIDS: 'alongWithKids'
+}
+
+export const buttonTypes = {
+    LOGIN: "buttons.login",
+    SIGNUP: "buttons.sign-up",
+    LOGOUT: "buttons.logout",
+    DELETE: "buttons.delete",
+    EDIT: "buttons.edit",
+    EDIT_PICTURES: "buttons.edit-pictures",
+    INFO: "buttons.info",
+    CONFIRM: "buttons.confirm",
+    CANCEL: "common.cancel",
+    YES: "common.yes",
+    NO: "common.no",
+    FINISH: "common.finish"
+}
+
+
 

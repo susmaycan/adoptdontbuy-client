@@ -1,3 +1,3 @@
-import Form from './Form'
+import FormView from './FormView'
 
-export default Form
+export default FormView

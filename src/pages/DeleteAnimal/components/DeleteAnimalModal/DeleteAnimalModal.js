@@ -1,33 +1,41 @@
 import React from 'react'
 import {
     Col,
-    Modal,
     Row
 } from 'react-bootstrap'
+import {Translate} from 'react-redux-i18n'
+import Modal from "../../../../components/Modal";
+import {buttonTypes} from "../../../../constants";
+import Button from "../../../../components/Button";
 
 const DeleteAnimalModal = ({show, handleClose, handleShow, error, errorMsg, handleSubmit, isLoading}) => (
 
-    <Modal show={show} onHide={handleClose} className="login_modal" animation={true}>
-        <div className="modal_title_bg">
-            <h2 className="modal-title text-center subtitle">
-                DELETE ANIMAL
-                <button type="button" className="close" onClick={handleClose}>&times;</button>
-            </h2>
+    <Modal
+        show={show}
+        handleClose={handleClose}
+        title='deleteAnimal.title'
+    >
+        <div>
+            <Translate value='deleteAnimal.body'/>
         </div>
-        <Modal.Body>
-            <div>
-                <p>You are about to delete the animal...
-                    Are you 100% sure?</p>
-            </div>
-            <Row>
-                <Col>
-                    <button className="button delete" onClick={handleSubmit}>Yes</button>
-                </Col>
-                <Col>
-                    <button className="button" onClick={handleClose}>No</button>
-                </Col>
-            </Row>
-        </Modal.Body>
+        <Row>
+            <Col>
+                <Button
+                    onAction={handleSubmit}
+                    danger={true}
+                >
+                    <Translate value={buttonTypes.CONFIRM}/>
+                </Button>
+            </Col>
+            <Col>
+                <Button
+                    onAction={handleClose}
+                >
+                    <Translate value={buttonTypes.CANCEL}/>
+                </Button>
+            </Col>
+        </Row>
+
     </Modal>
 )
 

@@ -1,8 +1,11 @@
 import React, {Component} from 'react'
-import Message from '../../../../components/Common/Message'
+import Message from '../../../../components/Message'
 import {Redirect} from 'react-router'
 import AnimalForm from '../AnimalForm'
-import Loading from "../../../../components/Common/Loading";
+import Loading from "../../../../components/Loading";
+import {Translate} from 'react-redux-i18n'
+import Title from '../../../../components/Title'
+import Container from '../../../../components/Container'
 
 class EditAnimalView extends Component {
 
@@ -38,7 +41,7 @@ class EditAnimalView extends Component {
 
         if (this.props.isLoading) {
             return (
-                <Loading />
+                <Loading/>
             )
         }
 
@@ -57,17 +60,19 @@ class EditAnimalView extends Component {
         return (
             <>
                 {this.state.submitted ? <Redirect to={"/animal/" + this.state.id_url}/> : ''}
-                <div className="container_div">
-                    <div className="centered">
-                        <h1 className="title"><i className="fas fa-plus-circle"/> Add Animal</h1>
-                    </div>
+                <Container>
+                    <Title>
+                        <i className="fas fa-plus-circle"/>
+                        {' '}
+                        <Translate value='editAnimal.title'/>
+                    </Title>
                     <AnimalForm
                         loggedUser={this.props.loggedUser}
                         submitForm={this.submitAnimal}
                         uploadPhoto={this.props.uploadPhoto}
                         animal={this.props.animal}
                     />
-                </div>
+                </Container>
             </>
         )
     }

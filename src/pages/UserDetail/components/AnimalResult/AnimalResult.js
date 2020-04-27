@@ -4,10 +4,12 @@ import {
     Image,
     Row
 } from 'react-bootstrap'
-
-import Gender from '../../../../components/Common/Gender'
-import Location from '../../../../components/Common/Location'
-import Button from '../../../../components/Common/Button'
+import './AnimalResult.scss'
+import Gender from '../../../../components/Gender'
+import Location from '../../../../components/Location'
+import Button from '../../../../components/Button'
+import {Translate} from "react-redux-i18n";
+import {buttonTypes} from "../../../../constants";
 
 const AnimalResult = ({animal}) => (
     <div key={animal._id} className="animal_container">
@@ -17,7 +19,7 @@ const AnimalResult = ({animal}) => (
                     rounded
                     className="profile_image rounded"
                     alt={"Picture of " + animal.name}
-                    src={animal.picture}
+                    src={animal.picture !== undefined ? animal.picture[0] : ''}
                 />
             </Col>
             <Col>
@@ -36,8 +38,9 @@ const AnimalResult = ({animal}) => (
             <Col>
                 <Button
                     url={`/animal/${animal._id}`}
-                    type="info"
-                />
+                >
+                    <i className="fas fa-info-circle"/> <Translate value={buttonTypes.INFO}/>
+                </Button>
             </Col>
         </Row>
 

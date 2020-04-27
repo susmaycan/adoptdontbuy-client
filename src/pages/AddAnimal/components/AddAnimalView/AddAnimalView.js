@@ -1,7 +1,10 @@
 import React, {Component} from 'react'
-import Message from '../../../../components/Common/Message'
+import Message from '../../../../components/Message'
 import {Redirect} from 'react-router'
 import AnimalForm from '../AnimalForm'
+import {Translate} from 'react-redux-i18n'
+import Title from '../../../../components/Title'
+import Container from "../../../../components/Container";
 
 class AddAnimalView extends Component {
 
@@ -24,23 +27,23 @@ class AddAnimalView extends Component {
     render() {
         if (this.props.isLoggedIn === false) {
             return (
-                <Message>Sorry, you need to be registered to be this page.</Message>
+                <Message><Translate value='messages.noLogin'/></Message>
             )
         }
 
         return (
             <>
                 {this.state.submitted ? <Redirect to={"/user/" + this.props.loggedUser._id}/> : ''}
-                <div className="container_div">
-                    <div className="centered">
-                        <h1 className="title"><i className="fas fa-plus-circle"/> Add Animal</h1>
-                    </div>
+                <Container>
+                    <Title>
+                        <i className="fas fa-plus-circle"/> <Translate value='addAnimal.title'/>
+                    </Title>
                     <AnimalForm
                         loggedUser={this.props.loggedUser}
                         submitForm={this.submitAnimal}
                         uploadPhoto={this.props.uploadPhoto}
                     />
-                </div>
+                </Container>
             </>
         )
     }

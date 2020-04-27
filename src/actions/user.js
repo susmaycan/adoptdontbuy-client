@@ -48,7 +48,7 @@ export function deleteUser(userId) {
     return (dispatch) => {
         dispatch(userRequest())
         return firebaseActions.deleteUser()
-            .then(response => {
+            .then(() => {
                     return deleteUserAPI(userId)
                         .then(
                             dispatch(deleteUserSuccess())
@@ -75,6 +75,34 @@ export function updateUser(user) {
             )
             .catch(err => {
                 console.log('Error when updating the user with id ', user._id, '. Error: ', err.message)
+                dispatch(userError(err.message))
+            })
+    }
+}
+
+export function updateEmail(email) {
+    return (dispatch) => {
+        dispatch(userRequest())
+        return firebaseActions.updateEmail(email)
+            .then(
+                dispatch(editUserSuccess())
+            )
+            .catch(err => {
+                console.log('Error when updating the email. Error: ', err.message)
+                dispatch(userError(err.message))
+            })
+    }
+}
+
+export function updatePassword(password) {
+    return (dispatch) => {
+        dispatch(userRequest())
+        return firebaseActions.updatePassword(password)
+            .then(
+                dispatch(editUserSuccess())
+            )
+            .catch(err => {
+                console.log('Error when updating the password. Error: ', err.message)
                 dispatch(userError(err.message))
             })
     }

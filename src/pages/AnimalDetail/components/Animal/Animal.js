@@ -1,99 +1,111 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
 import {
-    Row,
-    Col
-} from 'react-bootstrap'
-import AnimalTable from '../../../../components/Common/Table'
+    Table,
+    Contact,
+    Button,
+    Title,
+    Subtitle,
+    Container
+} from '../../../../components'
+import DeleteAnimal from '../../../DeleteAnimal'
+import {Translate} from 'react-redux-i18n'
+import './Animal.scss'
+import AnimalPicture from '../AnimalPicture'
 import Badge from '../Badge'
-import DeleteAnimal from '../../../DeleteAnimal/containers/DeleteAnimal'
+import {buttonTypes, tableElements} from "../../../../constants";
+import {Link} from "react-router-dom";
+import {isOwner} from "../../../../utils/Functions";
 
 const Animal = ({animal, user, deleteAnimal}) => (
-    <div className="container_div">
-        <div className="centered">
-            <h1 className="title">{animal.name}</h1>
+    <Container>
+        <Title>
+            {animal.name}
+        </Title>
+        <div className="columns is-centered">
+            <div className="column is-narrow is-offset-7">
+                {isOwner(user, animal.owner) ?
+                    <div className="centered">
+                        <Button
+                            url={`/updateAnimal/${animal._id}`}
+                        >
+                            <i className="fas fa-edit"/> <Translate value={buttonTypes.EDIT}/>
+                        </Button>
+                        <Button
+                            url={`/editPictures/${animal._id}`}
+                        >
+                            <i className="fas fa-edit"/> <Translate value={buttonTypes.EDIT_PICTURES}/>
+                        </Button>
+                        <DeleteAnimal
+                            redirect={deleteAnimal}
+                        />
+                    </div>
+                    :
+                    <Contact emailDst={animal.owner !== undefined ? animal.owner.email : ''} animalName={animal.name}/>
+                }
+            </div>
         </div>
-        <Row>
-            <Col>
-                <div className="info">
-                    <AnimalTable
+        <div className="columns">
+            <div className="column">
+                <div className="animal-information">
+                    <Table
                         elements={[
-                            {name: 'Breed', value: animal.breed},
-                            {name: 'Specie', value: animal.specie},
-                            {name: 'Size', value: animal.size},
-                            {name: 'Age', value: animal.yearBorn},
-                            {name: 'Gender', value: animal.gender},
+                            {name: tableElements.BREED, value: animal.breed},
+                            {name: tableElements.SPECIE, value: animal.specie},
+                            {name: tableElements.SIZE, value: animal.size},
+                            {name: tableElements.AGE, value: animal.age},
+                            {name: tableElements.GENDER, value: animal.gender},
                             {
-                                name: 'Location', value: {
+                                name: tableElements.LOCATION, value: {
                                     province: animal.province,
                                     region: animal.region,
                                     city: animal.city,
                                     country: animal.country
                                 }
                             },
-                            {name: 'Owner', value: animal.owner !== undefined ? animal.owner : ''},
+                            {name: tableElements.OWNER, value: animal.owner !== undefined ? animal.owner : ''},
+                            {name: tableElements.CREATED_AT, value: animal.createdAt}
                         ]}
-                        title='Animal information'
+                        title='animalInformation'
+                        type={tableElements.ANIMAL_TYPE}
                     />
                     <br/>
-                    <AnimalTable
+                    <Table
                         elements={[
-                            {name: 'Social level', value: animal.socialLevel},
-                            {name: 'Energy level', value: animal.energyLevel},
-                            {name: 'Trauma level', value: animal.traumaLevel}
+                            {name: tableElements.SOCIAL_LEVEL, value: animal.socialLevel},
+                            {name: tableElements.ENERGY_LEVEL, value: animal.energyLevel},
+                            {name: tableElements.TRAUMA_LEVEL, value: animal.traumaLevel}
                         ]}
-                        title='Additional data'
+                        title='additionalData'
+                        type={tableElements.ANIMAL_TYPE}
                     />
-
-                    <Row>
+                    <div className="columns is-multiline is-centered">
                         <Badge
                             elements={[
-                                {name: 'Castrated', value: animal.castrated},
-                                {name: 'Vaccinated', value: animal.vaccinated},
-                                {name: 'Along with dogs', value: animal.alongWithDogs},
-                                {name: 'Along with cats', value: animal.alongWithCats},
-                                {name: 'Along with kids', value: animal.alongWithKids},
+                                {name: 'castrated', value: animal.castrated},
+                                {name: 'vaccinated', value: animal.vaccinated},
+                                {name: 'alongWithDogs', value: animal.alongWithDogs},
+                                {name: 'alongWithCats', value: animal.alongWithCats},
+                                {name: 'alongWithKids', value: animal.alongWithKids},
                             ]}
                         />
-                    </Row>
+                    </div>
                 </div>
-            </Col>
-            <Col className="centered">
-
-                <div className="animal_pic_div">
-                    <img className="animal_picture_detail" alt={"Picture of " + animal.name} src={animal.picture}/>
-                </div>
-            </Col>
-        </Row>
+            </div>
+            <div className="column">
+                <AnimalPicture name={animal.name} pictures={animal.picture}/>
+            </div>
+        </div>
 
         <div className="centered">
-
             {animal.about !== "unknown" ?
-                <div className="about">
-                    <h3 className="subtitle">Story</h3>
+                <div className="animal-about">
+                    <Subtitle><Translate value={'animalDetail.story'}/></Subtitle>
                     <hr/>
                     <p>{animal.about}</p>
                 </div>
                 :
                 ""}
-
-            {
-                user !== null && animal.owner !== undefined && user._id === animal.owner._id ?
-                    <>
-                        <Link className="button" to={{pathname: `/updateAnimal/${animal._id}`}}>
-                            <i className="fas fa-edit"/> Edit details
-                        </Link>
-
-                        <DeleteAnimal
-                            redirect={deleteAnimal}
-                        />
-                    </>
-                    :
-                    <button className="button"><i className="fas fa-envelope" /> Request adoption</button>
-            }
         </div>
-    </div>
-);
-
-
+    </Container>
+)
 export default Animal

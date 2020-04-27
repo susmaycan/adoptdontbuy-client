@@ -1,19 +1,22 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Gender from '../Common/Gender'
-import Location from '../Common/Location'
-import Picture from '../Common/Picture'
+import {
+    Gender,
+    Location,
+    PictureCard
+} from '../../components'
 import PropTypes from 'prop-types'
+import './AnimalCard.scss'
 
 const AnimalCard = ({ animal }) => (
-    <Link className="" to={{ pathname: `/animal/${animal._id}` }}>
-        <div key={animal._id} className="animal_container_recent centered">
-            <Picture
+    <Link to={{ pathname: `/animal/${animal._id}` }}>
+        <div key={animal._id} className="animal-card-container">
+            <PictureCard
                 name={animal.name}
                 picture={animal.picture[0]}
             />
-            <div className="animalResultInfo">
-                <h3 className="subtitle centered bold animal_name_result">{animal.name}</h3>
+            <div className="animal-info-card">
+                <h3 className="animal-name-card">{animal.name}</h3>
                 <Gender
                     gender={animal.gender}
                 />

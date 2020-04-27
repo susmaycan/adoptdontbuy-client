@@ -1,10 +1,13 @@
 import React, {Component} from 'react'
 import Form from '../Form'
-import Loading from '../../../../components/Common/Loading'
-import Message from '../../../../components/Common/Message'
+import Loading from '../../../../components/Loading'
+import Message from '../../../../components/Message'
 import {
     Redirect
 } from 'react-router'
+import Title from '../../../../components/Title'
+import {Translate} from 'react-redux-i18n'
+import Container from "../../../../components/Container";
 
 const EMPTY_USER = {}
 
@@ -22,8 +25,25 @@ class EditUser extends Component {
         this.props.getUser(this.props.match.params.userId)
     }
 
-    submitForm(user) {
+    submitForm(props) {
+        const user = props.user
+        const password = props.password.newPassword
+        let logout = false
+        if (password !== '' && password !== undefined) {
+            this.props.updatePassword(password)
+            logout = true
+        }
+
+        if (user.email !== this.props.loggedUser.email) {
+            this.props.updateEmail(user.email)
+            logout = true
+        }
+
         this.props.updateUserDB(user)
+
+        if (logout)
+            this.props.logout()
+
         this.setState({
             submitted: true
         })
@@ -63,15 +83,20 @@ class EditUser extends Component {
         }
 
         return (
-            <>
+            <Container>
                 {this.state.submitted ? <Redirect to={"/user/" + this.props.user._id}/> : ''}
+                <Title>
+                    <i className="fas fa-plus-circle"/>
+                    {' '}
+                    <Translate value='editUser.title'/>
+                </Title>
                 <Form
                     user={this.props.user}
                     loggedUser={this.props.loggedUser}
                     submitForm={this.submitForm}
-                    uploadPhoto = {this.props.uploadPhoto}
+                    uploadPhoto={this.props.uploadPhoto}
                 />
-            </>
+            </Container>
         )
     }
 

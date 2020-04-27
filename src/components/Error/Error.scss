@@ -1,0 +1,11 @@
+@import "../../styles/base";
+
+.error-container {
+  text-align: center;
+
+  .code-error {
+    color: $primary-color;
+  }
+}
+
+

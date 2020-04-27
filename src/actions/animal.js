@@ -18,7 +18,7 @@ import uuid from 'uuid/v4'
 
 export function fetchAnimal(animalId) {
     return (dispatch) => {
-        dispatch(animalRequest());
+        dispatch(animalRequest())
         return getAnimal(animalId)
             .then(animal => {
                 dispatch(fetchAnimalSuccess(animal))
@@ -29,20 +29,31 @@ export function fetchAnimal(animalId) {
     }
 }
 
+
 export function addAnimal(animal) {
     return (dispatch) => {
-        console.log("Add animal ", animal)
         dispatch(animalRequest())
-        const idPicture = uuid()
-        console.log("Generated id ", idPicture)
-        const ref = 'animal/' + idPicture
-
-        return firebaseActions.postPicture(animal.picture, ref)
-            .then(response => {
-                animal = {
-                    ...animal,
-                    picture: 'https://firebasestorage.googleapis.com/v0/b/adoptdontbuy-react.appspot.com/o/animal%2F' + idPicture + '?alt=media'
-                }
+        let picturesURL = []
+        let files = animal.picture
+        const promises = []
+        Object.keys(files).map(key => {
+            let file = files[key]
+            const idPicture = uuid()
+            const ref = 'animal/' + idPicture
+            const uploadPhoto =
+                firebaseActions.postPicture(file, ref)
+                    .then(() => {
+                        console.log("File uploaded")
+                        picturesURL.push('https://firebasestorage.googleapis.com/v0/b/adoptdontbuy-react.appspot.com/o/animal%2F' + idPicture + '?alt=media')
+                        animal = {
+                            ...animal,
+                            picture: picturesURL
+                        }
+                    })
+            promises.push(uploadPhoto)
+        })
+        return Promise.all(promises)
+            .then(() => {
                 return addAnimalAPI(animal)
                     .then(animal => {
                         dispatch(addAnimalSuccess(animal))
@@ -53,10 +64,9 @@ export function addAnimal(animal) {
                     })
             })
             .catch(error => {
-                console.log("There was an error posting animal's picture. Error: ", error.message)
+                console.log("There was an error uploading animal photos. Error: ", error.message)
                 dispatch(animalError(error.message))
             })
-
     }
 }
 
@@ -70,6 +80,61 @@ export function editAnimal(animal) {
             })
             .catch(error => {
                 console.log("There was an error editing the animal on DB. Error: ", error.message)
+                dispatch(animalError(error.message))
+            })
+    }
+}
+
+export function addPictures(animal, files) {
+    return (dispatch) => {
+        dispatch(animalRequest())
+        const promises = []
+        Object.keys(files).map(key => {
+            let file = files[key]
+            const idPicture = uuid()
+            const ref = 'animal/' + idPicture
+            const uploadPhoto =
+                firebaseActions.postPicture(file, ref)
+                    .then(() => {
+                        console.log("File uploaded")
+                        animal.picture.push('https://firebasestorage.googleapis.com/v0/b/adoptdontbuy-react.appspot.com/o/animal%2F' + idPicture + '?alt=media')
+                    })
+            promises.push(uploadPhoto)
+        })
+        Promise.all(promises)
+            .then(() => {
+                return updateAnimal(animal)
+                    .then(animal => {
+                        dispatch(editAnimalSuccess(animal))
+                    })
+                    .catch(error => {
+                        console.log("There was an error editing the animal on DB. Error: ", error.message)
+                        dispatch(animalError(error.message))
+                    })
+            })
+    }
+}
+
+export function deletePicture(animal, url) {
+    return (dispatch) => {
+        dispatch(animalRequest())
+        return firebaseActions.deletePicture(url)
+            .then(() => {
+                const index = animal.picture.indexOf(url);
+                if (index > -1) {
+                    animal.picture.splice(index, 1);
+                }
+                return updateAnimal(animal)
+                    .then(animal => {
+                        dispatch(editAnimalSuccess(animal))
+                    })
+                    .catch(error => {
+                        console.log("There was an error uploading the animal on DB. Error: ", error.message)
+                        dispatch(animalError(error.message))
+                    })
+            })
+            .catch(error => {
+                console.log("There was an error deleting the picture from Firebase. Error: ", error.message)
                 dispatch(animalError(error.message))
             })
     }

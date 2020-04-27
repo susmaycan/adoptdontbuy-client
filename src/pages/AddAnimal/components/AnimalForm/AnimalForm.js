@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
 import Form from '../../../../components/AnimalForm'
+import {input} from '../../../../constants'
 
 const ACTION_ADD = "add"
-const CHECKBOX_TYPE = "checkbox"
-const FILE_TYPE = 'file'
 
 class AnimalForm extends Component {
 
@@ -11,7 +10,11 @@ class AnimalForm extends Component {
         super(props)
         this.state = {
             animal: {
-                owner: this.props.loggedUser !== undefined ? this.props.loggedUser._id : ''
+                owner: this.props.loggedUser !== undefined ? this.props.loggedUser._id : '',
+                province: this.props.loggedUser !== undefined ? this.props.loggedUser.province : '',
+                region: this.props.loggedUser !== undefined ? this.props.loggedUser.region : '',
+                country: this.props.loggedUser !== undefined ? this.props.loggedUser.country : '',
+                city: this.props.loggedUser !== undefined ? this.props.loggedUser.city : '',
             },
         }
         this.submitForm = this.submitForm.bind(this)
@@ -25,11 +28,14 @@ class AnimalForm extends Component {
     }
 
     updateInput(e) {
-        let value = ''
-        if (e.target.type === FILE_TYPE) {
-            value = e.target.files[0]
+        let value
+        if (e.target.type === input.FILE) {
+            const files = e.target.files
+            Object.keys(files).map(item => console.log(files[item]))
+
+            value = e.target.files
         } else {
-            value = e.target.type === CHECKBOX_TYPE ? e.target.checked : e.target.value
+            value = e.target.type === input.CHECKBOX ? e.target.checked : e.target.value
         }
 
         this.setState({

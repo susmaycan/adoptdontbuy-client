@@ -14,6 +14,7 @@ const mapStateToProps = state => ({
     animalList: state.userReducer.animalList,
     errorList: state.userReducer.errorList,
     loggedUser: state.loginReducer.user,
+    isLoggedIn: state.loginReducer.isLoggedIn,
     favourites: state.userReducer.favourites
 })
 

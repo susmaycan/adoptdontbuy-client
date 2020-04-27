@@ -1,36 +1,51 @@
 import React, {useState} from 'react';
-import LoginModal from '../LoginModal';
-import Button from '../../../../components/Common/Button'
-import SignUpModal from '../SignUpModal'
+import Login from '../Login';
+import Button from '../../../../components/Button'
+import SignUp from '../Signup'
+import {buttonTypes} from "../../../../constants";
+import {Translate} from 'react-redux-i18n'
+import RecoverPassword from '../RecoverPassword'
 
 function Layout(props) {
+    const [showLogin, setShowLogin] = useState(false)
+    const handleCloseLogin = () => setShowLogin(false)
+    const handleShowLogin = () => setShowLogin(true)
 
-    const [showLogin, setShowLogin] = useState(false);
-    const handleCloseLogin = () => setShowLogin(false);
-    const handleShowLogin = () => setShowLogin(true);
+    const [showSignUp, setShowSignUp] = useState(false)
+    const handleCloseSignUp = () => setShowSignUp(false)
+    const handleShowSignUp = () => setShowSignUp(true)
 
-    const [showSignUp, setShowSignUp] = useState(false);
-    const handleCloseSignUp = () => setShowSignUp(false);
-    const handleShowSignUp = () => setShowSignUp(true);
+    const [showRecoverPassword, setRecoverPassword] = useState(false)
+    const handleCloseRecoverPass = () => setRecoverPassword(false)
+    const handleShowRecoverPass = () => setRecoverPassword(true)
 
     const openModalSignUp = () => {
-        handleShowSignUp();
-        handleCloseLogin();
+        handleShowSignUp()
+        handleCloseRecoverPass()
+        handleCloseLogin()
     }
     const openModalLogin = () => {
-        handleCloseSignUp();
-        handleShowLogin();
+        handleCloseSignUp()
+        handleCloseRecoverPass()
+        handleShowLogin()
+    }
+
+    const openModalRecoverPassword = () => {
+        handleCloseLogin()
+        handleCloseSignUp()
+        handleShowRecoverPass()
     }
 
 
     return (
         <>
             <Button
-                type="login"
+                submit={true}
                 onAction={handleShowLogin}
-            />
-
-            <LoginModal
+            >
+                <i className="fas fa-sign-in-alt"/>{' '}<Translate value={buttonTypes.LOGIN}/>
+            </Button>
+            <Login
                 showLogin={showLogin}
                 handleCloseLogin={handleCloseLogin}
                 handleShowLogin={openModalLogin}
@@ -39,15 +54,26 @@ function Layout(props) {
                 error={props.error}
                 errorMsg={props.errorMsg}
                 isLoading={props.isLoading}
+                recoverPassword={openModalRecoverPassword}
             />
 
-            <SignUpModal
+            <SignUp
                 showLogin={showLogin}
                 openModalLogin={openModalLogin}
                 showSignUp={showSignUp}
                 handleCloseSignUp={handleCloseSignUp}
                 handleShowSignUp={openModalSignUp}
                 handleSubmit={props.signUpUser}
+                error={props.error}
+                isLoading={props.isLoading}
+            />
+
+            <RecoverPassword
+                show={showRecoverPassword}
+                openModalLogin={openModalLogin}
+                handleClose={handleCloseRecoverPass}
+                errorMsg={props.errorMsg}
+                handleSubmit={props.recoverPassword}
                 error={props.error}
                 isLoading={props.isLoading}
             />

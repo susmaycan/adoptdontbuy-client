@@ -1,0 +1,16 @@
+@import "../../styles/base";
+
+.footer {
+  padding: 30px;
+  background: $primary-color;
+  text-align: center;
+  color: $white-color;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.footer a {
+  color: $white-color;
+  font-weight: bold;
+}

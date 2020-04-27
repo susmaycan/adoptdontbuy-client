@@ -1,0 +1,42 @@
+@import "../../styles/base";
+
+.select-css {
+  display: inline;
+  font-size: 16px;
+  color: $light-text-color;
+  line-height: 1.3;
+  padding: .6em 1.4em .5em .8em;
+  max-width: 100%;
+  box-sizing: border-box;
+  margin: 10px;
+  border: 1px solid $white-color;
+  border-radius: .5em;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: $white-color;
+  background-image: url('https://cedcn.org/wp-content/themes/cedcn/images/icon-arrow_dropdown.svg'),
+  linear-gradient(to bottom, $white-color 0%, $white-color 100%);
+  background-repeat: no-repeat, repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: .65em auto, 100%;
+}
+
+.select-css::-ms-expand {
+  display: none;
+}
+
+.select-css:hover {
+  border-color: $primary-color;
+}
+
+.select-css:focus {
+  border-color: $text-color;
+  box-shadow: 0 0 0 3px -moz-mac-focusring;
+  color: $text-color;
+  outline: none;
+}
+
+.select-css option {
+  font-weight: normal;
+}

@@ -1,0 +1,214 @@
+{
+  "nav-bar": {
+    "addAnimal": "Añadir mascota",
+    "search": "Buscar",
+    "account": "Cuenta"
+  },
+  "home": {
+    "title": "BIENVENIDX A ",
+    "latest": "Últimas mascotas"
+  },
+  "search": {
+    "title": "BÚSQUEDA",
+    "optional": "Opcional",
+    "location": "Ubicación"
+  },
+  "addAnimal": {
+    "title": "AÑADIR MASCOTA"
+  },
+  "editAnimal": {
+    "title": "EDITAR MASCOTA"
+  },
+  "editUser": {
+    "title": "Editar perfil"
+  },
+  "deleteAnimal": {
+    "title": "Borrar animal",
+    "body": "Si continuas, se eliminará el animal...¿Estás segurx?"
+  },
+  "deleteUser": {
+    "title": "Borrar usuario",
+    "body": "Si continuas, se eliminará tu perfil y todas tus mascotas...¿Estás segurx?"
+  },
+  "filter": {
+    "title": "Filtros",
+    "clearFilters": "Limpiar filtros"
+  },
+  "login": {
+    "title": "INICIA SESIÓN",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "forgotPass": "¿Has olvidado tu correo/contraseña?",
+    "sign-up": "¿No tienes una cuenta? Regístrate aquí.",
+    "errorEmail": "El correo eletrónico es erróneo.",
+    "requiredField": "Este campo es obligatorio"
+  },
+  "sign-up": {
+    "title": " Regístrate",
+    "email": "Correo electrónico",
+    "username": "Usuario",
+    "password": "Contraseña",
+    "confirmPassword": "Confirma la contraseña",
+    "login": "¿Ya estás registrado? Inicia sesión aquí",
+    "errorEmail": "El correo eletrónico es erróneo",
+    "passwordsDontMatch": "Las contraseñas no coinciden",
+    "passwordMinLength": "La contraseña debe tener 6 caracteres como mínimo",
+    "usernameMinLength": "El usuario debe tener 4 caracteres como mínimo",
+    "usernameMaxLength": "La contraseña debe tener 15 caracteres como máximo",
+    "requiredField": "Este campo es obligatorio",
+    "uniqueUsername": "No podrás cambiar el usuario más adelante."
+  },
+  "animalDetail": {
+    "animalInformation": "Información del animal",
+    "additionalData": "Información adicional",
+    "story": "Historia"
+  },
+  "userDetail": {
+    "userInformation": "Información del usuario",
+    "about": "Sobre mí",
+    "contact": "Contacto",
+    "pets": "Mascotas en adopción",
+    "petsByMe": "Mis mascotas",
+    "tabs": {
+      "account": "Cuenta",
+      "pets": "Mascotas",
+      "reviews": "Opiniones",
+      "favourites": "Favoritos",
+      "contact": "Contacto"
+    }
+  },
+  "animal": {
+    "name": "Nombre",
+    "specie": "Especie",
+    "breed": "Raza",
+    "gender": "Sexo",
+    "size": "Tamaño",
+    "age": "Edad",
+    "yearBorn": "Año de nacimiento",
+    "location": "Ubicación",
+    "country": "País",
+    "region": "Región",
+    "province": "Provincia",
+    "city": "Ciudad",
+    "about": "Descripción",
+    "castrated": "Castrado",
+    "vaccinated": "Vacunado",
+    "alongWithDogs": "Se lleva bien con perros",
+    "alongWithCats": "Se lleva bien con gatos",
+    "alongWithKids": "Se lleva bien con niños",
+    "socialLevel": "Nivel social",
+    "traumaLevel": "Nivel de trauma",
+    "energyLevel": "Nivel de energía",
+    "owner": "Dueño",
+    "picture": "Foto",
+    "status": "Estado",
+    "createdAt": "Creado",
+    "updatedAt": "Actualizado"
+  },
+  "typeOfUser": {
+    "particular": "Particular",
+    "animalShelter": "Protectora de animales"
+  },
+  "recoverPassword": {
+    "title": "Recuperar contraseña",
+    "email": "Email",
+    "errorEmail": "Email is invalid.",
+    "requiredField": "This field is required."
+  },
+  "user": {
+    "picture": "Imagen de perfil",
+    "phone": "Teléfono",
+    "typeOfUser": "Tipo de usuario",
+    "isAnimalShelter": "¿Eres una asociación?",
+    "website": "Página web",
+    "address_line": "Dirección",
+    "country": "País",
+    "region": "Región",
+    "location": "Ubicación",
+    "province": "Provincia",
+    "city": "Ciudad",
+    "description": "Descripción",
+    "first_name": "Nombre",
+    "last_name": "Apellidos",
+    "fullName": "Nombre completo",
+    "email": "Correo electrónico",
+    "username": "Nombre de usuario",
+    "createdAt": "Creado",
+    "updatedAt": "Actualizado",
+    "password": "Nueva contraseña",
+    "confirmPassword": "Confirmar contraseña"
+  },
+  "gender": {
+    "M": "Macho",
+    "F": "Hembra",
+    "Unknown": "Desconocido"
+  },
+  "specie": {
+    "dog": "Perro",
+    "cat": "Gato",
+    "other": "Otro"
+  },
+  "size": {
+    "small": "Pequeño",
+    "medium": "Mediano",
+    "big": "Grande"
+  },
+  "age": {
+    "puppy": "Cachorro",
+    "adult": "Adulto",
+    "senior": "Senior",
+    "youngAdult": "Joven adulto",
+    "unknown": "Edad desconocida",
+    "years": "años"
+  },
+  "buttons": {
+    "login": "Iniciar sesión",
+    "sign-up": "Registrarme",
+    "logout": "Salir",
+    "delete": "Borrar",
+    "edit": "Editar",
+    "info": "Mas info",
+    "confirm": "Confirmar",
+    "edit-pictures": "Editar fotos"
+  },
+  "contact": {
+    "request": "Solicitar adopción",
+    "subject": "Contacto de adoptdontbuy",
+    "contact": "Contacto"
+  },
+  "input": {
+    "selectOne": "Selecciona..."
+  },
+  "common": {
+    "yes": "Sí",
+    "no": "No",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "finish": "Finalizar"
+  },
+  "messages": {
+    "elementNotFound": "Lo siento, pero no se encontró el elemento que estabas buscando en la base de datos.",
+    "serverNotAvailable": "No se pudo conectar con el servidor. Prueba más adelante.",
+    "emptyList": "Esta lista está vacía",
+    "noLogin": "Necesitas iniciar sesión para acceder a esta página."
+  },
+  "errors": {
+    "404": "¡Oops! Lo que sea que estuvieses buscando... no está aquí.",
+    "500": "¡Oops! No se pudo conectar con el servidor. Prueba más adelante.",
+    "goHome": "Ir a la página de inicio"
+  },
+  "months": {
+    "1": "enero",
+    "2": "febrero",
+    "3": "marzo",
+    "4": "abril",
+    "5": "mayo",
+    "6": "junio",
+    "7": "julio",
+    "8": "agosto",
+    "9": "septiembre",
+    "10": "octubre",
+    "11": "noviembre",
+    "12": "diciembre"
+  }
+}

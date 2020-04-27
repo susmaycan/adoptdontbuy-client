@@ -1,35 +1,56 @@
 import React from 'react'
 import {
-    Row,
-    Col,
-    Image
-} from 'react-bootstrap'
-import UserTable from '../../../../components/Common/Table'
-import Button from '../../../../components/Common/Button'
-import DeleteUser from "../../../DeleteUser/containers/DeleteUser";
+    Table,
+    Button,
+    Title
+} from '../../../../components'
+import DeleteUser from '../../../DeleteUser/containers/DeleteUser'
+import {Translate} from 'react-redux-i18n'
+import './UserInformation.scss'
+import {buttonTypes, tableElements} from '../../../../constants'
+import {isAuthenticated} from '../../../../utils/Functions'
+import UserProfilePicture from "../UserProfilePicture";
 
 const UserInformation = ({user, loggedUser}) => (
     <div>
-        <h1 className="centered title">@{user.username}</h1>
-        <Row>
-            <Col xs={9}>
-                <div className="info">
-                    <UserTable
+        <Title>
+            @{user.username}
+        </Title>
+        <div className="columns">
+            <div className="column is-offset-9">
+                {isAuthenticated(loggedUser, user) ?
+                    <div className="centered">
+                        <Button
+                            url={`/updateUser/${loggedUser._id}`}
+                        >
+                            <i className="fas fa-edit"/> <Translate value={buttonTypes.EDIT}/>
+                        </Button>
+                        <DeleteUser/>
+                    </div>
+                    : null
+                }
+            </div>
+        </div>
+        <div className="columns is-vcentered">
+            <div className="column is-7">
+                <div className="user-information">
+                    <Table
                         elements={[
                             {
-                                name: 'Full name',
+                                name: tableElements.FULL_NAME,
                                 value: user.first_name + ' ' + user.last_name
                             },
                             {
-                                name: 'Type',
+                                name: tableElements.TYPE_OF_USER,
                                 value: user.animal_shetter
                             },
                             {
-                                name: 'Address',
+                                name: tableElements.ADDRESS_LINE,
                                 value: user.address_line
                             },
                             {
-                                name: 'Location', value: {
+                                name: tableElements.LOCATION,
+                                value: {
                                     province: user.province,
                                     region: user.region,
                                     city: user.city,
@@ -37,34 +58,23 @@ const UserInformation = ({user, loggedUser}) => (
                                 }
                             },
                         ]}
-                        title='User information'
+                        title='userInformation'
+                        type={tableElements.TYPE_USER}
                     />
                 </div>
-            </Col>
-            <Col xs={3}>
-                <Image rounded className="profile_image" fluid src={user.picture}/>
-            </Col>
-        </Row>
+            </div>
+            <div className="column is-5 centered">
+                <UserProfilePicture username={user.username} picture={user.picture} />
+            </div>
+        </div>
         {user.description !== "unknown" ?
-            <div className="about">
-                <h2 className="subtitle">About</h2>
+            <div className="user-about">
+                <h2 className="subtitle"><Translate value='userDetail.about'/></h2>
                 <hr/>
-
                 <p>{user.description}</p>
             </div>
-            : ""
+            : null
         }
-
-        {loggedUser != null && loggedUser._id === user._id ?
-            <div className="centered">
-                <Button
-                    type="edit"
-                    url={'/updateUser/'+loggedUser._id}
-                    />
-                <DeleteUser />
-            </div>
-            : ""}
-
     </div>
 )
 export default UserInformation

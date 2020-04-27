@@ -1,10 +1,16 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
+import {Translate} from 'react-redux-i18n'
+import {codeError} from '../../../../constants'
+import {Cat} from 'react-kawaii'
 import {
-    Row,
-} from 'react-bootstrap'
-import AnimalCard from '../../../../components/AnimalCard'
-import Loading from '../../../../components/Common/Loading'
-import Message from '../../../../components/Common/Message'
+    AnimalCard,
+    Loading,
+    Message,
+    Subtitle,
+    Title,
+    Error,
+    Container
+} from '../../../../components'
 
 class Home extends Component {
 
@@ -21,52 +27,63 @@ class Home extends Component {
 
     componentWillReceiveProps(nextProps) {
         this.setState({
-            animalList: nextProps.animals.sort(function(a, b) {
-                a = new Date(a.updatedAt)
-                b = new Date(b.updatedAt)
-                return a>b ? -1 : a<b ? 1 : 0
-            }).slice(0, 8)
+            animalList: nextProps.animals.slice(0, 8)
         })
     }
 
     renderBody() {
         if (this.props.isLoading) {
             return (
-                <Loading />
+                <Loading/>
             )
         } else if (this.props.error) {
             return (
-                <Message>Sorry, there was a problem and we <strong>couldn't retrieve</strong> the animal list. Please, try again later.</Message>
+                <Error code={codeError.SERVER_UNAVAILABLE}/>
             )
         } else {
             if (this.state.animalList.length === 0) {
                 return (
-                    <Message>Sorry, we <strong>couldn't find</strong> any animal in the database...</Message>
+                    <Message><Translate value='messages.elementNotFound'/></Message>
                 )
             } else {
                 return (
                     <>
-                        <h2 className="subtitle bold">Latest pets</h2>
-                        <Row>
+                        <Subtitle><Translate value='home.latest'/></Subtitle>
+                        <div className="columns is-centered is-multiline is-mobile">
                             {this.state.animalList.map((animal) =>
-                                <AnimalCard
-                                    key={animal._id}
-                                    animal={animal}
-                                />
+                                <div className="column is-narrow">
+                                    <AnimalCard
+                                        key={animal._id}
+                                        animal={animal}
+                                    />
+                                </div>
                             )}
-                        </Row>
+                        </div>
                     </>
                 )
             }
 
         }
     }
+
     render() {
         return (
-            <div className="container_div">
-                <h1 className="uppercase centered title">Welcome to <span className="important">adoptdontbuy <i className="fas fa-paw"/></span></h1>
-                {this.renderBody()}
-            </div>
+            <Container>
+                    <div className="columns is-gapless is-centered">
+                        <div className="column is-narrow">
+                            <Title>
+                                <Translate value='home.title'/>
+                                <span className="important">
+                                adoptdontbuy
+                        </span>
+                            </Title>
+                        </div>
+                        <div className="column is-narrow centered">
+                            <Cat size={100} mood="excited" color="#ffc107"/>
+                        </div>
+                    </div>
+                    {this.renderBody()}
+            </Container>
         )
     }
 }

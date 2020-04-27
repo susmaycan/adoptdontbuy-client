@@ -1,0 +1,16 @@
+@import "../../../../../../../styles/base";
+
+.filter-element{
+  padding:0.5em;
+  background-color: $light-text-color;
+  color: $white-color;
+  border-radius: 1em;
+  margin:0.5em;
+  font-size: $text-small-font-size;
+  border:none;
+  box-shadow: none;
+}
+
+button > * {
+  pointer-events: none;
+}

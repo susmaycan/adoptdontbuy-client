@@ -1,6 +1,6 @@
 /** Generic **/
 .html {
-  font-family: "Raleway", "Arial", serif; 
+  font-family: "Raleway", "Arial", serif;
   color: #37474f;
   font-size: 15px;
   /**   background-color: white; **/
@@ -142,9 +142,9 @@ a:visited {
   padding: 10px;
   color: white;
   display: inline-block;
-  font-weight: bold; 
+  font-weight: bold;
   box-shadow: none;
-  border: none; 
+  border: none;
   margin:10px;
 }
 
@@ -153,10 +153,10 @@ a:visited {
   color: #ffca28;
   border: #ffca28 2px solid;
   margin:8px;
-  
+
 }
 
-.modal_title_bg {
+.modal-title-container {
   background-color: #ffca28;
   color: white;
   padding: 30px;
@@ -229,7 +229,7 @@ option {
 }
 
 
-.container_div {
+.block-container {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   margin: 30px;
@@ -246,7 +246,7 @@ option {
 .subtitle {
   text-shadow: 1px 1px 2px lightgrey;
   font-family: 'Open Sans Condensed', sans-serif ;
-  font-family:40px;
+  font-size:40px;
   text-transform: uppercase;
   font-weight: bold;
 }
@@ -365,7 +365,7 @@ option {
 }
 
 .bagdeCustom{
-  padding:5px !important; 
+  padding:5px !important;
   font-size:12px !important;
   margin:5px;
 }
@@ -489,11 +489,11 @@ option {
   padding: 20px;
 }
 
-.notlink{
+.not-link{
   cursor: pointer;
   color: #37474f;
 }
-.notlink:hover{
+.not-link:hover{
   font-weight: bold;
 }
 
@@ -544,7 +544,7 @@ option {
   margin:0px;
   bottom: 0;
   position: absolute;
-  height: 2.5rem; 
+  height: 2.5rem;
   margin-top: 10px;
 }
 
@@ -568,7 +568,7 @@ option {
   padding: 0 50px;
   padding-bottom: 20px;
 }
-/* 
+/*
 .inputForm{
   padding:20px;
 } */

@@ -1,7 +1,9 @@
 import React, {useState} from 'react'
 import DeleteUserModal from '../DeleteUserModal'
-import Button from '../../../../components/Common/Button'
+import Button from '../../../../components/Button'
 import {Redirect} from "react-router";
+import {Translate} from "react-redux-i18n";
+import {buttonTypes} from "../../../../constants";
 
 function DeleteUserView(props) {
 
@@ -20,11 +22,12 @@ function DeleteUserView(props) {
     return (
         <>
             {redirect ? <Redirect to={'/'} /> : null}
-
             <Button
-                type="delete"
                 onAction={handleShow}
-            />
+                danger={true}
+            >
+                <i className="fas fa-trash-alt"/> <Translate value={buttonTypes.DELETE}/>
+            </Button>
 
             <DeleteUserModal
                 show={show}

@@ -150,7 +150,7 @@ a:visited {
 
 }
 
-.modal_title_bg {
+.modal-title-container {
   background-color: #ffca28;
   color: white;
   padding: 30px;
@@ -223,7 +223,7 @@ option {
 }
 
 
-.container_div {
+.block-container {
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border-radius: 2px;
   margin: 30px;
@@ -481,11 +481,11 @@ option {
   padding: 20px;
 }
 
-.notlink{
+.not-link{
   cursor: pointer;
   color: #37474f;
 }
-.notlink:hover{
+.not-link:hover{
   font-weight: bold;
 }
 

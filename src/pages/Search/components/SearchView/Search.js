@@ -3,22 +3,21 @@ import {
     Col,
     Row,
 } from 'react-bootstrap'
-import AnimalCard from '../../../../components/AnimalCard'
-import Loading from '../../../../components/Common/Loading'
-import Message from '../../../../components/Common/Message'
+import Loading from '../../../../components/Loading'
+import Message from '../../../../components/Message'
 import Filter from '../Filter'
+import {Translate} from 'react-redux-i18n'
+import Title from '../../../../components/Title'
+import Error from '../../../../components/Error'
+import {codeError} from '../../../../constants'
+import ResultList from '../ResultList'
+import Container from '../../../../components/Container'
 
 class Search extends Component {
 
     constructor(props) {
         super(props)
-
-        this.state = {
-            animalList: []
-        }
-
         this.callFilter = this.callFilter.bind(this)
-
     }
 
     componentDidMount() {
@@ -36,8 +35,7 @@ class Search extends Component {
             )
         } else if (this.props.error) {
             return (
-                <Message>Sorry, there was a problem and we <strong>couldn't retrieve</strong> the animal list. Please,
-                    try again later.</Message>
+                <Error code={codeError.SERVER_UNAVAILABLE}/>
             )
         } else if (this.props.animalList.length === 0) {
             return (
@@ -45,22 +43,16 @@ class Search extends Component {
             )
         } else {
             return (
-                this.props.animalList.map((animal) =>
-                    <AnimalCard
-                        key={animal._id}
-                        animal={animal}
-                    />
-                )
+                <ResultList
+                    animalList={this.props.animalList}
+                />
             )
         }
     }
 
     render() {
         return (
-            <div className="container_div">
-                <div className="centered">
-                    <h1 className="title"><i className="fas fa-search"/> Search</h1>
-                </div>
+            <Container>
                 <Row>
                     <Col xs={3}>
                         <Filter
@@ -68,12 +60,19 @@ class Search extends Component {
                         />
                     </Col>
                     <Col xs={9}>
+                        <Row className="justify-content-center">
+                            <Title>
+                                <i className="fas fa-search"/>
+                                {' '}
+                                <Translate value="search.title"/>
+                            </Title>
+                        </Row>
                         <Row>
                             {this.renderBody()}
                         </Row>
                     </Col>
                 </Row>
-            </div>
+            </Container>
         )
     }
 }

@@ -1,0 +1,22 @@
+@import "../../styles/base";
+
+.title-container {
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+
+  .title {
+    text-shadow: 1px 1px 2px $color-shadow-light;
+    text-transform: uppercase;
+    font-family: $title-font;
+    //font-size: $title-font-size;
+  }
+
+}
+
+@media (max-width: $mobile) {
+  .title-container {
+    padding: 10px;
+    margin: 5px;
+  }
+}

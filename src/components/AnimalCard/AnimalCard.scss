@@ -1,0 +1,29 @@
+@import "../../styles/base";
+
+.animal-card-container {
+ // margin: 20px;
+  border: 1px solid $color-shadow-light;
+  width: 251px;
+  text-align: center;
+  border-radius: 10px !important;
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  .animal-info-card {
+    padding: 10px;
+    color: #37474f;
+  }
+
+  .animal-name-card {
+    font-family: $title-font;
+    font-size: 37px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+
+
+

@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import DeleteAnimalModal from '../DeleteAnimalModal'
-import Button from '../../../../components/Common/Button'
+import Button from '../../../../components/Button'
+import {Translate} from "react-redux-i18n";
+import {buttonTypes} from "../../../../constants";
 
 function DeleteAnimalView(props) {
 
@@ -16,9 +18,11 @@ function DeleteAnimalView(props) {
     return (
         <>
             <Button
-                type="delete"
                 onAction={handleShow}
-            />
+                danger={true}
+            >
+                <i className="fas fa-trash-alt"/> <Translate value={buttonTypes.DELETE}/>
+            </Button>
 
             <DeleteAnimalModal
                 show={show}

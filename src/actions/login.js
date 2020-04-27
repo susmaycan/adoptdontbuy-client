@@ -11,7 +11,7 @@ import {
     LOGOUT_ERROR,
     LOGOUT_SUCCESS,
     SIGNUP_SUCCESS,
-    SIGNUP_ERROR
+    SIGNUP_ERROR, RECOVER_SUCCESS, RECOVER_ERROR
 } from './actionTypes'
 
 export function loginUser(email, password) {
@@ -31,6 +31,19 @@ export function loginUser(email, password) {
             .catch(error => {
                 console.log('Error when login the user to firebase')
                 dispatch(loginUserError(error.message))
+            })
+    }
+}
+
+export function recoverPassword(email) {
+    return (dispatch) => {
+        dispatch(loginUserRequest())
+        return firebaseActions.sendPasswordResetEmail(email)
+            .then(response => {
+                dispatch(recoverSuccess())
+            })
+            .catch(error => {
+                dispatch(recoverError(error.message))
             })
     }
 }
@@ -119,5 +132,18 @@ function signUpSuccess(payload) {
 function signUpError() {
     return {
         type: SIGNUP_ERROR
+    }
+}
+
+function recoverSuccess(payload) {
+    return {
+        type: RECOVER_SUCCESS,
+        payload
+    }
+}
+
+function recoverError() {
+    return {
+        type: RECOVER_ERROR
     }
 }

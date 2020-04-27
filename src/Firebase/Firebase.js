@@ -40,6 +40,16 @@ const firebaseActions = {
         }
     },
 
+    async deletePicture(ref) {
+        try {
+            const response = await firebase.storage().refFromURL(ref).delete()
+            return Promise.resolve(response)
+        } catch (error) {
+            console.log("Error deleting the picture from firebase")
+            return Promise.reject(error)
+        }
+    },
+
     async signUp(email, password) {
         try {
             const response = await firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -58,7 +68,47 @@ const firebaseActions = {
             console.log("Error when deleting the user")
             return Promise.reject(error);
         }
-    }
+    },
+
+    async updateEmail(email) {
+        try {
+            const response = firebase.auth().currentUser.updateEmail(email)
+            return Promise.resolve(response);
+        } catch (error) {
+            console.log("Error  when updating user's email")
+            return Promise.reject(error);
+        }
+    },
+
+    async updatePassword(password) {
+        try {
+            const response = firebase.auth().currentUser.updatePassword(password)
+            return Promise.resolve(response);
+        } catch (error) {
+            console.log("Error when updating user's password")
+            return Promise.reject(error);
+        }
+    },
+
+    async sendEmailVerification() {
+        try {
+            const response = firebase.auth().currentUser.sendEmailVerification()
+            return Promise.resolve(response);
+        } catch (error) {
+            console.log("Error when deleting the user")
+            return Promise.reject(error);
+        }
+    },
+
+    async sendPasswordResetEmail(email) {
+        try {
+            const response = firebase.auth().sendPasswordResetEmail(email)
+            return Promise.resolve(response);
+        } catch (error) {
+            console.log("Error when deleting the user")
+            return Promise.reject(error);
+        }
+    },
 }
 
 export default firebaseActions;

@@ -5,7 +5,9 @@ import {
     LOGOUT_ERROR,
     LOGOUT_SUCCESS,
     SIGNUP_SUCCESS,
-    SIGNUP_ERROR
+    SIGNUP_ERROR,
+    RECOVER_SUCCESS,
+    RECOVER_ERROR
 } from '../actions/actionTypes'
 
 const INITIAL_STATE = {
@@ -23,10 +25,12 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {...state, isLoading: true}
         case FETCH_SUCCESS_LOGIN:
             return {...state, isLoading: false, isLoggedIn: true, user: action.payload, error: false, errorMsg: ''}
+        case RECOVER_ERROR:
         case FETCH_ERROR_LOGIN:
             return {...state, isLoading: false, error: true, errorMsg: action.error}
+        case RECOVER_SUCCESS:
         case LOGOUT_SUCCESS:
-            return {...state, user: {}, isLoggedIn: false}
+            return {...state, user: {}, isLoggedIn: false, isLoading: false, error: false, errorMsg: ''}
         case LOGOUT_ERROR:
             return {...state, errorLogout: true}
         case SIGNUP_SUCCESS:

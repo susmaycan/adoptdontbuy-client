@@ -3,23 +3,28 @@ import {
     Form,
     Col,
 } from 'react-bootstrap'
-import ProvinceSelect from '../Common/ProvinceSelect'
+import {
+    Button,
+    ProvinceSelect,
+    Select
+} from '../../components'
 import PropTypes from 'prop-types'
-import Select from '../Common/Select'
+import {Translate, I18n} from 'react-redux-i18n'
+import {buttonTypes} from "../../constants";
 
 const MIN_YEAR = 2000
 const MAX_YEAR = 3000 //TODO change this
 
 const AnimalForm = ({animal, updateInput, submit, action}) => (
-    <Form className="formAnimal" onSubmit={submit}>
+    <Form className="form-animal" onSubmit={submit}>
         <Form.Group as={Col} onChange={updateInput} controlId="formGridName">
-            <Form.Label>Name</Form.Label>
+            <Form.Label><Translate value='animal.name'/></Form.Label>
             <Form.Control required value={animal.name} name="name" placeholder="Toby"/>
         </Form.Group>
 
         <Form.Row>
             <Form.Group as={Col} onChange={updateInput} controlId="formGridSpecie">
-                <Form.Label>Specie</Form.Label>
+                <Form.Label><Translate value='animal.specie'/></Form.Label>
                 <Select
                     value={animal.specie}
                     name='specie'
@@ -28,14 +33,14 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             </Form.Group>
 
             <Form.Group onChange={updateInput} as={Col} controlId="formGridBreed">
-                <Form.Label>Breed</Form.Label>
+                <Form.Label><Translate value='animal.breed'/></Form.Label>
                 <Form.Control required value={animal.breed} name="breed" placeholder="Bodeguero"/>
             </Form.Group>
         </Form.Row>
 
         <Form.Row>
             <Form.Group as={Col} controlId="formGridGenre">
-                <Form.Label>Gender</Form.Label>
+                <Form.Label><Translate value='animal.gender'/></Form.Label>
                 <Select
                     value={animal.gender}
                     name='gender'
@@ -44,7 +49,7 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             </Form.Group>
 
             <Form.Group as={Col} controlId="formGridSize">
-                <Form.Label>Size</Form.Label>
+                <Form.Label><Translate value='animal.size'/></Form.Label>
                 <Select
                     value={animal.size}
                     name='size'
@@ -52,15 +57,18 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
                 />
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridYearBorn">
-                <Form.Label>Year Born</Form.Label>
-                <Form.Control min={MIN_YEAR} max={MAX_YEAR} type="number" required value={animal.yearBorn}
-                              name="yearBorn" placeholder="2019, 2018..."/>
+                <Form.Label><Translate value='animal.age'/></Form.Label>
+                <Select
+                    value={animal.age}
+                    name='age'
+                    handleChange={updateInput}
+                />
             </Form.Group>
         </Form.Row>
 
         <Form.Row>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridRegion">
-                <Form.Label>Region</Form.Label>
+                <Form.Label><Translate value='animal.region'/></Form.Label>
                 <Select
                     value={animal.region}
                     name='region'
@@ -68,7 +76,7 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
                 />
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridProvince">
-                <Form.Label>Province</Form.Label>
+                <Form.Label><Translate value='animal.province'/></Form.Label>
                 <ProvinceSelect
                     province={animal.province}
                     region={animal.region}
@@ -76,7 +84,7 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
                 />
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridCity">
-                <Form.Label>City</Form.Label>
+                <Form.Label><Translate value='animal.city'/></Form.Label>
                 <Form.Control required value={animal.city} name="city">
                 </Form.Control>
             </Form.Group>
@@ -84,7 +92,7 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
         {/* OPTIONAL FIELDS*/}
         <Form.Row>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridAbout">
-                <Form.Label>About</Form.Label>
+                <Form.Label><Translate value='animal.about'/></Form.Label>
                 <Form.Control placeholder="Describe your animal here..." as="textarea" name="about" rows="3"
                               defaultValue={animal.about}>
                 </Form.Control>
@@ -94,7 +102,7 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             <Form.Group onChange={updateInput} as={Col} controlId="formGridCastrated">
                 <Form.Check
                     type="checkbox"
-                    label="Castrated"
+                    label={I18n.t('animal.castrated')}
                     name="castrated"
                     checked={animal.castrated}
                 />
@@ -102,13 +110,13 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             <Form.Group onChange={updateInput} as={Col} controlId="formGridVaccinated">
                 <Form.Check
                     name="vaccinated"
-                    label="Vaccinated"
+                    label={I18n.t('animal.vaccinated')}
                     type="checkbox"
                     checked={animal.vaccinated}/>
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithDogs">
                 <Form.Check
-                    label="Along with dogs"
+                    label={I18n.t('animal.alongWithDogs')}
                     name="alongWithDogs"
                     type="checkbox"
                     checked={animal.alongWithDogs}
@@ -117,7 +125,7 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithCats">
                 <Form.Check
-                    label="Along with cats"
+                    label={I18n.t('animal.alongWithCats')}
                     name="alongWithCats"
                     type="checkbox"
                     checked={animal.alongWithCats}
@@ -126,7 +134,7 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithKids">
                 <Form.Check
-                    label="Along with kids"
+                    label={I18n.t('animal.alongWithKids')}
                     name="alongWithKids"
                     type="checkbox"
                     checked={animal.alongWithKids}
@@ -134,41 +142,48 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
                 </Form.Check>
             </Form.Group>
         </Form.Row>
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridPicture">
-                <Form.Label>Picture</Form.Label>
-                <input type='file'
-                       id="picture"
-                       name="picture"
-                       onChange={updateInput}
-                />
-            </Form.Group>
-        </Form.Row>
+        {action === "add" ?
+            <Form.Row>
+                <Form.Group as={Col} controlId="formGridPicture">
+                    <Form.Label><Translate value='animal.picture'/></Form.Label>
+                    <input
+                        type='file'
+                        id="picture"
+                        name="picture"
+                        required
+                        onChange={updateInput}
+                        multiple="multiple"
+                    />
+                </Form.Group>
+            </Form.Row>
+            :
+            null
+        }
         <Form.Row>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridsocialLevel">
-                <Form.Label>Social Level</Form.Label>
+                <Form.Label><Translate value='animal.socialLevel'/></Form.Label>
                 <Form.Control min="0" max="5" placeholder="From to 0 to 5" type="number" name="socialLevel"
                               value={animal.socialLevel}>
                 </Form.Control>
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridTraumaLevel">
-                <Form.Label>Trauma Level</Form.Label>
+                <Form.Label><Translate value='animal.traumaLevel'/></Form.Label>
                 <Form.Control min="0" max="5" placeholder="From to 0 to 5" type="number" name="traumaLevel"
                               value={animal.traumaLevel}>
                 </Form.Control>
             </Form.Group>
             <Form.Group onChange={updateInput} as={Col} controlId="formGridEnergyLevel">
-                <Form.Label>Energy Level</Form.Label>
+                <Form.Label><Translate value='animal.energyLevel'/></Form.Label>
                 <Form.Control min="0" max="5" placeholder="From to 0 to 5" type="number" name="energyLevel"
                               value={animal.energyLevel}>
                 </Form.Control>
             </Form.Group>
         </Form.Row>
-        {action === "add" ?
-            <button className="button" type="submit">Upload</button>
-            :
-            <button className="button" type="submit">Finish</button>
-        }
+        <Button
+           submit={true}
+        >
+            <Translate value={buttonTypes.FINISH}/>
+        </Button>
     </Form>
 )
 AnimalForm.propTypes = {
