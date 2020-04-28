@@ -5,7 +5,7 @@ import './Subtitle.scss'
 class Subtitle extends React.Component {
     render() {
         return (
-            <div className="subtitle-container">
+            <div className="subtitle-container has-text-centered-mobile">
                 <h2 className="subtitle is-size-3">{this.props.children}</h2>
             </div>
         )

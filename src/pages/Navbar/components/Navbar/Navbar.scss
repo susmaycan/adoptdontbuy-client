@@ -45,4 +45,11 @@
   color: $primary-color !important;
 }
 
+@media (max-width: $mobile) {
+  .navigation-bar {
+    padding: 10px;
+    margin: 2px 5px;
+  }
+}
+
 
