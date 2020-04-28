@@ -1,9 +1,6 @@
 import React from 'react'
 import Gender from '../../Gender'
 import Location from '../../Location'
-import {
-    ProgressBar
-} from 'react-bootstrap'
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types'
 import {Translate, I18n} from 'react-redux-i18n'
@@ -86,8 +83,9 @@ class TableElement extends React.Component {
             case tableElements.SOCIAL_LEVEL:
             case tableElements.ENERGY_LEVEL:
             case tableElements.TRAUMA_LEVEL:
+                const value = elementValue * 100 / 5
                 this.setState({
-                    value: <ProgressBar variant="warning" now={elementValue * 100 / 5}/>
+                    value: <progress className="progress is-warning" value={value} max="100">{value} %</progress>
                 })
                 break
             default:
