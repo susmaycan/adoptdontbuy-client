@@ -1,6 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## adoptdontbuy
+# adoptdontbuy
 
 Web application made with React + Nodejs. You can:
 
