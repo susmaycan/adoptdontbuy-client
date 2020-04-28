@@ -38,6 +38,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
             <Form.Row>
                 <Form.Group as={Col} controlId="formGridSpecie">
                     <Form.Label><Translate value='animal.specie'/></Form.Label>
+                    <br/>
                     <ButtonGroup
                         value={filter.specie}
                         name={filterElements.SPECIE}
@@ -49,6 +50,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
             <Form.Row>
                 <Form.Group onChange={updateInput} as={Col} controlId="formGridGenre">
                     <Form.Label><Translate value='animal.gender'/></Form.Label>
+                    <br/>
                     <ButtonGroup
                         value={filter.gender}
                         name={filterElements.GENDER}
