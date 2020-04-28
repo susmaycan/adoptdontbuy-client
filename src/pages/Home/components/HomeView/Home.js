@@ -51,9 +51,8 @@ class Home extends Component {
                         <Subtitle><Translate value='home.latest'/></Subtitle>
                         <div className="columns is-centered is-multiline is-mobile">
                             {this.state.animalList.map((animal) =>
-                                <div className="column is-narrow">
+                                <div key={animal._id} className="column is-narrow">
                                     <AnimalCard
-                                        key={animal._id}
                                         animal={animal}
                                     />
                                 </div>
