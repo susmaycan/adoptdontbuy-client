@@ -4,16 +4,18 @@ import {
     Form
 } from 'react-bootstrap'
 import PropTypes from 'prop-types'
-import Select from '../../../../../../components/Select'
+import {
+    Select,
+    Subtitle,
+    ButtonGroup,
+    ProvinceSelect,
+    Checkboxes
+} from '../../../../../../components'
 import {Translate, I18n} from 'react-redux-i18n'
 import './FilterForm.scss'
-import Subtitle from '../../../../../../components/Subtitle'
-import Collapse from '../Collapse'
-import ButtonGroup from '../../../../../../components/ButtonGroup'
-import ProvinceSelect from '../../../../../../components/ProvinceSelect'
 import {filterElements} from '../../../../../../constants'
-import Checkboxes from '../../../../../../components/Checkboxes'
-import FilterBadgeList from '../FilterBadgeList/FilterBadgeList'
+import FilterBadgeList from '../FilterBadgeList'
+import Collapse from '../Collapse'
 
 const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}) => (
 
