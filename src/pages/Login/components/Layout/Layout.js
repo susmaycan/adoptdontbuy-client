@@ -43,7 +43,7 @@ function Layout(props) {
                 submit={true}
                 onAction={handleShowLogin}
             >
-                <i className="fas fa-sign-in-alt"/>{' '}<Translate value={buttonTypes.LOGIN}/>
+                <i className="fas fa-sign-in-alt"/>&nbsp;&nbsp;<Translate value={buttonTypes.LOGIN}/>
             </Button>
             <Login
                 showLogin={showLogin}

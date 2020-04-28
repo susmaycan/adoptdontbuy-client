@@ -4,24 +4,19 @@
   color: $text-color;
   text-align: center;
   border-radius: 15px;
-  z-index: 9999;
-
-  input {
-    padding: 5fr;
-    margin: 5px;
-  }
+  background-color: $white-color;
+  overflow-x: hidden;
 
   .modal-title-container {
     background-color: $primary-color;
     color: $white-color;
     padding: 30px;
     font-size: 20px;
-    width: 100%;
     text-align: center;
   }
 
-}
+  .modal-body{
+    padding:20px;
+  }
 
-.modal {
-  overflow: auto !important;
 }

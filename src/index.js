@@ -2,7 +2,7 @@ import React from 'react'
 import './styles/index.scss'
 import {Provider} from 'react-redux'
 import configureStore from './config/configureStore'
-import 'bootstrap/dist/css/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css'
 import {render} from 'react-dom'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import Error from './components/Error'
@@ -19,7 +19,7 @@ firebase.initializeApp(firebaseConfig)
 render(
     <Provider store={store}>
         <BrowserRouter>
-            <div className="app">
+            <div className="app is-clipped">
                 <Route path="/" component={Pages.NavigationBar}/>
                 <Switch>
                     <Route exact path="/" component={Pages.Home}/>

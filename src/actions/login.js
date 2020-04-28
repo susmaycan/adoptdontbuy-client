@@ -48,10 +48,7 @@ export function recoverPassword(email) {
     }
 }
 
-export function signUpUser(values) {
-    const email = values.email
-    const password = values.password
-    const username = values.username
+export function signUpUser(email, password, username) {
 
     return (dispatch) => {
         return firebaseActions.signUp(email, password)

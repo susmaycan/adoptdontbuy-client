@@ -14,7 +14,7 @@ const SignUpModal = ({handleCloseSignUp, showSignUp, handleShowSignUp, error, ha
             openModalSignUp={handleShowSignUp}
             handleSubmit={handleSubmit}
             isLoading={isLoading}
-            handleCloseSignUp={handleCloseSignUp}
+            handleClose={handleCloseSignUp}
             openModalLogin={openModalLogin}
         />
     </Modal>
