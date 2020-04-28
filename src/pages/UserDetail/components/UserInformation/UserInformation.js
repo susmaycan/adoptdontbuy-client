@@ -42,7 +42,7 @@ const UserInformation = ({user, loggedUser}) => (
                             },
                             {
                                 name: tableElements.TYPE_OF_USER,
-                                value: user.animal_shetter
+                                value: user.animal_shelter
                             },
                             {
                                 name: tableElements.ADDRESS_LINE,

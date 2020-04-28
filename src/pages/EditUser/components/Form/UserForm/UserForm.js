@@ -192,9 +192,9 @@ const UserForm = ({user, password, handleChange, handleForm, handlePassword}) =>
                 </Form.Label>
                 <Form.Check
                     label={I18n.t('common.yes')}
-                    name="animal_shetter"
+                    name="animal_shelter"
                     type="checkbox"
-                    checked={user.animal_shetter}
+                    checked={user.animal_shelter}
                     onChange={handleChange}
                 >
                 </Form.Check>
@@ -223,7 +223,7 @@ UserForm.propTypes = {
         likedAnimals: PropTypes.arrayOf(PropTypes.string),
         adopted: PropTypes.arrayOf(PropTypes.string),
         phone: PropTypes.string,
-        animal_shetter: PropTypes.bool,
+        animal_shelter: PropTypes.bool,
         website: PropTypes.string,
         address_line: PropTypes.string,
         country: PropTypes.string,
