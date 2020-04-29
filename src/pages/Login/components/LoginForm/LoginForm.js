@@ -16,7 +16,7 @@ class LoginForm extends React.Component {
     render() {
         const {error, errorMsg, isLoading, success} = this.props
         return (
-            <form onSubmit={(e) => this.handleSubmit(e)} className="modal-form">
+            <form onSubmit={(e) => this.handleSubmit(e)} className="modal-form has-text-centered">
                 <div className="field">
                     <label htmlFor="email" className="label"><Translate value='login.email'/></label>
                     <div className="control has-icons-left has-icons-right">
@@ -34,11 +34,11 @@ class LoginForm extends React.Component {
                             <span className="icon is-small is-right">
                               <i className="fas fa-check"/>
                             </span>
-                            : null}
-                        {error ? <span className="icon is-small is-right">
-                            <i className="fas fa-exclamation-triangle"/>
-                            </span>
-                            : null}
+                            : error ?
+                                <span className="icon is-small is-right">
+                                    <i className="fas fa-exclamation-triangle"/>
+                                    </span>
+                                : null}
                     </div>
                 </div>
                 <div className="field">

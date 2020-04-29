@@ -30,16 +30,21 @@ class LoginView extends React.Component {
     render() {
         const {error, errorMsg, loginUser, isLoading, success} = this.props
         return (
-            <Container center={true}>
-                <Title><Translate value='login.title'/> </Title>
-                <LoginForm
-                    error={error}
-                    success={success}
-                    errorMsg={errorMsg}
-                    handleSubmit={loginUser}
-                    isLoading={isLoading}
-                />
+            <Container>
+                <div className="columns is-centered">
+                    <div className="column is-narrow">
+                        <Title><Translate value='login.title'/> </Title>
+                        <LoginForm
+                            error={error}
+                            success={success}
+                            errorMsg={errorMsg}
+                            handleSubmit={loginUser}
+                            isLoading={isLoading}
+                        />
+                    </div>
+                </div>
             </Container>
+
         )
     }
 }
