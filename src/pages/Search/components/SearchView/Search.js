@@ -1,17 +1,9 @@
 import React, {Component} from 'react'
-import {
-    Col,
-    Row,
-} from 'react-bootstrap'
-import Loading from '../../../../components/Loading'
-import Message from '../../../../components/Message'
+import {Loading, Message, Title, Error, Container} from '../../../../components'
 import Filter from '../Filter'
 import {Translate} from 'react-redux-i18n'
-import Title from '../../../../components/Title'
-import Error from '../../../../components/Error'
 import {codeError} from '../../../../constants'
 import ResultList from '../ResultList'
-import Container from '../../../../components/Container'
 
 class Search extends Component {
 
@@ -53,25 +45,23 @@ class Search extends Component {
     render() {
         return (
             <Container>
-                <Row>
-                    <Col xs={3}>
+                <div className="columns">
+                    <div className="column is-3 is-12-mobile">
                         <Filter
                             filterAnimals={this.callFilter}
                         />
-                    </Col>
-                    <Col xs={9}>
-                        <Row className="justify-content-center">
+                    </div>
+                    <div className="column is-9 is-full-mobile">
+                        <div className="columns is-centered">
                             <Title>
                                 <i className="fas fa-search"/>
                                 {' '}
                                 <Translate value="search.title"/>
                             </Title>
-                        </Row>
-                        <Row>
-                            {this.renderBody()}
-                        </Row>
-                    </Col>
-                </Row>
+                        </div>
+                        {this.renderBody()}
+                    </div>
+                </div>
             </Container>
         )
     }

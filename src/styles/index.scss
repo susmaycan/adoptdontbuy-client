@@ -1,7 +1,7 @@
 @charset "utf-8";
 @import "../styles/base";
 @import "../../node_modules/bulma/bulma.sass";
-
+@import '~@creativebulma/bulma-collapsible';
 html,
 body {
   z-index: 0;

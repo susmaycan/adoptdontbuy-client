@@ -6,9 +6,6 @@ import {
     regionList,
     ageList
 } from '../../constants'
-import {
-    Form
-} from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import {I18n} from 'react-redux-i18n'
 
@@ -64,25 +61,26 @@ class Select extends React.Component {
     render() {
         const {value, name, handleChange} = this.props
         return (
-            <Form.Control
-                required
-                value={value}
-                name={name}
-                as="select"
-                onChange={handleChange}
-            >
-                <option value="-1">{I18n.t('input.selectOne')}</option>
-                {this.state.list.map(element => {
-                        const text = name === 'region' ?
-                            element.name
-                            : I18n.t(name + '.' + element.value)
-                        return (
-                            <option key={element.value} value={element.value}>{text}</option>
-                        )
+            <div className="select">
+                <select
+                    required
+                    value={value}
+                    name={name}
+                    onChange={handleChange}
+                >
+                    <option value="-1">{I18n.t('input.selectOne')}</option>
+                    {this.state.list.map(element => {
+                            const text = name === 'region' ?
+                                element.name
+                                : I18n.t(name + '.' + element.value)
+                            return (
+                                <option key={element.value} value={element.value}>{text}</option>
+                            )
 
-                    }
-                )}
-            </Form.Control>
+                        }
+                    )}
+                </select>
+            </div>
         )
 
     }
