@@ -46,25 +46,25 @@ function Layout(props) {
                 <i className="fas fa-sign-in-alt"/>&nbsp;&nbsp;<Translate value={buttonTypes.LOGIN}/>
             </Button>
             <Login
-                showLogin={showLogin}
-                handleCloseLogin={handleCloseLogin}
+                show={showLogin}
+                handleClose={handleCloseLogin}
                 handleShowLogin={openModalLogin}
-                openModalSignUp={openModalSignUp}
+                openSignUp={openModalSignUp}
                 handleSubmit={props.loginUser}
-                error={props.error}
-                errorMsg={props.errorMsg}
+                error={props.login.error}
+                errorMsg={props.login.errorMsg}
                 isLoading={props.isLoading}
                 recoverPassword={openModalRecoverPassword}
             />
 
             <SignUp
-                showLogin={showLogin}
-                openModalLogin={openModalLogin}
-                showSignUp={showSignUp}
-                handleCloseSignUp={handleCloseSignUp}
-                handleShowSignUp={openModalSignUp}
+                openLogin={openModalLogin}
+                show={showSignUp}
+                handleClose={handleCloseSignUp}
+                handleShow={openModalSignUp}
                 handleSubmit={props.signUpUser}
-                error={props.error}
+                error={props.signup.error}
+                errorMsg={props.signup.errorMsg}
                 isLoading={props.isLoading}
             />
 
@@ -72,9 +72,9 @@ function Layout(props) {
                 show={showRecoverPassword}
                 openModalLogin={openModalLogin}
                 handleClose={handleCloseRecoverPass}
-                errorMsg={props.errorMsg}
+                errorMsg={props.recover.errorMsg}
                 handleSubmit={props.recoverPassword}
-                error={props.error}
+                error={props.recover.error}
                 isLoading={props.isLoading}
             />
         </>

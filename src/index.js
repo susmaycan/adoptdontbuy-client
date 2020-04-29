@@ -19,11 +19,13 @@ firebase.initializeApp(firebaseConfig)
 render(
     <Provider store={store}>
         <BrowserRouter>
-            <div className="app is-clipped">
+            <div className="app">
                 <Route path="/" component={Pages.NavigationBar}/>
                 <Switch>
                     <Route exact path="/" component={Pages.Home}/>
                     <Route exact path="/login" component={Pages.Login}/>
+                    <Route exact path="/signup" component={Pages.SignUp}/>
+                    <Route exact path="/recoverPassword" component={Pages.RecoverPassword}/>
                     <Route exact path="/search" component={Pages.Search}/>
                     <Route exact path="/animal/:animalId" component={Pages.AnimalDetail}/>
                     <Route exact path="/user/:userId" component={Pages.UserDetail}/>

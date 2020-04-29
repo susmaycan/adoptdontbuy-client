@@ -1,0 +1,34 @@
+@import "../../styles/base";
+
+button {
+  font-family: "Raleway", "Arial", serif;
+  color: darkgrey;
+}
+
+.button {
+  background-color: $primary-color;
+  color: $white-color;
+  margin: 10px;
+  border: $white-color 1px solid;
+
+  &:hover {
+    background-color: white;
+    color: $primary-color;
+    border: $primary-color 1px solid;
+  }
+
+  &:disabled {
+    background-color: $primary-color-lighter;
+  }
+}
+
+.danger {
+  background-color: $danger-color;
+
+  &:hover {
+    background-color: white;
+    color: $danger-color !important;
+    border: 1px solid $danger-color;
+  }
+}
+
