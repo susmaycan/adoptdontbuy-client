@@ -2,6 +2,7 @@
 @import "../styles/base";
 @import "../../node_modules/bulma/bulma.sass";
 @import '~@creativebulma/bulma-collapsible';
+
 html,
 body {
   z-index: 0;
@@ -9,8 +10,8 @@ body {
 
 
 body {
-  background-image: url("https://media.istockphoto.com/vectors/vector-pet-pattern-pet-seamless-background-vector-id944743364");
-  background-repeat: repeat;
+  //background-image: url("https://media.istockphoto.com/vectors/vector-pet-pattern-pet-seamless-background-vector-id944743364");
+  //background-repeat: repeat;
   font-family: "Raleway", "Arial", serif !important;
   color: #37474f;
   font-size: $text-font-size;
@@ -68,7 +69,19 @@ option {
   }
 }
 
+.divider{
+  border: 1px solid $border-light-color;
+  height:100px;
+}
+
+.form-container{
+  border: 1px solid $color-shadow-light;
+  margin:40px 60px 40px 60px;
+  padding:40px 60px 40px 60px;
+}
 .modal-form {
+  margin-top: 20px;
+
   .signup-form {
     text-align: left;
   }

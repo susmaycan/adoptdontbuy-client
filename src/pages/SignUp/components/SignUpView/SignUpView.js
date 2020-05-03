@@ -1,8 +1,9 @@
 import React from 'react'
 import SignUpForm from '../SignUpForm'
 import PropTypes from 'prop-types'
-import {Container, Title} from '../../../../components'
+import {Button, Container, Subtitle} from '../../../../components'
 import {Translate} from 'react-redux-i18n'
+import Divider from '@material-ui/core/Divider'
 
 class SignUpView extends React.Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class SignUpView extends React.Component {
 
     redirectToHome() {
         setTimeout(() => {
-            this.props.history.push('/')
+            this.props.history.goBack()
             this.props.resetState()
         }, 3000)
     }
@@ -29,16 +30,25 @@ class SignUpView extends React.Component {
         const {success, error, errorMsg, signUpUser, isLoading} = this.props
         return (
             <Container center={true}>
-                <div className="columns is-centered">
-                    <div className="column is-narrow">
-                        <Title><Translate value='sign-up.title'/> </Title>
-                        <SignUpForm
-                            error={error}
-                            errorMsg={errorMsg}
-                            handleSubmit={signUpUser}
-                            isLoading={isLoading}
-                            success={success}
-                        />
+                <div className="form-container">
+                    <div className="columns is-8 is-centered is-vcentered">
+                        <div className="column is-7">
+                            <Subtitle><Translate value='sign-up.title'/></Subtitle>
+                            <SignUpForm
+                                error={error}
+                                errorMsg={errorMsg}
+                                handleSubmit={signUpUser}
+                                isLoading={isLoading}
+                                success={success}
+                            />
+                        </div>
+                        <div className="column is-4">
+                            <p><Translate value='sign-up.login'/></p>
+                            <Button
+                                url={'/login'}>
+                                Inicia sesión
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </Container>

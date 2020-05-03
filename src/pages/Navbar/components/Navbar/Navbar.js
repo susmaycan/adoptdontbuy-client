@@ -70,34 +70,34 @@ class NavigationBar extends Component {
 
     render() {
         return (
-            <nav className="navbar navigation-bar" role="navigation" aria-label="main navigation">
-                <div className="navbar-brand">
-                    <Link className="navbar-item important brand-link" to="/">
-                        <i className="fas fa-paw"/>
-                        &nbsp;
-                        adoptdontbuy
-                    </Link>
-
-
-                    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                       data-target="navbarBasicExample">
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                        <span aria-hidden="true"></span>
-                    </a>
-                </div>
-
-                <div className="navbar-menu">
-                    <div className="navbar-end">
-                        <Link className="navbar-item" to="/search">
-                            <i className="fas fa-search"/>
+                <nav className="navbar navigation-bar" role="navigation" aria-label="main navigation">
+                    <div className="navbar-brand">
+                        <Link className="navbar-item important brand-link" to="/">
+                            <i className="fas fa-paw"/>
                             &nbsp;
-                            <Translate value="nav-bar.search"/>
+                            adoptdontbuy
                         </Link>
-                        {this.isLogged()}
+
+
+                        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                           data-target="navbarBasicExample">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
                     </div>
-                </div>
-            </nav>
+
+                    <div className="navbar-menu">
+                        <div className="navbar-end">
+                            <Link className="navbar-item" to="/search">
+                                <i className="fas fa-search"/>
+                                &nbsp;
+                                <Translate value="nav-bar.search"/>
+                            </Link>
+                            {this.isLogged()}
+                        </div>
+                    </div>
+                </nav>
         )
     }
 }

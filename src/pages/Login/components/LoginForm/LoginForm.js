@@ -19,7 +19,7 @@ class LoginForm extends React.Component {
             <form onSubmit={(e) => this.handleSubmit(e)} className="modal-form has-text-centered">
                 <div className="field">
                     <label htmlFor="email" className="label"><Translate value='login.email'/></label>
-                    <div className="control has-icons-left has-icons-right">
+                    <div className="control is-expanded has-icons-left has-icons-right">
                         <input
                             required
                             disabled={success}
@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
                 </div>
                 <div className="field">
                     <label htmlFor="password" className="label"><Translate value='login.password'/></label>
-                    <div className="control has-icons-left has-icons-right">
+                    <div className="control is-expanded has-icons-left has-icons-right">
                         <input
                             required
                             disabled={success}
@@ -70,9 +70,6 @@ class LoginForm extends React.Component {
                     <Notification error={true}>{errorMsg}</Notification>
                     :
                     ""}
-                {success ?
-                    <Notification>Login successful. Redirecting...</Notification>
-                    : null}
                 <div className="form-div-text">
                     <Link to='/recoverPassword'>
                     <span className="not-link forgot-password">
@@ -91,13 +88,13 @@ class LoginForm extends React.Component {
                         <Translate value={buttonTypes.CONFIRM}/>
                     </Button>
                 }
-                <div className="form-div-text">
-                    <Link to={'/signup'}>
-                    <span className="not-link">
-                        <Translate value='login.sign-up'/>
-                    </span>
-                    </Link>
-                </div>
+                {/*<div className="form-div-text">*/}
+                {/*    <Link to={'/signup'}>*/}
+                {/*    <span className="not-link">*/}
+                {/*        <Translate value='login.sign-up'/>*/}
+                {/*    </span>*/}
+                {/*    </Link>*/}
+                {/*</div>*/}
             </form>
         )
     }

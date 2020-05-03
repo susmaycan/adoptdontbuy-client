@@ -1,9 +1,9 @@
 import React from 'react'
 import LoginForm from '../LoginForm'
 import PropTypes from 'prop-types'
-import {Container, Title} from '../../../../components'
+import {Button, Container, Subtitle} from '../../../../components'
 import {Translate} from 'react-redux-i18n'
-import {Redirect} from "react-router";
+import Divider from '@material-ui/core/Divider'
 
 class LoginView extends React.Component {
 
@@ -22,25 +22,34 @@ class LoginView extends React.Component {
 
     redirectToHome() {
         setTimeout(() => {
-            this.props.history.push('/')
+            this.props.history.goBack()
             this.props.resetState()
-        }, 3000)
+        }, 1000)
     }
 
     render() {
         const {error, errorMsg, loginUser, isLoading, success} = this.props
         return (
-            <Container>
-                <div className="columns is-centered">
-                    <div className="column is-narrow">
-                        <Title><Translate value='login.title'/> </Title>
-                        <LoginForm
-                            error={error}
-                            success={success}
-                            errorMsg={errorMsg}
-                            handleSubmit={loginUser}
-                            isLoading={isLoading}
-                        />
+            <Container center={true}>
+                <div className="form-container">
+                    <div className="columns is-8 is-centered is-vcentered">
+                        <div className="column is-7">
+                            <Subtitle><Translate value='login.title'/> </Subtitle>
+                            <LoginForm
+                                error={error}
+                                success={success}
+                                errorMsg={errorMsg}
+                                handleSubmit={loginUser}
+                                isLoading={isLoading}
+                            />
+                        </div>
+                        <div className="column is-4">
+                            <p><Translate value='login.sign-up'/></p>
+                            <Button
+                                url={'/signup'}>
+                                Registrarse
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </Container>

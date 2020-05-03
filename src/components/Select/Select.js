@@ -8,6 +8,7 @@ import {
 } from '../../constants'
 import PropTypes from 'prop-types'
 import {I18n} from 'react-redux-i18n'
+import './Select.scss'
 
 const GENDER = 'gender'
 const SIZE = 'size'
@@ -61,7 +62,7 @@ class Select extends React.Component {
     render() {
         const {value, name, handleChange} = this.props
         return (
-            <div className="select">
+            <div className="select is-fullwidth">
                 <select
                     required
                     value={value}

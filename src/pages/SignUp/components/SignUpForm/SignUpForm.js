@@ -237,13 +237,6 @@ class SignUpForm extends React.Component {
                     </div>
 
                 }
-                <div className="form-div-text">
-                    <Link to={'/login'}>
-                        <span className="not-link">
-                            <Translate value='sign-up.login'/>
-                        </span>
-                    </Link>
-                </div>
             </div>
         )
     }

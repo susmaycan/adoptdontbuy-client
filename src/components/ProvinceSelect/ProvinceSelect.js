@@ -34,7 +34,7 @@ class ProvinceSelect extends React.Component {
 
     render() {
         return (
-            <div className="select">
+            <div className="select is-fullwidth">
                 <select
                     name="province"
                     value={this.props.province}
