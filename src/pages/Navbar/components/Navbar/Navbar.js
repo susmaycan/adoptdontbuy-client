@@ -34,17 +34,17 @@ class NavigationBar extends Component {
 
                         <div className="navbar-dropdown">
                             <a className="navbar-item">
-                                Pets
+                                <Translate value="nav-bar.pets"/>
                             </a>
                             <a className="navbar-item">
-                                Favourites
+                                <Translate value="nav-bar.favourites"/>
                             </a>
                             <a className="navbar-item">
-                                Reviews
+                                <Translate value="nav-bar.reviews"/>
                             </a>
                             <hr className="navbar-divider"/>
                             <a className="navbar-item">
-                                <i className="fas fa-cog"/>&nbsp;&nbsp;Settings
+                                <i className="fas fa-cog"/>&nbsp;&nbsp;<Translate value="nav-bar.settings"/>
                             </a>
                             <a className="navbar-item" onClick={this.logout}>
                                 <i className="fas fas fa-sign-out-alt"/>&nbsp;&nbsp;<Translate

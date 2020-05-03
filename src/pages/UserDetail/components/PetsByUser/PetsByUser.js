@@ -4,6 +4,7 @@ import Message from '../../../../components/Message'
 import {Translate} from 'react-redux-i18n'
 import Subtitle from "../../../../components/Subtitle";
 import {sortByUpdateDate} from "../../../../utils/Functions";
+import {AnimalCard} from "../../../../components";
 
 const PetsByUser = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) => (
     <div>
@@ -21,12 +22,13 @@ const PetsByUser = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) =
                 <Translate value='messages.emptyList'/>
             </Message>
             :
-            <div>
-                { sortByUpdateDate(animals).map(animal =>
-                    <AnimalResult
-                        key={animal._id}
-                        animal={animal}
-                    />
+            <div className="columns is-multiline is-centered">
+                {sortByUpdateDate(animals).map(animal =>
+                    <div key={animal._id} className="column">
+                        <AnimalCard
+                            animal={animal}
+                        />
+                    </div>
                 )}
             </div>
         }

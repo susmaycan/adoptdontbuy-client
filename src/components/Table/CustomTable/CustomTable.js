@@ -1,7 +1,4 @@
 import React from 'react'
-import {
-    Table
-} from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import {Translate} from 'react-redux-i18n'
 import Subtitle from '../../Subtitle'
@@ -19,7 +16,7 @@ const CustomTable = ({elements, title, type}) => (
                         'animalDetail.' + title :
                         'userDetail.' + title}/>
         </Subtitle>
-        <Table responsive className="custom-table">
+        <table className="table custom-table">
             <tbody>
             {elements.map(element => (
                 <TableElement
@@ -28,7 +25,7 @@ const CustomTable = ({elements, title, type}) => (
                 />
             ))}
             </tbody>
-        </Table>
+        </table>
     </div>
 )
 

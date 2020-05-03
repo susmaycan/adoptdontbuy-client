@@ -2,7 +2,11 @@
   "nav-bar": {
     "addAnimal": "Añadir mascota",
     "search": "Buscar",
-    "account": "Cuenta"
+    "account": "Cuenta",
+    "pets": "Mascotas",
+    "favourites": "Favoritos",
+    "settings": "Ajustes",
+    "reviews": "Opiniones"
   },
   "home": {
     "title": "BIENVENIDX A ",

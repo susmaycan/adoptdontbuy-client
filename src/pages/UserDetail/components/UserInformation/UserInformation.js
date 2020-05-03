@@ -2,7 +2,7 @@ import React from 'react'
 import {
     Table,
     Button,
-    Title
+    Title, Subtitle
 } from '../../../../components'
 import DeleteUser from '../../../DeleteUser/containers/DeleteUser'
 import {Translate} from 'react-redux-i18n'
@@ -18,7 +18,7 @@ const UserInformation = ({user, loggedUser}) => (
         </Title>
         <div className="columns">
             <div className="column is-offset-9">
-                {isAuthenticated(loggedUser, user) ?
+                {isAuthenticated(loggedUser, user) &&
                     <div className="centered">
                         <Button
                             url={`/updateUser/${loggedUser._id}`}
@@ -27,7 +27,6 @@ const UserInformation = ({user, loggedUser}) => (
                         </Button>
                         <DeleteUser/>
                     </div>
-                    : null
                 }
             </div>
         </div>
@@ -64,16 +63,14 @@ const UserInformation = ({user, loggedUser}) => (
                 </div>
             </div>
             <div className="column is-5 centered">
-                <UserProfilePicture username={user.username} picture={user.picture} />
+                <UserProfilePicture username={user.username} picture={user.picture}/>
             </div>
         </div>
-        {user.description !== "unknown" ?
-            <div className="user-about">
-                <h2 className="subtitle"><Translate value='userDetail.about'/></h2>
-                <hr/>
-                <p>{user.description}</p>
-            </div>
-            : null
+        {user.description !== "unknown" &&
+        <div className="user-about">
+            <Subtitle><Translate value='userDetail.about'/></Subtitle>
+            <p>{user.description}</p>
+        </div>
         }
     </div>
 )
