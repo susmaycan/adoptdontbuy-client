@@ -5,7 +5,7 @@ import AnimalForm from '../AnimalForm'
 import Loading from "../../../../components/Loading";
 import {Translate} from 'react-redux-i18n'
 import Title from '../../../../components/Title'
-import Container from '../../../../components/Container'
+import Box from '../../../../components/Box'
 
 class EditAnimalView extends Component {
 
@@ -60,7 +60,7 @@ class EditAnimalView extends Component {
         return (
             <>
                 {this.state.submitted ? <Redirect to={"/animal/" + this.state.id_url}/> : ''}
-                <Container>
+                <Box>
                     <Title>
                         <i className="fas fa-plus-circle"/>
                         {' '}
@@ -72,7 +72,7 @@ class EditAnimalView extends Component {
                         uploadPhoto={this.props.uploadPhoto}
                         animal={this.props.animal}
                     />
-                </Container>
+                </Box>
             </>
         )
     }

@@ -2,20 +2,22 @@ import React from 'react'
 import {
     Table,
     Button,
-    Title, Subtitle
-} from '../../../../components'
-import DeleteUser from '../../../DeleteUser/containers/DeleteUser'
+    Title,
+    Subtitle,
+    Box
+} from '../../../../../components'
+import DeleteUser from '../../../../DeleteUser'
 import {Translate} from 'react-redux-i18n'
 import './UserInformation.scss'
-import {buttonTypes, tableElements} from '../../../../constants'
-import {isAuthenticated} from '../../../../utils/Functions'
-import UserProfilePicture from "../UserProfilePicture";
+import {buttonTypes, tableElements} from '../../../../../constants'
+import {isAuthenticated} from '../../../../../utils/Functions'
+import UserProfilePicture from "../../UserProfilePicture";
 
 const UserInformation = ({user, loggedUser}) => (
-    <div>
-        <Title>
-            @{user.username}
-        </Title>
+    <Box>
+        <div className="has-text-centered">
+            <h1 className="title">@{user.username}</h1>
+        </div>
         <div className="columns">
             <div className="column is-offset-9">
                 {isAuthenticated(loggedUser, user) &&
@@ -72,6 +74,6 @@ const UserInformation = ({user, loggedUser}) => (
             <p>{user.description}</p>
         </div>
         }
-    </div>
+    </Box>
 )
 export default UserInformation

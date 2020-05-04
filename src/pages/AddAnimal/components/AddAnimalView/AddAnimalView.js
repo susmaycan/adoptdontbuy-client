@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import Message from '../../../../components/Message'
 import {Redirect} from 'react-router'
 import AnimalForm from '../AnimalForm'
 import {Translate} from 'react-redux-i18n'
 import Title from '../../../../components/Title'
-import Container from "../../../../components/Container";
+import Box from "../../../../components/Box";
 
 class AddAnimalView extends Component {
 
@@ -19,33 +18,28 @@ class AddAnimalView extends Component {
 
     submitAnimal(animal) {
         this.props.addAnimal(animal)
-        this.setState({
-            submitted: true
-        })
+        this.props.history.push('/')
     }
 
     render() {
-        if (this.props.isLoggedIn === false) {
+        const {isLoggedIn, loggedUser, uploadPhoto} = this.props
+        if (!isLoggedIn) {
+            this.props.history.push('/login')
+            return null
+        } else {
             return (
-                <Message><Translate value='messages.noLogin'/></Message>
-            )
-        }
-
-        return (
-            <>
-                {this.state.submitted ? <Redirect to={"/user/" + this.props.loggedUser._id}/> : ''}
-                <Container>
+                <Box>
                     <Title>
                         <i className="fas fa-plus-circle"/> <Translate value='addAnimal.title'/>
                     </Title>
                     <AnimalForm
-                        loggedUser={this.props.loggedUser}
+                        loggedUser={loggedUser}
                         submitForm={this.submitAnimal}
-                        uploadPhoto={this.props.uploadPhoto}
+                        uploadPhoto={uploadPhoto}
                     />
-                </Container>
-            </>
-        )
+                </Box>
+            )
+        }
     }
 }
 

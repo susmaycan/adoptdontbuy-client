@@ -33,15 +33,18 @@ class NavigationBar extends Component {
                         </Link>
 
                         <div className="navbar-dropdown">
-                            <a className="navbar-item">
+                            <Link className="navbar-item"
+                                  to={{pathname: `/user/${this.props.user._id}/pets`}}>
                                 <Translate value="nav-bar.pets"/>
-                            </a>
-                            <a className="navbar-item">
+                            </Link>
+                            <Link className="navbar-item"
+                                  to={{pathname: `/user/${this.props.user._id}/fav`}}>
                                 <Translate value="nav-bar.favourites"/>
-                            </a>
-                            <a className="navbar-item">
+                            </Link>
+                            <Link className="navbar-item"
+                                  to={{pathname: `/user/${this.props.user._id}/reviews`}}>
                                 <Translate value="nav-bar.reviews"/>
-                            </a>
+                            </Link>
                             <hr className="navbar-divider"/>
                             <a className="navbar-item">
                                 <i className="fas fa-cog"/>&nbsp;&nbsp;<Translate value="nav-bar.settings"/>
@@ -70,34 +73,34 @@ class NavigationBar extends Component {
 
     render() {
         return (
-                <nav className="navbar navigation-bar" role="navigation" aria-label="main navigation">
-                    <div className="navbar-brand">
-                        <Link className="navbar-item important brand-link" to="/">
-                            <i className="fas fa-paw"/>
+            <nav className="navbar navigation-bar" role="navigation" aria-label="main navigation">
+                <div className="navbar-brand">
+                    <Link className="navbar-item important brand-link" to="/">
+                        <i className="fas fa-paw"/>
+                        &nbsp;
+                        adoptdontbuy
+                    </Link>
+
+
+                    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                       data-target="navbarBasicExample">
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                        <span aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <div className="navbar-menu">
+                    <div className="navbar-end">
+                        <Link className="navbar-item" to="/search">
+                            <i className="fas fa-search"/>
                             &nbsp;
-                            adoptdontbuy
+                            <Translate value="nav-bar.search"/>
                         </Link>
-
-
-                        <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                           data-target="navbarBasicExample">
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                            <span aria-hidden="true"></span>
-                        </a>
+                        {this.isLogged()}
                     </div>
-
-                    <div className="navbar-menu">
-                        <div className="navbar-end">
-                            <Link className="navbar-item" to="/search">
-                                <i className="fas fa-search"/>
-                                &nbsp;
-                                <Translate value="nav-bar.search"/>
-                            </Link>
-                            {this.isLogged()}
-                        </div>
-                    </div>
-                </nav>
+                </div>
+            </nav>
         )
     }
 }

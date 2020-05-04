@@ -1,13 +1,10 @@
 import React from 'react'
-import AnimalResult from '../AnimalResult'
-import Message from '../../../../components/Message'
 import {Translate} from 'react-redux-i18n'
-import Subtitle from "../../../../components/Subtitle";
-import {sortByUpdateDate} from "../../../../utils/Functions";
-import {AnimalCard} from "../../../../components";
+import {sortByUpdateDate} from "../../../../../utils/Functions";
+import {AnimalCard, Message, Subtitle, Box} from '../../../../../components'
 
 const PetsByUser = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) => (
-    <div>
+    <Box>
         <div className="tab-title-container">
             <Subtitle>
                 {isLoggedIn && loggedUser._id === user._id ?
@@ -24,7 +21,7 @@ const PetsByUser = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) =
             :
             <div className="columns is-multiline is-centered">
                 {sortByUpdateDate(animals).map(animal =>
-                    <div key={animal._id} className="column">
+                    <div key={animal._id} className="column is-narrow">
                         <AnimalCard
                             animal={animal}
                         />
@@ -32,7 +29,7 @@ const PetsByUser = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) =
                 )}
             </div>
         }
-    </div>
+    </Box>
 )
 
 export default PetsByUser

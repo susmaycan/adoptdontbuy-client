@@ -1,9 +1,8 @@
 import React from 'react'
 import SignUpForm from '../SignUpForm'
 import PropTypes from 'prop-types'
-import {Button, Container, Subtitle} from '../../../../components'
+import {Button, Box, Subtitle} from '../../../../components'
 import {Translate} from 'react-redux-i18n'
-import Divider from '@material-ui/core/Divider'
 
 class SignUpView extends React.Component {
     constructor(props) {
@@ -29,7 +28,7 @@ class SignUpView extends React.Component {
     render() {
         const {success, error, errorMsg, signUpUser, isLoading} = this.props
         return (
-            <Container center={true}>
+            <Box center={true}>
                 <div className="form-container">
                     <div className="columns is-8 is-centered is-vcentered">
                         <div className="column is-7">
@@ -51,7 +50,7 @@ class SignUpView extends React.Component {
                         </div>
                     </div>
                 </div>
-            </Container>
+            </Box>
 
         )
     }

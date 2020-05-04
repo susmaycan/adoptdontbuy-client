@@ -9,7 +9,7 @@ import {
     Subtitle,
     Title,
     Error,
-    Container
+    Box
 } from '../../../../components'
 
 class Home extends Component {
@@ -48,7 +48,11 @@ class Home extends Component {
             } else {
                 return (
                     <>
-                        <Subtitle><Translate value='home.latest'/></Subtitle>
+                        <div className="columns is-centered">
+                            <div className="column is-narrow">
+                                <Subtitle><Translate value='home.latest'/></Subtitle>
+                            </div>
+                        </div>
                         <div className="columns is-centered is-multiline is-mobile">
                             {this.state.animalList.map((animal) =>
                                 <div key={animal._id} className="column is-narrow">
@@ -67,22 +71,22 @@ class Home extends Component {
 
     render() {
         return (
-            <Container>
-                    <div className="columns is-gapless is-centered">
-                        <div className="column is-narrow">
-                            <Title>
-                                <Translate value='home.title'/>
-                                <span className="important">
+            <Box>
+                <div className="columns is-gapless is-centered">
+                    <div className="column is-narrow">
+                        <Title>
+                            <Translate value='home.title'/>
+                            <span className="important">
                                 adoptdontbuy
                         </span>
-                            </Title>
-                        </div>
-                        <div className="column is-narrow centered">
-                            <Cat size={100} mood="excited" color="#ffc107"/>
-                        </div>
+                        </Title>
                     </div>
-                    {this.renderBody()}
-            </Container>
+                    <div className="column is-narrow centered">
+                        <Cat size={100} mood="excited" color="#ffc107"/>
+                    </div>
+                </div>
+                {this.renderBody()}
+            </Box>
         )
     }
 }

@@ -5,7 +5,7 @@ import {
     Select
 } from '../../components'
 import PropTypes from 'prop-types'
-import {Translate, I18n} from 'react-redux-i18n'
+import {Translate } from 'react-redux-i18n'
 import {buttonTypes} from "../../constants";
 
 // const MIN_YEAR = 2000

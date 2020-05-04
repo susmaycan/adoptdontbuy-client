@@ -4,7 +4,7 @@ import {
     fetchAnimalsUser
 } from '../../../actions/user'
 
-import User from '../components/UserView'
+import Reviews from '../components/Reviews'
 
 const mapStateToProps = state => ({
     user: state.userReducer.user || {},
@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch) => ({
     getAnimals: (id) => dispatch(fetchAnimalsUser(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(Reviews)

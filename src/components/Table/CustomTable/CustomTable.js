@@ -16,10 +16,11 @@ const CustomTable = ({elements, title, type}) => (
                         'animalDetail.' + title :
                         'userDetail.' + title}/>
         </Subtitle>
-        <table className="table custom-table">
+        <table className="table is-fullwidth custom-table">
             <tbody>
             {elements.map(element => (
                 <TableElement
+                    key={element.name}
                     element={element}
                     type={type}
                 />

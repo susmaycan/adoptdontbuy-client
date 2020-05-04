@@ -1,10 +1,9 @@
 import React from 'react'
-import {Translate, I18n} from 'react-redux-i18n'
+import {Translate} from 'react-redux-i18n'
 import {buttonTypes} from "../../../../constants";
 import {Notification, Button} from '../../../../components'
 import FormValidator from '../../../../utils/FormValidator'
 import PropTypes from 'prop-types'
-import {Link} from "react-router-dom";
 
 class SignUpForm extends React.Component {
 

@@ -1,3 +1,3 @@
-import Favourites from './Favourites'
+import Favourites from './FavouriteView'
 
 export default Favourites

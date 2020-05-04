@@ -1,3 +1,15 @@
-import User from './containers/User'
+import UserInformation from './containers/UserInformation'
+import Pets from './containers/Pets'
+import UserTabs from './components/UserTabs'
+import Favourites from './containers/Favourites'
+import Contact from './containers/Contact'
+import Reviews from './containers/Reviews'
 
-export default User
+export default {
+    UserInformation,
+    UserTabs,
+    Pets,
+    Favourites,
+    Contact,
+    Reviews
+}

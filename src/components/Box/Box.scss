@@ -1,0 +1,18 @@
+@import "../../styles/base";
+
+.block-container {
+  //box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+ // border-radius: 2px;
+  padding: 30px 30px;
+  background: white;
+}
+
+@media (max-width: $mobile) {
+  .block-container {
+    //margin: 10px;
+    padding: 10px;
+  }
+}
+
+
+

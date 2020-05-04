@@ -1,3 +1,3 @@
-import Reviews from './Reviews'
+import Reviews from './ReviewView'
 
 export default Reviews

@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import User from '../User'
-import Loading from '../../../../components/Loading'
-import Message from '../../../../components/Message'
+import Pets from '../Pets'
+import {Loading, Message} from '../../../../../components'
 
-class UserDetail extends Component {
+class PetsByUserView extends Component {
 
     componentDidMount() {
         this.props.getUser(this.props.match.params.userId)
@@ -11,30 +10,30 @@ class UserDetail extends Component {
     }
 
     render() {
-        if (this.props.isLoading) {
+        const {isLoading, error, user, loggedUser, isLoggedIn, animalList, isLoadingList, errorList} = this.props
+        if (isLoading || isLoadingList) {
             return (
                 <Loading/>
             )
-        } else if (this.props.error) {
+        } else if (error || errorList) {
             return (
                 <Message>Sorry, there was a problem and we <strong>couldn't retrieve</strong> the user. Please, try
                     again later.</Message>
             )
         } else {
-            if (this.props.user === {}) {
+            if (user === {}) {
                 return (
                     <Message>Sorry, we <strong>couldn't find</strong> the user in the database..</Message>
                 )
             } else {
                 return (
-                    <User
-                        user={this.props.user}
-                        loggedUser={this.props.loggedUser}
-                        isLoggedIn={this.props.isLoggedIn}
-                        animalList={this.props.animalList}
-                        isLoadingList={this.props.isLoadingList}
-                        errorList={this.props.errorList}
-                        favourites={this.props.favourites}
+                    <Pets
+                        user={user}
+                        loggedUser={loggedUser}
+                        isLoggedIn={isLoggedIn}
+                        animals={animalList}
+                        isLoadingList={isLoadingList}
+                        errorList={errorList}
                     />
                 )
             }
@@ -42,4 +41,4 @@ class UserDetail extends Component {
     }
 }
 
-export default UserDetail
+export default PetsByUserView

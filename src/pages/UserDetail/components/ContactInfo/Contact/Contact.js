@@ -1,19 +1,17 @@
 import React from 'react'
-import UserTable from '../../../../components/Table'
-import Contact from '../../../../components/Contact'
+import { Table, Contact, Subtitle, Box}from '../../../../../components'
 import {Translate} from 'react-redux-i18n'
-import Subtitle from '../../../../components/Subtitle'
-import './ContactInfo.scss'
-import {tableElements} from '../../../../constants'
+import './Contact.scss'
+import {tableElements} from '../../../../../constants'
 
-const ContactInfo = ({user, loggedUser}) => (
-    <div>
+const ContactInfo = ({user, loggedUser, isLoggedIn}) => (
+    <Box>
         <div className="tab-title-container">
             <Subtitle>
                 <Translate value='userDetail.contact'/>
             </Subtitle>
         </div>
-        <UserTable
+        <Table
             elements={[
                 {
                     name: tableElements.EMAIL,
@@ -29,12 +27,12 @@ const ContactInfo = ({user, loggedUser}) => (
             title=''
             type={tableElements.TYPE_USER}
         />
-        {loggedUser === null || loggedUser === undefined || loggedUser._id !== user._id ?
+        {!isLoggedIn || loggedUser._id !== user._id ?
             <Contact
                 emailDst={user.email}
             />
             : ""}
 
-    </div>
-);
+    </Box>
+)
 export default ContactInfo

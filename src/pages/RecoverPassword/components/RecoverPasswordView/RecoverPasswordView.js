@@ -1,7 +1,7 @@
 import React from 'react'
 import RecoverPasswordForm from '../RecoverPasswordForm'
 import PropTypes from 'prop-types'
-import {Container, Title} from '../../../../components'
+import {Box, Title} from '../../../../components'
 import {Translate} from 'react-redux-i18n'
 import {Redirect} from "react-router";
 
@@ -33,7 +33,7 @@ class RecoverPasswordView extends React.Component {
         return (
             <>
                 {isLoggedIn ? <Redirect to='/'/> : null}
-                <Container center={true}>
+                <Box center={true}>
                     <Title><Translate value='recoverPassword.title'/> </Title>
                     <RecoverPasswordForm
                         error={error}
@@ -43,7 +43,7 @@ class RecoverPasswordView extends React.Component {
                         success={success}
                         redirectToHome={this.redirectToHome}
                     />
-                </Container>
+                </Box>
             </>
         )
     }

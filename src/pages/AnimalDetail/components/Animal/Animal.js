@@ -5,19 +5,18 @@ import {
     Button,
     Title,
     Subtitle,
-    Container
+    Box
 } from '../../../../components'
 import DeleteAnimal from '../../../DeleteAnimal'
 import {Translate} from 'react-redux-i18n'
 import './Animal.scss'
 import AnimalPicture from '../AnimalPicture'
 import Badge from '../Badge'
-import {buttonTypes, tableElements} from "../../../../constants";
-import {Link} from "react-router-dom";
-import {isOwner} from "../../../../utils/Functions";
+import {buttonTypes, tableElements} from '../../../../constants'
+import {isOwner} from '../../../../utils/Functions'
 
 const Animal = ({animal, user, deleteAnimal}) => (
-    <Container>
+    <Box>
         <Title>
             {animal.name}
         </Title>
@@ -106,6 +105,6 @@ const Animal = ({animal, user, deleteAnimal}) => (
                 :
                 ""}
         </div>
-    </Container>
+    </Box>
 )
 export default Animal

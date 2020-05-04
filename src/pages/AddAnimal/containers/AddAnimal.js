@@ -16,4 +16,4 @@ const mapDispatchToProps = (dispatch) => ({
     addAnimal: (animal) => dispatch(addAnimal(animal))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddAnimalView);
+export default connect(mapStateToProps, mapDispatchToProps)(AddAnimalView)

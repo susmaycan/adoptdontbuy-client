@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Loading, Message, Title, Error, Container} from '../../../../components'
+import {Loading, Message, Title, Error, Box} from '../../../../components'
 import Filter from '../Filter'
 import {Translate} from 'react-redux-i18n'
 import {codeError} from '../../../../constants'
@@ -44,7 +44,7 @@ class Search extends Component {
 
     render() {
         return (
-            <Container>
+            <Box>
                 <div className="columns">
                     <div className="column is-3 is-12-mobile">
                         <Filter
@@ -62,7 +62,7 @@ class Search extends Component {
                         {this.renderBody()}
                     </div>
                 </div>
-            </Container>
+            </Box>
         )
     }
 }

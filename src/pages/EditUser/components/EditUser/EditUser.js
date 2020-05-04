@@ -7,7 +7,7 @@ import {
 } from 'react-router'
 import Title from '../../../../components/Title'
 import {Translate} from 'react-redux-i18n'
-import Container from "../../../../components/Container";
+import Box from "../../../../components/Box";
 
 const EMPTY_USER = {}
 
@@ -83,7 +83,7 @@ class EditUser extends Component {
         }
 
         return (
-            <Container>
+            <Box>
                 {this.state.submitted ? <Redirect to={"/user/" + this.props.user._id}/> : ''}
                 <Title>
                     <i className="fas fa-plus-circle"/>
@@ -96,7 +96,7 @@ class EditUser extends Component {
                     submitForm={this.submitForm}
                     uploadPhoto={this.props.uploadPhoto}
                 />
-            </Container>
+            </Box>
         )
     }
 

@@ -1,9 +1,8 @@
 import React from 'react'
 import LoginForm from '../LoginForm'
 import PropTypes from 'prop-types'
-import {Button, Container, Subtitle} from '../../../../components'
+import {Button, Box, Subtitle} from '../../../../components'
 import {Translate} from 'react-redux-i18n'
-import Divider from '@material-ui/core/Divider'
 
 class LoginView extends React.Component {
 
@@ -30,7 +29,7 @@ class LoginView extends React.Component {
     render() {
         const {error, errorMsg, loginUser, isLoading, success} = this.props
         return (
-            <Container center={true}>
+            <Box center={true}>
                 <div className="form-container">
                     <div className="columns is-8 is-centered is-vcentered">
                         <div className="column is-7">
@@ -52,7 +51,7 @@ class LoginView extends React.Component {
                         </div>
                     </div>
                 </div>
-            </Container>
+            </Box>
 
         )
     }

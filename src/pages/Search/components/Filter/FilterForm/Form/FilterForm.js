@@ -7,7 +7,7 @@ import {
     ProvinceSelect,
     Checkboxes
 } from '../../../../../../components'
-import {Translate, I18n} from 'react-redux-i18n'
+import {Translate} from 'react-redux-i18n'
 import './FilterForm.scss'
 import {filterElements} from '../../../../../../constants'
 import FilterBadgeList from '../FilterBadgeList'
