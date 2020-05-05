@@ -1,14 +1,39 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './Container.scss'
+import {Error, Loading} from '../../components'
+import {codeError} from '../../constants'
+import Message from "../Message";
+import {Translate} from 'react-redux-i18n'
 
-const Container = ({ children, center }) => (
-    <div className={center ? "block-container centered": "block-container"}>
-        {children}
-    </div>
-)
+class Container extends React.Component {
+    render() {
+        const {children, requiredLogin, isLoggedIn, isLoading, error} = this.props
+        if (isLoading) {
+            return (
+                <Loading/>
+            )
+        } else if (error) {
+            return (
+                <Error code={codeError.SERVER_UNAVAILABLE}/>
+            )
+        } else if (requiredLogin && !isLoggedIn) {
+            return (
+                <Message><Translate value='messages.noLogin'/></Message>
+            )
+        } else {
+            return (
+                {children}
+            )
+        }
+    }
+}
+
 Container.propTypes = {
     children: PropTypes.any.isRequired,
-    center: PropTypes.bool
+    isLoading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
+    isLoggedIn: PropTypes.bool,
+    requiredLogin: PropTypes.bool
 }
 export default Container

@@ -47,12 +47,14 @@ class AnimalForm extends Component {
     }
 
     render() {
+        const {isLoading} = this.props
         return (
             <Form
                 animal={this.state.animal}
                 updateInput={this.updateInput}
                 submit={this.submitForm}
                 action={ACTION_ADD}
+                isLoading={isLoading}
             />
         )
     }

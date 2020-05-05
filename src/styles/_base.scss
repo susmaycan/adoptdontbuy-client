@@ -3,6 +3,7 @@ $white-color: #FFFFFF;
 
 // primary, secondary
 $primary-color: #ffc107;
+$primary-color-lighter: #ffd862;
 $primary-color-darker: #ca9b12;
 $secondary-color: #37474f;
 $danger-color: red;
@@ -22,7 +23,22 @@ $mobile: 768px;
 $subtitle-color: none;
 // Misc
 $text-color: #37474f;
-$light-text-color: lightslategray;
+$light-text-color: #949da4;
 $color-body-bg: #F5F5F5;
 $color-shadow-light: lightgrey;
 $title-font: 'Open Sans Condensed', sans-serif;
+
+
+//Navbar
+$navbar-item-hover-color: $primary-color;
+$navbar-tab-hover-border-bottom-color: $primary-color;
+$navbar-tab-active-color: $primary-color;
+$navbar-tab-active-border-bottom-color: $primary-color;
+$navbar-dropdown-arrow: $primary-color;
+$tabs-toggle-link-active-background-color: $primary-color;
+$tabs-toggle-link-active-border-color: $primary-color;
+$tabs-link-active-color: $primary-color;
+$tabs-link-active-border-bottom-color: $primary-color;
+$input-arrow:$primary-color;
+$input-focus-border-color: $primary-color;
+$border-light-color: #ddd;

@@ -1,190 +1,331 @@
 import React from 'react'
 import {
-    Form,
-    Col,
-} from 'react-bootstrap'
-import {
     Button,
     ProvinceSelect,
     Select
 } from '../../components'
 import PropTypes from 'prop-types'
-import {Translate, I18n} from 'react-redux-i18n'
+import {Translate} from 'react-redux-i18n'
 import {buttonTypes} from "../../constants";
 
-const MIN_YEAR = 2000
-const MAX_YEAR = 3000 //TODO change this
+// const MIN_YEAR = 2000
+// const MAX_YEAR = 3000 //TODO change this
 
-const AnimalForm = ({animal, updateInput, submit, action}) => (
-    <Form className="form-animal" onSubmit={submit}>
-        <Form.Group as={Col} onChange={updateInput} controlId="formGridName">
-            <Form.Label><Translate value='animal.name'/></Form.Label>
-            <Form.Control required value={animal.name} name="name" placeholder="Toby"/>
-        </Form.Group>
+const AnimalForm = ({animal, updateInput, submit, action, isLoading}) => (
+    <form className="form-animal" onSubmit={submit}>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label"><Translate value='animal.name'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            onChange={updateInput}
+                            className="input"
+                            required
+                            value={animal.name}
+                            name="name"
+                            placeholder="Toby"/>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="specie" className="label"><Translate value='animal.specie'/></label>
+                    <div className="control is-expanded">
+                        <Select
+                            value={animal.specie}
+                            name='specie'
+                            handleChange={updateInput}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="breed" className="label"><Translate value='animal.breed'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            required
+                            onChange={updateInput}
+                            value={animal.breed}
+                            name="breed"
+                            className="input"
+                            placeholder="Bodeguero"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <Form.Row>
-            <Form.Group as={Col} onChange={updateInput} controlId="formGridSpecie">
-                <Form.Label><Translate value='animal.specie'/></Form.Label>
-                <Select
-                    value={animal.specie}
-                    name='specie'
-                    handleChange={updateInput}
-                />
-            </Form.Group>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="gender" className="label"><Translate value='animal.gender'/></label>
+                    <div className="control is-expanded">
+                        <Select
+                            value={animal.gender}
+                            name='gender'
+                            handleChange={updateInput}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="size" className="label"><Translate value='animal.size'/></label>
+                    <div className="control is-expanded">
+                        <Select
+                            value={animal.size}
+                            name='size'
+                            handleChange={updateInput}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="age" className="label"><Translate value='animal.age'/></label>
+                    <div className="control is-expanded">
+                        <Select
+                            value={animal.age}
+                            name='age'
+                            handleChange={updateInput}
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridBreed">
-                <Form.Label><Translate value='animal.breed'/></Form.Label>
-                <Form.Control required value={animal.breed} name="breed" placeholder="Bodeguero"/>
-            </Form.Group>
-        </Form.Row>
 
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridGenre">
-                <Form.Label><Translate value='animal.gender'/></Form.Label>
-                <Select
-                    value={animal.gender}
-                    name='gender'
-                    handleChange={updateInput}
-                />
-            </Form.Group>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="region" className="label"><Translate value='animal.region'/></label>
+                    <div className="control is-expanded">
+                        <Select
+                            value={animal.region}
+                            name='region'
+                            handleChange={updateInput}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="province" className="label"><Translate value='animal.province'/></label>
+                    <div className="control is-expanded">
+                        <ProvinceSelect
+                            province={animal.province}
+                            region={animal.region}
+                            handleChange={updateInput}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="city" className="label"><Translate value='animal.city'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            required
+                            onChange={updateInput}
+                            value={animal.city}
+                            name="city"
+                            className="input"
+                            placeholder="City"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <Form.Group as={Col} controlId="formGridSize">
-                <Form.Label><Translate value='animal.size'/></Form.Label>
-                <Select
-                    value={animal.size}
-                    name='size'
-                    handleChange={updateInput}
-                />
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridYearBorn">
-                <Form.Label><Translate value='animal.age'/></Form.Label>
-                <Select
-                    value={animal.age}
-                    name='age'
-                    handleChange={updateInput}
-                />
-            </Form.Group>
-        </Form.Row>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="about" className="label"><Translate value='animal.about'/></label>
+                    <div className="control is-expanded">
+                        <textarea
+                            name="about"
+                            onChange={updateInput}
+                            value={animal.about}
+                            className="textarea"
+                            placeholder="Tell us about your animal"/>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <Form.Row>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridRegion">
-                <Form.Label><Translate value='animal.region'/></Form.Label>
-                <Select
-                    value={animal.region}
-                    name='region'
-                    handleChange={updateInput}
-                />
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridProvince">
-                <Form.Label><Translate value='animal.province'/></Form.Label>
-                <ProvinceSelect
-                    province={animal.province}
-                    region={animal.region}
-                    handleChange={updateInput}
-                />
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridCity">
-                <Form.Label><Translate value='animal.city'/></Form.Label>
-                <Form.Control required value={animal.city} name="city">
-                </Form.Control>
-            </Form.Group>
-        </Form.Row>
-        {/* OPTIONAL FIELDS*/}
-        <Form.Row>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridAbout">
-                <Form.Label><Translate value='animal.about'/></Form.Label>
-                <Form.Control placeholder="Describe your animal here..." as="textarea" name="about" rows="3"
-                              defaultValue={animal.about}>
-                </Form.Control>
-            </Form.Group>
-        </Form.Row>
-        <Form.Row>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridCastrated">
-                <Form.Check
-                    type="checkbox"
-                    label={I18n.t('animal.castrated')}
-                    name="castrated"
-                    checked={animal.castrated}
-                />
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridVaccinated">
-                <Form.Check
-                    name="vaccinated"
-                    label={I18n.t('animal.vaccinated')}
-                    type="checkbox"
-                    checked={animal.vaccinated}/>
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithDogs">
-                <Form.Check
-                    label={I18n.t('animal.alongWithDogs')}
-                    name="alongWithDogs"
-                    type="checkbox"
-                    checked={animal.alongWithDogs}
-                >
-                </Form.Check>
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithCats">
-                <Form.Check
-                    label={I18n.t('animal.alongWithCats')}
-                    name="alongWithCats"
-                    type="checkbox"
-                    checked={animal.alongWithCats}
-                >
-                </Form.Check>
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithKids">
-                <Form.Check
-                    label={I18n.t('animal.alongWithKids')}
-                    name="alongWithKids"
-                    type="checkbox"
-                    checked={animal.alongWithKids}
-                >
-                </Form.Check>
-            </Form.Group>
-        </Form.Row>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <div className="control is-expanded">
+                        <label className="checkbox">
+                            <input
+                                type="checkbox"
+                                name="castrated"
+                                onChange={updateInput}
+                                checked={animal.castrated}
+                            />&nbsp;
+                            <Translate value='animal.castrated'/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <div className="control is-expanded">
+                        <label className="checkbox">
+                            <input
+                                type="checkbox"
+                                name="vaccinated"
+                                onChange={updateInput}
+                                checked={animal.vaccinated}
+                            />&nbsp;
+                            <Translate value='animal.vaccinated'/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <div className="control is-expanded">
+                        <label className="checkbox">
+                            <input
+                                type="checkbox"
+                                name="alongWithDogs"
+                                onChange={updateInput}
+                                checked={animal.alongWithDogs}
+                            />&nbsp;
+                            <Translate value='animal.alongWithDogs'/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <div className="control is-expanded">
+                        <label className="checkbox">
+                            <input
+                                type="checkbox"
+                                name="alongWithCats"
+                                onChange={updateInput}
+                                checked={animal.alongWithCats}
+                            />&nbsp;
+                            <Translate value='animal.alongWithCats'/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <div className="control is-expanded">
+                        <label className="checkbox">
+                            <input
+                                type="checkbox"
+                                name="alongWithKids"
+                                onChange={updateInput}
+                                checked={animal.alongWithKids}
+                            />&nbsp;
+                            <Translate value='animal.alongWithKids'/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         {action === "add" ?
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridPicture">
-                    <Form.Label><Translate value='animal.picture'/></Form.Label>
-                    <input
-                        type='file'
-                        id="picture"
-                        name="picture"
-                        required
-                        onChange={updateInput}
-                        multiple="multiple"
-                    />
-                </Form.Group>
-            </Form.Row>
+
+            <div className="field">
+                <div className="file has-name">
+                    <label className="file-label">
+                        <input
+                            className="file-input"
+                            type="file"
+                            name="picture"
+                            required
+                            multiple="multiple"
+                            onChange={updateInput}
+                        />
+                        <span className="file-cta">
+                          <span className="file-icon">
+                            <i className="fas fa-upload"/>
+                          </span>
+                          <span className="file-label">
+                            Choose a file…
+                          </span>
+                        </span>
+                        <span className="file-name">
+                            {animal.picture !== undefined ? animal.picture[0].name : 'No files selected yet.'}
+                        </span>
+                    </label>
+                </div>
+            </div>
             :
-            null
-        }
-        <Form.Row>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridsocialLevel">
-                <Form.Label><Translate value='animal.socialLevel'/></Form.Label>
-                <Form.Control min="0" max="5" placeholder="From to 0 to 5" type="number" name="socialLevel"
-                              value={animal.socialLevel}>
-                </Form.Control>
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridTraumaLevel">
-                <Form.Label><Translate value='animal.traumaLevel'/></Form.Label>
-                <Form.Control min="0" max="5" placeholder="From to 0 to 5" type="number" name="traumaLevel"
-                              value={animal.traumaLevel}>
-                </Form.Control>
-            </Form.Group>
-            <Form.Group onChange={updateInput} as={Col} controlId="formGridEnergyLevel">
-                <Form.Label><Translate value='animal.energyLevel'/></Form.Label>
-                <Form.Control min="0" max="5" placeholder="From to 0 to 5" type="number" name="energyLevel"
-                              value={animal.energyLevel}>
-                </Form.Control>
-            </Form.Group>
-        </Form.Row>
-        <Button
-           submit={true}
-        >
-            <Translate value={buttonTypes.FINISH}/>
-        </Button>
-    </Form>
+            null}
+
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label"><Translate value='animal.socialLevel'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            onChange={updateInput}
+                            className="input"
+                            type="number"
+                            min={0}
+                            max={5}
+                            value={animal.socialLevel}
+                            name="socialLevel"
+                            placeholder="From to 0 to 5"/>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label className="label"><Translate value='animal.energyLevel'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            onChange={updateInput}
+                            className="input"
+                            type="number"
+                            min={0}
+                            max={5}
+                            value={animal.energyLevel}
+                            name="energyLevel"
+                            placeholder="From to 0 to 5"/>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label className="label"><Translate value='animal.traumaLevel'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            onChange={updateInput}
+                            className="input"
+                            type="number"
+                            min={0}
+                            max={5}
+                            value={animal.traumaLevel}
+                            name="traumaLevel"
+                            placeholder="From to 0 to 5"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="has-text-centered">
+            {isLoading ?
+                <button className="button is-loading">Loading...</button>
+                :
+                <Button
+                    submit={true}
+                >
+                    <Translate value={buttonTypes.FINISH}/>
+                </Button>
+            }
+        </div>
+    </form>
 )
 AnimalForm.propTypes = {
     animal: PropTypes.shape({

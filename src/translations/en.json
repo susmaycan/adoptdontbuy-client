@@ -2,7 +2,11 @@
   "nav-bar": {
     "addAnimal": "Add pet",
     "search": "Search",
-    "account": "Account"
+    "account": "Account",
+    "pets": "Pets",
+    "favourites": "Favourites",
+    "settings": "Settings",
+    "reviews": "Reviews"
   },
   "home": {
     "title": "WELCOME TO ",

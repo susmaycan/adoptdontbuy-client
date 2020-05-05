@@ -1,22 +1,21 @@
 import { connect } from 'react-redux'
 import {
-    loginUser, signUpUser, recoverPassword
+    loginUser, resetState
 } from '../../../actions/login'
 
-import Layout from '../components/Layout'
+import Login from '../components'
 
 const mapStateToProps = state => ({
-    user: state.loginReducer.user,
-    error: state.loginReducer.error,
-    errorMsg: state.loginReducer.errorMsg,
+    isLoggedIn: state.loginReducer.isLoggedIn,
+    error: state.loginReducer.login.error,
+    errorMsg: state.loginReducer.login.errorMsg,
+    success: state.loginReducer.login.success,
     isLoading: state.loginReducer.isLoading
 })
 
 const mapDispatchToProps = (dispatch) => ({
     loginUser: (email, pass) => dispatch(loginUser(email, pass)),
-    signUpUser: (email, pass, username) => dispatch(signUpUser(email, pass, username)),
-    recoverPassword: (email) => dispatch(recoverPassword(email))
-
+    resetState: () => dispatch(resetState())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Layout)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

@@ -1,205 +1,252 @@
 import React from 'react'
 import ProvinceSelect from '../../../../../components/ProvinceSelect'
 import PropTypes from 'prop-types'
-import {
-    Form,
-    Col, Alert,
-} from 'react-bootstrap'
 import Select from "../../../../../components/Select";
 import {Translate, I18n} from 'react-redux-i18n'
 import Button from "../../../../../components/Button";
 import {buttonTypes} from "../../../../../constants";
 
 const UserForm = ({user, password, handleChange, handleForm, handlePassword}) => (
-    <Form className="formAnimal" onSubmit={handleForm}>
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridFirstName">
-                <Form.Label>
-                    <Translate value='user.first_name'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handleChange}
-                    value={user.first_name}
-                    name="first_name"
-                    type="text"
-                    placeholder="Frederik"/>
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridLastName">
-                <Form.Label>
-                    <Translate value='user.last_name'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handleChange}
-                    value={user.last_name}
-                    name="last_name"
-                    type="text"
-                    placeholder="González"/>
-            </Form.Group>
-        </Form.Row>
+    <form className="formAnimal" onSubmit={handleForm}>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label"><Translate value='user.first_name'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handleChange}
+                            value={user.first_name}
+                            name="first_name"
+                            type="text"
+                            placeholder="Frederik"/>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="specie" className="label"><Translate value='user.last_name'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handleChange}
+                            value={user.last_name}
+                            name="last_name"
+                            type="text"
+                            placeholder="González"/>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridPhone">
-                <Form.Label>
-                    <Translate value='user.phone'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handleChange}
-                    value={user.phone}
-                    name="phone"
-                    type="tel"
-                    placeholder="+34 678 544 534"/>
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>
-                    <Translate value='user.email'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handleChange}
-                    required
-                    value={user.email}
-                    name="email"
-                    type="email"
-                    placeholder="+34 678 544 534"/>
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridWebsite">
-                <Form.Label>
-                    <Translate value='user.website'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handleChange}
-                    value={user.website}
-                    name="website"
-                    type="text"
-                    placeholder="http://www.protectora.es"/>
-            </Form.Group>
-        </Form.Row>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label"><Translate value='user.phone'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handleChange}
+                            value={user.phone}
+                            name="phone"
+                            type="tel"
+                            placeholder="+34 678 544 534"/>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="specie" className="label"><Translate value='user.email'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handleChange}
+                            required
+                            value={user.email}
+                            name="email"
+                            type="email"
+                            placeholder="pepito@gmail.com"/>
+                    </div>
+                </div>
+            </div>
 
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridEmail">
-                <Form.Label>
-                    <Translate value='user.password'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handlePassword}
-                    value={password.newPassword}
-                    name="newPassword"
-                    type="password"
-                   />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridWebsite">
-                <Form.Label>
-                    <Translate value='user.confirmPassword'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handlePassword}
-                    value={password.confirmPassword}
-                    name="confirmPassword"
-                    type="password"
-                   />
-            </Form.Group>
-        </Form.Row>
-        {password.errorDontMatch ? <Alert variant="danger">Passwords don't match</Alert> : ''}
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="specie" className="label"><Translate value='user.website'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handleChange}
+                            value={user.website}
+                            name="website"
+                            type="text"
+                            placeholder="http://www.protectora.es"/>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridPicture">
-                <Form.Label>
-                    <Translate value='user.picture'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handleChange}
-                    name="picture"
-                    type="file"
-                />
-            </Form.Group>
-        </Form.Row>
 
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridAbout">
-                <Form.Label>
-                    <Translate value='user.description'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handleChange}
-                    value={user.description}
-                    name="description"
-                    type="text"
-                />
-            </Form.Group>
-        </Form.Row>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label"><Translate value='user.password'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handlePassword}
+                            value={password.newPassword}
+                            name="newPassword"
+                            type="password"/>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="specie" className="label"><Translate value='user.confirmPassword'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handlePassword}
+                            value={password.confirmPassword}
+                            name="confirmPassword"
+                            type="password"
+                        />
+                        {password.errorDontMatch ? <p>Passwords don't match</p> : ''}
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridAddressLine">
-                <Form.Label>
-                    <Translate value='user.address_line'/>
-                </Form.Label>
-                <Form.Control
-                    onChange={handleChange}
-                    value={user.address_line}
-                    name="address_line"
-                    type="text"
-                />
-            </Form.Group>
-        </Form.Row>
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridCountry">
-                <Form.Label>
-                    <Translate value='user.country'/>
-                </Form.Label>
-                <Form.Control
-                    value={user.country}
-                    name="country"
-                    onChange={handleChange}
-                    type="text"
-                />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridRegion">
-                <Form.Label>
-                    <Translate value='user.region'/>
-                </Form.Label>
-                <Select
-                    value={user.region}
-                    name='region'
-                    handleChange={handleChange}
-                />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridProvince">
-                <Form.Label>
-                    <Translate value='user.province'/>
-                </Form.Label>
-                <ProvinceSelect
-                    province={user.province}
-                    region={user.region}
-                    handleChange={handleChange}
-                />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridCity">
-                <Form.Label>
-                    <Translate value='user.city'/>
-                </Form.Label>
-                <Form.Control
-                    value={user.city}
-                    name="city"
-                    onChange={handleChange}
-                    type="text"
-                />
-            </Form.Group>
-        </Form.Row>
+        <div className="field">
+            <div className="file has-name">
+                <label className="file-label">
+                    <input
+                        className="file-input"
+                        type="file"
+                        name="picture"
+                        onChange={handleChange}
+                    />
+                    <span className="file-cta">
+                          <span className="file-icon">
+                            <i className="fas fa-upload"/>
+                          </span>
+                          <span className="file-label">
+                            Choose a file…
+                          </span>
+                        </span>
+                    <span className="file-name">
+                            'No files selected yet'
+                        {/*{user.picture !== undefined ? animal.picture[0].name : 'No files selected yet.'}*/}
+                        </span>
+                </label>
+            </div>
+        </div>
 
-        <Form.Row>
-            <Form.Group as={Col} controlId="formGridAnimalShelter">
-                <Form.Label>
-                    <Translate value='user.isAnimalShelter'/>
-                </Form.Label>
-                <Form.Check
-                    label={I18n.t('common.yes')}
-                    name="animal_shelter"
-                    type="checkbox"
-                    checked={user.animal_shelter}
-                    onChange={handleChange}
-                >
-                </Form.Check>
-            </Form.Group>
-        </Form.Row>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label className="label"><Translate value='user.address_line'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handleChange}
+                            value={user.address_line}
+                            name="address_line"
+                            type="text"
+                            placeholder="C/Ardilla, 9"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="specie" className="label"><Translate value='user.country'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            className="input"
+                            onChange={handleChange}
+                            value={user.country}
+                            name="country"
+                            type="text"
+                            placeholder="Spain"/>
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="region" className="label"><Translate value='user.region'/></label>
+                    <div className="control is-expanded">
+                        <Select
+                            value={user.region}
+                            name='region'
+                            handleChange={handleChange}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="province" className="label"><Translate value='user.province'/></label>
+                    <div className="control is-expanded">
+                        <ProvinceSelect
+                            province={user.province}
+                            region={user.region}
+                            handleChange={handleChange}
+                        />
+                    </div>
+                </div>
+            </div>
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="city" className="label"><Translate value='user.city'/></label>
+                    <div className="control is-expanded">
+                        <input
+                            required
+                            onChange={handleChange}
+                            value={user.city}
+                            name="city"
+                            className="input"
+                            placeholder="Sevilla"
+                        />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <div className="control is-expanded">
+                        <label className="checkbox">
+                            <input
+                                type="checkbox"
+                                name="animal_shelter"
+                                onChange={handleChange}
+                                checked={user.animal_shelter}
+                            />&nbsp;
+                            <Translate value='user.isAnimalShelter'/>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div className="columns">
+            <div className="column">
+                <div className="field">
+                    <label htmlFor="about" className="label"><Translate value='user.description'/></label>
+                    <div className="control is-expanded">
+                        <textarea
+                            onChange={handleChange}
+                            value={user.description}
+                            name="description"
+                            className="textarea"
+                            placeholder="Tell us about yourself"/>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div className="centered">
             <Button
@@ -208,7 +255,7 @@ const UserForm = ({user, password, handleChange, handleForm, handlePassword}) =>
                 <Translate value={buttonTypes.CONFIRM}/>
             </Button>
         </div>
-    </Form>
+    </form>
 )
 UserForm.propTypes = {
     user: PropTypes.shape({

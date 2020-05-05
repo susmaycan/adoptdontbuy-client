@@ -2,7 +2,11 @@
   "nav-bar": {
     "addAnimal": "Añadir mascota",
     "search": "Buscar",
-    "account": "Cuenta"
+    "account": "Cuenta",
+    "pets": "Mascotas",
+    "favourites": "Favoritos",
+    "settings": "Ajustes",
+    "reviews": "Opiniones"
   },
   "home": {
     "title": "BIENVENIDX A ",
@@ -35,7 +39,7 @@
     "clearFilters": "Limpiar filtros"
   },
   "login": {
-    "title": "INICIA SESIÓN",
+    "title": "¡Hola de nuevo!",
     "email": "Correo electrónico",
     "password": "Contraseña",
     "forgotPass": "¿Has olvidado tu correo/contraseña?",

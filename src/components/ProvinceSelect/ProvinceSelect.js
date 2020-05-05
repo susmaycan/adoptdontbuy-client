@@ -34,22 +34,25 @@ class ProvinceSelect extends React.Component {
 
     render() {
         return (
-            <select
-                name="province"
-                value={this.props.province}
-                onChange={this.props.handleChange}
-                className={'form-control' + (this.props.errors && this.props.touched ? ' is-invalid' : '')}
-                disabled={this.state.provinceList.length === 0}
-            >
-                <option value="-1">{I18n.t('input.selectOne')}</option>
-                {this.state.provinceList.map(prov =>
-                    <option key={prov.value} value={prov.value}>{prov.name}</option>
-                )}
-            </select>
+            <div className="select is-fullwidth">
+                <select
+                    name="province"
+                    value={this.props.province}
+                    onChange={this.props.handleChange}
+                    className={'form-control' + (this.props.errors && this.props.touched ? ' is-invalid' : '')}
+                    disabled={this.state.provinceList.length === 0}
+                >
+                    <option value="-1">{I18n.t('input.selectOne')}</option>
+                    {this.state.provinceList.map(prov =>
+                        <option key={prov.value} value={prov.value}>{prov.name}</option>
+                    )}
+                </select>
+            </div>
         )
 
     }
 }
+
 ProvinceSelect.propTypes = {
     region: PropTypes.string,
     province: PropTypes.string,

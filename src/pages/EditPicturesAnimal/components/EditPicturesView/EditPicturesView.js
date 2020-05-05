@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Container, Message, Loading, Title} from "../../../../components";
+import {Box, Message, Loading, Title} from "../../../../components";
 //import {Translate} from "react-redux-i18n";
 import EditPictures from '../EditPictures'
 
@@ -53,7 +53,7 @@ class EditPicturesView extends Component {
         }
 
         return (
-            <Container>
+            <Box>
                 <Title>
                     <i className="fas fa-plus-circle"/>
                     {' '}
@@ -63,7 +63,7 @@ class EditPicturesView extends Component {
                     animal={this.props.animal}
                     deletePicture={this.deletePicture}
                     uploadPictures={this.uploadPictures}/>
-            </Container>
+            </Box>
         )
     }
 

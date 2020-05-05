@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
-import Message from '../../../../components/Message'
 import {Redirect} from 'react-router'
 import AnimalForm from '../AnimalForm'
 import {Translate} from 'react-redux-i18n'
 import Title from '../../../../components/Title'
-import Container from "../../../../components/Container";
+import Box from "../../../../components/Box";
 
 class AddAnimalView extends Component {
 
@@ -19,33 +18,33 @@ class AddAnimalView extends Component {
 
     submitAnimal(animal) {
         this.props.addAnimal(animal)
-        this.setState({
-            submitted: true
-        })
     }
 
     render() {
-        if (this.props.isLoggedIn === false) {
-            return (
-                <Message><Translate value='messages.noLogin'/></Message>
-            )
+        const {isLoggedIn, loggedUser, uploadPhoto, success, animal, isLoading} = this.props
+        if (!isLoggedIn) {
+            this.props.history.push('/login')
+            return null
         }
-
-        return (
-            <>
-                {this.state.submitted ? <Redirect to={"/user/" + this.props.loggedUser._id}/> : ''}
-                <Container>
+        if (success) {
+            this.props.history.push('/animal/' + animal._id)
+            this.props.reset()
+            return null
+        } else {
+            return (
+                <Box>
                     <Title>
                         <i className="fas fa-plus-circle"/> <Translate value='addAnimal.title'/>
                     </Title>
                     <AnimalForm
-                        loggedUser={this.props.loggedUser}
+                        loggedUser={loggedUser}
                         submitForm={this.submitAnimal}
-                        uploadPhoto={this.props.uploadPhoto}
+                        uploadPhoto={uploadPhoto}
+                        isLoading={isLoading}
                     />
-                </Container>
-            </>
-        )
+                </Box>
+            )
+        }
     }
 }
 

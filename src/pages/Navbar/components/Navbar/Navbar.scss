@@ -1,27 +1,8 @@
 @import "../../../../styles/base";
 
-.container-navigation-bar {
-  -webkit-transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  flex: 1 0 auto;
-}
-
-.navbar-nav > li {
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
 .navigation-bar {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  margin: 2% 10%;
-  align-items: center;
-  align-content: center;
-  z-index: 1;
-}
-
-.nav_bar > a {
-  color: $text-color;
+  padding: 0 50px 0 0;
+  border-bottom: 0.5px solid $border-light-color;
 }
 
 .brand-link {
@@ -34,21 +15,9 @@
   }
 }
 
-.nav-link {
-  vertical-align: middle;
-  padding: 10px;
-}
-
-.selected navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
-  cursor: pointer;
-  font-weight: bold;
-  color: $primary-color !important;
-}
-
 @media (max-width: $mobile) {
   .navigation-bar {
     padding: 10px;
-    margin: 2px 5px;
   }
 }
 

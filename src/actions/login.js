@@ -11,7 +11,7 @@ import {
     LOGOUT_ERROR,
     LOGOUT_SUCCESS,
     SIGNUP_SUCCESS,
-    SIGNUP_ERROR, RECOVER_SUCCESS, RECOVER_ERROR
+    SIGNUP_ERROR, RECOVER_SUCCESS, RECOVER_ERROR, RESET
 } from './actionTypes'
 
 export function loginUser(email, password) {
@@ -48,12 +48,16 @@ export function recoverPassword(email) {
     }
 }
 
-export function signUpUser(values) {
-    const email = values.email
-    const password = values.password
-    const username = values.username
+export function resetState() {
+    return (dispatch) => {
+        dispatch(reset())
+    }
+}
+
+export function signUpUser(email, password, username) {
 
     return (dispatch) => {
+        dispatch(loginUserRequest())
         return firebaseActions.signUp(email, password)
             .then(response => {
                 if (response.user) {
@@ -65,13 +69,13 @@ export function signUpUser(values) {
                         })
                         .catch(error => {
                             console.log('Error when creating the user in db')
-                            dispatch(signUpError())
+                            dispatch(signUpError(error.message))
                         })
                 }
             })
             .catch(error => {
                 console.log('Error when creating the user in Firebase ', error.message)
-                dispatch(signUpError())
+                dispatch(signUpError(error.message))
             })
     }
 }
@@ -92,6 +96,12 @@ export function logout() {
 function loginUserRequest() {
     return {
         type: FETCH_REQUEST_LOGIN
+    }
+}
+
+function reset() {
+    return {
+        type: RESET
     }
 }
 
@@ -129,9 +139,10 @@ function signUpSuccess(payload) {
     }
 }
 
-function signUpError() {
+function signUpError(error) {
     return {
-        type: SIGNUP_ERROR
+        type: SIGNUP_ERROR,
+        error
     }
 }
 
@@ -142,8 +153,9 @@ function recoverSuccess(payload) {
     }
 }
 
-function recoverError() {
+function recoverError(error) {
     return {
-        type: RECOVER_ERROR
+        type: RECOVER_ERROR,
+        error
     }
 }

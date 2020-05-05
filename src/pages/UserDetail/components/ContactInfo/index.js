@@ -1,3 +1,3 @@
-import ContactInfo from './ContactInfo'
+import Contact from './ContactView'
 
-export default ContactInfo
+export default Contact

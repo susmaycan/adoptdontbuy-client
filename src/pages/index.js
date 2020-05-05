@@ -11,6 +11,8 @@ import Login from './Login'
 import NavigationBar from './Navbar'
 import Search from './Search'
 import UserDetail from './UserDetail'
+import SignUp from './SignUp'
+import RecoverPassword from './RecoverPassword'
 
 export default {
     AddAnimal,
@@ -25,5 +27,7 @@ export default {
     Login,
     NavigationBar,
     Search,
-    UserDetail
+    UserDetail,
+    SignUp,
+    RecoverPassword
 }

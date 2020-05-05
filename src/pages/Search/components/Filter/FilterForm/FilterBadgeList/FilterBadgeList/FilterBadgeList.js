@@ -29,6 +29,7 @@ const FilterBadgeList = ({filter, isNotEmpty, deleteFilter}) => (
                             />)
                     }
                 }
+                return null
             })}
         </Row>
     </div>

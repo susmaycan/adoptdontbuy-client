@@ -1,8 +1,4 @@
 import React from 'react'
-import {
-    Col,
-    Form
-} from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import {
     Select,
@@ -11,7 +7,7 @@ import {
     ProvinceSelect,
     Checkboxes
 } from '../../../../../../components'
-import {Translate, I18n} from 'react-redux-i18n'
+import {Translate} from 'react-redux-i18n'
 import './FilterForm.scss'
 import {filterElements} from '../../../../../../constants'
 import FilterBadgeList from '../FilterBadgeList'
@@ -20,163 +16,164 @@ import Collapse from '../Collapse'
 const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}) => (
 
     <div className="filter-container">
-        <Form>
-            <div className="filter-subtitle">
-                <Subtitle>
-                    <i className="fas fa-filter"/>
-                    {' '}
-                    <Translate value='filter.title'/>
-                </Subtitle>
-            </div>
-            <FilterBadgeList
-                filter={filter}
-                deleteFilter={deleteFilter}
-                isNotEmpty={isNotEmpty}
-            />
-
-            <div className="centered">
-                <a href="#" onClick={clearFilter}><Translate value='filter.clearFilters'/></a>
-            </div>
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridSpecie">
-                    <Form.Label><Translate value='animal.specie'/></Form.Label>
-                    <br/>
+        <div className="filter-subtitle">
+            <Subtitle>
+                <i className="fas fa-filter"/>
+                {' '}
+                <Translate value='filter.title'/>
+            </Subtitle>
+        </div>
+        <FilterBadgeList
+            filter={filter}
+            deleteFilter={deleteFilter}
+            isNotEmpty={isNotEmpty}
+        />
+        <div className="centered">
+            <a href="#" onClick={clearFilter}><Translate value='filter.clearFilters'/></a>
+        </div>
+        <form>
+            <div className="field">
+                <label htmlFor={filterElements.SPECIE} className="label"><Translate value='animal.specie'/></label>
+                <div className="control">
                     <ButtonGroup
                         value={filter.specie}
                         name={filterElements.SPECIE}
                         handleChange={updateInput}
                     />
-                </Form.Group>
-            </Form.Row>
+                </div>
+            </div>
 
-            <Form.Row>
-                <Form.Group onChange={updateInput} as={Col} controlId="formGridGenre">
-                    <Form.Label><Translate value='animal.gender'/></Form.Label>
-                    <br/>
+            <div className="field">
+                <label htmlFor={filterElements.GENDER} className="label"><Translate value='animal.gender'/></label>
+                <div className="control">
                     <ButtonGroup
                         value={filter.gender}
                         name={filterElements.GENDER}
                         handleChange={updateInput}
                     />
-                </Form.Group>
-            </Form.Row>
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridSize">
-                    <Form.Label><Translate value='animal.size'/></Form.Label>
+                </div>
+            </div>
+            <div className="field">
+                <label htmlFor={filterElements.SIZE} className="label"><Translate value='animal.size'/></label>
+                <div className="control">
                     <Checkboxes
                         name={filterElements.SIZE}
                         handleChange={updateInput}
                         value={filter.size}
                     />
-                </Form.Group>
-            </Form.Row>
-            <Form.Row>
-                <Form.Group as={Col} controlId="formGridYearBorn">
-                    <Form.Label><Translate value='animal.age'/></Form.Label>
+                </div>
+            </div>
+            <div className="field">
+                <label htmlFor={filterElements.AGE} className="label"><Translate value='animal.age'/></label>
+                <div className="control">
                     <Checkboxes
                         name={filterElements.AGE}
                         handleChange={updateInput}
                         value={filter.age}
                     />
-                </Form.Group>
-            </Form.Row>
+                </div>
+            </div>
             <Collapse
                 name='location'
             >
                 <div>
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridRegion">
-                            <Form.Label><Translate value='animal.region'/></Form.Label>
+                    <div className="field">
+                        <label htmlFor={filterElements.REGION} className="label"><Translate
+                            value='animal.region'/></label>
+                        <div className="control">
                             <Select
                                 value={filter.region}
                                 name={filterElements.REGION}
                                 handleChange={updateInput}
                             />
-                        </Form.Group>
-                    </Form.Row>
-
-                    <Form.Row>
-                        <Form.Group as={Col} controlId="formGridProvince">
-                            <Form.Label><Translate value='animal.province'/></Form.Label>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label htmlFor={filterElements.PROVINCE} className="label"><Translate value='animal.province'/></label>
+                        <div className="control">
                             <ProvinceSelect
                                 handleChange={updateInput}
                                 region={filter.region}
                                 province={filter.province}
                             />
-                        </Form.Group>
-                    </Form.Row>
-
-                    <Form.Row>
-                        <Form.Group onChange={updateInput} as={Col} controlId="formGridCity">
-                            <Form.Label><Translate value='animal.city'/></Form.Label>
-                            <Form.Control value={filter.city} name={filterElements.CITY}>
-                            </Form.Control>
-                        </Form.Group>
-                    </Form.Row>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <label htmlFor={filterElements.CITY} className="label"><Translate value='animal.city'/></label>
+                        <div className="control">
+                            <input onChange={updateInput} value={filter.city} name={filterElements.CITY}
+                                   className="input" type="text"/>
+                        </div>
+                    </div>
                 </div>
             </Collapse>
             <Collapse
                 name='optional'
             >
                 <div>
-                    <Form.Row>
-                        <Form.Group onChange={updateInput} as={Col} controlId="formGridCastrated">
-                            <Form.Check
-                                type="checkbox"
-                                label={I18n.t('animal.castrated')}
-                                name={filterElements.CASTRATED}
-                                checked={filter.castrated}
-                            />
-                        </Form.Group>
-                    </Form.Row>
-
-                    <Form.Row>
-                        <Form.Group onChange={updateInput} as={Col} controlId="formGridVaccinated">
-                            <Form.Check
-                                name={filterElements.VACCINATED}
-                                label={I18n.t('animal.vaccinated')}
-                                type="checkbox"
-                                checked={filter.vaccinated}/>
-                        </Form.Group>
-                    </Form.Row>
-                    <Form.Row>
-                        <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithDogs">
-                            <Form.Check
-                                label={I18n.t('animal.alongWithDogs')}
-                                name={filterElements.ALONG_WITH_DOGS}
-                                type="checkbox"
-                                checked={filter.alongWithDogs}
-                            >
-                            </Form.Check>
-                        </Form.Group>
-                    </Form.Row>
-
-                    <Form.Row>
-                        <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithCats">
-                            <Form.Check
-                                label={I18n.t('animal.alongWithCats')}
-                                name={filterElements.ALONG_WITH_CATS}
-                                type="checkbox"
-                                checked={filter.alongWithCats}
-                            >
-                            </Form.Check>
-                        </Form.Group>
-                    </Form.Row>
-
-                    <Form.Row>
-                        <Form.Group onChange={updateInput} as={Col} controlId="formGridAlongWithKids">
-                            <Form.Check
-                                label={I18n.t('animal.alongWithKids')}
-                                name={filterElements.ALONG_WITH_KIDS}
-                                type="checkbox"
-                                checked={filter.alongWithKids}
-                            >
-                            </Form.Check>
-                        </Form.Group>
-                    </Form.Row>
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
+                                <input
+                                    onChange={updateInput}
+                                    checked={filter.castrated}
+                                    name={filterElements.CASTRATED}
+                                    type="checkbox"/>
+                                <Translate value="animal.castrated"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
+                                <input
+                                    onChange={updateInput}
+                                    checked={filter.vaccinated}
+                                    name={filterElements.VACCINATED}
+                                    type="checkbox"/>
+                                <Translate value="animal.vaccinated"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
+                                <input
+                                    onChange={updateInput}
+                                    checked={filter.alongWithDogs}
+                                    name={filterElements.ALONG_WITH_DOGS}
+                                    type="checkbox"/>
+                                <Translate value="animal.alongWithDogs"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
+                                <input
+                                    onChange={updateInput}
+                                    checked={filter.alongWithCats}
+                                    name={filterElements.ALONG_WITH_CATS}
+                                    type="checkbox"/>
+                                <Translate value="animal.alongWithCats"/>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
+                                <input
+                                    onChange={updateInput}
+                                    checked={filter.alongWithKids}
+                                    name={filterElements.ALONG_WITH_KIDS}
+                                    type="checkbox"/>
+                                <Translate value="animal.alongWithKids"/>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </Collapse>
-        </Form>
+        </form>
     </div>
 )
 

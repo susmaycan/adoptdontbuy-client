@@ -30,7 +30,7 @@ class Contact extends React.Component {
                 href={'mailto:' + this.props.emailDst + '?subject=' + this.state.subject}
             >
                 <i className="far fa-envelope"/>
-                {' '}
+                &nbsp;
                 <Translate value={this.state.text}/>
             </a>
         )

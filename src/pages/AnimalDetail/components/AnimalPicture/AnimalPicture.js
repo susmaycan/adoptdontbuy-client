@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './AnimalPicture.scss'
-import Carousel from "react-bootstrap/Carousel";
+import { Carousel } from 'react-bootstrap'
 
 class AnimalPicture extends React.Component {
     render() {

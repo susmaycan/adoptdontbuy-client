@@ -5,22 +5,21 @@ import {
     Button,
     Title,
     Subtitle,
-    Container
+    Box
 } from '../../../../components'
 import DeleteAnimal from '../../../DeleteAnimal'
 import {Translate} from 'react-redux-i18n'
 import './Animal.scss'
 import AnimalPicture from '../AnimalPicture'
 import Badge from '../Badge'
-import {buttonTypes, tableElements} from "../../../../constants";
-import {Link} from "react-router-dom";
-import {isOwner} from "../../../../utils/Functions";
+import {buttonTypes, tableElements} from '../../../../constants'
+import {isOwner} from '../../../../utils/Functions'
 
-const Animal = ({animal, user, deleteAnimal}) => (
-    <Container>
-        <Title>
-            {animal.name}
-        </Title>
+const Animal = ({animal, user}) => (
+    <Box>
+        <div className="has-text-centered">
+            <h1 className="title">{animal.name}</h1>
+        </div>
         <div className="columns is-centered">
             <div className="column is-narrow is-offset-7">
                 {isOwner(user, animal.owner) ?
@@ -28,15 +27,14 @@ const Animal = ({animal, user, deleteAnimal}) => (
                         <Button
                             url={`/updateAnimal/${animal._id}`}
                         >
-                            <i className="fas fa-edit"/> <Translate value={buttonTypes.EDIT}/>
+                            <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT}/>
                         </Button>
                         <Button
                             url={`/editPictures/${animal._id}`}
                         >
-                            <i className="fas fa-edit"/> <Translate value={buttonTypes.EDIT_PICTURES}/>
+                            <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT_PICTURES}/>
                         </Button>
                         <DeleteAnimal
-                            redirect={deleteAnimal}
                         />
                     </div>
                     :
@@ -106,6 +104,6 @@ const Animal = ({animal, user, deleteAnimal}) => (
                 :
                 ""}
         </div>
-    </Container>
+    </Box>
 )
 export default Animal

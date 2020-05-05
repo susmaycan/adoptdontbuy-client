@@ -1,17 +1,17 @@
 @charset "utf-8";
 @import "../styles/base";
 @import "../../node_modules/bulma/bulma.sass";
+@import '~@creativebulma/bulma-collapsible';
 
 html,
 body {
-  height: 100%;
-  position: relative;
+  z-index: 0;
 }
 
 
 body {
-  background-image: url("https://media.istockphoto.com/vectors/vector-pet-pattern-pet-seamless-background-vector-id944743364");
-  background-repeat: repeat-x;
+  //background-image: url("https://media.istockphoto.com/vectors/vector-pet-pattern-pet-seamless-background-vector-id944743364");
+  //background-repeat: repeat;
   font-family: "Raleway", "Arial", serif !important;
   color: #37474f;
   font-size: $text-font-size;
@@ -25,14 +25,6 @@ body {
   position: relative;
   padding-bottom: 200px;
 }
-
-
-button {
-  font-family: "Raleway", "Arial", serif;
-  color: darkgrey;
-  //padding: 1em;
-}
-
 
 input {
   outline: none;
@@ -65,37 +57,30 @@ option {
   overflow: auto;
 }
 
-.button {
-  background-color: $primary-color;
-  //border-radius: 2px;
-  //padding: 10px;
-  color: $white-color;
-  //display: inline-block;
-  //font-weight: bold;
-  //box-shadow: none;
-  border: none;
-  margin: 10px;
+.small-container {
+  margin: 20px 20%;
 
-  &:hover {
-    background-color: white;
-    color: $primary-color;
-    border: $primary-color 1px solid;
-    //margin: 8px;
+  .small-title-container {
+    background-color: $primary-color;
+    color: $white-color;
+    padding: 30px;
+    font-size: 20px;
+    text-align: center;
   }
 }
 
-.danger {
-  background-color: $danger-color;
-
-  &:hover {
-    background-color: white;
-    color: $danger-color !important;
-    border: 1px solid $danger-color;
-  }
+.divider{
+  border: 1px solid $border-light-color;
+  height:100px;
 }
 
-
+.form-container{
+  border: 1px solid $color-shadow-light;
+  margin:40px 60px 40px 60px;
+  padding:40px 60px 40px 60px;
+}
 .modal-form {
+  margin-top: 20px;
 
   .signup-form {
     text-align: left;
