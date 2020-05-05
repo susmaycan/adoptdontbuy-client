@@ -26,7 +26,7 @@ function DeleteUserView(props) {
                 onAction={handleShow}
                 danger={true}
             >
-                <i className="fas fa-trash-alt"/> <Translate value={buttonTypes.DELETE}/>
+                <i className="fas fa-trash-alt"/>&nbsp;<Translate value={buttonTypes.DELETE}/>
             </Button>
 
             <DeleteUserModal

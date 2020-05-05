@@ -15,11 +15,11 @@ import Badge from '../Badge'
 import {buttonTypes, tableElements} from '../../../../constants'
 import {isOwner} from '../../../../utils/Functions'
 
-const Animal = ({animal, user, deleteAnimal}) => (
+const Animal = ({animal, user}) => (
     <Box>
-        <Title>
-            {animal.name}
-        </Title>
+        <div className="has-text-centered">
+            <h1 className="title">{animal.name}</h1>
+        </div>
         <div className="columns is-centered">
             <div className="column is-narrow is-offset-7">
                 {isOwner(user, animal.owner) ?
@@ -27,15 +27,14 @@ const Animal = ({animal, user, deleteAnimal}) => (
                         <Button
                             url={`/updateAnimal/${animal._id}`}
                         >
-                            <i className="fas fa-edit"/> <Translate value={buttonTypes.EDIT}/>
+                            <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT}/>
                         </Button>
                         <Button
                             url={`/editPictures/${animal._id}`}
                         >
-                            <i className="fas fa-edit"/> <Translate value={buttonTypes.EDIT_PICTURES}/>
+                            <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT_PICTURES}/>
                         </Button>
                         <DeleteAnimal
-                            redirect={deleteAnimal}
                         />
                     </div>
                     :

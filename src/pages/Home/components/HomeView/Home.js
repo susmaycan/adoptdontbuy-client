@@ -25,6 +25,14 @@ class Home extends Component {
         this.props.getAnimals()
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (this.props.animals !== prevProps.animals) {
+            this.setState({
+                animalList: this.props.animals.slice(0,8)
+            })
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         this.setState({
             animalList: nextProps.animals.slice(0, 8)

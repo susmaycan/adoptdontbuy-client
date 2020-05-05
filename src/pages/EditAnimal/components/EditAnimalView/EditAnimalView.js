@@ -9,71 +9,58 @@ import Box from '../../../../components/Box'
 
 class EditAnimalView extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            submitted: false,
-            id_url: ''
-        }
-        this.submitAnimal = this.submitAnimal.bind(this)
-
-    }
-
     componentDidMount() {
         this.props.getAnimal(this.props.match.params.animalId)
     }
 
-    submitAnimal(animal) {
-        this.props.editAnimal(animal)
-        this.setState({
-            submitted: true,
-            id_url: animal._id
-        })
-    }
-
     render() {
 
-        if (!this.props.isLoggedIn) {
-            return (
-                <Message>Sorry, you need to be registered to be this page.</Message>
-            )
+        const {isLoggedIn, isLoading, errorGet, errorGetMsg, animal, loggedUser, success} = this.props
+        if (!isLoggedIn) {
+            this.props.history.push('/login')
+            return null
         }
 
-        if (this.props.isLoading) {
+        if (isLoading) {
             return (
                 <Loading/>
             )
         }
 
-        if (this.props.error) {
+        if (errorGet) {
             return (
-                <Message>Sorry, there was an error and we couldn't retrieve this animal.</Message>
+                <Message>Sorry, {errorGetMsg}</Message>
             )
         }
 
-        if (this.props.isLoggedIn && this.props.animal !== undefined && this.props.loggedUser._id !== this.props.animal.owner._id) {
+        if (isLoggedIn && animal !== undefined && loggedUser._id !== animal.owner._id) {
+            window.setTimeout(this.props.history.push('/'), 5000)
             return (
                 <Message>Sorry, you <strong>cannot</strong> edit this animal.</Message>
             )
         }
 
+        if (success && animal !== undefined) {
+            this.props.history.push('/animal/' + animal._id)
+            this.props.reset()
+            return null
+        }
+
+
         return (
-            <>
-                {this.state.submitted ? <Redirect to={"/animal/" + this.state.id_url}/> : ''}
-                <Box>
-                    <Title>
-                        <i className="fas fa-plus-circle"/>
-                        {' '}
-                        <Translate value='editAnimal.title'/>
-                    </Title>
-                    <AnimalForm
-                        loggedUser={this.props.loggedUser}
-                        submitForm={this.submitAnimal}
-                        uploadPhoto={this.props.uploadPhoto}
-                        animal={this.props.animal}
-                    />
-                </Box>
-            </>
+            <Box>
+                <Title>
+                    <i className="fas fa-plus-circle"/>
+                    &nbsp;
+                    <Translate value='editAnimal.title'/>
+                </Title>
+                <AnimalForm
+                    loggedUser={loggedUser}
+                    submitForm={this.props.editAnimal}
+                    uploadPhoto={this.props.uploadPhoto}
+                    animal={animal}
+                />
+            </Box>
         )
     }
 }

@@ -12,7 +12,6 @@ function DeleteAnimalView(props) {
 
     const deleteAnimal = () => {
         props.deleteAnimal(props.animal._id)
-        props.redirect()
     }
 
     return (
@@ -21,7 +20,7 @@ function DeleteAnimalView(props) {
                 onAction={handleShow}
                 danger={true}
             >
-                <i className="fas fa-trash-alt"/> <Translate value={buttonTypes.DELETE}/>
+                <i className="fas fa-trash-alt"/>&nbsp;<Translate value={buttonTypes.DELETE}/>
             </Button>
 
             <DeleteAnimalModal

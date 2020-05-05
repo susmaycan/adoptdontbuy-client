@@ -18,13 +18,17 @@ class AddAnimalView extends Component {
 
     submitAnimal(animal) {
         this.props.addAnimal(animal)
-        this.props.history.push('/')
     }
 
     render() {
-        const {isLoggedIn, loggedUser, uploadPhoto} = this.props
+        const {isLoggedIn, loggedUser, uploadPhoto, success, animal, isLoading} = this.props
         if (!isLoggedIn) {
             this.props.history.push('/login')
+            return null
+        }
+        if (success) {
+            this.props.history.push('/animal/' + animal._id)
+            this.props.reset()
             return null
         } else {
             return (
@@ -36,6 +40,7 @@ class AddAnimalView extends Component {
                         loggedUser={loggedUser}
                         submitForm={this.submitAnimal}
                         uploadPhoto={uploadPhoto}
+                        isLoading={isLoading}
                     />
                 </Box>
             )

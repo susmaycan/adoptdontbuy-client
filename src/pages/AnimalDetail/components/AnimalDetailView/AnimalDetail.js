@@ -2,55 +2,41 @@ import React, {Component} from 'react'
 import Animal from '../Animal'
 import Loading from '../../../../components/Loading'
 import Message from '../../../../components/Message'
-import {
-    Redirect
-} from 'react-router'
 
 class AnimalDetail extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            deletedAnimal: false
-        }
-        this.deleteAnimal = this.deleteAnimal.bind(this)
-    }
 
     componentDidMount() {
         this.props.getAnimal(this.props.match.params.animalId)
     }
 
-    deleteAnimal() {
-        this.setState({
-            deletedAnimal: true
-        })
-    }
 
     render() {
-        if (this.props.isLoading) {
+        const {isLoading, error, animal, errorMsg, user, successDelete} = this.props
+        if (isLoading) {
             return (
                 <Loading/>
             )
-        } else if (this.props.error) {
+        } else if (error) {
             return (
-                <Message>Sorry, there was a problem and we <strong>couldn't retrieve</strong> the animal. Please, try
-                    again later.</Message>
+                <Message>Sorry. {errorMsg}</Message>
             )
         } else {
-            if (this.props.animal === {}) {
+            if (animal === {}) {
                 return (
                     <Message>Sorry, we <strong>couldn't find</strong> the animal in the database...</Message>
                 )
+            }
+            if (successDelete) {
+                this.props.history.push('/')
+                this.props.reset()
+
+                return null
             } else {
                 return (
-                    <>
-                        {this.state.deletedAnimal ? <Redirect to={'/'}/> : null}
-                        <Animal
-                            user={this.props.user}
-                            animal={this.props.animal}
-                            deleteAnimal={this.deleteAnimal}
-                        />
-                    </>
+                    <Animal
+                        user={user}
+                        animal={animal}
+                    />
                 )
             }
         }

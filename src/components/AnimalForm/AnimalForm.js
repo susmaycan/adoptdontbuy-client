@@ -5,13 +5,13 @@ import {
     Select
 } from '../../components'
 import PropTypes from 'prop-types'
-import {Translate } from 'react-redux-i18n'
+import {Translate} from 'react-redux-i18n'
 import {buttonTypes} from "../../constants";
 
 // const MIN_YEAR = 2000
 // const MAX_YEAR = 3000 //TODO change this
 
-const AnimalForm = ({animal, updateInput, submit, action}) => (
+const AnimalForm = ({animal, updateInput, submit, action, isLoading}) => (
     <form className="form-animal" onSubmit={submit}>
         <div className="columns">
             <div className="column">
@@ -273,6 +273,8 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
                             onChange={updateInput}
                             className="input"
                             type="number"
+                            min={0}
+                            max={5}
                             value={animal.socialLevel}
                             name="socialLevel"
                             placeholder="From to 0 to 5"/>
@@ -287,6 +289,8 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
                             onChange={updateInput}
                             className="input"
                             type="number"
+                            min={0}
+                            max={5}
                             value={animal.energyLevel}
                             name="energyLevel"
                             placeholder="From to 0 to 5"/>
@@ -301,6 +305,8 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
                             onChange={updateInput}
                             className="input"
                             type="number"
+                            min={0}
+                            max={5}
                             value={animal.traumaLevel}
                             name="traumaLevel"
                             placeholder="From to 0 to 5"/>
@@ -309,11 +315,15 @@ const AnimalForm = ({animal, updateInput, submit, action}) => (
             </div>
         </div>
         <div className="has-text-centered">
-            <Button
-                submit={true}
-            >
-                <Translate value={buttonTypes.FINISH}/>
-            </Button>
+            {isLoading ?
+                <button className="button is-loading">Loading...</button>
+                :
+                <Button
+                    submit={true}
+                >
+                    <Translate value={buttonTypes.FINISH}/>
+                </Button>
+            }
         </div>
     </form>
 )

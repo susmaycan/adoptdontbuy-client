@@ -9,9 +9,14 @@ import {
     ERROR_ANIMAL,
     REQUEST_ANIMAL,
     FETCH_ANIMAL_SUCCESS,
+    FETCH_ANIMAL_ERROR,
     ADD_ANIMAL_SUCCESS,
+    ADD_ANIMAL_ERROR,
     DELETE_ANIMAL_SUCCESS,
-    EDIT_ANIMAL_SUCCESS
+    DELETE_ANIMAL_ERROR,
+    EDIT_ANIMAL_SUCCESS,
+    EDIT_ANIMAL_ERROR,
+    RESET_ANIMAL
 } from './actionTypes'
 import firebaseActions from "../Firebase/Firebase";
 import uuid from 'uuid/v4'
@@ -24,7 +29,7 @@ export function fetchAnimal(animalId) {
                 dispatch(fetchAnimalSuccess(animal))
             })
             .catch(error => {
-                dispatch(animalError(error.message))
+                dispatch(fetchAnimalError(error.message))
             })
     }
 }
@@ -50,6 +55,7 @@ export function addAnimal(animal) {
                             picture: picturesURL
                         }
                     })
+                    .catch(error => addAnimalError(error.message))
             promises.push(uploadPhoto)
         })
         return Promise.all(promises)
@@ -60,12 +66,12 @@ export function addAnimal(animal) {
                     })
                     .catch(error => {
                         console.log("There was an error adding an animal on DB. Error: ", error.message)
-                        dispatch(animalError(error.message))
+                        dispatch(addAnimalError(error.message))
                     })
             })
             .catch(error => {
                 console.log("There was an error uploading animal photos. Error: ", error.message)
-                dispatch(animalError(error.message))
+                dispatch(addAnimalError(error.message))
             })
     }
 }
@@ -80,7 +86,7 @@ export function editAnimal(animal) {
             })
             .catch(error => {
                 console.log("There was an error editing the animal on DB. Error: ", error.message)
-                dispatch(animalError(error.message))
+                dispatch(editAnimalError(error.message))
             })
     }
 }
@@ -144,14 +150,27 @@ export function deleteAnimal(animalId) {
     return (dispatch) => {
         dispatch(animalRequest())
         return removeAnimal(animalId)
-            .then(response => {
+            .then(() => {
                 dispatch(deleteAnimalSuccess())
             })
             .catch(error => {
-                dispatch(animalError(error.message))
+                dispatch(deleteAnimal(error.message))
             })
     }
 }
+
+export function resetState() {
+    return (dispatch) => {
+        dispatch(reset())
+    }
+}
+
+function reset() {
+    return {
+        type: RESET_ANIMAL
+    }
+}
+
 
 function addAnimalSuccess(payload) {
     return {
@@ -188,6 +207,34 @@ function animalRequest() {
 function animalError(error) {
     return {
         type: ERROR_ANIMAL,
+        error
+    }
+}
+
+function addAnimalError(error) {
+    return {
+        type: ADD_ANIMAL_ERROR,
+        error
+    }
+}
+
+function editAnimalError(error) {
+    return {
+        type: EDIT_ANIMAL_ERROR,
+        error
+    }
+}
+
+function deleteAnimalError(error) {
+    return {
+        type: DELETE_ANIMAL_ERROR,
+        error
+    }
+}
+
+function fetchAnimalError(error) {
+    return {
+        type: FETCH_ANIMAL_ERROR,
         error
     }
 }

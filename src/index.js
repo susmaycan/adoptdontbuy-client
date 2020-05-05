@@ -1,4 +1,5 @@
 import React from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.scss'
 import {Provider} from 'react-redux'
 import configureStore from './config/configureStore'
@@ -10,7 +11,6 @@ import firebaseConfig from './Firebase/FirebaseConfig'
 import Footer from "./components/Footer";
 import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 import Pages from './pages'
-import Box from "./components/Box";
 
 require('dotenv').config()
 
@@ -31,6 +31,7 @@ render(
                     <Route exact path="/search" component={Pages.Search}/>
                     <Route exact path="/animal/:animalId" component={Pages.AnimalDetail}/>
                     <Route exact path="/editPictures/:animalId" component={Pages.EditPicturesAnimal}/>
+                    <Route exact path="/updateAnimal/:animalId" component={Pages.EditAnimal}/>
                     <Route exact path="/addAnimal" component={Pages.AddAnimal}/>
                     <Route exact path="/updateUser/:userId" component={Pages.EditUser}/>
                     <Route exact path="/user/:userId" component={Pages.UserDetail.UserInformation}/>
