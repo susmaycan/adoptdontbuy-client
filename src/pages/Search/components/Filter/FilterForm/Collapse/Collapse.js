@@ -2,31 +2,34 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Translate} from 'react-redux-i18n'
 import './Collapse.scss'
-import bulmaCollapsible from '@creativebulma/bulma-collapsible'
+import {Collapse} from 'react-bootstrap'
 
-class Collapse extends React.Component {
+class CustomCollapse extends React.Component {
 
-    componentDidMount() {
-        this.collapsibles = bulmaCollapsible.attach(".is-collapsible", {
-            container: this.refs.collapsibles
-        })
+    constructor(props) {
+        super(props)
+        this.state = {open: false}
+        this.click = this.click.bind(this)
+    }
+
+    click() {
+        this.setState({open: !this.state.open})
     }
 
     render() {
         return (
-            <div ref="collapsibles" id={'accordion_first_'+this.props.name}>
-                <div className='open-collapse-link'>
-                    <a href={'#collapsible-accordion-'+this.props.name} data-action="collapse">
-                        <Translate value={'search.' + this.props.name}/> <i className="fas fa-sort-down"/>
-                    </a>
-                </div>
-                <div
-                    id={'collapsible-accordion-'+this.props.name}
-                    className="is-collapsible is-active"
-                    data-parent={'accordion_first_'+this.props.name}
+            <div className="collapse-container">
+                <span
+                    onClick={this.click}
+                    aria-controls="Collapse"
+                    aria-expanded={this.state.open}
+                    className="open-collapse-link"
                 >
-                    {this.props.children}
-                </div>
+                    <Translate value={'search.' + this.props.name}/> <i className="fas fa-sort-down"/>
+                </span>
+                <Collapse in={this.state.open}>
+                        {this.props.children}
+                </Collapse>
             </div>
         )
     }
@@ -36,4 +39,4 @@ Collapse.propTypes = {
     name: PropTypes.string.isRequired,
     children: PropTypes.any.isRequired,
 }
-export default Collapse
+export default CustomCollapse
