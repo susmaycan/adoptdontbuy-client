@@ -85,6 +85,7 @@ class Form extends Component {
                 handlePassword={this.handlePassword}
                 handleForm={this.onSubmit}
                 handleChange={this.onChange}
+                isLoading={this.props.isLoading}
             />
         )
     }

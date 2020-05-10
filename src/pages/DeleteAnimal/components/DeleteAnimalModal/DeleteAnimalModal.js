@@ -18,23 +18,23 @@ const DeleteAnimalModal = ({show, handleClose, handleShow, error, errorMsg, hand
         <div>
             <Translate value='deleteAnimal.body'/>
         </div>
-        <Row>
-            <Col>
+        <div className="columns">
+            <div className="column">
                 <Button
                     onAction={handleSubmit}
                     danger={true}
                 >
                     <Translate value={buttonTypes.CONFIRM}/>
                 </Button>
-            </Col>
-            <Col>
+            </div>
+            <div className="column">
                 <Button
                     onAction={handleClose}
                 >
                     <Translate value={buttonTypes.CANCEL}/>
                 </Button>
-            </Col>
-        </Row>
+            </div>
+        </div>
 
     </Modal>
 )

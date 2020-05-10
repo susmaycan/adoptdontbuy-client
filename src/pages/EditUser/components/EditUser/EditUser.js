@@ -93,6 +93,7 @@ class EditUser extends Component {
                     uploadPhoto={this.props.uploadPhoto}
                     error={error}
                     errorMsg={errorMsg}
+                    isLoading={isLoading}
                 />
             </Box>
         )

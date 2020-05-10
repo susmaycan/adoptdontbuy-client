@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {
     Gender,
     Location,
@@ -7,10 +7,12 @@ import {
 } from '../../components'
 import PropTypes from 'prop-types'
 import './AnimalCard.scss'
+import Favourite from '../../pages/Favourite'
 
-const AnimalCard = ({ animal }) => (
-    <Link to={{ pathname: `/animal/${animal._id}` }}>
-        <div key={animal._id} className="animal-card-container">
+const AnimalCard = ({animal}) => (
+    <div key={animal._id} className="animal-card-container">
+        <Link to={{pathname: `/animal/${animal._id}`}}>
+
             <PictureCard
                 name={animal.name}
                 picture={animal.picture[0]}
@@ -25,8 +27,17 @@ const AnimalCard = ({ animal }) => (
                     region={animal.region}
                 />
             </div>
+        </Link>
+        <div className="level">
+            <div className="level-left">
+            </div>
+            <div className="level-right">
+                <div className="level-item">
+                    <Favourite animal={animal}/>
+                </div>
+            </div>
         </div>
-    </Link>
+    </div>
 )
 AnimalCard.propTypes = {
     animal: PropTypes.shape({
@@ -56,6 +67,7 @@ AnimalCard.propTypes = {
         updatedAt: PropTypes.string,
         __v: PropTypes.any,
         owner: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    addFavourite: PropTypes.func
 }
 export default AnimalCard
