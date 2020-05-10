@@ -1,5 +1,4 @@
 import React from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/index.scss'
 import {Provider} from 'react-redux'
 import configureStore from './config/configureStore'

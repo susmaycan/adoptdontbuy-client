@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import './AnimalPicture.scss'
-import { Carousel } from 'react-bootstrap'
+import "react-responsive-carousel/lib/styles/carousel.min.css"
+import {Carousel} from 'react-responsive-carousel'
 
 class AnimalPicture extends React.Component {
     render() {
@@ -17,12 +18,10 @@ class AnimalPicture extends React.Component {
             } else {
                 return (
                     <div className="animal-detail-picture-container">
-                        <Carousel>
+                        <Carousel showThumbs={false} autoplay>
                             {pictures.map(pic => (
-                                <Carousel.Item>
-                                    <img className="animal-detail-picture" alt={"Picture of " + name}
-                                         src={pic}/>
-                                </Carousel.Item>
+                                <img key={pic} className="animal-detail-picture" alt={"Picture of " + name}
+                                     src={pic}/>
                             ))}
                         </Carousel>
                     </div>
