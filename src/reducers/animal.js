@@ -36,30 +36,6 @@ const INITIAL_STATE = {
     animal: {}
 }
 
-const RESET_STATE = {
-    isLoading: false,
-    add: {
-        error: false,
-        errorMsg: false,
-        success: false
-    },
-    update: {
-        error: false,
-        errorMsg: false,
-        success: false
-    },
-    delete: {
-        error: false,
-        errorMsg: false,
-        success: false
-    },
-    fetch: {
-        error: false,
-        errorMsg: false,
-        success: false
-    }
-}
-
 const reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case REQUEST_ANIMAL:

@@ -1,7 +1,6 @@
 import React, {useState} from 'react'
 import DeleteUserModal from '../DeleteUserModal'
 import Button from '../../../../components/Button'
-import {Redirect} from "react-router";
 import {Translate} from "react-redux-i18n";
 import {buttonTypes} from "../../../../constants";
 
@@ -11,17 +10,12 @@ function DeleteUserView(props) {
     const handleClose = () => setShow(false)
     const handleShow = () => setShow(true)
 
-    const [redirect, setRedirect] = useState(false)
-
     const deleteUser = () => {
         props.deleteUser(props.user._id)
-        props.logout()
-        setRedirect(true)
     }
 
     return (
-        <>
-            {redirect ? <Redirect to={'/'} /> : null}
+        <React.Fragment>
             <Button
                 onAction={handleShow}
                 danger={true}
@@ -38,7 +32,7 @@ function DeleteUserView(props) {
                 errorMsg={props.errorMsg}
                 isLoading={props.isLoading}
             />
-        </>
+        </React.Fragment>
     );
 }
 

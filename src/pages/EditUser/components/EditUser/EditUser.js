@@ -50,41 +50,37 @@ class EditUser extends Component {
     }
 
     render() {
-
-        if (this.props.isLoggedIn === false) {
-            return (
-                <Message>Sorry, you need to be registered to be this page.</Message>
-            )
+        const {success, errorFetch, errorFetchMsg, isLoading, error, errorMsg, user, isLoggedIn, loggedUser} = this.props
+        if (!isLoggedIn) {
+            this.props.history.push("/login")
+            return null
         }
 
-        if (this.props.isLoading) {
+        if (isLoading) {
             return (
                 <Loading/>
             )
         }
 
-        if (this.props.error) {
+        if (errorFetch) {
             return (
-                <Message>Sorry, there was a problem and we <strong>couldn't retrieve</strong> the user. Please, try
+                <Message>Sorry, there was a problem. {errorFetchMsg} Please, try
                     again later.</Message>
             )
         }
 
-        if (this.props.user === EMPTY_USER) {
-            return (
-                <Message>Sorry, we <strong>couldn't find</strong> the user in the database.</Message>
-            )
+        if (this.props.user._id !== this.props.loggedUser._id) {
+            this.props.history.push("/")
+            return null
         }
 
-        if (this.props.user._id !== this.props.loggedUser._id) {
-            return (
-                <Message>You ({this.props.loggedUser._id})<strong>can't</strong> edit this user ({this.props.user._id}).</Message>
-            )
+        if (success) {
+            this.props.history.push("/user/" + this.props.user._id)
+            this.props.resetState()
         }
 
         return (
             <Box>
-                {this.state.submitted ? <Redirect to={"/user/" + this.props.user._id}/> : ''}
                 <Title>
                     <i className="fas fa-plus-circle"/>
                     {' '}
@@ -95,6 +91,8 @@ class EditUser extends Component {
                     loggedUser={this.props.loggedUser}
                     submitForm={this.submitForm}
                     uploadPhoto={this.props.uploadPhoto}
+                    error={error}
+                    errorMsg={errorMsg}
                 />
             </Box>
         )

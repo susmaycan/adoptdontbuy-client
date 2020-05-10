@@ -9,31 +9,33 @@ class UserInformationView extends Component {
     }
 
     render() {
-        const {isLoading, error, user, loggedUser, isLoggedIn} = this.props
+        const {isLoading, error, errorMsg, user, successDelete, loggedUser, isLoggedIn} = this.props
+
         if (isLoading) {
             return (
                 <Loading/>
             )
-        } else if (error) {
-            return (
-                <Message>Sorry, there was a problem and we <strong>couldn't retrieve</strong> the user. Please, try
-                    again later.</Message>
-            )
-        } else {
-            if (user === {}) {
-                return (
-                    <Message>Sorry, we <strong>couldn't find</strong> the user in the database..</Message>
-                )
-            } else {
-                return (
-                    <User
-                        user={user}
-                        loggedUser={loggedUser}
-                        isLoggedIn={isLoggedIn}
-                    />
-                )
-            }
         }
+        if (error) {
+            return (
+                <Message>Sorry. {errorMsg}</Message>
+            )
+        }
+
+        if(successDelete){
+            this.props.history.push('/')
+            this.props.logout()
+            this.props.resetState()
+            return null
+        }
+
+        return (
+            <User
+                user={user}
+                loggedUser={loggedUser}
+                isLoggedIn={isLoggedIn}
+            />
+        )
     }
 }
 
