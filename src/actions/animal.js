@@ -16,7 +16,9 @@ import {
     DELETE_ANIMAL_ERROR,
     EDIT_ANIMAL_SUCCESS,
     EDIT_ANIMAL_ERROR,
-    RESET_ANIMAL
+    RESET_ANIMAL,
+    EDIT_PICTURES_SUCCESS,
+    EDIT_PICTURES_ERROR
 } from './actionTypes'
 import firebaseActions from "../Firebase/Firebase";
 import uuid from 'uuid/v4'
@@ -115,7 +117,7 @@ export function addPictures(animal, files) {
                     })
                     .catch(error => {
                         console.log("There was an error editing the animal on DB. Error: ", error.message)
-                        dispatch(animalError(error.message))
+                        dispatch(editAnimalError(error.message))
                     })
             })
     }
@@ -136,12 +138,12 @@ export function deletePicture(animal, url) {
                     })
                     .catch(error => {
                         console.log("There was an error uploading the animal on DB. Error: ", error.message)
-                        dispatch(animalError(error.message))
+                        dispatch(editAnimalError(error.message))
                     })
             })
             .catch(error => {
                 console.log("There was an error deleting the picture from Firebase. Error: ", error.message)
-                dispatch(animalError(error.message))
+                dispatch(editAnimalError(error.message))
             })
     }
 }
@@ -154,7 +156,7 @@ export function deleteAnimal(animalId) {
                 dispatch(deleteAnimalSuccess())
             })
             .catch(error => {
-                dispatch(deleteAnimal(error.message))
+                dispatch(deleteAnimalError(error.message))
             })
     }
 }

@@ -2,8 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Translate} from 'react-redux-i18n'
 import './Collapse.scss'
-import {Collapse} from 'react-bootstrap'
-
+import {Collapse} from 'react-collapse';
 class CustomCollapse extends React.Component {
 
     constructor(props) {
@@ -20,22 +19,21 @@ class CustomCollapse extends React.Component {
         return (
             <div className="collapse-container">
                 <span
-                    onClick={this.click}
-                    aria-controls="Collapse"
-                    aria-expanded={this.state.open}
                     className="open-collapse-link"
+                    onClick={this.click}
                 >
-                    <Translate value={'search.' + this.props.name}/> <i className="fas fa-sort-down"/>
+                    <Translate value={'search.' + this.props.name}/> <i
+                    className="fas fa-sort-down"/>
                 </span>
-                <Collapse in={this.state.open}>
-                        {this.props.children}
+                <Collapse isOpened={this.state.open}>
+                    {this.props.children}
                 </Collapse>
             </div>
         )
     }
 }
 
-Collapse.propTypes = {
+CustomCollapse.propTypes = {
     name: PropTypes.string.isRequired,
     children: PropTypes.any.isRequired,
 }

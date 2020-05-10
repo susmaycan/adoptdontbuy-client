@@ -167,5 +167,9 @@ option {
   }
 }
 
-
-
+@media (max-width: $mobile) {
+  .form-container{
+    margin:10px;
+    padding:20px;
+  }
+}

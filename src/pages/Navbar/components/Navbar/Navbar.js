@@ -9,7 +9,18 @@ class NavigationBar extends Component {
 
     constructor(props) {
         super(props)
+
+        this.state = {
+            isActive:false
+        }
         this.logout = this.logout.bind(this);
+        this.setIsActive = this.setIsActive.bind(this);
+    }
+
+    setIsActive(){
+        this.setState({
+            isActive: !this.state.isActive
+        })
     }
 
     logout() {
@@ -20,7 +31,7 @@ class NavigationBar extends Component {
     isLogged() {
         if (this.props.isLoggedIn) {
             return (
-                <>
+                <React.Fragment>
                     <Link className="navbar-item" to="/addAnimal">
                         <i className="fas fa-plus-circle"/>
                         &nbsp;
@@ -32,7 +43,7 @@ class NavigationBar extends Component {
                             <Translate value="nav-bar.account"/>
                         </Link>
 
-                        <div className="navbar-dropdown">
+                        <div className="navbar-dropdown is-right">
                             <Link className="navbar-item"
                                   to={{pathname: `/user/${this.props.user._id}/pets`}}>
                                 <Translate value="nav-bar.pets"/>
@@ -55,7 +66,7 @@ class NavigationBar extends Component {
                             </a>
                         </div>
                     </div>
-                </>
+                </React.Fragment>
             )
         } else {
             return (
@@ -72,6 +83,7 @@ class NavigationBar extends Component {
     }
 
     render() {
+        const {isActive} = this.state
         return (
             <nav className="navbar navigation-bar" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
@@ -80,17 +92,21 @@ class NavigationBar extends Component {
                         &nbsp;
                         adoptdontbuy
                     </Link>
-
-
-                    <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                       data-target="navbarBasicExample">
+                    <a
+                        onClick={this.setIsActive}
+                        role="button"
+                        className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
+                        aria-label="menu" aria-expanded="false"
+                       data-target="navigationBar">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                     </a>
                 </div>
 
-                <div className="navbar-menu">
+                <div
+                    className={`navbar-menu ${isActive ? "is-active" : ""}`}
+                     id="navigationBar">
                     <div className="navbar-end">
                         <Link className="navbar-item" to="/search">
                             <i className="fas fa-search"/>
