@@ -41,16 +41,13 @@ class NavigationBar extends Component {
 
                     <div className="navbar-item has-dropdown is-hoverable">
                         <Link className="navbar-link" to={{pathname: `/user/${this.props.user._id}`}}>
-                            {user.picture === "unknown" || user.picture === undefined?
-                                <figure className="image is-24x24">
-                                    <img alt="Account's avatar" className="is-rounded" src={'https://api.adorable.io/avatars/24/' + user.username}/>
-                                </figure>
-
-                                : <figure className="image is-24x24">
-                                    <img alt="Account's avatar" className="is-rounded" src={user.picture}/>
-                                </figure>}
-
-                            &nbsp;
+                            {user.picture === "unknown" || user.picture === undefined ?
+                                <img alt="Account's avatar" className="little-image"
+                                     src={'https://api.adorable.io/avatars/24/' + user.username}/>
+                                :
+                                <img alt="Account's avatar" className="little-image" src={user.picture}/>
+                            }
+                            &nbsp;&nbsp;
                             <Translate value="nav-bar.account"/>
                         </Link>
 

@@ -15,6 +15,13 @@
   }
 }
 
+.little-image {
+  height: 2em;
+  width: 2em;
+  border-radius: 2em;
+  object-fit: cover;
+}
+
 @media (max-width: $mobile) {
   .navigation-bar {
     padding: 10px;
