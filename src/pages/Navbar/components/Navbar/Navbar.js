@@ -11,13 +11,13 @@ class NavigationBar extends Component {
         super(props)
 
         this.state = {
-            isActive:false
+            isActive: false
         }
         this.logout = this.logout.bind(this);
         this.setIsActive = this.setIsActive.bind(this);
     }
 
-    setIsActive(){
+    setIsActive() {
         this.setState({
             isActive: !this.state.isActive
         })
@@ -29,7 +29,8 @@ class NavigationBar extends Component {
 
 
     isLogged() {
-        if (this.props.isLoggedIn) {
+        const {isLoggedIn, user} = this.props
+        if (isLoggedIn) {
             return (
                 <React.Fragment>
                     <Link className="navbar-item" to="/addAnimal">
@@ -40,6 +41,13 @@ class NavigationBar extends Component {
 
                     <div className="navbar-item has-dropdown is-hoverable">
                         <Link className="navbar-link" to={{pathname: `/user/${this.props.user._id}`}}>
+                            {user.picture === "unknown" || user.picture === undefined ?
+                                <img alt="Account's avatar" className="little-image"
+                                     src={'https://api.adorable.io/avatars/24/' + user.username}/>
+                                :
+                                <img alt="Account's avatar" className="little-image" src={user.picture}/>
+                            }
+                            &nbsp;&nbsp;
                             <Translate value="nav-bar.account"/>
                         </Link>
 
@@ -97,7 +105,7 @@ class NavigationBar extends Component {
                         role="button"
                         className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
                         aria-label="menu" aria-expanded="false"
-                       data-target="navigationBar">
+                        data-target="navigationBar">
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
                         <span aria-hidden="true"></span>
@@ -106,7 +114,7 @@ class NavigationBar extends Component {
 
                 <div
                     className={`navbar-menu ${isActive ? "is-active" : ""}`}
-                     id="navigationBar">
+                    id="navigationBar">
                     <div className="navbar-end">
                         <Link className="navbar-item" to="/search">
                             <i className="fas fa-search"/>

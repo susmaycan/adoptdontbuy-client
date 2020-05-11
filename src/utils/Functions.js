@@ -9,7 +9,7 @@ export function sortByUpdateDate(list) {
 }
 
 export function isOwner(user, owner) {
-    return user !== null && owner !== undefined && owner !== null && user._id === owner._id
+    return user !== undefined && user !== null && owner !== undefined && owner !== null && (user._id === owner._id || user._id === owner)
 }
 
 export function isAuthenticated(user, loggedUser) {

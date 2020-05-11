@@ -88,13 +88,6 @@ class LoginForm extends React.Component {
                         <Translate value={buttonTypes.CONFIRM}/>
                     </Button>
                 }
-                {/*<div className="form-div-text">*/}
-                {/*    <Link to={'/signup'}>*/}
-                {/*    <span className="not-link">*/}
-                {/*        <Translate value='login.sign-up'/>*/}
-                {/*    </span>*/}
-                {/*    </Link>*/}
-                {/*</div>*/}
             </form>
         )
     }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {
     Gender,
     Location,
@@ -7,10 +7,12 @@ import {
 } from '../../components'
 import PropTypes from 'prop-types'
 import './AnimalCard.scss'
+import Favourite from '../../pages/Favourite'
+import {isOwner} from "../../utils/Functions";
 
-const AnimalCard = ({ animal }) => (
-    <Link to={{ pathname: `/animal/${animal._id}` }}>
-        <div key={animal._id} className="animal-card-container">
+const AnimalCard = ({animal, user, isLoggedIn}) => (
+    <div key={animal._id} className="animal-card-container">
+        <Link to={{pathname: `/animal/${animal._id}`}}>
             <PictureCard
                 name={animal.name}
                 picture={animal.picture[0]}
@@ -25,8 +27,43 @@ const AnimalCard = ({ animal }) => (
                     region={animal.region}
                 />
             </div>
+        </Link>
+
+        <div className="level">
+            <div className="level-left">
+            </div>
+            <div className="level-right">
+                {isLoggedIn &&
+                <>
+                    {isOwner(user, animal.owner) ?
+                        <>
+                            <div className="level-item">
+                                <Link className="button is-white"
+                                      to={`/updateAnimal/${animal._id}`}>
+                        <span className="icon">
+                            <i className="fas fa-edit"/>
+                        </span>
+                                </Link>
+                            </div>
+                            <div className="level-item">
+                                <button className="button is-white">
+                        <span className="icon">
+                           <i className="fas fa-trash-alt"/>
+                        </span>
+                                </button>
+                            </div>
+                        </>
+                        :
+                        <div className="level-item">
+                            <Favourite animal={animal}/>
+                        </div>
+                    }
+                </>
+                }
+            </div>
         </div>
-    </Link>
+
+    </div>
 )
 AnimalCard.propTypes = {
     animal: PropTypes.shape({
@@ -56,6 +93,7 @@ AnimalCard.propTypes = {
         updatedAt: PropTypes.string,
         __v: PropTypes.any,
         owner: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    addFavourite: PropTypes.func
 }
 export default AnimalCard

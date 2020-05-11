@@ -6,38 +6,34 @@ class FavouriteView extends Component {
 
     componentDidMount() {
         this.props.getUser(this.props.match.params.userId)
-        this.props.getAnimals(this.props.match.params.userId)
     }
 
     render() {
-        const {isLoading, error, user, loggedUser, isLoggedIn, animalList, isLoadingList, errorList} = this.props
+        const {isLoading, error, user, loggedUser, isLoggedIn, isLoadingList, errorList} = this.props
+
         if (isLoading || isLoadingList) {
             return (
                 <Loading/>
             )
-        } else if (error || errorList) {
+        }
+
+        if (error || errorList) {
             return (
                 <Message>Sorry, there was a problem and we <strong>couldn't retrieve</strong> the user. Please, try
                     again later.</Message>
             )
-        } else {
-            if (user === {}) {
-                return (
-                    <Message>Sorry, we <strong>couldn't find</strong> the user in the database..</Message>
-                )
-            } else {
-                return (
-                    <Favourites
-                        user={user}
-                        loggedUser={loggedUser}
-                        isLoggedIn={isLoggedIn}
-                        animals={animalList}
-                        isLoadingList={isLoadingList}
-                        errorList={errorList}
-                    />
-                )
-            }
         }
+
+        return (
+            <Favourites
+                user={user}
+                loggedUser={loggedUser}
+                isLoggedIn={isLoggedIn}
+                animals={user.favourites}
+                isLoadingList={isLoadingList}
+                errorList={errorList}
+            />
+        )
     }
 }
 

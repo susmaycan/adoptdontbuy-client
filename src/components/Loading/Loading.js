@@ -1,12 +1,16 @@
 import React from 'react'
-import {
-    Spinner
-} from 'react-bootstrap'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import './Loading.css'
+import Loader from 'react-loader-spinner'
 
 const Loading = () => (
     <div className="container-spinner">
-        <Spinner variant="warning" animation="grow"/>
+        <Loader
+            type="Oval"
+            color="#ffc107"
+            height={100}
+            width={100}
+        />
     </div>
 )
 

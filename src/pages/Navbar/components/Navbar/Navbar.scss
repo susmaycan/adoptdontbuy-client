@@ -1,7 +1,7 @@
 @import "../../../../styles/base";
 
 .navigation-bar {
-  padding: 0 50px 0 0;
+  padding: 0 30px 0 0;
   border-bottom: 0.5px solid $border-light-color;
 }
 
@@ -13,6 +13,13 @@
   &:hover {
     font-weight: bold;
   }
+}
+
+.little-image {
+  height: 2em;
+  width: 2em;
+  border-radius: 2em;
+  object-fit: cover;
 }
 
 @media (max-width: $mobile) {

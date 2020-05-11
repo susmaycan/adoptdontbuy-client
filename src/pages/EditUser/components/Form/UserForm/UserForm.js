@@ -2,11 +2,11 @@ import React from 'react'
 import ProvinceSelect from '../../../../../components/ProvinceSelect'
 import PropTypes from 'prop-types'
 import Select from "../../../../../components/Select";
-import {Translate, I18n} from 'react-redux-i18n'
+import {Translate} from 'react-redux-i18n'
 import Button from "../../../../../components/Button";
 import {buttonTypes} from "../../../../../constants";
 
-const UserForm = ({user, password, handleChange, handleForm, handlePassword}) => (
+const UserForm = ({user, password, handleChange, handleForm, handlePassword, isLoading}) => (
     <form className="formAnimal" onSubmit={handleForm}>
         <div className="columns">
             <div className="column">
@@ -249,11 +249,14 @@ const UserForm = ({user, password, handleChange, handleForm, handlePassword}) =>
         </div>
 
         <div className="centered">
-            <Button
-                submit={true}
-            >
-                <Translate value={buttonTypes.CONFIRM}/>
-            </Button>
+            {isLoading ?
+                <button className="button is-loading">Loading</button>
+                : <Button
+                    submit={true}
+                >
+                    <Translate value={buttonTypes.CONFIRM}/>
+                </Button>}
+
         </div>
     </form>
 )
@@ -289,6 +292,7 @@ UserForm.propTypes = {
     handleChange: PropTypes.func,
     handleForm: PropTypes.func,
     password: PropTypes.object,
-    handlePassword: PropTypes.func
+    handlePassword: PropTypes.func,
+    isLoading: PropTypes.bool.isRequired
 }
 export default UserForm

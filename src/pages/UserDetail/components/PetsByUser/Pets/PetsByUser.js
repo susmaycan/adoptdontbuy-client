@@ -24,6 +24,8 @@ const PetsByUser = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) =
                     <div key={animal._id} className="column is-narrow">
                         <AnimalCard
                             animal={animal}
+                            user={user}
+                            isLoggedIn={isLoggedIn}
                         />
                     </div>
                 )}

@@ -1,14 +1,15 @@
 @import "../../styles/base";
 
 .animal-card-container {
- // margin: 20px;
   border: 1px solid $color-shadow-light;
   width: 251px;
   text-align: center;
   border-radius: 10px !important;
 
   &:hover {
-    opacity: 0.5;
+    -webkit-box-shadow: 0px 6px 19px 8px rgba(194, 194, 194, 1);
+    -moz-box-shadow: 0px 6px 19px 8px rgba(194, 194, 194, 1);
+    box-shadow: 0px 6px 19px 8px rgba(194, 194, 194, 1);
   }
 
   .animal-info-card {

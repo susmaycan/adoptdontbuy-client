@@ -28,7 +28,7 @@ class Home extends Component {
     componentDidUpdate(prevProps, prevState) {
         if (this.props.animals !== prevProps.animals) {
             this.setState({
-                animalList: this.props.animals.slice(0,8)
+                animalList: this.props.animals.slice(0, 8)
             })
         }
     }
@@ -40,41 +40,44 @@ class Home extends Component {
     }
 
     renderBody() {
-        if (this.props.isLoading) {
+        const {user, isLoading, error, isLoggedIn} = this.props
+        if (isLoading) {
             return (
                 <Loading/>
             )
-        } else if (this.props.error) {
+        }
+        if (error) {
             return (
                 <Error code={codeError.SERVER_UNAVAILABLE}/>
             )
-        } else {
-            if (this.state.animalList.length === 0) {
-                return (
-                    <Message><Translate value='messages.elementNotFound'/></Message>
-                )
-            } else {
-                return (
-                    <>
-                        <div className="columns is-centered">
-                            <div className="column is-narrow">
-                                <Subtitle><Translate value='home.latest'/></Subtitle>
-                            </div>
-                        </div>
-                        <div className="columns is-centered is-multiline is-mobile">
-                            {this.state.animalList.map((animal) =>
-                                <div key={animal._id} className="column is-narrow">
-                                    <AnimalCard
-                                        animal={animal}
-                                    />
-                                </div>
-                            )}
-                        </div>
-                    </>
-                )
-            }
-
         }
+
+        if (this.state.animalList.length === 0) {
+            return (
+                <Message><Translate value='messages.elementNotFound'/></Message>
+            )
+        }
+
+        return (
+            <React.Fragment>
+                <div className="columns is-centered">
+                    <div className="column is-narrow">
+                        <Subtitle><Translate value='home.latest'/></Subtitle>
+                    </div>
+                </div>
+                <div className="columns is-centered is-multiline is-mobile">
+                    {this.state.animalList.map((animal) =>
+                        <div key={animal._id} className="column is-narrow">
+                            <AnimalCard
+                                animal={animal}
+                                isLoggedIn={isLoggedIn}
+                                user={user}
+                            />
+                        </div>
+                    )}
+                </div>
+            </React.Fragment>
+        )
     }
 
     render() {

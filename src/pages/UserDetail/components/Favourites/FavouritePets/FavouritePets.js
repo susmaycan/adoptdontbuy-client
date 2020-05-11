@@ -10,7 +10,7 @@ const FavouritePets = ({user, animals, isLoading, error, isLoggedIn, loggedUser}
                 <Translate value='userDetail.tabs.favourites'/>
             </Subtitle>
         </div>
-        {animals.length === 0 ?
+        {animals === undefined || animals.length === 0 ?
             <Message>
                 <Translate value='messages.emptyList'/>
             </Message>
@@ -20,6 +20,8 @@ const FavouritePets = ({user, animals, isLoading, error, isLoggedIn, loggedUser}
                     <div key={animal._id} className="column is-narrow">
                         <AnimalCard
                             animal={animal}
+                            isLoggedIn={isLoggedIn}
+                            user={loggedUser}
                         />
                     </div>
                 )}

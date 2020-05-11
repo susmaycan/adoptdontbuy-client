@@ -18,7 +18,7 @@ class Button extends React.Component {
             )
         } else {
             return (
-                <Link className={danger ? 'button danger' : 'button'}
+                <Link className={`button ${danger && 'danger'}`}
                       to={{
                           pathname: url
                       }}>
