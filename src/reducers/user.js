@@ -108,6 +108,7 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isLoading: false,
+                user: action.user,
                 edit: {
                     error: false,
                     errorMsg: '',

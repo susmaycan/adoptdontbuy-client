@@ -77,8 +77,8 @@ export function updateUser(user) {
     return (dispatch) => {
         dispatch(userRequest())
         return editUser(user)
-            .then(
-                dispatch(editUserSuccess())
+            .then(response =>
+                dispatch(editUserSuccess(response))
             )
             .catch(err => {
                 console.log('Error when updating the user with id ', user._id, '. Error: ', err.message)
@@ -91,8 +91,10 @@ export function addFavouriteAnimal(userId, animalId) {
     return (dispatch) => {
         dispatch(userRequest())
         return addFavourite(userId, animalId)
-            .then(response =>
-                dispatch(refreshUserSuccess(response))
+            .then(response => {
+                    dispatch(refreshUserSuccess(response))
+                    dispatch(editUserSuccess())
+                }
             )
             .catch(err => {
                 console.log('Error when updating the user with id ', userId, '. Error: ', err.message)
@@ -105,9 +107,10 @@ export function deleteFavouriteAnimal(userId, animalId) {
     return (dispatch) => {
         dispatch(userRequest())
         return removeFavourite(userId, animalId)
-            .then(response =>
+            .then(response => {
                 dispatch(refreshUserSuccess(response))
-            )
+                dispatch(editUserSuccess(response))
+            })
             .catch(err => {
                 console.log('Error when updating the user with id ', userId, '. Error: ', err.message)
                 dispatch(editUserError(err.message))
@@ -151,6 +154,7 @@ export function updatePhotoUser(file, filename) {
             .then(response => {
                     if (response.state === 'success')
                         dispatch(uploadPhotoUserSuccess(response))
+
                 }
             )
             .catch(err => {
@@ -234,9 +238,10 @@ function deleteUserError(error) {
     }
 }
 
-function editUserSuccess() {
+function editUserSuccess(user) {
     return {
-        type: EDIT_USER_SUCCESS
+        type: EDIT_USER_SUCCESS,
+        user
     }
 }
 
