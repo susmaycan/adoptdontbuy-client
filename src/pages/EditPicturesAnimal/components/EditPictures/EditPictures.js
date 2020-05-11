@@ -13,20 +13,34 @@ import {buttonTypes} from "../../../../constants";
 
 const EditPictures = ({animal, uploadPictures, deletePicture}) => (
     <div>
-        <Form>
-            <Form.Group as={Col} controlId="formGridPicture">
-                <Form.Label className="subtitle">Pictures</Form.Label>
-                <Form.Control
-                    multiple="multiple"
-                    name="picture"
-                    type="file"
-                    onChange={uploadPictures}
-                >
-                </Form.Control>
-                <Form.Text id="picturesHelp" class="text-muted">You can add multiple pictures.</Form.Text>
-            </Form.Group>
-        </Form>
-        <div className="columns is-multiline is-mobile">
+        <div className="columns is-centered">
+            <div className="column is-narrow">
+                <div className="field is-centered">
+                    <div className="file is-boxed">
+                        <label className="file-label">
+                            <input
+                                className="file-input"
+                                type="file"
+                                name="picture"
+                                required
+                                multiple="multiple"
+                                onChange={uploadPictures}
+                            />
+                            <span className="file-cta">
+                          <span className="file-icon">
+                            <i className="fas fa-upload"/>
+                          </span>
+                          <span className="file-label">
+                            Choose a file…
+                          </span>
+                        </span>
+                        </label>
+                    </div>
+                    <p className="help">You can add multiple pictures.</p>
+                </div>
+            </div>
+        </div>
+        <div className="columns is-multiline is-mobile is-centered">
             {animal.picture.map((pic) => (
                 <div key={pic} className="column is-narrow">
                     <PictureCard name={animal.name} picture={pic}/>
@@ -36,11 +50,13 @@ const EditPictures = ({animal, uploadPictures, deletePicture}) => (
                 </div>
             ))}
         </div>
-        <Button
-            url={`/animal/${animal._id}`}
-        >
-            <Translate value={buttonTypes.FINISH}/>
-        </Button>
+        <div className="has-text-centered">
+            <Button
+                url={`/animal/${animal._id}`}
+            >
+                <Translate value={buttonTypes.FINISH}/>
+            </Button>
+        </div>
     </div>
 )
 EditPictures.propTypes = {
