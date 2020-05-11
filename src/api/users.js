@@ -1,7 +1,8 @@
 
-const url = process.env.REACT_APP_API_URL;
-const animal_url = process.env.REACT_APP_API_URL_ANIMAL;
-const user_url = process.env.REACT_APP_API_URL_USER;
+const url = process.env.REACT_APP_API_URL
+const animal_url = process.env.REACT_APP_API_URL_ANIMAL
+const user_url = process.env.REACT_APP_API_URL_USER
+const fav_url = process.env.REACT_APP_API_URL_FAVOURITE
 
 /* - - - - - USER - - - - - */
 export async function getUser(userId) {
@@ -19,10 +20,39 @@ export async function addUser(user) {
         headers: {
             'Content-Type': 'application/json'
         }
-    });
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
+    })
+    const body = await response.json()
+    if (response.status !== 200) throw Error(body.message)
+    return body
+}
+
+export async function addFavourite(userId, animalId) {
+    const urlPOST = url + user_url + '/' + userId + '/' + fav_url + '/' + animalId
+    console.log("URL", urlPOST)
+
+    const response = await fetch(url + user_url + '/' + userId + '/' + fav_url + '/' + animalId, {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const body = await response.json()
+    if (response.status !== 200) throw Error(body.message)
+    return body
+}
+
+export async function removeFavourite(userId, animalId) {
+    const response = await fetch(url + user_url + '/' + userId + '/' + fav_url + '/' + animalId + '?action=delete', {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    const body = await response.json()
+    if (response.status !== 200) throw Error(body.message)
+    return body
 }
 
 export async function editUser(user) {

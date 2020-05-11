@@ -2,7 +2,9 @@ import {
     getUser,
     animalByUser,
     deleteUserAPI,
-    editUser
+    editUser,
+    addFavourite,
+    removeFavourite
 } from '../api/users'
 import {
     REQUEST_USER,
@@ -17,7 +19,7 @@ import {
     EDIT_USER_ERROR,
     UPLOAD_PHOTO_USER_SUCCESS,
     UPLOAD_PHOTO_USER_ERROR,
-    RESET_USER
+    RESET_USER, REFRESH_USER_SUCCESS
 } from './actionTypes'
 import firebaseActions from '../Firebase/Firebase'
 
@@ -85,6 +87,34 @@ export function updateUser(user) {
     }
 }
 
+export function addFavouriteAnimal(userId, animalId) {
+    return (dispatch) => {
+        dispatch(userRequest())
+        return addFavourite(userId, animalId)
+            .then(response =>
+                dispatch(refreshUserSuccess(response))
+            )
+            .catch(err => {
+                console.log('Error when updating the user with id ', userId, '. Error: ', err.message)
+                dispatch(editUserError(err.message))
+            })
+    }
+}
+
+export function deleteFavouriteAnimal(userId, animalId) {
+    return (dispatch) => {
+        dispatch(userRequest())
+        return removeFavourite(userId, animalId)
+            .then(response =>
+                dispatch(refreshUserSuccess(response))
+            )
+            .catch(err => {
+                console.log('Error when updating the user with id ', userId, '. Error: ', err.message)
+                dispatch(editUserError(err.message))
+            })
+    }
+}
+
 export function updateEmail(email) {
     return (dispatch) => {
         dispatch(userRequest())
@@ -135,6 +165,15 @@ export function resetState() {
         dispatch(reset())
     }
 }
+
+
+function refreshUserSuccess(payload) {
+    return {
+        type: REFRESH_USER_SUCCESS,
+        payload
+    }
+}
+
 
 function reset() {
     return {

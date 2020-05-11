@@ -11,7 +11,7 @@ import {
     LOGOUT_ERROR,
     LOGOUT_SUCCESS,
     SIGNUP_SUCCESS,
-    SIGNUP_ERROR, RECOVER_SUCCESS, RECOVER_ERROR, RESET
+    SIGNUP_ERROR, RECOVER_SUCCESS, RECOVER_ERROR, RESET, REFRESH_USER_SUCCESS
 } from './actionTypes'
 
 export function loginUser(email, password) {
@@ -35,6 +35,21 @@ export function loginUser(email, password) {
     }
 }
 
+
+export function refreshUser(userId) {
+    return (dispatch) => {
+        dispatch(loginUserRequest())
+        getUser(userId)
+            .then(user => {
+                dispatch(refreshUserSuccess(user))
+            })
+            .catch(error => {
+                console.log('Error when retrieving the user from db')
+                dispatch(refreshUserError(error.message))
+            })
+    }
+}
+
 export function recoverPassword(email) {
     return (dispatch) => {
         dispatch(loginUserRequest())
@@ -47,6 +62,7 @@ export function recoverPassword(email) {
             })
     }
 }
+
 
 export function resetState() {
     return (dispatch) => {
@@ -115,6 +131,20 @@ function loginUserSuccess(payload) {
 function loginUserError(error) {
     return {
         type: FETCH_ERROR_LOGIN,
+        error
+    }
+}
+
+function refreshUserSuccess(payload) {
+    return {
+        type: REFRESH_USER_SUCCESS,
+        payload
+    }
+}
+
+function refreshUserError(error) {
+    return {
+        type: REFRESH_USER_SUCCESS,
         error
     }
 }

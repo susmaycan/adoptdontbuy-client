@@ -8,7 +8,9 @@ import {
     SIGNUP_ERROR,
     RECOVER_SUCCESS,
     RECOVER_ERROR,
-    RESET
+    RESET,
+    REFRESH_USER_SUCCESS,
+    REFRESH_USER_ERROR
 } from '../actions/actionTypes'
 
 const INITIAL_STATE = {
@@ -23,6 +25,11 @@ const INITIAL_STATE = {
         success: false
     },
     logout: {
+        error: false,
+        errorMsg: '',
+        success: false
+    },
+    refreshUser: {
         error: false,
         errorMsg: '',
         success: false
@@ -48,6 +55,14 @@ const reducer = (state = INITIAL_STATE, action) => {
                 isLoggedIn: true,
                 user: action.payload,
                 login: {...state.login, error: false, errorMsg: '', success: true}
+            }
+        case REFRESH_USER_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                isLoggedIn: true,
+                user: action.payload,
+                refreshUser: {error: false, errorMsg: '', success: true}
             }
         case RECOVER_SUCCESS:
             return {...state, isLoading: false, recover: {...state.recover, error: false, errorMsg: '', success: true}}
@@ -79,6 +94,13 @@ const reducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 isLoading: false,
                 login: {...state.login, error: true, errorMsg: action.error, success: false}
+            }
+
+        case REFRESH_USER_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                refreshUser: {error: true, errorMsg: action.error, success: false}
             }
         case LOGOUT_ERROR:
             return {
