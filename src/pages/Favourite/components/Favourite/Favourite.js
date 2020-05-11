@@ -1,23 +1,11 @@
 import React, {Component} from 'react'
 import './Favourite.scss'
+import {isOwner} from "../../../../utils/Functions";
 
 class Favourite extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
-
-    isOwner() {
-        const {isLoggedIn, user, animal} = this.props
-        return isLoggedIn && animal.owner === user._id
-    }
-
     isIncluded() {
         const {isLoggedIn, user, animal} = this.props
-        if(isLoggedIn){
-            console.log("Is ", animal._id , " included in ", user.favourites , '?', isLoggedIn && user.favourites.filter(e => e._id === animal._id).length > 0)
-        }
         return isLoggedIn && user.favourites.filter(e => e._id === animal._id).length > 0
     }
 
@@ -32,10 +20,9 @@ class Favourite extends Component {
     }
 
     render() {
-        const {isLoggedIn} = this.props
-
+        const {isLoggedIn, user, animal} = this.props
         return (
-            <button className="button is-white" disabled={!isLoggedIn || this.isOwner()}
+            <button className="button is-white" disabled={!isLoggedIn || isOwner(user, animal.owner)}
                     onClick={() => this.clickFavourite()}>
                 <span
                     className="icon has-text-danger">

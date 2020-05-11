@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Message from '../../../../components/Message'
-import {Redirect} from 'react-router'
 import AnimalForm from '../AnimalForm'
 import Loading from "../../../../components/Loading";
 import {Translate} from 'react-redux-i18n'
@@ -33,7 +32,7 @@ class EditAnimalView extends Component {
             )
         }
 
-        if (isLoggedIn && animal !== undefined && loggedUser._id !== animal.owner._id) {
+        if (isLoggedIn && animal !== undefined && animal.owner !== undefined && loggedUser._id !== animal.owner._id) {
             window.setTimeout(this.props.history.push('/'), 5000)
             return (
                 <Message>Sorry, you <strong>cannot</strong> edit this animal.</Message>

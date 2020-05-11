@@ -8,11 +8,11 @@ import {
 import PropTypes from 'prop-types'
 import './AnimalCard.scss'
 import Favourite from '../../pages/Favourite'
+import {isOwner} from "../../utils/Functions";
 
-const AnimalCard = ({animal}) => (
+const AnimalCard = ({animal, user, isLoggedIn}) => (
     <div key={animal._id} className="animal-card-container">
         <Link to={{pathname: `/animal/${animal._id}`}}>
-
             <PictureCard
                 name={animal.name}
                 picture={animal.picture[0]}
@@ -28,15 +28,41 @@ const AnimalCard = ({animal}) => (
                 />
             </div>
         </Link>
+
         <div className="level">
             <div className="level-left">
             </div>
             <div className="level-right">
-                <div className="level-item">
-                    <Favourite animal={animal}/>
-                </div>
+                {isLoggedIn &&
+                <>
+                    {isOwner(user, animal.owner) ?
+                        <>
+                            <div className="level-item">
+                                <Link className="button is-white"
+                                      to={`/updateAnimal/${animal._id}`}>
+                        <span className="icon">
+                            <i className="fas fa-edit"/>
+                        </span>
+                                </Link>
+                            </div>
+                            <div className="level-item">
+                                <button className="button is-white">
+                        <span className="icon">
+                           <i className="fas fa-trash-alt"/>
+                        </span>
+                                </button>
+                            </div>
+                        </>
+                        :
+                        <div className="level-item">
+                            <Favourite animal={animal}/>
+                        </div>
+                    }
+                </>
+                }
             </div>
         </div>
+
     </div>
 )
 AnimalCard.propTypes = {

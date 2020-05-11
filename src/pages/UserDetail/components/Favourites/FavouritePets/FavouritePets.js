@@ -20,6 +20,8 @@ const FavouritePets = ({user, animals, isLoading, error, isLoggedIn, loggedUser}
                     <div key={animal._id} className="column is-narrow">
                         <AnimalCard
                             animal={animal}
+                            isLoggedIn={isLoggedIn}
+                            user={loggedUser}
                         />
                     </div>
                 )}
