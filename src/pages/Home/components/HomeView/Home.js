@@ -25,7 +25,7 @@ class Home extends Component {
         this.props.getAnimals()
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (this.props.animals !== prevProps.animals) {
             this.setState({
                 animalList: this.props.animals.slice(0, 8)
