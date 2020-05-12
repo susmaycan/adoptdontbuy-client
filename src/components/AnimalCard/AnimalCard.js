@@ -15,7 +15,7 @@ const AnimalCard = ({animal, user, isLoggedIn}) => (
         <Link to={{pathname: `/animal/${animal._id}`}}>
             <PictureCard
                 name={animal.name}
-                picture={animal.picture[0]}
+                picture={animal.picture !== undefined ? animal.picture[0] : 'https://api.adorable.io/avatars/250/' + animal.name}
             />
             <div className="animal-info-card">
                 <h3 className="animal-name-card">{animal.name}</h3>
