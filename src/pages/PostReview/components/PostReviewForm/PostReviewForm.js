@@ -12,7 +12,6 @@ class PostReviewForm extends React.Component {
 
         this.state = {
             review: {
-                title: '',
                 desc: '',
                 rating: '',
                 from: this.props.loggedUser._id,
@@ -44,7 +43,7 @@ class PostReviewForm extends React.Component {
         const {isLoading, error, errorMsg, success} = this.props
         const {review} = this.state
 
-        if(success){
+        if (success) {
             setTimeout(() => {
                 this.props.reset()
                 this.props.handleClose()
@@ -53,20 +52,6 @@ class PostReviewForm extends React.Component {
 
         return (
             <form className="form-animal" onSubmit={this.handleSubmit}>
-
-                <div className="field">
-                    <label className="label"><Translate value='review.title'/></label>
-                    <div className="control is-expanded">
-                        <input
-                            onChange={this.updateInput}
-                            className="input"
-                            required
-                            value={review.title}
-                            name="title"
-                            placeholder="Title"/>
-                    </div>
-                </div>
-
                 <div className="field">
                     <label className="label"><Translate value='review.rating'/></label>
                     <div className="control is-expanded">
@@ -91,6 +76,7 @@ class PostReviewForm extends React.Component {
                             onChange={this.updateInput}
                             value={review.desc}
                             className="textarea"
+                            required
                             placeholder="Tell us more about your experience"/>
                     </div>
                 </div>

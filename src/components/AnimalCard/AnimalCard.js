@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import {Gender, Location, PictureCard} from '../../components'
 import PropTypes from 'prop-types'
 import './AnimalCard.scss'
-import Favourite from '../../pages/Favourite'
+import Favourite from '../../pages/Animal/Favourite'
 import {isOwner} from "../../utils/Functions";
 
 const AnimalCard = ({animal, user, isLoggedIn}) => (
