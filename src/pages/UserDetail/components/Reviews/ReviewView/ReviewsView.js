@@ -10,7 +10,7 @@ class ReviewsView extends Component {
     }
 
     render() {
-        const {isLoading, error, user, loggedUser, isLoggedIn} = this.props
+        const {isLoading, error, user, loggedUser, isLoggedIn, deleteReview} = this.props
         if (isLoading) {
             return (
                 <Loading/>
@@ -32,17 +32,20 @@ class ReviewsView extends Component {
                         reviewList={user.reviews}
                         loggedUser={loggedUser}
                         isLoggedIn={isLoggedIn}
+                        deleteReview={deleteReview}
                     />
                 )
             }
         }
     }
 }
+
 ReviewsView.propTypes = {
     isLoading: PropTypes.bool.isRequired,
     error: PropTypes.bool.isRequired,
     errorMsg: PropTypes.string.isRequired,
     getUser: PropTypes.func.isRequired,
+    deleteReview: PropTypes.func.isRequired,
     user: PropTypes.object.isRequired,
     loggedUser: PropTypes.object.isRequired,
 }

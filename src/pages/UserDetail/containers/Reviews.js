@@ -3,6 +3,10 @@ import {
     fetchUser
 } from '../../../actions/user'
 
+import {
+    removeReview
+} from '../../../actions/review'
+
 import Reviews from '../components/Reviews'
 
 const mapStateToProps = state => ({
@@ -14,7 +18,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    getUser: (id) => dispatch(fetchUser(id))
+    getUser: (id) => dispatch(fetchUser(id)),
+    deleteReview: (reviewId) => dispatch(removeReview(reviewId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews)

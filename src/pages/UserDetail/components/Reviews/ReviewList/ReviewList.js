@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Review from "../Review";
 import {Translate} from 'react-redux-i18n'
 
-const ReviewList = ({reviewList, isLoggedIn, loggedUser, user}) => (
+const ReviewList = ({reviewList, isLoggedIn, loggedUser, user, deleteReview}) => (
     <Box>
         {isLoggedIn && loggedUser._id !== user._id ?
             <div className="has-text-right">
@@ -20,7 +20,12 @@ const ReviewList = ({reviewList, isLoggedIn, loggedUser, user}) => (
             </Message>
             :
             reviewList.map(review => (
-                <Review review={review}/>
+                <Review
+                    deleteReview={deleteReview}
+                    loggedUser={loggedUser}
+                    isLoggedIn={isLoggedIn}
+                    review={review}
+                />
             ))
         }
 
@@ -31,5 +36,6 @@ ReviewList.propTypes = {
     user: PropTypes.object,
     loggedUser: PropTypes.object,
     isLoggedIn: PropTypes.bool.isRequired,
+    deleteReview: PropTypes.func.isRequired,
 }
 export default ReviewList

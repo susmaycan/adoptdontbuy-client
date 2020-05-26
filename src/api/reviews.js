@@ -47,7 +47,7 @@ export async function updateReview(review) {
 }
 
 export async function deleteReview(reviewId) {
-    return await fetch(url + reviewId + '/' + reviewId, {
+    return await fetch(url + review_url + '/' + reviewId, {
         method: 'DELETE',
         mode: 'cors',
     })

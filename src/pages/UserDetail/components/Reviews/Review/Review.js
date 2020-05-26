@@ -5,7 +5,7 @@ import Rating from "../Rating";
 import {Link} from 'react-router-dom';
 import Date from '../../../../../components/Date'
 
-const Review = ({review}) => (
+const Review = ({review, isLoggedIn, loggedUser, deleteReview}) => (
     <div className="box">
         <div className="columns is-vcentered">
             <div className="column is-narrow">
@@ -36,15 +36,25 @@ const Review = ({review}) => (
                     </div>
                     <div className="column has-text-right">
                         <Date value={review.createdAt}/>
+                        <br/>
+                        {isLoggedIn && review.from._id === loggedUser._id ?
+                            <button className="button is-white" onClick={() => deleteReview(review._id)}>
+                                <span className="icon">
+                                <i className="fas fa-trash-alt"/>
+                                </span>
+                            </button>
+                            : null}
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 )
 
 Review.propTypes = {
-    review: PropTypes.object.isRequired
+    review: PropTypes.object.isRequired,
+    loggedUser: PropTypes.object,
+    isLoggedIn: PropTypes.bool.isRequired,
+    deleteReview: PropTypes.func.isRequired
 }
 export default Review
