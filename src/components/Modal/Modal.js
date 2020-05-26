@@ -7,18 +7,6 @@ import {Translate} from 'react-redux-i18n'
 class CustomModal extends React.Component {
     render() {
         return (
-            // <Modal show={this.props.show} onHide={this.props.handleClose} className="custom-modal" animation={true}>
-            //     <div className="modal-title-container">
-            //         <Subtitle>
-            //             {' '}
-            //             <Translate value={this.props.title}/>
-            //             <button type="button" className="close" onClick={this.props.handleClose}>&times;</button>
-            //         </Subtitle>
-            //     </div>
-            //     <Modal.Body>
-            //         {this.props.children}
-            //     </Modal.Body>
-            // </Modal>
             <div className={this.props.show ? "modal is-active" : "modal"}>
                 <div className="modal-background"/>
                 <div className="modal-content custom-modal">
