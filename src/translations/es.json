@@ -34,6 +34,9 @@
     "title": "Borrar usuario",
     "body": "Si continuas, se eliminará tu perfil y todas tus mascotas...¿Estás segurx?"
   },
+  "addReview": {
+    "title": "Añadir reseña"
+  },
   "filter": {
     "title": "Filtros",
     "clearFilters": "Limpiar filtros"
@@ -80,6 +83,13 @@
       "favourites": "Favoritos",
       "contact": "Contacto"
     }
+  },
+  "review": {
+    "title": "Título",
+    "desc-placeholder": "Cuéntanos un poco más sobre tu experiencia...",
+    "desc": "Descripción",
+    "rating": "Valoración",
+    "by": "por"
   },
   "animal": {
     "name": "Nombre",
@@ -173,7 +183,8 @@
     "edit": "Editar",
     "info": "Mas info",
     "confirm": "Confirmar",
-    "edit-pictures": "Editar fotos"
+    "edit-pictures": "Editar fotos",
+    "add-review": "Añadir reseña"
   },
   "contact": {
     "request": "Solicitar adopción",

@@ -88,6 +88,13 @@
       "contact": "Contact"
     }
   },
+  "review": {
+    "title": "Title",
+    "desc-placeholder": "Tell us more about your experience...",
+    "desc": "Description",
+    "rating": "Rating",
+    "by": "by"
+  },
   "animal": {
     "name": "Name",
     "specie": "Specie",
@@ -174,7 +181,8 @@
     "edit": "Edit",
     "info": "More info",
     "confirm": "Confirm",
-    "edit-pictures": "Edit pictures"
+    "edit-pictures": "Edit pictures",
+    "add-review": "Add review"
   },
   "common": {
     "yes": "Yes",

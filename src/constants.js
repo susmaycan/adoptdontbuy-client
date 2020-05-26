@@ -457,6 +457,7 @@ export const filterElements = {
 
 export const buttonTypes = {
     LOGIN: "buttons.login",
+    ADD_REVIEW: "buttons.add-review",
     SIGNUP: "buttons.sign-up",
     LOGOUT: "buttons.logout",
     DELETE: "buttons.delete",
