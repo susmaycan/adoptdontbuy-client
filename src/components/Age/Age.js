@@ -11,23 +11,25 @@ class Age extends React.Component {
 
         if (age <= 1) {
             return (
-                <><Translate value="age.puppy" /> ({age} <Translate value="age.years" />)</>
-            )
-        } else if (age > 1 && age < 8) {
-            return (
-                <><Translate value="age.adult" /> ({age} <Translate value="age.years" />)</>
-            )
-        } else if (age => 8) {
-            return (
-                <><Translate value="age.senior" /> ({age} <Translate value="age.years" />)</>
-            )
-        } else {
-            return (
-                <>Unknown age</>
+                <><Translate value="age.puppy"/> ({age} <Translate value="age.years"/>)</>
             )
         }
+        if (age > 1 && age < 8) {
+            return (
+                <><Translate value="age.adult"/> ({age} <Translate value="age.years"/>)</>
+            )
+        }
+        if (age => 8) {
+            return (
+                <><Translate value="age.senior"/> ({age} <Translate value="age.years"/>)</>
+            )
+        }
+        return (
+            <>Unknown age</>
+        )
     }
 }
+
 Age.propTypes = {
     yearBorn: PropTypes.string
 }
