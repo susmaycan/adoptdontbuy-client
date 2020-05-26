@@ -3,7 +3,6 @@ const url = process.env.REACT_APP_API_URL
 const animal_url = process.env.REACT_APP_API_URL_ANIMAL
 const search_url = process.env.REACT_APP_API_URL_SEARCH
 
-/* - - - - - ANIMAL - - - - - */
 export async function getAnimals() {
     const response = await fetch(url + animal_url)
     const body = await response.json()
@@ -42,23 +41,22 @@ export async function updateAnimal(animal) {
         headers: {
             'Content-Type': 'application/json'
         }
-    });
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-};
+    })
+    const body = await response.json()
+    if (response.status !== 200) throw Error(body.message)
+    return body
+}
 export async function removeAnimal(animalId) {
-    const response = await fetch(url + animal_url + '/' + animalId, {
+    return await fetch(url + animal_url + '/' + animalId, {
         method: 'DELETE',
         mode: 'cors',
-    });
-    return response;
+    })
+
 }
 
-/* - - - - - FILTER - - - - - */
 export async function filterAnimal(query) {
-    const response = await fetch(url + search_url + '?' + query);
-    const body = await response.json();
-    if (response.status !== 200) throw Error(body.message);
-    return body;
-};
+    const response = await fetch(url + search_url + '?' + query)
+    const body = await response.json()
+    if (response.status !== 200) throw Error(body.message)
+    return body
+}
