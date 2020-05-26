@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Box, Message, Loading, Title} from "../../../../components";
+import {Box, Loading, Message, Title} from "../../../../components";
 //import {Translate} from "react-redux-i18n";
 import EditPictures from '../EditPictures'
 

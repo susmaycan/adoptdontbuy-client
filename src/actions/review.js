@@ -1,15 +1,12 @@
-import {
-    postReview,
-    deleteReview
-} from '../api/reviews'
+import {deleteReview, postReview} from '../api/reviews'
 
 import {
-    REVIEW_REQUEST,
+    DELETE_REVIEW_ERROR,
+    DELETE_REVIEW_SUCCESS,
     POST_REVIEW_ERROR,
     POST_REVIEW_SUCCESS,
-    DELETE_REVIEW_SUCCESS,
-    DELETE_REVIEW_ERROR,
-    RESET_REVIEW
+    RESET_REVIEW,
+    REVIEW_REQUEST
 } from './actionTypes'
 
 export function addReview(review) {

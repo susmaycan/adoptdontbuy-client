@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-    PictureCard,
-    Button
-} from '../../../../components'
+import {Button, PictureCard} from '../../../../components'
 import {Translate} from "react-redux-i18n";
 import {buttonTypes} from "../../../../constants";
 

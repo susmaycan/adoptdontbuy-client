@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Link} from 'react-router-dom'
 import './Button.scss'
+
 class Button extends React.Component {
     render() {
         const {submit, onAction, url, children, danger, disabled} = this.props

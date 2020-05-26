@@ -1,8 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    fetchUser,
-    fetchAnimalsUser
-} from '../../../actions/user'
+import {connect} from 'react-redux'
+import {fetchAnimalsUser, fetchUser} from '../../../actions/user'
 
 import Pets from '../components/PetsByUser'
 

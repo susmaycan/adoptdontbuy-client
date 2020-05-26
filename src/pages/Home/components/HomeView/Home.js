@@ -2,15 +2,7 @@ import React, {Component} from 'react'
 import {Translate} from 'react-redux-i18n'
 import {codeError} from '../../../../constants'
 import {Cat} from 'react-kawaii'
-import {
-    AnimalCard,
-    Loading,
-    Message,
-    Subtitle,
-    Title,
-    Error,
-    Box
-} from '../../../../components'
+import {AnimalCard, Box, Error, Loading, Message, Subtitle, Title} from '../../../../components'
 
 class Home extends Component {
 

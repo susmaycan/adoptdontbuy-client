@@ -1,10 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {
-    Gender,
-    Location,
-    PictureCard
-} from '../../components'
+import {Gender, Location, PictureCard} from '../../components'
 import PropTypes from 'prop-types'
 import './AnimalCard.scss'
 import Favourite from '../../pages/Favourite'

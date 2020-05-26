@@ -1,7 +1,7 @@
 import React from 'react'
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import './Loading.css'
-    import Loader from 'react-loader-spinner'
+import Loader from 'react-loader-spinner'
 
 const Loading = () => (
     <div className="container-spinner">

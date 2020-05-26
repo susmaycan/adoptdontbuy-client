@@ -1,13 +1,8 @@
 import {connect} from 'react-redux'
 import Favourite from '../components/Favourite'
-import {
-    addFavouriteAnimal,
-    deleteFavouriteAnimal
-} from '../../../actions/user'
+import {addFavouriteAnimal, deleteFavouriteAnimal} from '../../../actions/user'
 
-import {
-    refreshUser
-} from '../../../actions/login'
+import {refreshUser} from '../../../actions/login'
 
 const mapStateToProps = (state, props) => ({
     animal: props.animal,

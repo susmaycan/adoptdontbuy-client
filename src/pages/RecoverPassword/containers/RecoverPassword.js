@@ -1,8 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    recoverPassword,
-    resetState
-} from '../../../actions/login'
+import {connect} from 'react-redux'
+import {recoverPassword, resetState} from '../../../actions/login'
 import RecoverPassword from '../components'
 
 const mapStateToProps = state => ({

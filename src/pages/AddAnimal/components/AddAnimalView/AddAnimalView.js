@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Redirect} from 'react-router'
 import AnimalForm from '../AnimalForm'
 import {Translate} from 'react-redux-i18n'
 import Title from '../../../../components/Title'

@@ -1,14 +1,6 @@
-import { connect } from 'react-redux'
-import {
-    fetchUser,
-    updateUser,
-    updatePhotoUser,
-    updateEmail,
-    updatePassword, resetState,
-} from '../../../actions/user'
-import {
-    logout
-} from '../../../actions/login'
+import {connect} from 'react-redux'
+import {fetchUser, resetState, updateEmail, updatePassword, updatePhotoUser, updateUser,} from '../../../actions/user'
+import {logout} from '../../../actions/login'
 
 import EditUser from '../components/EditUser'
 

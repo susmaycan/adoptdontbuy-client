@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {Loading, Message, Title, Error, Box} from '../../../../components'
+import {Box, Error, Loading, Message, Title} from '../../../../components'
 import Filter from '../Filter'
 import {Translate} from 'react-redux-i18n'
 import {codeError} from '../../../../constants'

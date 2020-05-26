@@ -1,11 +1,7 @@
-import { connect } from 'react-redux'
-import {
-    fetchUser
-} from '../../../actions/user'
+import {connect} from 'react-redux'
+import {fetchUser} from '../../../actions/user'
 
-import {
-    removeReview
-} from '../../../actions/review'
+import {removeReview} from '../../../actions/review'
 
 import Reviews from '../components/Reviews'
 

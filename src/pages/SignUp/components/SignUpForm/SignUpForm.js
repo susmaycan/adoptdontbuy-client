@@ -1,7 +1,7 @@
 import React from 'react'
 import {Translate} from 'react-redux-i18n'
 import {buttonTypes} from "../../../../constants";
-import {Notification, Button} from '../../../../components'
+import {Button, Notification} from '../../../../components'
 import FormValidator from '../../../../utils/FormValidator'
 import PropTypes from 'prop-types'
 

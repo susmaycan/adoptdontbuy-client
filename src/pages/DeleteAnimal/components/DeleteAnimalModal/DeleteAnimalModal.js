@@ -1,14 +1,10 @@
 import React from 'react'
-import {
-    Col,
-    Row
-} from 'react-bootstrap'
 import {Translate} from 'react-redux-i18n'
 import Modal from "../../../../components/Modal";
 import {buttonTypes} from "../../../../constants";
 import Button from "../../../../components/Button";
 
-const DeleteAnimalModal = ({show, handleClose, handleShow, error, errorMsg, handleSubmit, isLoading}) => (
+const DeleteAnimalModal = ({show, handleClose, handleSubmit}) => (
 
     <Modal
         show={show}

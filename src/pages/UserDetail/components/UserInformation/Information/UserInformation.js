@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-    Table,
-    Button,
-    Title,
-    Subtitle,
-    Box
-} from '../../../../../components'
+import {Box, Button, Subtitle, Table} from '../../../../../components'
 import DeleteUser from '../../../../DeleteUser'
 import {Translate} from 'react-redux-i18n'
 import './UserInformation.scss'

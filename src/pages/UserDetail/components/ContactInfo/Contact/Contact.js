@@ -1,5 +1,5 @@
 import React from 'react'
-import { Table, Contact, Subtitle, Box}from '../../../../../components'
+import {Box, Contact, Subtitle, Table} from '../../../../../components'
 import {Translate} from 'react-redux-i18n'
 import './Contact.scss'
 import {tableElements} from '../../../../../constants'

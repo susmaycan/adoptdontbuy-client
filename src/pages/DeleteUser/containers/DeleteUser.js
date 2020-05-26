@@ -1,11 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    deleteUser, resetState
-} from '../../../actions/user'
-
-import {
-    logout
-} from '../../../actions/login'
+import {connect} from 'react-redux'
+import {deleteUser} from '../../../actions/user'
 
 import DeleteUserView from '../components/DeleteUserView'
 

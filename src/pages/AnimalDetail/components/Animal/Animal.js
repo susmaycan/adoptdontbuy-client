@@ -1,12 +1,5 @@
 import React from 'react'
-import {
-    Table,
-    Contact,
-    Button,
-    Title,
-    Subtitle,
-    Box
-} from '../../../../components'
+import {Box, Button, Contact, Subtitle, Table} from '../../../../components'
 import DeleteAnimal from '../../../DeleteAnimal'
 import {Translate} from 'react-redux-i18n'
 import './Animal.scss'

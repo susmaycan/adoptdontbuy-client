@@ -1,16 +1,9 @@
 import React from 'react'
-import {
-    genderList,
-    sizeList,
-    specieList,
-    regionList
-} from '../../constants'
+import {genderList, regionList, sizeList, specieList} from '../../constants'
 import PropTypes from 'prop-types'
 import {Translate} from 'react-redux-i18n'
 import './ButtonGroup.scss'
-import {
-    ButtonGroup
-} from "react-bootstrap";
+import {ButtonGroup} from "react-bootstrap";
 
 const GENDER = 'gender'
 const SIZE = 'size'

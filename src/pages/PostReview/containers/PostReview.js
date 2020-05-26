@@ -1,8 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    addReview,
-    resetReviewState
-} from '../../../actions/review'
+import {connect} from 'react-redux'
+import {addReview, resetReviewState} from '../../../actions/review'
 import PostReview from '../components/PostReviewView'
 
 const mapStateToProps = state => ({

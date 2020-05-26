@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-    Row
-} from 'react-bootstrap'
+import {Row} from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import './FilterBadgeList.scss'
 import FilterBadge from "../FilterBadge";

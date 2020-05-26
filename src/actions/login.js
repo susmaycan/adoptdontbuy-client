@@ -1,17 +1,18 @@
 import firebaseActions from '../Firebase/Firebase'
-import {
-    getUser,
-    addUser
-} from '../api/users'
+import {addUser, getUser} from '../api/users'
 
 import {
-    FETCH_REQUEST_LOGIN,
     FETCH_ERROR_LOGIN,
+    FETCH_REQUEST_LOGIN,
     FETCH_SUCCESS_LOGIN,
     LOGOUT_ERROR,
     LOGOUT_SUCCESS,
-    SIGNUP_SUCCESS,
-    SIGNUP_ERROR, RECOVER_SUCCESS, RECOVER_ERROR, RESET, REFRESH_USER_SUCCESS
+    RECOVER_ERROR,
+    RECOVER_SUCCESS,
+    REFRESH_USER_SUCCESS,
+    RESET,
+    SIGNUP_ERROR,
+    SIGNUP_SUCCESS
 } from './actionTypes'
 
 export function loginUser(email, password) {
@@ -54,9 +55,9 @@ export function recoverPassword(email) {
     return (dispatch) => {
         dispatch(loginUserRequest())
         return firebaseActions.sendPasswordResetEmail(email)
-            .then(response => {
+            .then(
                 dispatch(recoverSuccess())
-            })
+            )
             .catch(error => {
                 dispatch(recoverError(error.message))
             })
@@ -99,10 +100,10 @@ export function signUpUser(email, password, username) {
 export function logout() {
     return (dispatch) => {
         return firebaseActions.logout()
-            .then(response => {
+            .then(
                 dispatch(logoutUserSuccess())
-            })
-            .catch(error => {
+            )
+            .catch(() => {
                 console.log('Error in logout')
                 dispatch(logoutUserError())
             })

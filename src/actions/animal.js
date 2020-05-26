@@ -1,24 +1,16 @@
-import {
-    addAnimalAPI,
-    getAnimal,
-    removeAnimal,
-    updateAnimal
-} from '../api/animals'
+import {addAnimalAPI, getAnimal, removeAnimal, updateAnimal} from '../api/animals'
 
 import {
-    ERROR_ANIMAL,
-    REQUEST_ANIMAL,
-    FETCH_ANIMAL_SUCCESS,
-    FETCH_ANIMAL_ERROR,
-    ADD_ANIMAL_SUCCESS,
     ADD_ANIMAL_ERROR,
-    DELETE_ANIMAL_SUCCESS,
+    ADD_ANIMAL_SUCCESS,
     DELETE_ANIMAL_ERROR,
-    EDIT_ANIMAL_SUCCESS,
+    DELETE_ANIMAL_SUCCESS,
     EDIT_ANIMAL_ERROR,
-    RESET_ANIMAL,
-    EDIT_PICTURES_SUCCESS,
-    EDIT_PICTURES_ERROR
+    EDIT_ANIMAL_SUCCESS,
+    FETCH_ANIMAL_ERROR,
+    FETCH_ANIMAL_SUCCESS,
+    REQUEST_ANIMAL,
+    RESET_ANIMAL
 } from './actionTypes'
 import firebaseActions from "../Firebase/Firebase";
 import uuid from 'uuid/v4'
@@ -203,13 +195,6 @@ function editAnimalSuccess() {
 function animalRequest() {
     return {
         type: REQUEST_ANIMAL
-    }
-}
-
-function animalError(error) {
-    return {
-        type: ERROR_ANIMAL,
-        error
     }
 }
 

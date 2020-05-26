@@ -1,7 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    deleteAnimal
-} from '../../../actions/animal'
+import {connect} from 'react-redux'
+import {deleteAnimal} from '../../../actions/animal'
 import DeleteAnimalView from '../components/DeleteAnimalView'
 
 const mapStateToProps = state => ({

@@ -1,7 +1,7 @@
 import React from 'react'
 import SignUpForm from '../SignUpForm'
 import PropTypes from 'prop-types'
-import {Button, Box, Subtitle} from '../../../../components'
+import {Box, Button, Subtitle} from '../../../../components'
 import {Translate} from 'react-redux-i18n'
 
 class SignUpView extends React.Component {

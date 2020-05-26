@@ -1,7 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    fetchUser, resetState
-} from '../../../actions/user'
+import {connect} from 'react-redux'
+import {fetchUser, resetState} from '../../../actions/user'
 
 import UserInformation from '../components/UserInformation'
 import {logout} from "../../../actions/login";

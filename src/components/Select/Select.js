@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-    genderList,
-    sizeList,
-    specieList,
-    regionList,
-    ageList
-} from '../../constants'
+import {ageList, genderList, regionList, sizeList, specieList} from '../../constants'
 import PropTypes from 'prop-types'
 import {I18n} from 'react-redux-i18n'
 import './Select.scss'

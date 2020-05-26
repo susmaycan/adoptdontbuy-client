@@ -1,8 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    resetState,
-    signUpUser
-} from '../../../actions/login'
+import {connect} from 'react-redux'
+import {resetState, signUpUser} from '../../../actions/login'
 
 import SignUp from '../components'
 

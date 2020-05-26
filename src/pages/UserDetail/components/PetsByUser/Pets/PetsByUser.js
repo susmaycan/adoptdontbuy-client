@@ -1,9 +1,9 @@
 import React from 'react'
 import {Translate} from 'react-redux-i18n'
 import {sortByUpdateDate} from "../../../../../utils/Functions";
-import {AnimalCard, Message, Subtitle, Box} from '../../../../../components'
+import {AnimalCard, Box, Message, Subtitle} from '../../../../../components'
 
-const PetsByUser = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) => (
+const PetsByUser = ({user, animals, isLoggedIn, loggedUser}) => (
     <Box>
         <div className="tab-title-container">
             <Subtitle>

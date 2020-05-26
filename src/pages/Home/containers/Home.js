@@ -1,7 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    fetchAnimals
-} from '../../../actions/animalList'
+import {connect} from 'react-redux'
+import {fetchAnimals} from '../../../actions/animalList'
 import Homepage from '../components/HomeView'
 
 const mapStateToProps = state => ({

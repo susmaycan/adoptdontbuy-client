@@ -2,14 +2,9 @@ import React, {Component} from 'react'
 import Form from '../Form'
 import Loading from '../../../../components/Loading'
 import Message from '../../../../components/Message'
-import {
-    Redirect
-} from 'react-router'
 import Title from '../../../../components/Title'
 import {Translate} from 'react-redux-i18n'
 import Box from "../../../../components/Box";
-
-const EMPTY_USER = {}
 
 class EditUser extends Component {
 
@@ -50,7 +45,7 @@ class EditUser extends Component {
     }
 
     render() {
-        const {success, errorFetch, errorFetchMsg, isLoading, error, errorMsg, user, isLoggedIn, loggedUser} = this.props
+        const {success, errorFetch, errorFetchMsg, isLoading, error, errorMsg, isLoggedIn} = this.props
         if (!isLoggedIn) {
             this.props.history.push("/login")
             return null
