@@ -36,11 +36,24 @@ class UserTabs extends React.Component {
     constructor(props) {
         super(props)
 
-        const splitURL = this.props.location.pathname.split(this.props.match.params.userId)
-        const active = splitURL.length === 2 && splitURL[1] !== "" ? splitURL[1] : tabList[0].name
         this.state = {
-            activeTab: active
+            activeTab: this.getActiveTab()
         }
+    }
+
+    componentDidUpdate(prevProps) {
+
+        if (this.props.location.pathname !== prevProps.location.pathname) {
+            this.setState({
+                activeTab: this.getActiveTab()
+            })
+        }
+
+    }
+
+    getActiveTab() {
+        const splitURL = this.props.location.pathname.split(this.props.match.params.userId)
+        return splitURL.length === 2 && splitURL[1] !== "" ? splitURL[1] : tabList[0].name
     }
 
     changeActiveTab(e, name, link) {

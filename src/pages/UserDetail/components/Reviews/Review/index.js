@@ -1,3 +1,3 @@
-import ReviewView from './Reviews'
+import ReviewView from './Review'
 
 export default ReviewView

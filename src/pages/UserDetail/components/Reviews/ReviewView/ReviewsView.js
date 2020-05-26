@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
-import Reviews from '../Review'
+import ReviewList from '../ReviewList'
 import {Loading, Message} from '../../../../../components'
+import PropTypes from 'prop-types'
 
 class ReviewsView extends Component {
 
@@ -26,8 +27,9 @@ class ReviewsView extends Component {
                 )
             } else {
                 return (
-                    <Reviews
+                    <ReviewList
                         user={user}
+                        reviewList={user.reviews}
                         loggedUser={loggedUser}
                         isLoggedIn={isLoggedIn}
                     />
@@ -36,5 +38,12 @@ class ReviewsView extends Component {
         }
     }
 }
-
+ReviewsView.propTypes = {
+    isLoading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
+    errorMsg: PropTypes.string.isRequired,
+    getUser: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    loggedUser: PropTypes.object.isRequired,
+}
 export default ReviewsView
