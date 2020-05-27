@@ -6,16 +6,15 @@ class PetsByUserView extends Component {
 
     componentDidMount() {
         this.props.getUser(this.props.match.params.userId)
-        this.props.getAnimals(this.props.match.params.userId)
     }
 
     render() {
-        const {isLoading, error, user, loggedUser, isLoggedIn, animalList, isLoadingList, errorList} = this.props
-        if (isLoading || isLoadingList) {
+        const {isLoading, error, user, loggedUser, isLoggedIn} = this.props
+        if (isLoading) {
             return (
                 <Loading/>
             )
-        } else if (error || errorList) {
+        } else if (error) {
             return (
                 <Message>Sorry, there was a problem and we <strong>couldn't retrieve</strong> the user. Please, try
                     again later.</Message>
@@ -31,9 +30,9 @@ class PetsByUserView extends Component {
                         user={user}
                         loggedUser={loggedUser}
                         isLoggedIn={isLoggedIn}
-                        animals={animalList}
-                        isLoadingList={isLoadingList}
-                        errorList={errorList}
+                        animals={user.inAdoption}
+                        isLoadingList={isLoading}
+                        errorList={error}
                     />
                 )
             }
