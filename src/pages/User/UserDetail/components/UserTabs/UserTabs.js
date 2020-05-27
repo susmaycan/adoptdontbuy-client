@@ -10,25 +10,25 @@ const tabList = [
         'link': '',
     },
     {
-        'name': 'pets',
-        'tabName': 'pets',
-        'link': '/pets',
-    },
-    {
         'name': 'contact',
         'tabName': 'contact',
         'link': '/contact',
     },
     {
-        'name': 'reviews',
-        'tabName': 'reviews',
-        'link': '/reviews',
+        'name': 'pets',
+        'tabName': 'pets',
+        'link': '/pets',
     },
     {
         'name': 'fav',
         'tabName': 'favourites',
         'link': '/fav',
     },
+    {
+        'name': 'reviews',
+        'tabName': 'reviews',
+        'link': '/reviews',
+    }
 ]
 
 class UserTabs extends React.Component {
