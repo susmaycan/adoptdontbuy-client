@@ -431,7 +431,8 @@ export const tableElements = {
     ADDRESS_LINE: 'address_line',
     PHONE: 'phone',
     EMAIL: 'email',
-    WEBSITE: 'website'
+    WEBSITE: 'website',
+    STATUS: 'status'
 }
 
 export const filterElements = {
@@ -470,6 +471,26 @@ export const buttonTypes = {
     NO: "common.no",
     FINISH: "common.finish"
 }
+
+export const status = {
+    IN_ADOPTION: {
+        value: "00",
+        name: "status.inAdoption"
+    },
+    ADOPTED: {
+        value: "01",
+        name: "status.adopted"
+    },
+    RESERVED: {
+        value: "02",
+        name: "status.reserved"
+    },
+    UNKNOWN: {
+        value: undefined,
+        name: "status.unknown"
+    }
+}
+
 
 
 

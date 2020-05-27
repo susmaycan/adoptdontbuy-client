@@ -38,6 +38,12 @@
     "title": "Filters",
     "clearFilters": "Clear filters"
   },
+  "status": {
+    "inAdoption": "In adoption",
+    "adopted": "Adopted",
+    "reserved": "Reserved",
+    "unknown": "Unknown"
+  },
   "login": {
     "title": "LOGIN",
     "email": "Email",

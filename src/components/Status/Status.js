@@ -1,8 +1,8 @@
 import React from 'react'
-import {Badge} from 'react-bootstrap'
 import PropTypes from 'prop-types'
+import {status} from "../../constants";
+import {Translate} from 'react-redux-i18n'
 
-//TODO add constants to numbers
 class Status extends React.Component {
 
     constructor(props) {
@@ -15,28 +15,28 @@ class Status extends React.Component {
 
     componentDidMount() {
         switch (this.props.status) {
-            case "00":
+            case status.IN_ADOPTION.value:
                 this.setState({
-                    status: 'In adoption',
-                    variant: 'success'
+                    status: status.IN_ADOPTION.name,
+                    variant: 'is-success'
                 })
                 break
-            case "01":
+            case status.ADOPTED.value:
                 this.setState({
-                    status: 'Adopted',
-                    variant: 'danger'
+                    status: status.ADOPTED.name,
+                    variant: 'is-danger'
                 })
                 break
-            case "02":
+            case status.RESERVED.value:
                 this.setState({
-                    status: 'Reserved',
-                    variant: 'warning'
+                    status: status.RESERVED.name,
+                    variant: 'is-warning'
                 })
                 break
             default:
                 this.setState({
-                    status: 'Unknown',
-                    variant: 'secondary'
+                    status: status.UNKNOWN.name,
+                    variant: 'is-secondary'
                 })
                 break
         }
@@ -44,12 +44,11 @@ class Status extends React.Component {
 
     render() {
         return (
-            <div className="footer" >
-                <Badge className="bagdeCustom" variant={this.state.variant}>{this.state.status}</Badge>
-            </div>
-        );
+            <span className={"tag badge-custom " + this.state.variant}><Translate value={this.state.status} /></span>
+        )
     }
 }
+
 Status.propTypes = {
     status: PropTypes.string
 }

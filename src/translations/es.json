@@ -41,6 +41,12 @@
     "title": "Filtros",
     "clearFilters": "Limpiar filtros"
   },
+  "status": {
+    "inAdoption": "En adopción",
+    "adopted": "Adoptado",
+    "reserved": "Reservado",
+    "unknown": "Desconocido"
+  },
   "login": {
     "title": "¡Hola de nuevo!",
     "email": "Correo electrónico",

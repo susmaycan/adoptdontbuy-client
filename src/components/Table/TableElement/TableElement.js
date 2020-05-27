@@ -7,6 +7,7 @@ import {Translate} from 'react-redux-i18n'
 import './TableElement.scss'
 import {tableElements} from '../../../constants'
 import Date from '../../Date'
+import Status from "../../Status";
 
 const ANIMAL_TYPE = tableElements.ANIMAL_TYPE
 
@@ -30,9 +31,16 @@ class TableElement extends React.Component {
                     />
                 })
                 break
+            case tableElements.STATUS:
+                this.setState({
+                    value: <Status
+                        status={elementValue}
+                    />
+                })
+                break
             case tableElements.CREATED_AT:
                 this.setState({
-                    value: <Date value={elementValue} />
+                    value: <Date value={elementValue}/>
                 })
                 break
             case tableElements.AGE:

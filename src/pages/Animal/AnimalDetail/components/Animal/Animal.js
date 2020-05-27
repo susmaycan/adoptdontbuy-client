@@ -40,6 +40,7 @@ const Animal = ({animal, user}) => (
                 <div className="animal-information">
                     <Table
                         elements={[
+                            {name: tableElements.STATUS, value: animal.status},
                             {name: tableElements.BREED, value: animal.breed},
                             {name: tableElements.SPECIE, value: animal.specie},
                             {name: tableElements.SIZE, value: animal.size},

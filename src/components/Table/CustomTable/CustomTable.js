@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Translate} from 'react-redux-i18n'
 import Subtitle from '../../Subtitle'
-import TableElement from "../TableElement";
+import TableElement from '../TableElement'
 import {tableElements} from '../../../constants'
 
 const ANIMAL_TYPE = tableElements.ANIMAL_TYPE
