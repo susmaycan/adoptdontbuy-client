@@ -25,7 +25,7 @@ class PostReviewForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        this.props.postReview(this.state.review)
+        this.props.postReview(this.state.review, this.props.user._id)
     }
 
     updateInput(e) {
@@ -39,14 +39,24 @@ class PostReviewForm extends React.Component {
         })
     }
 
+    resetReview(){
+        this.setState({
+            review: {
+                ...this.state.review,
+                desc: '',
+                rating: ''
+            }
+        })
+    }
+
     render() {
         const {isLoading, error, errorMsg, success} = this.props
         const {review} = this.state
 
         if (success) {
             setTimeout(() => {
-                this.props.reset()
                 this.props.handleClose()
+                this.resetReview()
             }, 500)
         }
 

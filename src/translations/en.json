@@ -39,9 +39,9 @@
     "clearFilters": "Clear filters"
   },
   "status": {
-    "inAdoption": "In adoption",
-    "adopted": "Adopted",
-    "reserved": "Reserved",
+    "00": "In adoption",
+    "01": "Adopted",
+    "02": "Reserved",
     "unknown": "Unknown"
   },
   "login": {
@@ -88,8 +88,10 @@
     "petsByMe": "My pets",
     "tabs": {
       "account": "Account",
-      "pets": "Pets",
+      "pets": "Pets in adoption",
       "reviews": "Reviews",
+      "adopted": "Adopted",
+      "reserved": "Reserved",
       "favourites": "Favourites",
       "contact": "Contact"
     }

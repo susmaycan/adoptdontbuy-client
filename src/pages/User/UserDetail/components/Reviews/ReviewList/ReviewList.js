@@ -25,6 +25,7 @@ const ReviewList = ({reviewList, isLoggedIn, loggedUser, user, deleteReview}) =>
                     loggedUser={loggedUser}
                     isLoggedIn={isLoggedIn}
                     review={review}
+                    user={user}
                 />
             ))
         }

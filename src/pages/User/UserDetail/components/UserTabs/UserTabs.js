@@ -25,6 +25,16 @@ const tabList = [
         'link': '/fav',
     },
     {
+        'name': 'adopted',
+        'tabName': 'adopted',
+        'link': '/adopted',
+    },
+    {
+        'name': 'reserved',
+        'tabName': 'reserved',
+        'link': '/reserved',
+    },
+    {
         'name': 'reviews',
         'tabName': 'reviews',
         'link': '/reviews',

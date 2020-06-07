@@ -382,6 +382,21 @@ export const specieList = [
     }
 ]
 
+export const statusList = [
+    {
+        "value": "00",
+        "name": "In adoption"
+    },
+    {
+        "value": "01",
+        "name": "Adopted"
+    },
+    {
+        "value": "02",
+        "name": "Reserved"
+    }
+]
+
 export const ageList = [
     {
         "value": "puppy",
@@ -473,22 +488,10 @@ export const buttonTypes = {
 }
 
 export const status = {
-    IN_ADOPTION: {
-        value: "00",
-        name: "status.inAdoption"
-    },
-    ADOPTED: {
-        value: "01",
-        name: "status.adopted"
-    },
-    RESERVED: {
-        value: "02",
-        name: "status.reserved"
-    },
-    UNKNOWN: {
-        value: undefined,
-        name: "status.unknown"
-    }
+    IN_ADOPTION: "00",
+    ADOPTED: "01",
+    RESERVED: "02",
+    UNKNOWN: "unknown"
 }
 
 

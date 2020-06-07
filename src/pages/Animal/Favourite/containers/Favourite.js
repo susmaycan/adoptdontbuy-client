@@ -15,8 +15,7 @@ const mapStateToProps = (state, props) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     addFavourite: (userId, animalId) => dispatch(addFavouriteAnimal(userId, animalId)),
-    deleteFavourite: (userId, animalId) => dispatch(deleteFavouriteAnimal(userId, animalId)),
-    refreshUser: (userId) => dispatch(refreshUser(userId))
+    deleteFavourite: (userId, animalId) => dispatch(deleteFavouriteAnimal(userId, animalId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Favourite)

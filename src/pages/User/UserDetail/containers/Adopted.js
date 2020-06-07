@@ -1,7 +1,6 @@
 import {connect} from 'react-redux'
 import {fetchUser} from '../../../../actions/user'
-
-import Pets from '../components/PetsByUser'
+import Adopted from '../components/Adopted'
 
 const mapStateToProps = state => ({
     user: state.userReducer.user || {},
@@ -15,4 +14,4 @@ const mapDispatchToProps = (dispatch) => ({
     getUser: (id) => dispatch(fetchUser(id))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Pets)
+export default connect(mapStateToProps, mapDispatchToProps)(Adopted)

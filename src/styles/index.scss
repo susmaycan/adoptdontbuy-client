@@ -69,6 +69,12 @@ option {
   }
 }
 
+.popover-container{
+  padding:10px;
+  background-color: #e2e1e1;
+  border-radius:5px;
+}
+
 .divider{
   border: 1px solid $border-light-color;
   height:100px;

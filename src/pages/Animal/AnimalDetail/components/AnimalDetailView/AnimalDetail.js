@@ -2,13 +2,13 @@ import React, {Component} from 'react'
 import Animal from '../Animal'
 import Loading from '../../../../../components/Loading'
 import Message from '../../../../../components/Message'
+import {status} from '../../../../../constants'
 
 class AnimalDetail extends Component {
 
     componentDidMount() {
         this.props.getAnimal(this.props.match.params.animalId)
     }
-
 
     render() {
         const {isLoading, error, animal, errorMsg, user, successDelete} = this.props

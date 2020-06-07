@@ -42,9 +42,10 @@
     "clearFilters": "Limpiar filtros"
   },
   "status": {
-    "inAdoption": "En adopción",
-    "adopted": "Adoptado",
-    "reserved": "Reservado",
+    "00": "En adopción",
+    "01": "Adoptado",
+    "02": "Reservado",
+    "02": "Reservado",
     "unknown": "Desconocido"
   },
   "login": {
@@ -84,10 +85,12 @@
     "petsByMe": "Mis mascotas",
     "tabs": {
       "account": "Cuenta",
-      "pets": "Mascotas",
+      "pets": "Mascotas en adopción",
       "reviews": "Opiniones",
       "favourites": "Favoritos",
-      "contact": "Contacto"
+      "contact": "Contacto",
+      "adopted": "Adoptados",
+      "reserved": "Reservados"
     }
   },
   "review": {

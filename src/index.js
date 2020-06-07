@@ -37,6 +37,8 @@ render(
                     <Route exact path="/user/:userId/pets" component={Pages.UserDetail.Pets}/>
                     <Route exact path="/user/:userId/fav" component={Pages.UserDetail.Favourites}/>
                     <Route exact path="/user/:userId/reviews" component={Pages.UserDetail.Reviews}/>
+                    <Route exact path="/user/:userId/adopted" component={Pages.UserDetail.Adopted}/>
+                    <Route exact path="/user/:userId/reserved" component={Pages.UserDetail.Reserved}/>
                     <Route exact path="/user/:userId/contact" component={Pages.UserDetail.Contact}/>
                     <Route component={Error}/>
                 </Switch>

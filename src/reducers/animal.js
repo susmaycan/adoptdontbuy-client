@@ -77,6 +77,7 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isLoading: false,
+                animal: action.animal,
                 update: {success: true, error: false, errorMsg: ''}
             }
         case EDIT_ANIMAL_ERROR:

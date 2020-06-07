@@ -15,27 +15,27 @@ class Status extends React.Component {
 
     componentDidMount() {
         switch (this.props.status) {
-            case status.IN_ADOPTION.value:
+            case status.IN_ADOPTION:
                 this.setState({
-                    status: status.IN_ADOPTION.name,
+                    status: 'status.' + status.IN_ADOPTION,
                     variant: 'is-success'
                 })
                 break
-            case status.ADOPTED.value:
+            case status.ADOPTED:
                 this.setState({
-                    status: status.ADOPTED.name,
+                    status: 'status.' + status.ADOPTED,
                     variant: 'is-danger'
                 })
                 break
-            case status.RESERVED.value:
+            case status.RESERVED:
                 this.setState({
-                    status: status.RESERVED.name,
+                    status: 'status.' + status.RESERVED,
                     variant: 'is-warning'
                 })
                 break
             default:
                 this.setState({
-                    status: status.UNKNOWN.name,
+                    status: 'status.' + status.UNKNOWN,
                     variant: 'is-secondary'
                 })
                 break
@@ -44,7 +44,7 @@ class Status extends React.Component {
 
     render() {
         return (
-            <span className={"tag badge-custom " + this.state.variant}><Translate value={this.state.status} /></span>
+            <span className={"tag badge-custom " + this.state.variant}><Translate value={this.state.status}/></span>
         )
     }
 }

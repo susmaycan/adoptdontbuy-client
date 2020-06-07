@@ -1,3 +1,5 @@
+import {status} from "../constants";
+
 export function sortByUpdateDate(list) {
     list.sort(function (a, b) {
         a = new Date(a.updatedAt)
@@ -15,4 +17,12 @@ export function isOwner(user, owner) {
 export function isAuthenticated(user, loggedUser) {
     return loggedUser != null && loggedUser._id === user._id
 
+}
+
+export function isAdopted(animal){
+    return animal !== undefined && animal.status === status.ADOPTED
+}
+
+export function isReserved(animal){
+    return animal !== undefined && animal.status === status.RESERVED
 }

@@ -5,7 +5,7 @@ import Rating from '../Rating'
 import {Link} from 'react-router-dom'
 import Date from '../../../../../../components/Date'
 
-const Review = ({review, isLoggedIn, loggedUser, deleteReview}) => (
+const Review = ({review, isLoggedIn, loggedUser, deleteReview, user}) => (
     <div className="box">
         <div className="columns is-vcentered">
             <div className="column is-narrow">
@@ -36,7 +36,7 @@ const Review = ({review, isLoggedIn, loggedUser, deleteReview}) => (
                         <Date value={review.createdAt}/>
                         <br/>
                         {isLoggedIn && review.from._id === loggedUser._id ?
-                            <button className="button is-white" onClick={() => deleteReview(review._id)}>
+                            <button className="button is-white" onClick={() => deleteReview(review._id, user._id)}>
                                 <span className="icon">
                                 <i className="fas fa-trash-alt"/>
                                 </span>
@@ -52,6 +52,7 @@ const Review = ({review, isLoggedIn, loggedUser, deleteReview}) => (
 Review.propTypes = {
     review: PropTypes.object.isRequired,
     loggedUser: PropTypes.object,
+    user: PropTypes.object,
     isLoggedIn: PropTypes.bool.isRequired,
     deleteReview: PropTypes.func.isRequired
 }

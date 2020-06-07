@@ -11,6 +11,7 @@ import {
     REQUEST_USER,
     RESET_USER,
 } from '../actions/actionTypes'
+import {status} from "../constants";
 
 const INITIAL_STATE = {
     animalList: [],
@@ -82,7 +83,12 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isLoading: false,
-                user: action.payload,
+                user: {
+                    ...action.payload,
+                    inAdoption: action.payload.animals.filter(animal => animal.status === status.IN_ADOPTION),
+                    reserved: action.payload.animals.filter(animal => animal.status === status.RESERVED),
+                    adopted: action.payload.animals.filter(animal => animal.status === status.ADOPTED)
+                },
                 fetch: {
                     error: false,
                     errorMsg: '',

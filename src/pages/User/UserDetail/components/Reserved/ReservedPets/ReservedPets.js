@@ -3,15 +3,11 @@ import {Translate} from 'react-redux-i18n'
 import {sortByUpdateDate} from "../../../../../../utils/Functions";
 import {AnimalCard, Box, Message, Subtitle} from '../../../../../../components'
 
-const PetsByUser = ({user, animals, isLoggedIn, loggedUser}) => (
+const ReservedPets = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) => (
     <Box>
         <div className="tab-title-container">
             <Subtitle>
-                {isLoggedIn && loggedUser._id === user._id ?
-                    <Translate value='userDetail.petsByMe'/>
-                    :
-                    <Translate value='userDetail.pets'/>
-                }
+                <Translate value='userDetail.tabs.reserved'/>
             </Subtitle>
         </div>
         {animals === undefined || animals.length === 0 ?
@@ -24,9 +20,8 @@ const PetsByUser = ({user, animals, isLoggedIn, loggedUser}) => (
                     <div key={animal._id} className="column is-narrow">
                         <AnimalCard
                             animal={animal}
-                            user={loggedUser}
                             isLoggedIn={isLoggedIn}
-                            editMode={true}
+                            user={loggedUser}
                         />
                     </div>
                 )}
@@ -35,4 +30,4 @@ const PetsByUser = ({user, animals, isLoggedIn, loggedUser}) => (
     </Box>
 )
 
-export default PetsByUser
+export default ReservedPets

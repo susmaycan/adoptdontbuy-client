@@ -15,7 +15,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch) => ({
     getUser: (id) => dispatch(fetchUser(id)),
-    deleteReview: (reviewId) => dispatch(removeReview(reviewId))
+    deleteReview: (reviewId, userId) => dispatch(removeReview(reviewId, userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews)

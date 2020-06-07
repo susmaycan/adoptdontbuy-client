@@ -12,8 +12,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    postReview: (review) => dispatch(addReview(review)),
-    reset: () => dispatch(resetReviewState())
+    postReview: (review, userId) => dispatch(addReview(review, userId)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostReview)

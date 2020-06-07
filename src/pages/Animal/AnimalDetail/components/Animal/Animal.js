@@ -6,35 +6,16 @@ import './Animal.scss'
 import AnimalPicture from '../AnimalPicture'
 import Badge from '../Badge'
 import {buttonTypes, tableElements} from '../../../../../constants'
-import {isOwner} from '../../../../../utils/Functions'
+import {isAdopted, isOwner} from '../../../../../utils/Functions'
+import MarkAdopt from '../../../MarkAdopt'
+import MarkReserved from '../../../MarkReserved'
 
 const Animal = ({animal, user}) => (
     <Box>
         <div className="has-text-centered">
             <h1 className="title">{animal.name}</h1>
         </div>
-        <div className="columns is-centered">
-            <div className="column is-narrow is-offset-7">
-                {isOwner(user, animal.owner) ?
-                    <div className="centered">
-                        <Button
-                            url={`/updateAnimal/${animal._id}`}
-                        >
-                            <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT}/>
-                        </Button>
-                        <Button
-                            url={`/editPictures/${animal._id}`}
-                        >
-                            <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT_PICTURES}/>
-                        </Button>
-                        <DeleteAnimal
-                        />
-                    </div>
-                    :
-                    <Contact emailDst={animal.owner !== undefined ? animal.owner.email : ''} animalName={animal.name}/>
-                }
-            </div>
-        </div>
+
         <div className="columns">
             <div className="column">
                 <div className="animal-information">
@@ -84,6 +65,43 @@ const Animal = ({animal, user}) => (
                 </div>
             </div>
             <div className="column">
+                {isOwner(user, animal.owner) ?
+                    <div className="level centered">
+                        <div className="level-left">
+                        </div>
+                        <div className="level-right">
+                            <div className="level-item">
+                                <MarkAdopt animal={animal} />
+                                <MarkReserved animal={animal} />
+                            </div>
+                            <div className="level-item">
+                                <Button
+                                    url={`/updateAnimal/${animal._id}`}
+                                    disabled={isAdopted(animal)}
+                                >
+                                    <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT}/>
+                                </Button>
+                            </div>
+                            <div className="level-item">
+                                <Button
+                                    url={`/editPictures/${animal._id}`}
+                                    disabled={isAdopted(animal)}
+                                >
+                                    <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT_PICTURES}/>
+                                </Button>
+                            </div>
+                            <div className="level-item">
+                                <DeleteAnimal/>
+                            </div>
+
+                        </div>
+                    </div>
+                    :
+                    <div className="has-text-centered">
+                        <Contact emailDst={animal.owner !== undefined ? animal.owner.email : ''}
+                                 animal={animal}/>
+                    </div>
+                }
                 <AnimalPicture name={animal.name} pictures={animal.picture}/>
             </div>
         </div>
