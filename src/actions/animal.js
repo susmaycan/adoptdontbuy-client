@@ -1,4 +1,5 @@
 import {addAnimalAPI, getAnimal, removeAnimal, updateAnimal} from '../api/animals'
+import {getUser} from '../api/users'
 
 import {
     ADD_ANIMAL_ERROR,
@@ -8,7 +9,7 @@ import {
     EDIT_ANIMAL_ERROR,
     EDIT_ANIMAL_SUCCESS,
     FETCH_ANIMAL_ERROR,
-    FETCH_ANIMAL_SUCCESS,
+    FETCH_ANIMAL_SUCCESS, FETCH_SUCCESS_USER, FETCH_USER_ERROR,
     REQUEST_ANIMAL,
     RESET_ANIMAL
 } from './actionTypes'
@@ -77,6 +78,28 @@ export function editAnimal(animal) {
         return updateAnimal(animal)
             .then(animal => {
                 dispatch(editAnimalSuccess(animal))
+            })
+            .catch(error => {
+                console.log("There was an error editing the animal on DB. Error: ", error.message)
+                dispatch(editAnimalError(error.message))
+            })
+    }
+}
+
+export function updateAnimalUser(animal, userId) {
+    return (dispatch) => {
+        dispatch(animalRequest())
+        return updateAnimal(animal)
+            .then(animal => {
+                return getUser(userId)
+                    .then(user => {
+                        dispatch(fetchUserSuccess(user))
+                        dispatch(editAnimalSuccess(animal))
+                    })
+                    .catch(error => {
+                        console.log('Error when retrieving the user with id ', userId, ' from db. Error: ', error.message)
+                        dispatch(fetchUserError(error.message))
+                    })
             })
             .catch(error => {
                 console.log("There was an error editing the animal on DB. Error: ", error.message)
@@ -186,9 +209,10 @@ function deleteAnimalSuccess() {
     }
 }
 
-function editAnimalSuccess() {
+function editAnimalSuccess(animal) {
     return {
-        type: EDIT_ANIMAL_SUCCESS
+        type: EDIT_ANIMAL_SUCCESS,
+        animal
     }
 }
 
@@ -222,6 +246,20 @@ function deleteAnimalError(error) {
 function fetchAnimalError(error) {
     return {
         type: FETCH_ANIMAL_ERROR,
+        error
+    }
+}
+
+function fetchUserSuccess(payload) {
+    return {
+        type: FETCH_SUCCESS_USER,
+        payload
+    }
+}
+
+function fetchUserError(error) {
+    return {
+        type: FETCH_USER_ERROR,
         error
     }
 }
