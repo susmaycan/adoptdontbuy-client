@@ -20,6 +20,11 @@ button {
   &:disabled {
     background-color: $primary-color-lighter;
   }
+
+  &:hover:disabled{
+    color: $white-color;
+    border: $white-color 1px solid;
+  }
 }
 
 .danger {

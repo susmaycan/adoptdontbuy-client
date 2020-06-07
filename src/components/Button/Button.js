@@ -18,6 +18,14 @@ class Button extends React.Component {
                 </button>
             )
         } else {
+            if (disabled) {
+                return (
+                    <button disabled className={`button ${danger && 'danger'}`}>
+                        {children}
+                    </button>
+                )
+            }
+
             return (
                 <Link className={`button ${danger && 'danger'}`}
                       to={{
