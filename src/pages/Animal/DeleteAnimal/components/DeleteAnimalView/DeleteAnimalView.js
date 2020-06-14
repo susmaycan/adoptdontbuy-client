@@ -11,7 +11,7 @@ function DeleteAnimalView(props) {
     const handleShow = () => setShow(true)
 
     const deleteAnimal = () => {
-        props.deleteAnimal(props.animal._id)
+        props.deleteAnimal(props.animal._id, props.user._id)
         handleClose()
     }
 
