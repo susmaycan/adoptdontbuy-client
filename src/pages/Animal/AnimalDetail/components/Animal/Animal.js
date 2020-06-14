@@ -67,12 +67,13 @@ const Animal = ({animal, user}) => (
             <div className="column">
                 {isOwner(user, animal.owner) ?
                     <div className="level centered">
-                        <div className="level-left">
-                        </div>
-                        <div className="level-right">
+                        {!isAdopted(animal) &&
+                        <>
                             <div className="level-item">
-                                <MarkAdopt animal={animal} />
-                                <MarkReserved animal={animal} />
+                                <MarkAdopt animal={animal}/>
+                            </div>
+                            <div className="level-item">
+                                <MarkReserved animal={animal}/>
                             </div>
                             <div className="level-item">
                                 <Button
@@ -90,10 +91,12 @@ const Animal = ({animal, user}) => (
                                     <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT_PICTURES}/>
                                 </Button>
                             </div>
-                            <div className="level-item">
-                                <DeleteAnimal/>
-                            </div>
 
+                        </>}
+                        <div className="level-item">
+                            <DeleteAnimal>
+                                <i className="fas fa-trash-alt"/>&nbsp;<Translate value={buttonTypes.DELETE}/>
+                            </DeleteAnimal>
                         </div>
                     </div>
                     :

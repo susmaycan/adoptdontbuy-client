@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {isReserved, isOwner} from '../../../../../utils/Functions'
+import {isReserved, isOwner, isAdopted} from '../../../../../utils/Functions'
 import {status} from "../../../../../constants";
 import Popover from 'react-popover'
 

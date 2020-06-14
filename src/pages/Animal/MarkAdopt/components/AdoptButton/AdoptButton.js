@@ -42,7 +42,7 @@ class AdoptButton extends Component {
                 tipSize={.01}
             >
                 <button className="button is-white"
-                        disabled={!isLoggedIn || !isOwner(user, animal.owner) || isAdopted(animal)}
+                        disabled={!isLoggedIn || !isOwner(user, animal.owner)}
                         onClick={() => this.onClick()}
                         onMouseLeave={this.togglePopover}
                         onMouseEnter={this.togglePopover}

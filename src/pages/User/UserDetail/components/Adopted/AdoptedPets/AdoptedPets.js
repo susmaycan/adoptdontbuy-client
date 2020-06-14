@@ -22,6 +22,7 @@ const AdoptedPets = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) 
                             animal={animal}
                             isLoggedIn={isLoggedIn}
                             user={loggedUser}
+                            editMode={true}
                         />
                     </div>
                 )}
