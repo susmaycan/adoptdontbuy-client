@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import {isReserved, isOwner, isAdopted} from '../../../../../utils/Functions'
+import {isReserved, isOwner} from '../../../../../utils/Functions'
 import {status} from "../../../../../constants";
 import Popover from 'react-popover'
+import {Translate} from 'react-redux-i18n'
 
 class ReservedButton extends Component {
 
@@ -41,9 +42,9 @@ class ReservedButton extends Component {
                 body={
                     <div className="popover-container">
                         {isReserved(animal) ?
-                            <p>Unmark animal as reserved </p>
+                            <Translate value='buttons.unmark-as-reserved' />
                             :
-                            <p>Mark animal as reserved </p>
+                            <Translate value='buttons.mark-as-reserved' />
                         }
                     </div>
                 }

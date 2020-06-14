@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
-import {isAdopted, isOwner} from '../../../../../utils/Functions'
+import {isOwner} from '../../../../../utils/Functions'
 import {status} from "../../../../../constants";
 import Popover from 'react-popover'
+import {Translate} from 'react-redux-i18n'
 
 class AdoptButton extends Component {
 
@@ -34,7 +35,7 @@ class AdoptButton extends Component {
                 isOpen={isOpen}
                 body={
                     <div className="popover-container">
-                        <p>Mark animal as adopted</p>
+                        <Translate value='buttons.mark-as-adopted' />
                     </div>
                 }
                 place="above"

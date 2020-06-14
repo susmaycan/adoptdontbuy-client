@@ -193,7 +193,10 @@
     "info": "Mas info",
     "confirm": "Confirmar",
     "edit-pictures": "Editar fotos",
-    "add-review": "Añadir reseña"
+    "add-review": "Añadir reseña",
+    "mark-as-adopted": "Marcar animal como adoptado",
+    "mark-as-reserved": "Marcar animal como reservado",
+    "unmark-as-reserved": "Desmarcar animal como reservado"
   },
   "contact": {
     "request": "Solicitar adopción",

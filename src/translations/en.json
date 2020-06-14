@@ -190,7 +190,10 @@
     "info": "More info",
     "confirm": "Confirm",
     "edit-pictures": "Edit pictures",
-    "add-review": "Add review"
+    "add-review": "Add review",
+    "mark-as-adopted": "Mark animal as adopted",
+    "mark-as-reserved": "Mark animal as reserved",
+    "unmark-as-reserved": "Unmark animal as reserved"
   },
   "common": {
     "yes": "Yes",
