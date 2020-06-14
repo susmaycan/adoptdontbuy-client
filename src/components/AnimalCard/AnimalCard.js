@@ -29,42 +29,40 @@ const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
 
         {(editMode && isLoggedIn && isOwner(user, animal.owner)) &&
         <div className="level">
-            <div className="level-left">
-                <div className="level-item">
-                    <MarkAdopt animal={animal}/>
-                    <MarkReserved animal={animal}/>
-                </div>
+            <div className="level-item">
+                <MarkAdopt animal={animal}/>
             </div>
-            <div className="level-right">
-                <div className="level-item">
-                    <Link className="button is-white"
-                          to={`/updateAnimal/${animal._id}`}>
+            <div className="level-item">
+                <MarkReserved animal={animal}/>
+            </div>
+            <div className="level-item">
+                <Link className="button is-white"
+                      to={`/updateAnimal/${animal._id}`}>
                         <span className="icon">
                             <i className="fas fa-edit"/>
                         </span>
-                    </Link>
-                </div>
-                <div className="level-item">
-                    <button className="button is-white">
+                </Link>
+            </div>
+            <div className="level-item">
+                <button className="button is-white">
                         <span className="icon">
                            <i className="fas fa-trash-alt"/>
                         </span>
-                    </button>
-                </div>
+                </button>
             </div>
         </div>
         }
 
-        {isLoggedIn &&
-            <div className="level">
-                <div className="level-left">
-                </div>
-                <div className="level-right">
-                    <div className="level-item">
-                        <Favourite animal={animal}/>
-                    </div>
+        {!editMode && isLoggedIn &&
+        <div className="level">
+            <div className="level-left">
+            </div>
+            <div className="level-right">
+                <div className="level-item">
+                    <Favourite animal={animal}/>
                 </div>
             </div>
+        </div>
         }
     </div>
 )
