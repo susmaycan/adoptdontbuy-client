@@ -65,7 +65,7 @@ class Checkboxes extends React.Component {
                             <Form.Check
                                 inline
                                 key={element.value}
-                                label={text}
+                                label={' ' + text}
                                 name={name}
                                 value={element.value}
                                 checked={value !== undefined && value.includes(element.value)}
