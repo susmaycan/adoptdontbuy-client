@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Animal from '../Animal'
 import Loading from '../../../../../components/Loading'
 import Message from '../../../../../components/Message'
-import {status} from '../../../../../constants'
 
 class AnimalDetail extends Component {
 

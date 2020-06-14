@@ -91,12 +91,13 @@ class UserTabs extends React.Component {
                                 return (
                                     <li key={tab.name}
                                         className={this.state.activeTab === tab.name || this.state.activeTab === tab.link ? "is-active" : ''}>
-                                        <a onClick={(e) => this.changeActiveTab(e, tab.name, tab.link)}>
+                                        <a href="/#" onClick={(e) => this.changeActiveTab(e, tab.name, tab.link)}>
                                             <Translate value={"userDetail.tabs." + tab.tabName}/>
                                         </a>
                                     </li>
                                 )
                             }
+                            return null
                         })}
                     </ul>
                 </div>

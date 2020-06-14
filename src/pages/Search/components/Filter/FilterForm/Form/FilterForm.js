@@ -23,7 +23,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
             isNotEmpty={isNotEmpty}
         />
         <div className="centered">
-            <a href="#" onClick={clearFilter}><Translate value='filter.clearFilters'/></a>
+            <a href="/#" onClick={clearFilter}><Translate value='filter.clearFilters'/></a>
         </div>
         <form>
             <div className="field">

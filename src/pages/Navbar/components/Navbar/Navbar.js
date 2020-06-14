@@ -66,7 +66,7 @@ class NavigationBar extends Component {
                             {/*<a className="navbar-item">*/}
                             {/*    <i className="fas fa-cog"/>&nbsp;&nbsp;<Translate value="nav-bar.settings"/>*/}
                             {/*</a>*/}
-                            <a className="navbar-item" onClick={this.logout}>
+                            <a href="/#" className="navbar-item" onClick={this.logout}>
                                 <i className="fas fas fa-sign-out-alt"/>&nbsp;&nbsp;<Translate
                                 value={buttonTypes.LOGOUT}/>
                             </a>
@@ -101,6 +101,7 @@ class NavigationBar extends Component {
                     <a
                         onClick={this.setIsActive}
                         role="button"
+                        href="/#"
                         className={`navbar-burger burger ${isActive ? "is-active" : ""}`}
                         aria-label="menu" aria-expanded="false"
                         data-target="navigationBar">

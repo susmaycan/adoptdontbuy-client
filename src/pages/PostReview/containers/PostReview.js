@@ -1,5 +1,5 @@
 import {connect} from 'react-redux'
-import {addReview, resetReviewState} from '../../../actions/review'
+import {addReview} from '../../../actions/review'
 import PostReview from '../components/PostReviewView'
 
 const mapStateToProps = state => ({
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    postReview: (review, userId) => dispatch(addReview(review, userId)),
+    postReview: (review, userId) => dispatch(addReview(review, userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostReview)

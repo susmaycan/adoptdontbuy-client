@@ -1,8 +1,6 @@
 import React, {useState} from 'react'
 import DeleteAnimalModal from '../DeleteAnimalModal'
 import Button from '../../../../../components/Button'
-import {Translate} from "react-redux-i18n";
-import {buttonTypes} from "../../../../../constants";
 
 function DeleteAnimalView(props) {
 

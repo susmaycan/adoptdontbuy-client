@@ -36,7 +36,7 @@ export function addAnimal(animal) {
         let picturesURL = []
         let files = animal.picture
         const promises = []
-        Object.keys(files).map(key => {
+        Object.keys(files).forEach(key => {
             let file = files[key]
             const idPicture = uuid()
             const ref = 'animal/' + idPicture
@@ -112,7 +112,7 @@ export function addPictures(animal, files) {
     return (dispatch) => {
         dispatch(animalRequest())
         const promises = []
-        Object.keys(files).map(key => {
+        Object.keys(files).forEach(key => {
             let file = files[key]
             const idPicture = uuid()
             const ref = 'animal/' + idPicture
@@ -180,7 +180,7 @@ export function deleteAnimal(animalId, userId) {
             })
             .catch(error => {
                 console.log("There was an error editing the animal on DB. Error: ", error.message)
-                dispatch(editAnimalError(error.message))
+                dispatch(deleteAnimalError(error.message))
             })
     }
 }
