@@ -3,8 +3,18 @@ import {Translate} from 'react-redux-i18n'
 import {codeError} from '../../../../constants'
 import {Cat} from 'react-kawaii'
 import {AnimalCard, Box, Error, Loading, Message, Subtitle, Title} from '../../../../components'
+import PropTypes from 'prop-types'
 
 class Home extends Component {
+
+    static propTypes = {
+        animals: PropTypes.array,
+        isLoading: PropTypes.bool,
+        error: PropTypes.bool,
+        user: PropTypes.object,
+        isLoggedIn: PropTypes.bool,
+        getAnimals: PropTypes.func
+    }
 
     constructor(props) {
         super(props)
@@ -88,6 +98,7 @@ class Home extends Component {
                         <Cat size={100} mood="excited" color="#ffc107"/>
                     </div>
                 </div>
+
                 {this.renderBody()}
             </Box>
         )

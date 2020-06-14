@@ -13,17 +13,15 @@ class NavigationBar extends Component {
         this.state = {
             isActive: false
         }
-        this.logout = this.logout.bind(this);
-        this.setIsActive = this.setIsActive.bind(this);
     }
 
-    setIsActive() {
+    setIsActive = () => {
         this.setState({
             isActive: !this.state.isActive
         })
     }
 
-    logout() {
+    logout = () => {
         this.props.logout()
     }
 

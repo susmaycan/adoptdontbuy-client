@@ -1,4 +1,3 @@
-export {default as Age} from './Age'
 export {default as AnimalCard} from './AnimalCard'
 export {default as AnimalForm} from './AnimalForm'
 export {default as Button} from './Button'
