@@ -12,15 +12,16 @@ function DeleteAnimalView(props) {
 
     const deleteAnimal = () => {
         props.deleteAnimal(props.animal._id)
+        handleClose()
     }
 
     return (
-        <>
+        <React.Fragment>
             <Button
                 onAction={handleShow}
                 danger={true}
             >
-                <i className="fas fa-trash-alt"/>&nbsp;<Translate value={buttonTypes.DELETE}/>
+                {props.children}
             </Button>
 
             <DeleteAnimalModal
@@ -31,8 +32,8 @@ function DeleteAnimalView(props) {
                 error={props.error}
                 isLoading={props.isLoading}
             />
-        </>
-    );
+        </React.Fragment>
+    )
 }
 
 export default DeleteAnimalView
