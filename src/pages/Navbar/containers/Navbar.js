@@ -1,8 +1,6 @@
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 import Navbar from '../components/Navbar'
-import {
-    logout
-} from '../../../actions/login'
+import {logout} from '../../../actions/login'
 
 const mapStateToProps = state => ({
     user: state.loginReducer.user,

@@ -13,17 +13,15 @@ class NavigationBar extends Component {
         this.state = {
             isActive: false
         }
-        this.logout = this.logout.bind(this);
-        this.setIsActive = this.setIsActive.bind(this);
     }
 
-    setIsActive() {
+    setIsActive = () => {
         this.setState({
             isActive: !this.state.isActive
         })
     }
 
-    logout() {
+    logout = () => {
         this.props.logout()
     }
 
@@ -65,9 +63,9 @@ class NavigationBar extends Component {
                                 <Translate value="nav-bar.reviews"/>
                             </Link>
                             <hr className="navbar-divider"/>
-                            <a className="navbar-item">
-                                <i className="fas fa-cog"/>&nbsp;&nbsp;<Translate value="nav-bar.settings"/>
-                            </a>
+                            {/*<a className="navbar-item">*/}
+                            {/*    <i className="fas fa-cog"/>&nbsp;&nbsp;<Translate value="nav-bar.settings"/>*/}
+                            {/*</a>*/}
                             <a className="navbar-item" onClick={this.logout}>
                                 <i className="fas fas fa-sign-out-alt"/>&nbsp;&nbsp;<Translate
                                 value={buttonTypes.LOGOUT}/>

@@ -1,20 +1,20 @@
 import {
-    FETCH_REQUEST_LOGIN,
     FETCH_ERROR_LOGIN,
+    FETCH_REQUEST_LOGIN,
     FETCH_SUCCESS_LOGIN,
     LOGOUT_ERROR,
     LOGOUT_SUCCESS,
-    SIGNUP_SUCCESS,
-    SIGNUP_ERROR,
-    RECOVER_SUCCESS,
     RECOVER_ERROR,
-    RESET,
+    RECOVER_SUCCESS,
+    REFRESH_USER_ERROR,
     REFRESH_USER_SUCCESS,
-    REFRESH_USER_ERROR
+    RESET,
+    SIGNUP_ERROR,
+    SIGNUP_SUCCESS
 } from '../actions/actionTypes'
 
 const INITIAL_STATE = {
-    user: {},
+    user: JSON.parse(localStorage.getItem('loggedUser')) || {},
     login: {
         error: false,
         errorMsg: '',
@@ -40,7 +40,7 @@ const INITIAL_STATE = {
         success: false
     },
     isLoading: false,
-    isLoggedIn: false
+    isLoggedIn: localStorage.getItem('isLoggedIn') === "true"
 }
 
 const reducer = (state = INITIAL_STATE, action) => {
@@ -49,6 +49,8 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {...state, isLoading: true}
 
         case FETCH_SUCCESS_LOGIN:
+            localStorage.setItem('loggedUser', JSON.stringify(action.payload))
+            localStorage.setItem('isLoggedIn', "true")
             return {
                 ...state,
                 isLoading: false,
@@ -67,6 +69,7 @@ const reducer = (state = INITIAL_STATE, action) => {
         case RECOVER_SUCCESS:
             return {...state, isLoading: false, recover: {...state.recover, error: false, errorMsg: '', success: true}}
         case LOGOUT_SUCCESS:
+            localStorage.clear()
             return {
                 ...state,
                 isLoading: false,

@@ -1,12 +1,15 @@
 import {
-    ERROR_ANIMAL,
-    REQUEST_ANIMAL,
-    FETCH_ANIMAL_SUCCESS,
-    ADD_ANIMAL_SUCCESS,
     ADD_ANIMAL_ERROR,
+    ADD_ANIMAL_SUCCESS,
+    DELETE_ANIMAL_ERROR,
     DELETE_ANIMAL_SUCCESS,
+    EDIT_ANIMAL_ERROR,
     EDIT_ANIMAL_SUCCESS,
-    RESET_ANIMAL, FETCH_ANIMAL_ERROR, EDIT_ANIMAL_ERROR, DELETE_ANIMAL_ERROR
+    ERROR_ANIMAL,
+    FETCH_ANIMAL_ERROR,
+    FETCH_ANIMAL_SUCCESS,
+    REQUEST_ANIMAL,
+    RESET_ANIMAL
 } from '../actions/actionTypes'
 
 const INITIAL_STATE = {
@@ -74,6 +77,7 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isLoading: false,
+                animal: action.animal,
                 update: {success: true, error: false, errorMsg: ''}
             }
         case EDIT_ANIMAL_ERROR:

@@ -1,7 +1,5 @@
-import { connect } from 'react-redux'
-import {
-    filter
-} from '../../../actions/animalList'
+import {connect} from 'react-redux'
+import {filter} from '../../../actions/animalList'
 import Search from '../components'
 
 const mapStateToProps = state => ({

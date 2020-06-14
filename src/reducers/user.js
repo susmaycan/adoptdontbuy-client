@@ -1,15 +1,17 @@
 import {
-    REQUEST_USER,
-    FETCH_SUCCESS_USER,
-    FETCH_ERROR_USERS_ANIMALS,
-    FETCH_SUCCESS_USERS_ANIMALS,
-    FETCH_REQUEST_USERS_ANIMALS,
-    FETCH_USER_ERROR,
-    DELETE_USER_SUCCESS,
     DELETE_USER_ERROR,
+    DELETE_USER_SUCCESS,
+    EDIT_USER_ERROR,
     EDIT_USER_SUCCESS,
-    EDIT_USER_ERROR, RESET_USER,
+    FETCH_ERROR_USERS_ANIMALS,
+    FETCH_REQUEST_USERS_ANIMALS,
+    FETCH_SUCCESS_USER,
+    FETCH_SUCCESS_USERS_ANIMALS,
+    FETCH_USER_ERROR,
+    REQUEST_USER,
+    RESET_USER,
 } from '../actions/actionTypes'
+import {status} from "../constants";
 
 const INITIAL_STATE = {
     animalList: [],
@@ -81,7 +83,12 @@ const reducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 isLoading: false,
-                user: action.payload,
+                user: {
+                    ...action.payload,
+                    inAdoption: action.payload.animals.filter(animal => animal.status === status.IN_ADOPTION),
+                    reserved: action.payload.animals.filter(animal => animal.status === status.RESERVED),
+                    adopted: action.payload.animals.filter(animal => animal.status === status.ADOPTED)
+                },
                 fetch: {
                     error: false,
                     errorMsg: '',

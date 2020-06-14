@@ -1,14 +1,6 @@
 import React from 'react'
-import {
-    genderList,
-    sizeList,
-    specieList,
-    regionList,
-    ageList
-} from '../../constants'
-import {
-    Form
-} from 'react-bootstrap'
+import {ageList, genderList, regionList, sizeList, specieList} from '../../constants'
+import {Form} from 'react-bootstrap'
 import PropTypes from 'prop-types'
 import {I18n} from 'react-redux-i18n'
 

@@ -34,9 +34,19 @@
     "title": "Borrar usuario",
     "body": "Si continuas, se eliminará tu perfil y todas tus mascotas...¿Estás segurx?"
   },
+  "addReview": {
+    "title": "Añadir reseña"
+  },
   "filter": {
     "title": "Filtros",
     "clearFilters": "Limpiar filtros"
+  },
+  "status": {
+    "00": "En adopción",
+    "01": "Adoptado",
+    "02": "Reservado",
+    "02": "Reservado",
+    "unknown": "Desconocido"
   },
   "login": {
     "title": "¡Hola de nuevo!",
@@ -75,11 +85,20 @@
     "petsByMe": "Mis mascotas",
     "tabs": {
       "account": "Cuenta",
-      "pets": "Mascotas",
+      "pets": "Mascotas en adopción",
       "reviews": "Opiniones",
       "favourites": "Favoritos",
-      "contact": "Contacto"
+      "contact": "Contacto",
+      "adopted": "Adoptados",
+      "reserved": "Reservados"
     }
+  },
+  "review": {
+    "title": "Título",
+    "desc-placeholder": "Cuéntanos un poco más sobre tu experiencia...",
+    "desc": "Descripción",
+    "rating": "Valoración",
+    "by": "por"
   },
   "animal": {
     "name": "Nombre",
@@ -173,7 +192,11 @@
     "edit": "Editar",
     "info": "Mas info",
     "confirm": "Confirmar",
-    "edit-pictures": "Editar fotos"
+    "edit-pictures": "Editar fotos",
+    "add-review": "Añadir reseña",
+    "mark-as-adopted": "Marcar animal como adoptado",
+    "mark-as-reserved": "Marcar animal como reservado",
+    "unmark-as-reserved": "Desmarcar animal como reservado"
   },
   "contact": {
     "request": "Solicitar adopción",

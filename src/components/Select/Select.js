@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-    genderList,
-    sizeList,
-    specieList,
-    regionList,
-    ageList
-} from '../../constants'
+import {ageList, genderList, regionList, sizeList, specieList, statusList} from '../../constants'
 import PropTypes from 'prop-types'
 import {I18n} from 'react-redux-i18n'
 import './Select.scss'
@@ -15,6 +9,7 @@ const SIZE = 'size'
 const SPECIE = 'specie'
 const REGION = 'region'
 const AGE = 'age'
+const STATUS = 'status'
 
 class Select extends React.Component {
 
@@ -54,6 +49,11 @@ class Select extends React.Component {
             case SPECIE:
                 this.setState({
                     list: specieList
+                })
+                break
+            case STATUS:
+                this.setState({
+                    list: statusList
                 })
                 break
         }

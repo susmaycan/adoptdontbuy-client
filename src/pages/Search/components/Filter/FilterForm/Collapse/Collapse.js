@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {Translate} from 'react-redux-i18n'
 import './Collapse.scss'
 import {Collapse} from 'react-collapse';
+
 class CustomCollapse extends React.Component {
 
     constructor(props) {

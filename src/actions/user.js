@@ -1,25 +1,19 @@
+import {addFavourite, animalByUser, deleteUserAPI, editUser, getUser, removeFavourite} from '../api/users'
 import {
-    getUser,
-    animalByUser,
-    deleteUserAPI,
-    editUser,
-    addFavourite,
-    removeFavourite
-} from '../api/users'
-import {
-    REQUEST_USER,
+    DELETE_USER_ERROR,
+    DELETE_USER_SUCCESS,
+    EDIT_USER_ERROR,
+    EDIT_USER_SUCCESS,
     FETCH_ERROR_USERS_ANIMALS,
-    FETCH_SUCCESS_USERS_ANIMALS,
     FETCH_REQUEST_USERS_ANIMALS,
     FETCH_SUCCESS_USER,
+    FETCH_SUCCESS_USERS_ANIMALS,
     FETCH_USER_ERROR,
-    DELETE_USER_SUCCESS,
-    DELETE_USER_ERROR,
-    EDIT_USER_SUCCESS,
-    EDIT_USER_ERROR,
-    UPLOAD_PHOTO_USER_SUCCESS,
+    REFRESH_USER_SUCCESS,
+    REQUEST_USER,
+    RESET_USER,
     UPLOAD_PHOTO_USER_ERROR,
-    RESET_USER, REFRESH_USER_SUCCESS
+    UPLOAD_PHOTO_USER_SUCCESS
 } from './actionTypes'
 import firebaseActions from '../Firebase/Firebase'
 

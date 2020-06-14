@@ -382,6 +382,21 @@ export const specieList = [
     }
 ]
 
+export const statusList = [
+    {
+        "value": "00",
+        "name": "In adoption"
+    },
+    {
+        "value": "01",
+        "name": "Adopted"
+    },
+    {
+        "value": "02",
+        "name": "Reserved"
+    }
+]
+
 export const ageList = [
     {
         "value": "puppy",
@@ -431,7 +446,8 @@ export const tableElements = {
     ADDRESS_LINE: 'address_line',
     PHONE: 'phone',
     EMAIL: 'email',
-    WEBSITE: 'website'
+    WEBSITE: 'website',
+    STATUS: 'status'
 }
 
 export const filterElements = {
@@ -457,6 +473,7 @@ export const filterElements = {
 
 export const buttonTypes = {
     LOGIN: "buttons.login",
+    ADD_REVIEW: "buttons.add-review",
     SIGNUP: "buttons.sign-up",
     LOGOUT: "buttons.logout",
     DELETE: "buttons.delete",
@@ -469,6 +486,14 @@ export const buttonTypes = {
     NO: "common.no",
     FINISH: "common.finish"
 }
+
+export const status = {
+    IN_ADOPTION: "00",
+    ADOPTED: "01",
+    RESERVED: "02",
+    UNKNOWN: "unknown"
+}
+
 
 
 

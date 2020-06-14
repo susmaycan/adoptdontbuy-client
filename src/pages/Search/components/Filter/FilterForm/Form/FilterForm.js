@@ -1,12 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {
-    Select,
-    Subtitle,
-    ButtonGroup,
-    ProvinceSelect,
-    Checkboxes
-} from '../../../../../../components'
+import {ButtonGroup, Checkboxes, ProvinceSelect, Select, Subtitle} from '../../../../../../components'
 import {Translate} from 'react-redux-i18n'
 import './FilterForm.scss'
 import {filterElements} from '../../../../../../constants'

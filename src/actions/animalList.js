@@ -1,7 +1,4 @@
-import {
-    filterAnimal,
-    getAnimals
-} from '../api/animals'
+import {filterAnimal, getAnimals} from '../api/animals'
 
 import {
     FETCH_ERROR_ANIMAL_LIST,

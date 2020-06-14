@@ -38,6 +38,12 @@
     "title": "Filters",
     "clearFilters": "Clear filters"
   },
+  "status": {
+    "00": "In adoption",
+    "01": "Adopted",
+    "02": "Reserved",
+    "unknown": "Unknown"
+  },
   "login": {
     "title": "LOGIN",
     "email": "Email",
@@ -82,11 +88,20 @@
     "petsByMe": "My pets",
     "tabs": {
       "account": "Account",
-      "pets": "Pets",
+      "pets": "Pets in adoption",
       "reviews": "Reviews",
+      "adopted": "Adopted",
+      "reserved": "Reserved",
       "favourites": "Favourites",
       "contact": "Contact"
     }
+  },
+  "review": {
+    "title": "Title",
+    "desc-placeholder": "Tell us more about your experience...",
+    "desc": "Description",
+    "rating": "Rating",
+    "by": "by"
   },
   "animal": {
     "name": "Name",
@@ -174,7 +189,11 @@
     "edit": "Edit",
     "info": "More info",
     "confirm": "Confirm",
-    "edit-pictures": "Edit pictures"
+    "edit-pictures": "Edit pictures",
+    "add-review": "Add review",
+    "mark-as-adopted": "Mark animal as adopted",
+    "mark-as-reserved": "Mark animal as reserved",
+    "unmark-as-reserved": "Unmark animal as reserved"
   },
   "common": {
     "yes": "Yes",

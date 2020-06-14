@@ -1,12 +1,10 @@
 import React from 'react'
 import './Error.scss'
-import {
-    Link
-} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Title from "../Title";
 import {Translate} from 'react-redux-i18n'
 import {codeError} from '../../constants'
-import { Cat } from 'react-kawaii'
+import {Cat} from 'react-kawaii'
 
 class Error extends React.Component {
 

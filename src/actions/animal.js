@@ -1,24 +1,17 @@
-import {
-    addAnimalAPI,
-    getAnimal,
-    removeAnimal,
-    updateAnimal
-} from '../api/animals'
+import {addAnimalAPI, getAnimal, removeAnimal, updateAnimal} from '../api/animals'
+import {getUser} from '../api/users'
 
 import {
-    ERROR_ANIMAL,
-    REQUEST_ANIMAL,
-    FETCH_ANIMAL_SUCCESS,
-    FETCH_ANIMAL_ERROR,
-    ADD_ANIMAL_SUCCESS,
     ADD_ANIMAL_ERROR,
-    DELETE_ANIMAL_SUCCESS,
+    ADD_ANIMAL_SUCCESS,
     DELETE_ANIMAL_ERROR,
-    EDIT_ANIMAL_SUCCESS,
+    DELETE_ANIMAL_SUCCESS,
     EDIT_ANIMAL_ERROR,
-    RESET_ANIMAL,
-    EDIT_PICTURES_SUCCESS,
-    EDIT_PICTURES_ERROR
+    EDIT_ANIMAL_SUCCESS,
+    FETCH_ANIMAL_ERROR,
+    FETCH_ANIMAL_SUCCESS, FETCH_SUCCESS_USER, FETCH_USER_ERROR,
+    REQUEST_ANIMAL,
+    RESET_ANIMAL
 } from './actionTypes'
 import firebaseActions from "../Firebase/Firebase";
 import uuid from 'uuid/v4'
@@ -85,6 +78,28 @@ export function editAnimal(animal) {
         return updateAnimal(animal)
             .then(animal => {
                 dispatch(editAnimalSuccess(animal))
+            })
+            .catch(error => {
+                console.log("There was an error editing the animal on DB. Error: ", error.message)
+                dispatch(editAnimalError(error.message))
+            })
+    }
+}
+
+export function updateAnimalUser(animal, userId) {
+    return (dispatch) => {
+        dispatch(animalRequest())
+        return updateAnimal(animal)
+            .then(animal => {
+                return getUser(userId)
+                    .then(user => {
+                        dispatch(fetchUserSuccess(user))
+                        dispatch(editAnimalSuccess(animal))
+                    })
+                    .catch(error => {
+                        console.log('Error when retrieving the user with id ', userId, ' from db. Error: ', error.message)
+                        dispatch(fetchUserError(error.message))
+                    })
             })
             .catch(error => {
                 console.log("There was an error editing the animal on DB. Error: ", error.message)
@@ -194,22 +209,16 @@ function deleteAnimalSuccess() {
     }
 }
 
-function editAnimalSuccess() {
+function editAnimalSuccess(animal) {
     return {
-        type: EDIT_ANIMAL_SUCCESS
+        type: EDIT_ANIMAL_SUCCESS,
+        animal
     }
 }
 
 function animalRequest() {
     return {
         type: REQUEST_ANIMAL
-    }
-}
-
-function animalError(error) {
-    return {
-        type: ERROR_ANIMAL,
-        error
     }
 }
 
@@ -237,6 +246,20 @@ function deleteAnimalError(error) {
 function fetchAnimalError(error) {
     return {
         type: FETCH_ANIMAL_ERROR,
+        error
+    }
+}
+
+function fetchUserSuccess(payload) {
+    return {
+        type: FETCH_SUCCESS_USER,
+        payload
+    }
+}
+
+function fetchUserError(error) {
+    return {
+        type: FETCH_USER_ERROR,
         error
     }
 }

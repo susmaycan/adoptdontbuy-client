@@ -3,9 +3,11 @@ import Gender from '../../Gender'
 import Location from '../../Location'
 import {Link} from "react-router-dom";
 import PropTypes from 'prop-types'
-import {Translate, I18n} from 'react-redux-i18n'
+import {Translate} from 'react-redux-i18n'
 import './TableElement.scss'
 import {tableElements} from '../../../constants'
+import Date from '../../Date'
+import Status from "../../Status";
 
 const ANIMAL_TYPE = tableElements.ANIMAL_TYPE
 
@@ -29,11 +31,16 @@ class TableElement extends React.Component {
                     />
                 })
                 break
-            case tableElements.CREATED_AT:
-                let date = new Date(elementValue)
-                const formattedDate = date.getDate() + ' ' + I18n.t('months.'+(date.getMonth()+1)) + ' ' + date.getFullYear()
+            case tableElements.STATUS:
                 this.setState({
-                    value: formattedDate
+                    value: <Status
+                        status={elementValue}
+                    />
+                })
+                break
+            case tableElements.CREATED_AT:
+                this.setState({
+                    value: <Date value={elementValue}/>
                 })
                 break
             case tableElements.AGE:

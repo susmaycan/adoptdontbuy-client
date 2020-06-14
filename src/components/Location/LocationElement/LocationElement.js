@@ -1,8 +1,5 @@
 import React from 'react'
-import {
-    provinceList,
-    regionList
-} from '../../../constants'
+import {provinceList, regionList} from '../../../constants'
 import PropTypes from 'prop-types'
 
 const PROVINCE = 'province'

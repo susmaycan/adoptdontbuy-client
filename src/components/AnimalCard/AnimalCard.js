@@ -1,16 +1,16 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {
-    Gender,
-    Location,
-    PictureCard
-} from '../../components'
+import {Gender, Location, PictureCard} from '../../components'
 import PropTypes from 'prop-types'
 import './AnimalCard.scss'
-import Favourite from '../../pages/Favourite'
-import {isOwner} from "../../utils/Functions";
+import Favourite from '../../pages/Animal/Favourite'
+import {isAdopted, isOwner} from "../../utils/Functions";
+import MarkAdopt from '../../pages/Animal/MarkAdopt'
+import MarkReserved from '../../pages/Animal/MarkReserved'
+import DeleteAnimal from "../../pages/Animal/DeleteAnimal";
+import {buttonTypes} from "../../constants";
 
-const AnimalCard = ({animal, user, isLoggedIn}) => (
+const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
     <div key={animal._id} className="animal-card-container">
         <Link to={{pathname: `/animal/${animal._id}`}}>
             <PictureCard
@@ -29,40 +29,47 @@ const AnimalCard = ({animal, user, isLoggedIn}) => (
             </div>
         </Link>
 
+        {(editMode && isLoggedIn && isOwner(user, animal.owner)) &&
+        <div className="level">
+            {!isAdopted(animal) &&
+            <>
+                <div className="level-item">
+                    <MarkAdopt animal={animal}/>
+                </div>
+                <div className="level-item">
+                    <MarkReserved animal={animal}/>
+                </div>
+                <div className="level-item">
+                    <Link className="button is-white"
+                          to={`/updateAnimal/${animal._id}`}>
+                        <span className="icon">
+                            <i className="fas fa-edit"/>
+                        </span>
+                    </Link>
+                </div>
+            </>
+            }
+            <div className="level-item">
+                <DeleteAnimal>
+                    <span className="icon">
+                       <i className="fas fa-trash-alt"/>
+                    </span>
+                </DeleteAnimal>
+            </div>
+        </div>
+        }
+
+        {!editMode && isLoggedIn &&
         <div className="level">
             <div className="level-left">
             </div>
             <div className="level-right">
-                {isLoggedIn &&
-                <>
-                    {isOwner(user, animal.owner) ?
-                        <>
-                            <div className="level-item">
-                                <Link className="button is-white"
-                                      to={`/updateAnimal/${animal._id}`}>
-                        <span className="icon">
-                            <i className="fas fa-edit"/>
-                        </span>
-                                </Link>
-                            </div>
-                            <div className="level-item">
-                                <button className="button is-white">
-                        <span className="icon">
-                           <i className="fas fa-trash-alt"/>
-                        </span>
-                                </button>
-                            </div>
-                        </>
-                        :
-                        <div className="level-item">
-                            <Favourite animal={animal}/>
-                        </div>
-                    }
-                </>
-                }
+                <div className="level-item">
+                    <Favourite animal={animal}/>
+                </div>
             </div>
         </div>
-
+        }
     </div>
 )
 AnimalCard.propTypes = {
@@ -94,6 +101,7 @@ AnimalCard.propTypes = {
         __v: PropTypes.any,
         owner: PropTypes.string.isRequired
     }).isRequired,
-    addFavourite: PropTypes.func
+    addFavourite: PropTypes.func,
+    editMode: PropTypes.bool
 }
 export default AnimalCard

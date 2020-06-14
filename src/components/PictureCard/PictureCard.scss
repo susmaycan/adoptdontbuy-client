@@ -1,11 +1,11 @@
 @import "../../styles/base";
 
 .picture-card {
-  width:250px;
-  height: 250px;
+  width:255px;
+  height: 255px;
   object-fit: cover;
   padding-bottom:10px;
-  border-radius: 10px !important;
+  border-radius: 8px !important;
 }
 
 .picture-card-container {
