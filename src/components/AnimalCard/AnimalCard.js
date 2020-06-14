@@ -4,9 +4,11 @@ import {Gender, Location, PictureCard} from '../../components'
 import PropTypes from 'prop-types'
 import './AnimalCard.scss'
 import Favourite from '../../pages/Animal/Favourite'
-import {isOwner} from "../../utils/Functions";
+import {isAdopted, isOwner} from "../../utils/Functions";
 import MarkAdopt from '../../pages/Animal/MarkAdopt'
 import MarkReserved from '../../pages/Animal/MarkReserved'
+import DeleteAnimal from "../../pages/Animal/DeleteAnimal";
+import {buttonTypes} from "../../constants";
 
 const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
     <div key={animal._id} className="animal-card-container">
@@ -29,26 +31,30 @@ const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
 
         {(editMode && isLoggedIn && isOwner(user, animal.owner)) &&
         <div className="level">
-            <div className="level-item">
-                <MarkAdopt animal={animal}/>
-            </div>
-            <div className="level-item">
-                <MarkReserved animal={animal}/>
-            </div>
-            <div className="level-item">
-                <Link className="button is-white"
-                      to={`/updateAnimal/${animal._id}`}>
+            {!isAdopted(animal) &&
+            <>
+                <div className="level-item">
+                    <MarkAdopt animal={animal}/>
+                </div>
+                <div className="level-item">
+                    <MarkReserved animal={animal}/>
+                </div>
+                <div className="level-item">
+                    <Link className="button is-white"
+                          to={`/updateAnimal/${animal._id}`}>
                         <span className="icon">
                             <i className="fas fa-edit"/>
                         </span>
-                </Link>
-            </div>
+                    </Link>
+                </div>
+            </>
+            }
             <div className="level-item">
-                <button className="button is-white">
-                        <span className="icon">
-                           <i className="fas fa-trash-alt"/>
-                        </span>
-                </button>
+                <DeleteAnimal>
+                    <span className="icon">
+                       <i className="fas fa-trash-alt"/>
+                    </span>
+                </DeleteAnimal>
             </div>
         </div>
         }
