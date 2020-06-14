@@ -1,6 +1,6 @@
 import UserInformation from './containers/UserInformation'
 import Pets from './containers/Pets'
-import UserTabs from './components/UserTabs'
+import UserTabs from './containers/UserTabs'
 import Favourites from './containers/Favourites'
 import Contact from './containers/Contact'
 import Adopted from './containers/Adopted'
