@@ -78,6 +78,8 @@ const reducer = (state = INITIAL_STATE, action) => {
                 logout: {...state.logout, error: false, errorMsg: '', success: true}
             }
         case SIGNUP_SUCCESS:
+            localStorage.setItem('loggedUser', JSON.stringify(action.payload))
+            localStorage.setItem('isLoggedIn', "true")
             return {
                 ...state,
                 isLoading: false,
