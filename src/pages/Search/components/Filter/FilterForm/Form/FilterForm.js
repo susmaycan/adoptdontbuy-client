@@ -113,7 +113,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
                                     checked={filter.castrated}
                                     name={filterElements.CASTRATED}
                                     type="checkbox"/>
-                                <Translate value="animal.castrated"/>
+                                &nbsp;<Translate value="animal.castrated"/>
                             </label>
                         </div>
                     </div>
@@ -125,7 +125,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
                                     checked={filter.vaccinated}
                                     name={filterElements.VACCINATED}
                                     type="checkbox"/>
-                                <Translate value="animal.vaccinated"/>
+                                &nbsp;<Translate value="animal.vaccinated"/>
                             </label>
                         </div>
                     </div>
@@ -137,7 +137,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
                                     checked={filter.alongWithDogs}
                                     name={filterElements.ALONG_WITH_DOGS}
                                     type="checkbox"/>
-                                <Translate value="animal.alongWithDogs"/>
+                                &nbsp;<Translate value="animal.alongWithDogs"/>
                             </label>
                         </div>
                     </div>
@@ -149,7 +149,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
                                     checked={filter.alongWithCats}
                                     name={filterElements.ALONG_WITH_CATS}
                                     type="checkbox"/>
-                                <Translate value="animal.alongWithCats"/>
+                                &nbsp;<Translate value="animal.alongWithCats"/>
                             </label>
                         </div>
                     </div>
@@ -161,7 +161,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
                                     checked={filter.alongWithKids}
                                     name={filterElements.ALONG_WITH_KIDS}
                                     type="checkbox"/>
-                                <Translate value="animal.alongWithKids"/>
+                                &nbsp;<Translate value="animal.alongWithKids"/>
                             </label>
                         </div>
                     </div>

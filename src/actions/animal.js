@@ -163,15 +163,24 @@ export function deletePicture(animal, url) {
     }
 }
 
-export function deleteAnimal(animalId) {
+export function deleteAnimal(animalId, userId) {
     return (dispatch) => {
         dispatch(animalRequest())
         return removeAnimal(animalId)
             .then(() => {
-                dispatch(deleteAnimalSuccess())
+                return getUser(userId)
+                    .then(user => {
+                        dispatch(fetchUserSuccess(user))
+                        dispatch(deleteAnimalSuccess())
+                    })
+                    .catch(error => {
+                        console.log('Error when retrieving the user with id ', userId, ' from db. Error: ', error.message)
+                        dispatch(fetchUserError(error.message))
+                    })
             })
             .catch(error => {
-                dispatch(deleteAnimalError(error.message))
+                console.log("There was an error editing the animal on DB. Error: ", error.message)
+                dispatch(editAnimalError(error.message))
             })
     }
 }
