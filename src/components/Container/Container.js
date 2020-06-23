@@ -7,6 +7,15 @@ import Message from "../Message";
 import {Translate} from 'react-redux-i18n'
 
 class Container extends React.Component {
+
+    static propTypes = {
+        children: PropTypes.any.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        isLoggedIn: PropTypes.bool,
+        requiredLogin: PropTypes.bool
+    }
+
     render() {
         const {children, requiredLogin, isLoggedIn, isLoading, error} = this.props
         if (isLoading) {
@@ -27,13 +36,5 @@ class Container extends React.Component {
             )
         }
     }
-}
-
-Container.propTypes = {
-    children: PropTypes.any.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
-    isLoggedIn: PropTypes.bool,
-    requiredLogin: PropTypes.bool
 }
 export default Container

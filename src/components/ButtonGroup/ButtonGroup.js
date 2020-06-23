@@ -22,6 +22,12 @@ class CustomButtonGroup extends React.Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
+    static propTypes = {
+        value: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        handleChange: PropTypes.func.isRequired
+    }
+
     componentDidMount() {
         switch (this.props.name) {
             case GENDER:
@@ -81,11 +87,5 @@ class CustomButtonGroup extends React.Component {
         )
 
     }
-}
-
-CustomButtonGroup.propTypes = {
-    value: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    handleChange: PropTypes.func.isRequired
 }
 export default CustomButtonGroup

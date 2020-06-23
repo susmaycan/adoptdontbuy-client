@@ -72,34 +72,7 @@ const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
     </div>
 )
 AnimalCard.propTypes = {
-    animal: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        specie: PropTypes.string.isRequired,
-        breed: PropTypes.string,
-        gender: PropTypes.string,
-        size: PropTypes.string,
-        yearBorn: PropTypes.string,
-        country: PropTypes.string,
-        region: PropTypes.string,
-        province: PropTypes.string,
-        city: PropTypes.string,
-        about: PropTypes.string,
-        castrated: PropTypes.bool,
-        vaccinated: PropTypes.bool,
-        alongWithDogs: PropTypes.bool,
-        alongWithCats: PropTypes.bool,
-        alongWithKids: PropTypes.bool,
-        socialLevel: PropTypes.number,
-        traumaLevel: PropTypes.number,
-        energyLevel: PropTypes.number,
-        picture: PropTypes.arrayOf(PropTypes.string),
-        status: PropTypes.string,
-        createdAt: PropTypes.string,
-        updatedAt: PropTypes.string,
-        __v: PropTypes.any,
-        owner: PropTypes.string.isRequired
-    }).isRequired,
+    animal: PropTypes.object.isRequired,
     addFavourite: PropTypes.func,
     editMode: PropTypes.bool
 }

@@ -3,32 +3,35 @@ import PropTypes from 'prop-types'
 import LocationElement from "./LocationElement";
 
 class Location extends React.Component {
+
+    static propTypes = {
+        city: PropTypes.string,
+        province: PropTypes.string,
+        region: PropTypes.string,
+        country: PropTypes.string
+    }
+
     render() {
+        const {city, province, region, country} = this.props
         return (
             <span>
                 <i className="fas fa-map-marker-alt"/>
                 <> </>
-                {this.props.city !== undefined ? this.props.city + ', ' : ''}
+                {city !== undefined ? city + ', ' : ''}
                 <LocationElement
-                    value={this.props.province}
+                    value={province}
                     name='province'
                 />
                 <>, </>
                <LocationElement
-                   value={this.props.region}
+                   value={region}
                    name='region'
                />
-                {this.props.country !== undefined ? ', ' + this.props.country : ''}
+                {country !== undefined ? ', ' + country : ''}
             </span>
         )
 
     }
 }
 
-Location.propTypes = {
-    city: PropTypes.string,
-    province: PropTypes.string,
-    region: PropTypes.string,
-    country: PropTypes.string
-}
 export default Location

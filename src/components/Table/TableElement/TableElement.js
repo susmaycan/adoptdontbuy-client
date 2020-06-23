@@ -12,6 +12,20 @@ import Status from "../../Status";
 const ANIMAL_TYPE = tableElements.ANIMAL_TYPE
 
 class TableElement extends React.Component {
+
+    static propTypes = {
+        element: PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            value: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.number,
+                PropTypes.object,
+                PropTypes.bool
+            ])
+        }).isRequired,
+        type: PropTypes.string.isRequired
+    }
+
     constructor(props) {
         super(props)
 
@@ -23,6 +37,7 @@ class TableElement extends React.Component {
     componentDidMount() {
         const elementName = this.props.element.name
         const elementValue = this.props.element.value
+
         switch (elementName) {
             case tableElements.GENDER:
                 this.setState({
@@ -104,11 +119,12 @@ class TableElement extends React.Component {
     }
 
     render() {
+        const {element, type} = this.props
         return (
-            <tr key={this.props.element.name}>
+            <tr key={element.name}>
                 <td className="table-col-bold">
                     <Translate
-                        value={this.props.type === ANIMAL_TYPE ? 'animal.' + this.props.element.name : 'user.' + this.props.element.name}/>
+                        value={type === ANIMAL_TYPE ? 'animal.' + element.name : 'user.' + element.name}/>
                 </td>
                 <td className="table-col">
                     {this.state.value}
@@ -116,19 +132,6 @@ class TableElement extends React.Component {
             </tr>
         )
     }
-}
-
-TableElement.propTypes = {
-    element: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        value: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-            PropTypes.object,
-            PropTypes.bool
-        ])
-    }).isRequired,
-    type: PropTypes.string.isRequired
 }
 
 export default TableElement

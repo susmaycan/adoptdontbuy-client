@@ -4,6 +4,10 @@ import {Translate} from 'react-redux-i18n'
 
 class Gender extends React.Component {
 
+    static propTypes = {
+        gender: PropTypes.string
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -37,13 +41,9 @@ class Gender extends React.Component {
 
     render() {
         return (
-            <p><Translate value={this.state.name} /> <i className={this.state.icon}/></p>
+            <p><Translate value={this.state.name}/> <i className={this.state.icon}/></p>
         )
     }
-}
-
-Gender.propTypes = {
-    gender: PropTypes.string
 }
 
 export default Gender
