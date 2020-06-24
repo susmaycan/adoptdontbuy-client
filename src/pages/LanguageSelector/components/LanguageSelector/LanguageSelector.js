@@ -1,15 +1,16 @@
-import React from 'react';
-import {supportedLocales} from "../../../../translations/config";
-import LanguageSelectInput from "../../../../components/LanguageSelectInput";
+import React from 'react'
+import {supportedLocales} from '../../../../translations/config'
+import LanguageSelectInput from '../LanguageSelectInput'
+import PropTypes from 'prop-types'
 
 class LanguageSelector extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.changeLanguage = this.changeLanguage.bind(this)
+    static propTypes = {
+        locale: PropTypes.string.isRequired,
+        setLocaleWithFallback: PropTypes.func.isRequired
     }
 
-    changeLanguage(e) {
+    changeLanguage = (e) => {
         e.preventDefault()
         let {value} = e.target
         this.props.setLocaleWithFallback(value)
@@ -23,7 +24,7 @@ class LanguageSelector extends React.Component {
                 changeLanguage={this.changeLanguage}
                 supportedLocales={supportedLocales}
             />
-        );
+        )
     }
 }
 
