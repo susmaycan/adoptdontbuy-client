@@ -7,6 +7,16 @@ import PostReviewForm from '../PostReviewForm'
 
 class PostReviewView extends React.Component {
 
+    static propTypes = {
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        postReview: PropTypes.func.isRequired,
+        user: PropTypes.object.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        success: PropTypes.bool.isRequired
+    }
+
     constructor(props) {
         super(props)
 
@@ -50,13 +60,4 @@ class PostReviewView extends React.Component {
     }
 }
 
-PostReviewView.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
-    errorMsg: PropTypes.string.isRequired,
-    postReview: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    loggedUser: PropTypes.object.isRequired,
-    success: PropTypes.bool.isRequired
-}
 export default PostReviewView
