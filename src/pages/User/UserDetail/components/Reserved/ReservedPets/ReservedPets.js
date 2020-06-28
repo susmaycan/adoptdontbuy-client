@@ -2,6 +2,7 @@ import React from 'react'
 import {Translate} from 'react-redux-i18n'
 import {sortByUpdateDate} from "../../../../../../utils/Functions";
 import {AnimalCard, Box, Message, Subtitle} from '../../../../../../components'
+import PropTypes from 'prop-types'
 
 const ReservedPets = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) => (
     <Box>
@@ -30,5 +31,13 @@ const ReservedPets = ({user, animals, isLoading, error, isLoggedIn, loggedUser})
         }
     </Box>
 )
+ReservedPets.propTypes = {
+    user: PropTypes.object.isRequired,
+    animals: PropTypes.array,
+    isLoading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
+    loggedUser: PropTypes.object.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired
+}
 
 export default ReservedPets

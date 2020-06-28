@@ -1,37 +1,37 @@
 import React, {Component} from 'react'
 import UserForm from '../UserForm'
-
-const CHECKBOX_TYPE = 'checkbox'
-const FILE_TYPE = 'file'
+import PropTypes from 'prop-types'
+import {input} from '../../../../../../constants'
 
 class Form extends Component {
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            user: this.props.user,
-            password: {
-                newPassword: '',
-                confirmPassword: '',
-                errorDontMatch: false
-            }
-        }
-
-        this.onChange = this.onChange.bind(this)
-        this.onSubmit = this.onSubmit.bind(this)
-        this.handlePassword = this.handlePassword.bind(this)
-        this.checkPasswords = this.checkPasswords.bind(this)
+    static propTypes = {
+        user: PropTypes.object.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        submitForm: PropTypes.func.isRequired,
+        uploadPhoto: PropTypes.func.isRequired,
+        error: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        isLoading: PropTypes.bool.isRequired,
     }
 
-    onSubmit(e) {
+    state = {
+        user: this.props.user,
+        password: {
+            newPassword: '',
+            confirmPassword: '',
+            errorDontMatch: false
+        }
+    }
+
+    onSubmit = (e) => {
         e.preventDefault()
-        if(!this.state.password.errorDontMatch){
+        if (!this.state.password.errorDontMatch) {
             this.props.submitForm(this.state)
         }
     }
 
-    handlePassword(e) {
+    handlePassword = (e) => {
         e.preventDefault()
         this.setState({
             ...this.state,
@@ -43,7 +43,7 @@ class Form extends Component {
 
     }
 
-    checkPasswords() {
+    checkPasswords = () => {
         this.setState({
             ...this.state,
             password: {
@@ -53,8 +53,8 @@ class Form extends Component {
         })
     }
 
-    onChange(e) {
-        if (e.target.type === FILE_TYPE) {
+    onChange = (e) => {
+        if (e.target.type === input.FILE) {
             const file = e.target.files[0]
             this.props.uploadPhoto(file, this.state._id)
             this.setState({
@@ -66,7 +66,7 @@ class Form extends Component {
             })
 
         } else {
-            const value = e.target.type === CHECKBOX_TYPE ? e.target.checked : e.target.value
+            const value = e.target.type === input.CHECKBOX ? e.target.checked : e.target.value
             this.setState({
                 ...this.state,
                 user: {
@@ -78,14 +78,16 @@ class Form extends Component {
     }
 
     render() {
+        const {user, password } = this.state
+        const {isLoading } = this.props
         return (
             <UserForm
-                user={this.state.user}
-                password={this.state.password}
+                user={user}
+                password={password}
                 handlePassword={this.handlePassword}
                 handleForm={this.onSubmit}
                 handleChange={this.onChange}
-                isLoading={this.props.isLoading}
+                isLoading={isLoading}
             />
         )
     }

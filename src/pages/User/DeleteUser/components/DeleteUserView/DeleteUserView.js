@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import DeleteUserModal from '../DeleteUserModal'
 import Button from '../../../../../components/Button'
-import {Translate} from "react-redux-i18n";
-import {buttonTypes} from "../../../../../constants";
+import {Translate} from 'react-redux-i18n'
+import {buttonTypes} from '../../../../../constants'
+import PropTypes from 'prop-types'
 
 function DeleteUserView(props) {
 
@@ -33,7 +34,15 @@ function DeleteUserView(props) {
                 isLoading={props.isLoading}
             />
         </React.Fragment>
-    );
+    )
+}
+DeleteUserView.propTypes = {
+    deleteUser: PropTypes.func.isRequired,
+    user: PropTypes.object.isRequired,
+    error: PropTypes.bool.isRequired,
+    errorMsg: PropTypes.string.isRequired,
+    success: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired
 }
 
 export default DeleteUserView

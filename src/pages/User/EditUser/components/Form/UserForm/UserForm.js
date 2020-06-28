@@ -261,38 +261,11 @@ const UserForm = ({user, password, handleChange, handleForm, handlePassword, isL
     </form>
 )
 UserForm.propTypes = {
-    user: PropTypes.shape({
-        picture: PropTypes.string,
-        _id: PropTypes.string.isRequired,
-        inAdoption: PropTypes.arrayOf(PropTypes.string),
-        adoptedByOthers: PropTypes.arrayOf(PropTypes.string),
-        reserved: PropTypes.arrayOf(PropTypes.string),
-        favourites: PropTypes.arrayOf(PropTypes.string),
-        adoptedByMe: PropTypes.arrayOf(PropTypes.string),
-        reviews: PropTypes.arrayOf(PropTypes.string),
-        likedAnimals: PropTypes.arrayOf(PropTypes.string),
-        adopted: PropTypes.arrayOf(PropTypes.string),
-        phone: PropTypes.string,
-        animal_shelter: PropTypes.bool,
-        website: PropTypes.string,
-        address_line: PropTypes.string,
-        country: PropTypes.string,
-        region: PropTypes.string,
-        province: PropTypes.string,
-        city: PropTypes.string,
-        description: PropTypes.string,
-        first_name: PropTypes.string,
-        last_name: PropTypes.string,
-        email: PropTypes.string.isRequired,
-        username: PropTypes.string.isRequired,
-        createdAt: PropTypes.string,
-        updatedAt: PropTypes.string,
-        __v: PropTypes.any,
-    }),
-    handleChange: PropTypes.func,
-    handleForm: PropTypes.func,
-    password: PropTypes.object,
-    handlePassword: PropTypes.func,
+    user: PropTypes.object.isRequired,
+    handleChange: PropTypes.func.isRequired,
+    handleForm: PropTypes.func.isRequired,
+    password: PropTypes.object.isRequired,
+    handlePassword: PropTypes.func.isRequired,
     isLoading: PropTypes.bool.isRequired
 }
 export default UserForm

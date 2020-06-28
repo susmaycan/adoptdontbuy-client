@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import DeleteAnimalModal from '../DeleteAnimalModal'
 import Button from '../../../../../components/Button'
+import PropTypes from 'prop-types'
 
 function DeleteAnimalView(props) {
 
@@ -25,13 +26,20 @@ function DeleteAnimalView(props) {
             <DeleteAnimalModal
                 show={show}
                 handleClose={handleClose}
-                handleShow={handleShow}
                 handleSubmit={deleteAnimal}
-                error={props.error}
-                isLoading={props.isLoading}
             />
         </React.Fragment>
     )
 }
 
+DeleteAnimalView.propTypes = {
+    animal: PropTypes.object.isRequired,
+    error: PropTypes.bool.isRequired,
+    errorMsg: PropTypes.string.isRequired,
+    success: PropTypes.bool.isRequired,
+    isLoading: PropTypes.bool.isRequired,
+    user: PropTypes.object.isRequired,
+    children: PropTypes.any.isRequired,
+    deleteAnimal: PropTypes.func.isRequired,
+}
 export default DeleteAnimalView

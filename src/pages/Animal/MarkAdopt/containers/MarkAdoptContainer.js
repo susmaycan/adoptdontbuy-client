@@ -12,7 +12,7 @@ const mapStateToProps = (state, props) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    markAsFavourite: (animal, userId) => dispatch(updateAnimalUser(animal, userId))
+    markAsAdopted: (animal, userId) => dispatch(updateAnimalUser(animal, userId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdoptButton)

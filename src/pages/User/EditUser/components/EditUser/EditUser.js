@@ -1,26 +1,39 @@
 import React, {Component} from 'react'
 import Form from '../Form'
-import Loading from '../../../../../components/Loading'
-import Message from '../../../../../components/Message'
-import Title from '../../../../../components/Title'
+import {Loading, Message, Title, Box} from '../../../../../components/'
 import {Translate} from 'react-redux-i18n'
-import Box from "../../../../../components/Box";
+import PropTypes from 'prop-types'
 
 class EditUser extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            submitted: false
-        }
-        this.submitForm = this.submitForm.bind(this)
+    static propTypes = {
+        user: PropTypes.object.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        errorFetch: PropTypes.bool.isRequired,
+        errorMsgFetch: PropTypes.string.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        success: PropTypes.bool.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        getUser: PropTypes.func.isRequired,
+        updateUserDB: PropTypes.func.isRequired,
+        uploadPhoto: PropTypes.func.isRequired,
+        updateEmail: PropTypes.func.isRequired,
+        updatePassword: PropTypes.func.isRequired,
+        logout: PropTypes.func.isRequired,
+        resetState: PropTypes.func.isRequired
+    }
+
+    state = {
+        submitted: false
     }
 
     componentDidMount() {
         this.props.getUser(this.props.match.params.userId)
     }
 
-    submitForm(props) {
+    submitForm = (props) => {
         const user = props.user
         const password = props.password.newPassword
         let logout = false
@@ -46,6 +59,7 @@ class EditUser extends Component {
 
     render() {
         const {success, errorFetch, errorFetchMsg, isLoading, error, errorMsg, isLoggedIn} = this.props
+
         if (!isLoggedIn) {
             this.props.history.push("/login")
             return null

@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Form from '../../../../../components/AnimalForm'
+import PropTypes from 'prop-types'
 
 const ACTION_EDIT = "edit"
 const CHECKBOX_TYPE = "checkbox"
@@ -7,22 +8,23 @@ const FILE_TYPE = 'file'
 
 class AnimalForm extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            animal: this.props.animal
-        }
-        this.submitForm = this.submitForm.bind(this)
-        this.updateInput = this.updateInput.bind(this)
-
+    static propTypes = {
+        isLoading: PropTypes.bool.isRequired,
+        animal: PropTypes.object.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        submitForm: PropTypes.func.isRequired
     }
 
-    submitForm(e) {
+    state = {
+        animal: this.props.animal
+    }
+
+    submitForm = (e) => {
         e.preventDefault()
         this.props.submitForm(this.state.animal)
     }
 
-    updateInput(e) {
+    updateInput = (e) => {
         let value = ''
         if (e.target.type === FILE_TYPE) {
             value = e.target.files[0]
@@ -45,6 +47,7 @@ class AnimalForm extends Component {
                 updateInput={this.updateInput}
                 submit={this.submitForm}
                 action={ACTION_EDIT}
+                isLoading={this.props.isLoading}
             />
         )
     }

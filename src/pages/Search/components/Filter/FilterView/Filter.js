@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import FilterForm from '../FilterForm'
 import {input} from "../../../../../constants";
+import PropTypes from 'prop-types'
 
 const EMPTY_FILTER = {
     specie: undefined,
@@ -20,28 +21,22 @@ const EMPTY_FILTER = {
 
 class Filter extends Component {
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            filter: EMPTY_FILTER
-        }
-
-        this.updateInput = this.updateInput.bind(this)
-        this.callFilter = this.callFilter.bind(this)
-        this.clearFilter = this.clearFilter.bind(this)
-        this.isNotEmpty = this.isNotEmpty.bind(this)
-        this.deleteFilter = this.deleteFilter.bind(this)
+    static propTypes = {
+        filterAnimals: PropTypes.func.isRequired
     }
 
-    isNotEmpty(element) {
+    state = {
+        filter: EMPTY_FILTER
+    }
+
+    isNotEmpty = (element) => {
         if (Array.isArray(element))
             return element.length > 0
 
         return element !== "-1" && element !== "" && element !== false && element !== undefined && element !== "undefined"
     }
 
-    callFilter() {
+    callFilter = () => {
         let query = ''
         Object.entries(this.state.filter).map(element => {
             const value = element[1]
@@ -57,11 +52,10 @@ class Filter extends Component {
             }
            return null
         })
-        console.log("Query ", query)
         this.props.filterAnimals(query)
     }
 
-    updateInput(e) {
+    updateInput = (e) => {
         e.preventDefault()
 
         const inputName = e.target.name
@@ -91,7 +85,7 @@ class Filter extends Component {
 
     }
 
-    deleteFilter(e) {
+    deleteFilter = (e) => {
         e.preventDefault()
         e.stopPropagation()
         const inputName = e.target.name
@@ -118,7 +112,7 @@ class Filter extends Component {
         }
     }
 
-    clearFilter(e) {
+    clearFilter = (e) => {
         e.preventDefault()
         this.setState({
             filter: EMPTY_FILTER

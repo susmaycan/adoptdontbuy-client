@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Subtitle from '../Subtitle'
 import {Translate} from 'react-redux-i18n'
 
-const CustomModal = ({show, title, children, handleClose}) => (
+const Modal = ({show, title, children, handleClose}) => (
     <div className={show ? "modal is-active" : "modal"}>
         <div className="modal-background"/>
         <div className="modal-content custom-modal">
@@ -21,11 +21,11 @@ const CustomModal = ({show, title, children, handleClose}) => (
         <button onClick={handleClose} className="modal-close is-large" aria-label="close"/>
     </div>
 )
-CustomModal.propTypes = {
+Modal.propTypes = {
     children: PropTypes.any.isRequired,
     show: PropTypes.bool.isRequired,
     handleClose: PropTypes.func.isRequired,
     title: PropTypes.string.isRequired
 }
 
-export default CustomModal
+export default Modal

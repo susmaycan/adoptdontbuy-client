@@ -2,6 +2,7 @@ import React from 'react'
 import {Translate} from 'react-redux-i18n'
 import './UserTabs.scss'
 import {Box} from '../../../../../components'
+import PropTypes from 'prop-types'
 
 const tabList = [
     {
@@ -50,13 +51,14 @@ const tabList = [
 
 class UserTabs extends React.Component {
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            activeTab: this.getActiveTab()
-        }
+    static propTypes = {
+        isLoggedIn: PropTypes.bool.isRequired
     }
+
+    state = {
+        activeTab: this.getActiveTab()
+    }
+
 
     componentDidUpdate(prevProps) {
 

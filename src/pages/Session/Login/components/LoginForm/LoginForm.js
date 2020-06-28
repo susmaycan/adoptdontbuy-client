@@ -8,15 +8,23 @@ import {Button, Notification} from '../../../../../components'
 
 class LoginForm extends React.Component {
 
-    handleSubmit(e) {
+    static propTypes = {
+        error: PropTypes.bool,
+        isLoading: PropTypes.bool,
+        success: PropTypes.bool,
+        errorMsg: PropTypes.string,
+        loginUser: PropTypes.func.isRequired
+    }
+
+    handleSubmit = (e) => {
         e.preventDefault()
-        this.props.handleSubmit(e.target.email.value, e.target.password.value)
+        this.props.loginUser(e.target.email.value, e.target.password.value)
     }
 
     render() {
         const {error, errorMsg, isLoading, success} = this.props
         return (
-            <form onSubmit={(e) => this.handleSubmit(e)} className="modal-form has-text-centered">
+            <form onSubmit={this.handleSubmit} className="modal-form has-text-centered">
                 <div className="field">
                     <label htmlFor="email" className="label"><Translate value='login.email'/></label>
                     <div className="control is-expanded has-icons-left has-icons-right">
@@ -91,13 +99,5 @@ class LoginForm extends React.Component {
             </form>
         )
     }
-}
-
-LoginForm.propTypes = {
-    error: PropTypes.bool,
-    isLoading: PropTypes.bool,
-    success: PropTypes.bool,
-    errorMsg: PropTypes.string,
-    handleSubmit: PropTypes.func.isRequired,
 }
 export default LoginForm

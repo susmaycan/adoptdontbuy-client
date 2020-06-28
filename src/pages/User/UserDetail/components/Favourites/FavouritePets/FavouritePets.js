@@ -1,7 +1,8 @@
 import React from 'react'
 import {Translate} from 'react-redux-i18n'
-import {sortByUpdateDate} from "../../../../../../utils/Functions";
+import {sortByUpdateDate} from '../../../../../../utils/Functions'
 import {AnimalCard, Box, Message, Subtitle} from '../../../../../../components'
+import PropTypes from 'prop-types'
 
 const FavouritePets = ({user, animals, isLoading, error, isLoggedIn, loggedUser}) => (
     <Box>
@@ -29,5 +30,13 @@ const FavouritePets = ({user, animals, isLoading, error, isLoggedIn, loggedUser}
         }
     </Box>
 )
+FavouritePets.propTypes = {
+    user: PropTypes.object.isRequired,
+    animals: PropTypes.array,
+    isLoading: PropTypes.bool.isRequired,
+    error: PropTypes.bool.isRequired,
+    loggedUser: PropTypes.object.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired
+}
 
 export default FavouritePets

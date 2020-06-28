@@ -5,11 +5,16 @@ import {Box, Button, Subtitle} from '../../../../../components'
 import {Translate} from 'react-redux-i18n'
 
 class SignUpView extends React.Component {
-    constructor(props) {
-        super(props)
 
-        this.redirectToHome = this.redirectToHome.bind(this)
+    static propTypes = {
+        error: PropTypes.bool.isRequired,
+        success: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        signUpUser: PropTypes.func.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        resetState: PropTypes.func.isRequired,
     }
+
 
     componentDidUpdate(prevProps) {
         if (prevProps.success !== this.props.success) {
@@ -18,7 +23,7 @@ class SignUpView extends React.Component {
         }
     }
 
-    redirectToHome() {
+    redirectToHome = () => {
         setTimeout(() => {
             this.props.history.goBack()
             this.props.resetState()
@@ -26,7 +31,6 @@ class SignUpView extends React.Component {
     }
 
     render() {
-        const {success, error, errorMsg, signUpUser, isLoading} = this.props
         return (
             <Box center={true}>
                 <div className="form-container">
@@ -34,11 +38,7 @@ class SignUpView extends React.Component {
                         <div className="column is-7">
                             <Subtitle><Translate value='sign-up.title'/></Subtitle>
                             <SignUpForm
-                                error={error}
-                                errorMsg={errorMsg}
-                                handleSubmit={signUpUser}
-                                isLoading={isLoading}
-                                success={success}
+                                {...this.props}
                             />
                         </div>
                         <div className="column is-4">
@@ -54,13 +54,5 @@ class SignUpView extends React.Component {
 
         )
     }
-}
-
-SignUpView.propTypes = {
-    error: PropTypes.bool.isRequired,
-    success: PropTypes.bool.isRequired,
-    errorMsg: PropTypes.string.isRequired,
-    signUpUser: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired,
 }
 export default SignUpView

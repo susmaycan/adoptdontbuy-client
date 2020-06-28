@@ -2,6 +2,7 @@ import React from 'react'
 import {Box, Contact, Subtitle, Table} from '../../../../../../components'
 import {Translate} from 'react-redux-i18n'
 import {tableElements} from '../../../../../../constants'
+import PropTypes from 'prop-types'
 
 const ContactInfo = ({user, loggedUser, isLoggedIn}) => (
     <Box>
@@ -30,8 +31,14 @@ const ContactInfo = ({user, loggedUser, isLoggedIn}) => (
             <Contact
                 emailDst={user.email}
             />
-            : ""}
+            : null}
 
     </Box>
 )
+ContactInfo.propTypes = {
+    user: PropTypes.object.isRequired,
+    loggedUser: PropTypes.object.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired
+}
+
 export default ContactInfo

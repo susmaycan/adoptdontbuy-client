@@ -6,10 +6,14 @@ import {Translate} from 'react-redux-i18n'
 
 class LoginView extends React.Component {
 
-    constructor(props) {
-        super(props)
-
-        this.redirectToHome = this.redirectToHome.bind(this)
+    static propTypes = {
+        isLoggedIn: PropTypes.bool.isRequired,
+        success: PropTypes.bool,
+        error: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        loginUser: PropTypes.func.isRequired,
+        resetState: PropTypes.func.isRequired,
+        isLoading: PropTypes.bool.isRequired
     }
 
     componentDidUpdate(prevProps) {
@@ -19,7 +23,7 @@ class LoginView extends React.Component {
         }
     }
 
-    redirectToHome() {
+    redirectToHome = () => {
         setTimeout(() => {
             this.props.history.goBack()
             this.props.resetState()
@@ -27,7 +31,6 @@ class LoginView extends React.Component {
     }
 
     render() {
-        const {error, errorMsg, loginUser, isLoading, success} = this.props
         return (
             <Box center={true}>
                 <div className="form-container">
@@ -35,11 +38,7 @@ class LoginView extends React.Component {
                         <div className="column is-7">
                             <Subtitle><Translate value='login.title'/> </Subtitle>
                             <LoginForm
-                                error={error}
-                                success={success}
-                                errorMsg={errorMsg}
-                                handleSubmit={loginUser}
-                                isLoading={isLoading}
+                                {...this.props}
                             />
                         </div>
                         <div className="column is-4">
@@ -57,13 +56,4 @@ class LoginView extends React.Component {
     }
 }
 
-LoginView.propTypes = {
-    isLoggedIn: PropTypes.bool.isRequired,
-    success: PropTypes.bool,
-    error: PropTypes.bool.isRequired,
-    errorMsg: PropTypes.string.isRequired,
-    loginUser: PropTypes.func.isRequired,
-    resetState: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired,
-}
 export default LoginView

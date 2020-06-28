@@ -3,14 +3,18 @@ import RecoverPasswordForm from '../RecoverPasswordForm'
 import PropTypes from 'prop-types'
 import {Box, Title} from '../../../../../components'
 import {Translate} from 'react-redux-i18n'
-import {Redirect} from "react-router";
+import {Redirect} from 'react-router'
 
 class RecoverPasswordView extends React.Component {
 
-    constructor(props) {
-        super(props)
-
-        this.redirectToHome = this.redirectToHome.bind(this)
+    static propTypes = {
+        isLoggedIn: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        success: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        recoverPassword: PropTypes.func.isRequired,
+        resetState: PropTypes.func.isRequired,
+        isLoading: PropTypes.bool.isRequired,
     }
 
     componentDidUpdate(prevProps) {
@@ -20,42 +24,27 @@ class RecoverPasswordView extends React.Component {
         }
     }
 
-    redirectToHome() {
+    redirectToHome = () => {
         setTimeout(() => {
-            //this.props.Router.history.push('/')
             this.props.history.push('/')
             this.props.resetState()
         }, 3000)
     }
 
     render() {
-        const {isLoggedIn, error, errorMsg, recoverPassword, isLoading, success} = this.props
+        const {isLoggedIn} = this.props
         return (
-            <>
+            <React.Fragment>
                 {isLoggedIn ? <Redirect to='/'/> : null}
                 <Box center={true}>
                     <Title><Translate value='recoverPassword.title'/> </Title>
                     <RecoverPasswordForm
-                        error={error}
-                        errorMsg={errorMsg}
-                        handleSubmit={recoverPassword}
-                        isLoading={isLoading}
-                        success={success}
                         redirectToHome={this.redirectToHome}
+                        {...this.props}
                     />
                 </Box>
-            </>
+            </React.Fragment>
         )
     }
-}
-
-RecoverPasswordView.propTypes = {
-    isLoggedIn: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
-    success: PropTypes.bool.isRequired,
-    errorMsg: PropTypes.string.isRequired,
-    recoverPassword: PropTypes.func.isRequired,
-    resetState: PropTypes.func.isRequired,
-    isLoading: PropTypes.bool.isRequired,
 }
 export default RecoverPasswordView

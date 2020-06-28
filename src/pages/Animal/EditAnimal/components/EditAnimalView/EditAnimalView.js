@@ -1,12 +1,25 @@
 import React, {Component} from 'react'
-import Message from '../../../../../components/Message'
 import AnimalForm from '../AnimalForm'
-import Loading from "../../../../../components/Loading";
 import {Translate} from 'react-redux-i18n'
-import Title from '../../../../../components/Title'
-import Box from '../../../../../components/Box'
+import {Box, Message, Loading, Title} from '../../../../../components'
+import PropTypes from 'prop-types'
 
 class EditAnimalView extends Component {
+
+    static propTypes = {
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        errorGet: PropTypes.bool.isRequired,
+        success: PropTypes.bool.isRequired,
+        animal: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        errorGetMsg: PropTypes.string.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        editAnimal: PropTypes.func.isRequired,
+        getAnimal: PropTypes.func.isRequired,
+        reset: PropTypes.func.isRequired,
+    }
 
     componentDidMount() {
         this.props.getAnimal(this.props.match.params.animalId)
@@ -58,6 +71,7 @@ class EditAnimalView extends Component {
                     submitForm={this.props.editAnimal}
                     uploadPhoto={this.props.uploadPhoto}
                     animal={animal}
+                    isLoading={isLoading}
                 />
             </Box>
         )

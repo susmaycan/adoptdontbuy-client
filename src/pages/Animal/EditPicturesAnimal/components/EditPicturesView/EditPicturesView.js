@@ -2,24 +2,31 @@ import React, {Component} from 'react';
 import {Box, Loading, Message, Title} from "../../../../../components";
 //import {Translate} from "react-redux-i18n";
 import EditPictures from '../EditPictures'
+import PropTypes from 'prop-types'
 
 class EditPicturesView extends Component {
 
-    constructor(props) {
-        super(props)
-
-        this.deletePicture = this.deletePicture.bind(this)
-        this.uploadPictures = this.uploadPictures.bind(this)
+    static propTypes = {
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        animal: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        editAnimal: PropTypes.func.isRequired,
+        addPictures: PropTypes.func.isRequired,
+        deletePicture: PropTypes.func.isRequired,
+        getAnimal: PropTypes.func.isRequired,
+        reset: PropTypes.func.isRequired,
     }
 
-
-    deletePicture(pic) {
+    deletePicture = (pic) => {
         this.props.deletePicture(this.props.animal, pic)
     }
 
 
-    uploadPictures(event) {
-       this.props.addPictures(this.props.animal, event.target.files)
+    uploadPictures = (e) => {
+       this.props.addPictures(this.props.animal, e.target.files)
     }
 
     componentDidMount() {

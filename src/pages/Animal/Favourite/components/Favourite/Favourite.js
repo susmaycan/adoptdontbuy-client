@@ -1,7 +1,19 @@
 import React, {Component} from 'react'
 import {isOwner} from '../../../../../utils/Functions'
+import PropTypes from 'prop-types'
 
 class Favourite extends Component {
+
+    static propTypes = {
+        animal: PropTypes.object.isRequired,
+        user: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        success: PropTypes.bool.isRequired,
+        addFavourite: PropTypes.func.isRequired,
+        deleteFavourite: PropTypes.func.isRequired,
+    }
 
     isIncluded() {
         const {isLoggedIn, user, animal} = this.props

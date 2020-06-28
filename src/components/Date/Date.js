@@ -5,7 +5,7 @@ import {I18n} from 'react-redux-i18n'
 class CustomDate extends React.Component {
 
     static propTypes = {
-        value: PropTypes.string.isRequired
+        value: PropTypes.string
     }
 
     render() {

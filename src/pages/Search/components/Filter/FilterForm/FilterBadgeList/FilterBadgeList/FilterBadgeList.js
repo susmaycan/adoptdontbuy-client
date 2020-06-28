@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import './FilterBadgeList.scss'
 import FilterBadge from "../FilterBadge";
 
-
 const FilterBadgeList = ({filter, isNotEmpty, deleteFilter}) => (
     <div className="filter-list">
         <Row>
@@ -14,6 +13,7 @@ const FilterBadgeList = ({filter, isNotEmpty, deleteFilter}) => (
                         return (
                             element[1].map(el =>
                                 <FilterBadge
+                                    key={element[0]}
                                     name={element[0]}
                                     value={el}
                                     deleteFilter={deleteFilter}
@@ -32,24 +32,10 @@ const FilterBadgeList = ({filter, isNotEmpty, deleteFilter}) => (
         </Row>
     </div>
 )
-
 FilterBadgeList.propTypes = {
-    filter: PropTypes.shape({
-        specie: PropTypes.string,
-        gender: PropTypes.string,
-        size: PropTypes.arrayOf(PropTypes.string),
-        city: PropTypes.string,
-        province: PropTypes.string,
-        region: PropTypes.string,
-        owner: PropTypes.string,
-        age: PropTypes.arrayOf(PropTypes.string),
-        castrated: PropTypes.bool,
-        vaccinated: PropTypes.bool,
-        alongWithDogs: PropTypes.bool,
-        alongWithCats: PropTypes.bool,
-        alongWithKids: PropTypes.bool
-    }).isRequired,
+    filter: PropTypes.object.isRequired,
     isNotEmpty: PropTypes.func.isRequired,
     deleteFilter: PropTypes.func.isRequired
 }
+
 export default FilterBadgeList

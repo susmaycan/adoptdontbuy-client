@@ -20,4 +20,4 @@ const mapDispatchToProps = (dispatch) => ({
     reset: () => dispatch(resetState())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditAnimalView);
+export default connect(mapStateToProps, mapDispatchToProps)(EditAnimalView)

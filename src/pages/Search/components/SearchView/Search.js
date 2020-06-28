@@ -4,8 +4,16 @@ import Filter from '../Filter'
 import {Translate} from 'react-redux-i18n'
 import {codeError} from '../../../../constants'
 import ResultList from '../ResultList'
+import PropTypes from 'prop-types'
 
 class Search extends Component {
+
+    static propTypes = {
+        animalList: PropTypes.array.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        filterAnimals: PropTypes.func.isRequired
+    }
 
     constructor(props) {
         super(props)
@@ -25,21 +33,26 @@ class Search extends Component {
             return (
                 <Loading/>
             )
-        } else if (this.props.error) {
+        }
+
+        if (this.props.error) {
             return (
                 <Error code={codeError.SERVER_UNAVAILABLE}/>
             )
-        } else if (this.props.animalList.length === 0) {
+        }
+
+        if (this.props.animalList.length === 0) {
             return (
                 <Message>Sorry, we <strong>couldn't find</strong> any animal that matches your query.</Message>
             )
-        } else {
-            return (
-                <ResultList
-                    animalList={this.props.animalList}
-                />
-            )
         }
+
+        return (
+            <ResultList
+                animalList={this.props.animalList}
+            />
+        )
+
     }
 
     render() {

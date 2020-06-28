@@ -1,17 +1,29 @@
 import React, {Component} from 'react'
 import {isOwner} from '../../../../../utils/Functions'
-import {status} from "../../../../../constants";
+import {status} from '../../../../../constants'
 import Popover from 'react-popover'
 import {Translate} from 'react-redux-i18n'
+import PropTypes from 'prop-types'
 
 class AdoptButton extends Component {
+
+    static propTypes = {
+        animal: PropTypes.object.isRequired,
+        user: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        success: PropTypes.bool.isRequired,
+        markAsAdopted: PropTypes.func.isRequired
+    }
+
 
     onClick() {
         const {isLoggedIn, user, animal} = this.props
 
         if (isLoggedIn && isOwner(user, animal.owner)) {
             let adoptedAnimal = {...animal, status: status.ADOPTED}
-            this.props.markAsFavourite(adoptedAnimal, user._id)
+            this.props.markAsAdopted(adoptedAnimal, user._id)
         }
 
     }

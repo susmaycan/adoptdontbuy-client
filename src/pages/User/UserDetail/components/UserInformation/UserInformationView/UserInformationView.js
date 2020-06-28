@@ -1,8 +1,20 @@
 import React, {Component} from 'react'
 import User from '../Information'
 import {Loading, Message} from '../../../../../../components'
+import PropTypes from 'prop-types'
 
 class UserInformationView extends Component {
+
+    static propTypes = {
+        user: PropTypes.object.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        successDelete: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        getUser: PropTypes.func.isRequired
+    }
 
     componentDidMount() {
         this.props.getUser(this.props.match.params.userId)
