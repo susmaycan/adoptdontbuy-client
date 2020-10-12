@@ -6,6 +6,7 @@ import './UserInformation.scss'
 import {buttonTypes, tableElements} from '../../../../../../constants'
 import {isAuthenticated} from '../../../../../../utils/Functions'
 import UserProfilePicture from "../../UserProfilePicture";
+import PropTypes from 'prop-types'
 
 const UserInformation = ({user, loggedUser}) => (
     <Box>
@@ -70,4 +71,9 @@ const UserInformation = ({user, loggedUser}) => (
         }
     </Box>
 )
+UserInformation.propTypes = {
+    user: PropTypes.object.isRequired,
+    loggedUser: PropTypes.object.isRequired
+}
+
 export default UserInformation

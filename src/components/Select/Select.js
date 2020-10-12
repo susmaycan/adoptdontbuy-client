@@ -21,6 +21,12 @@ class Select extends React.Component {
         }
     }
 
+    static propTypes = {
+        value: PropTypes.string,
+        name: PropTypes.string.isRequired,
+        handleChange: PropTypes.func.isRequired
+    }
+
     componentDidMount() {
         switch (this.props.name) {
 
@@ -87,9 +93,4 @@ class Select extends React.Component {
     }
 }
 
-Select.propTypes = {
-    value: PropTypes.string,
-    name: PropTypes.string.isRequired,
-    handleChange: PropTypes.func.isRequired
-}
 export default Select

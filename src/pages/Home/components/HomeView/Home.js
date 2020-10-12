@@ -1,19 +1,19 @@
 import React, {Component} from 'react'
 import {Translate} from 'react-redux-i18n'
-import {codeError} from '../../../../constants'
 import {Cat} from 'react-kawaii'
-import {AnimalCard, Box, Error, Loading, Message, Subtitle, Title} from '../../../../components'
+import {Box, Title} from '../../../../components'
 import PropTypes from 'prop-types'
+import AnimalList from "../AnimalList";
 
 class Home extends Component {
 
     static propTypes = {
-        animals: PropTypes.array,
-        isLoading: PropTypes.bool,
-        error: PropTypes.bool,
-        user: PropTypes.object,
-        isLoggedIn: PropTypes.bool,
-        getAnimals: PropTypes.func
+        animals: PropTypes.array.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        user: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        getAnimals: PropTypes.func.isRequired
     }
 
     constructor(props) {
@@ -41,47 +41,6 @@ class Home extends Component {
         })
     }
 
-    renderBody() {
-        const {user, isLoading, error, isLoggedIn} = this.props
-        if (isLoading) {
-            return (
-                <Loading/>
-            )
-        }
-        if (error) {
-            return (
-                <Error code={codeError.SERVER_UNAVAILABLE}/>
-            )
-        }
-
-        if (this.state.animalList.length === 0) {
-            return (
-                <Message><Translate value='messages.elementNotFound'/></Message>
-            )
-        }
-
-        return (
-            <React.Fragment>
-                <div className="columns is-centered">
-                    <div className="column is-narrow">
-                        <Subtitle><Translate value='home.latest'/></Subtitle>
-                    </div>
-                </div>
-                <div className="columns is-centered is-multiline is-mobile">
-                    {this.state.animalList.map((animal) =>
-                        <div key={animal._id} className="column is-narrow">
-                            <AnimalCard
-                                animal={animal}
-                                isLoggedIn={isLoggedIn}
-                                user={user}
-                            />
-                        </div>
-                    )}
-                </div>
-            </React.Fragment>
-        )
-    }
-
     render() {
         return (
             <Box>
@@ -99,7 +58,7 @@ class Home extends Component {
                     </div>
                 </div>
 
-                {this.renderBody()}
+                <AnimalList {...this.props} animalList={this.state.animalList} />
             </Box>
         )
     }

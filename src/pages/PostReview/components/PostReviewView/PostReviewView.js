@@ -7,24 +7,31 @@ import PostReviewForm from '../PostReviewForm'
 
 class PostReviewView extends React.Component {
 
+    static propTypes = {
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        postReview: PropTypes.func.isRequired,
+        user: PropTypes.object.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        success: PropTypes.bool.isRequired
+    }
+
     constructor(props) {
         super(props)
 
         this.state = {
             show: false
         }
-
-        this.handleClose = this.handleClose.bind(this)
-        this.handleShow = this.handleShow.bind(this)
     }
 
-    handleClose() {
+    handleClose = () => {
         this.setState({
             show: false
         })
     }
 
-    handleShow() {
+    handleShow = () => {
         this.setState({
             show: true
         })
@@ -53,13 +60,4 @@ class PostReviewView extends React.Component {
     }
 }
 
-PostReviewView.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
-    errorMsg: PropTypes.string.isRequired,
-    postReview: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    loggedUser: PropTypes.object.isRequired,
-    success: PropTypes.bool.isRequired
-}
 export default PostReviewView

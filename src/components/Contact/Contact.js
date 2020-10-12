@@ -13,6 +13,11 @@ class Contact extends React.Component {
         }
     }
 
+    static propTypes = {
+        emailDst: PropTypes.string.isRequired,
+        animalName: PropTypes.string
+    }
+
     componentDidMount() {
         const animalName = this.props.animal !== undefined ? this.props.animal.name : undefined
 
@@ -51,10 +56,4 @@ class Contact extends React.Component {
         )
     }
 }
-
-Contact.propTypes = {
-    emailDst: PropTypes.string.isRequired,
-    animalName: PropTypes.string
-}
-
 export default Contact

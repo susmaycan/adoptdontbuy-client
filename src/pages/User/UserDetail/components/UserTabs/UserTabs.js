@@ -2,6 +2,7 @@ import React from 'react'
 import {Translate} from 'react-redux-i18n'
 import './UserTabs.scss'
 import {Box} from '../../../../../components'
+import PropTypes from 'prop-types'
 
 const tabList = [
     {
@@ -50,13 +51,14 @@ const tabList = [
 
 class UserTabs extends React.Component {
 
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            activeTab: this.getActiveTab()
-        }
+    static propTypes = {
+        isLoggedIn: PropTypes.bool.isRequired
     }
+
+    state = {
+        activeTab: this.getActiveTab()
+    }
+
 
     componentDidUpdate(prevProps) {
 
@@ -91,12 +93,13 @@ class UserTabs extends React.Component {
                                 return (
                                     <li key={tab.name}
                                         className={this.state.activeTab === tab.name || this.state.activeTab === tab.link ? "is-active" : ''}>
-                                        <a onClick={(e) => this.changeActiveTab(e, tab.name, tab.link)}>
+                                        <a href="/#" onClick={(e) => this.changeActiveTab(e, tab.name, tab.link)}>
                                             <Translate value={"userDetail.tabs." + tab.tabName}/>
                                         </a>
                                     </li>
                                 )
                             }
+                            return null
                         })}
                     </ul>
                 </div>

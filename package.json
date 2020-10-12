@@ -9,6 +9,9 @@
     "bootstrap": "^4.4.1",
     "bulma": "^0.8.2",
     "bulma-extensions": "^6.2.7",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "fetch-mock": "^9.10.3",
     "firebase": "^7.5.0",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
@@ -28,6 +31,7 @@
     "react-with-firebase-auth": "^1.2.0",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
+    "redux-mock-store": "^1.5.4",
     "redux-thunk": "^2.3.0",
     "uuid": "^7.0.3",
     "validator": "^13.0.0"
@@ -35,7 +39,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "test": "react-scripts test"
   },
   "eslintConfig": {
     "extends": "react-app"

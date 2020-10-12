@@ -8,15 +8,17 @@ import {Notification} from '../../../../../components'
 
 class RecoverPasswordForm extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.submitForm = this.submitForm.bind(this)
-        this.success = false
+    static propTypes = {
+        error: PropTypes.bool,
+        isLoading: PropTypes.bool,
+        errorMsg: PropTypes.string,
+        recoverPassword: PropTypes.func.isRequired,
+        redirectToHome: PropTypes.func.isRequired,
     }
 
-    submitForm(e) {
+    submitForm = (e) => {
         e.preventDefault()
-        this.props.handleSubmit(e.target.email.value)
+        this.props.recoverPassword(e.target.email.value)
     }
 
     render() {
@@ -70,11 +72,4 @@ class RecoverPasswordForm extends React.Component {
     }
 }
 
-RecoverPasswordForm.propTypes = {
-    error: PropTypes.bool,
-    isLoading: PropTypes.bool,
-    errorMsg: PropTypes.string,
-    handleSubmit: PropTypes.func.isRequired,
-    redirectToHome: PropTypes.func.isRequired,
-}
 export default RecoverPasswordForm

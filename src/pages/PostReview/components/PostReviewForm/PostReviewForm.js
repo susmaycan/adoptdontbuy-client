@@ -1,11 +1,19 @@
 import React from 'react'
-import {Translate} from 'react-redux-i18n'
-import {buttonTypes, input} from "../../../../constants";
-import Button from "../../../../components/Button";
 import PropTypes from 'prop-types'
-import {Notification} from "../../../../components";
+import Form from '../Form'
 
 class PostReviewForm extends React.Component {
+
+    static propTypes = {
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        success: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        postReview: PropTypes.func.isRequired,
+        handleClose: PropTypes.func.isRequired,
+        user: PropTypes.object.isRequired,
+        loggedUser: PropTypes.object.isRequired
+    }
 
     constructor(props) {
         super(props)
@@ -18,17 +26,15 @@ class PostReviewForm extends React.Component {
                 to: this.props.user._id
             }
         }
-
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.updateInput = this.updateInput.bind(this)
     }
 
-    handleSubmit(e) {
+
+    handleSubmit = (e) => {
         e.preventDefault()
         this.props.postReview(this.state.review, this.props.user._id)
     }
 
-    updateInput(e) {
+    updateInput = (e) => {
         e.preventDefault()
 
         this.setState({
@@ -39,7 +45,7 @@ class PostReviewForm extends React.Component {
         })
     }
 
-    resetReview(){
+    resetReview() {
         this.setState({
             review: {
                 ...this.state.review,
@@ -50,71 +56,27 @@ class PostReviewForm extends React.Component {
     }
 
     render() {
-        const {isLoading, error, errorMsg, success} = this.props
+        const {isLoading, error, errorMsg, success, handleClose} = this.props
         const {review} = this.state
 
         if (success) {
             setTimeout(() => {
-                this.props.handleClose()
+                handleClose()
                 this.resetReview()
             }, 500)
         }
 
         return (
-            <form className="form-animal" onSubmit={this.handleSubmit}>
-                <div className="field">
-                    <label className="label"><Translate value='review.rating'/></label>
-                    <div className="control is-expanded">
-                        <input
-                            name="rating"
-                            onChange={this.updateInput}
-                            value={review.rating}
-                            className="input"
-                            type="number"
-                            min={0}
-                            required
-                            max={5}
-                            placeholder="From 0 to 5"/>
-                    </div>
-                </div>
-
-                <div className="field">
-                    <label className="label"><Translate value='review.desc'/></label>
-                    <div className="control is-expanded">
-                        <textarea
-                            name="desc"
-                            onChange={this.updateInput}
-                            value={review.desc}
-                            className="textarea"
-                            required
-                            placeholder="Tell us more about your experience"/>
-                    </div>
-                </div>
-                {error &&
-                <Notification error={true}>{errorMsg}</Notification>
-                }
-                {isLoading ?
-                    <button className="button is-loading">Loading...</button>
-                    :
-                    <Button
-                        submit={true}
-                    >
-                        <Translate value={buttonTypes.FINISH}/>
-                    </Button>
-                }
-            </form>
+            <Form
+                review={review}
+                error={error}
+                errorMsg={errorMsg}
+                isLoading={isLoading}
+                handleSubmit={this.handleSubmit}
+                updateInput={this.updateInput}
+            />
         )
     }
 }
 
-PostReviewForm.propTypes = {
-    isLoading: PropTypes.bool.isRequired,
-    error: PropTypes.bool.isRequired,
-    success: PropTypes.bool.isRequired,
-    errorMsg: PropTypes.string.isRequired,
-    postReview: PropTypes.func.isRequired,
-    handleClose: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired,
-    loggedUser: PropTypes.object.isRequired
-}
 export default PostReviewForm

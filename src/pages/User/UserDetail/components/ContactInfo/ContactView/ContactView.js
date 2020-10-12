@@ -1,8 +1,18 @@
 import React, {Component} from 'react'
 import Contact from '../Contact'
 import {Loading, Message} from '../../../../../../components'
+import PropTypes from 'prop-types'
 
 class ContactView extends Component {
+
+    static propTypes = {
+        user: PropTypes.object.isRequired,
+        isLoading: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        getUser: PropTypes.func.isRequired
+    }
 
     componentDidMount() {
         this.props.getUser(this.props.match.params.userId)

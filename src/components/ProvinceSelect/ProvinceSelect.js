@@ -5,6 +5,14 @@ import {I18n} from 'react-redux-i18n'
 
 class ProvinceSelect extends React.Component {
 
+    static propTypes = {
+        region: PropTypes.string,
+        province: PropTypes.string,
+        handleChange: PropTypes.func.isRequired,
+        errors: PropTypes.any,
+        touched: PropTypes.any
+    }
+
     constructor(props) {
         super(props)
         this.state = {
@@ -33,17 +41,19 @@ class ProvinceSelect extends React.Component {
     }
 
     render() {
+        const {province, handleChange, touched, errors} = this.props
+        const {provinceList} = this.state
         return (
             <div className="select is-fullwidth">
                 <select
                     name="province"
-                    value={this.props.province}
-                    onChange={this.props.handleChange}
-                    className={'form-control' + (this.props.errors && this.props.touched ? ' is-invalid' : '')}
+                    value={province}
+                    onChange={handleChange}
+                    className={'form-control' + (errors && touched ? ' is-invalid' : '')}
                     disabled={this.state.provinceList.length === 0}
                 >
                     <option value="-1">{I18n.t('input.selectOne')}</option>
-                    {this.state.provinceList.map(prov =>
+                    {provinceList.map(prov =>
                         <option key={prov.value} value={prov.value}>{prov.name}</option>
                     )}
                 </select>
@@ -53,11 +63,4 @@ class ProvinceSelect extends React.Component {
     }
 }
 
-ProvinceSelect.propTypes = {
-    region: PropTypes.string,
-    province: PropTypes.string,
-    handleChange: PropTypes.func.isRequired,
-    errors: PropTypes.any,
-    touched: PropTypes.any
-}
 export default ProvinceSelect

@@ -4,6 +4,16 @@ import {Link} from 'react-router-dom'
 import './Button.scss'
 
 class Button extends React.Component {
+
+    static propTypes = {
+        children: PropTypes.any.isRequired,
+        submit: PropTypes.bool,
+        danger: PropTypes.bool,
+        disabled: PropTypes.bool,
+        onAction: PropTypes.func,
+        url: PropTypes.string
+    }
+
     render() {
         const {submit, onAction, url, children, danger, disabled} = this.props
 
@@ -37,14 +47,5 @@ class Button extends React.Component {
         }
 
     }
-}
-
-Button.propTypes = {
-    children: PropTypes.any.isRequired,
-    submit: PropTypes.bool,
-    danger: PropTypes.bool,
-    disabled: PropTypes.bool,
-    onAction: PropTypes.func,
-    url: PropTypes.string
 }
 export default Button

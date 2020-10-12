@@ -1,8 +1,9 @@
 import React from 'react'
 import {Translate} from 'react-redux-i18n'
 import './Badge.scss'
+import PropTypes from 'prop-types'
 
-const BadgeCharacteristics = ({elements}) => (
+const Badge = ({elements}) => (
     <div className="badge-list">
         {
             elements.map(element => {
@@ -21,4 +22,11 @@ const BadgeCharacteristics = ({elements}) => (
         }
     </div>
 )
-export default BadgeCharacteristics
+Badge.propTypes = {
+    elements: PropTypes.arrayOf(PropTypes.shape({
+        name: PropTypes.string,
+        value: PropTypes.bool
+    })).isRequired
+}
+
+export default Badge

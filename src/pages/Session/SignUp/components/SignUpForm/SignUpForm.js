@@ -7,6 +7,14 @@ import PropTypes from 'prop-types'
 
 class SignUpForm extends React.Component {
 
+    static propTypes = {
+        error: PropTypes.bool,
+        isLoading: PropTypes.bool,
+        success: PropTypes.bool,
+        errorMsg: PropTypes.string,
+        signUpUser: PropTypes.func.isRequired,
+    }
+
     constructor(props) {
         super(props)
 
@@ -97,7 +105,7 @@ class SignUpForm extends React.Component {
 
         if (validation.isValid) {
             const {email, password, username} = this.state
-            this.props.handleSubmit(email, password, username)
+            this.props.signUpUser(email, password, username)
         }
     }
 
@@ -241,11 +249,4 @@ class SignUpForm extends React.Component {
     }
 }
 
-SignUpForm.propTypes = {
-    error: PropTypes.bool,
-    isLoading: PropTypes.bool,
-    success: PropTypes.bool,
-    errorMsg: PropTypes.string,
-    handleSubmit: PropTypes.func.isRequired,
-}
 export default SignUpForm

@@ -20,6 +20,12 @@ class Checkboxes extends React.Component {
         }
     }
 
+    static propTypes = {
+        value: PropTypes.arrayOf(PropTypes.string),
+        name: PropTypes.string.isRequired,
+        handleChange: PropTypes.func.isRequired
+    }
+
     componentDidMount() {
         switch (this.props.name) {
 
@@ -76,11 +82,5 @@ class Checkboxes extends React.Component {
             </div>
         )
     }
-}
-
-Checkboxes.propTypes = {
-    value: PropTypes.arrayOf(PropTypes.string),
-    name: PropTypes.string.isRequired,
-    handleChange: PropTypes.func.isRequired
 }
 export default Checkboxes

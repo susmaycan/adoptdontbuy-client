@@ -1,6 +1,7 @@
 import React from 'react'
 import './UserProfilePicture.scss'
 import {Image} from "react-bootstrap";
+import PropTypes from 'prop-types'
 
 const UserProfilePicture = ({username, picture}) => (
     <div> {
@@ -13,4 +14,9 @@ const UserProfilePicture = ({username, picture}) => (
     </div>
 
 )
+UserProfilePicture.propTypes = {
+    username: PropTypes.string,
+    picture: PropTypes.string,
+}
+
 export default UserProfilePicture

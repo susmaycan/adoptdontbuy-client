@@ -9,6 +9,7 @@ import {buttonTypes, tableElements} from '../../../../../constants'
 import {isAdopted, isOwner} from '../../../../../utils/Functions'
 import MarkAdopt from '../../../MarkAdopt'
 import MarkReserved from '../../../MarkReserved'
+import PropTypes from 'prop-types'
 
 const Animal = ({animal, user}) => (
     <Box>
@@ -68,7 +69,7 @@ const Animal = ({animal, user}) => (
                 {isOwner(user, animal.owner) ?
                     <div className="level centered">
                         {!isAdopted(animal) &&
-                        <>
+                        <React.Fragment>
                             <div className="level-item">
                                 <MarkAdopt animal={animal}/>
                             </div>
@@ -91,8 +92,8 @@ const Animal = ({animal, user}) => (
                                     <i className="fas fa-edit"/>&nbsp;<Translate value={buttonTypes.EDIT_PICTURES}/>
                                 </Button>
                             </div>
-
-                        </>}
+                        </React.Fragment>
+                        }
                         <div className="level-item">
                             <DeleteAnimal>
                                 <i className="fas fa-trash-alt"/>&nbsp;<Translate value={buttonTypes.DELETE}/>
@@ -105,20 +106,28 @@ const Animal = ({animal, user}) => (
                                  animal={animal}/>
                     </div>
                 }
-                <AnimalPicture name={animal.name} pictures={animal.picture}/>
+
+                {animal.picture !== undefined &&
+                    <AnimalPicture name={animal.name} pictures={animal.picture}/>
+                }
+
             </div>
         </div>
 
         <div className="centered">
-            {animal.about !== "unknown" ?
-                <div className="animal-about">
-                    <Subtitle><Translate value={'animalDetail.story'}/></Subtitle>
-                    <hr/>
-                    <p>{animal.about}</p>
-                </div>
-                :
-                ""}
+            {animal.about !== "unknown" &&
+            <div className="animal-about">
+                <Subtitle><Translate value={'animalDetail.story'}/></Subtitle>
+                <hr/>
+                <p>{animal.about}</p>
+            </div>
+            }
         </div>
     </Box>
 )
+Animal.propTypes = {
+    animal: PropTypes.object.isRequired,
+    user: PropTypes.object.isRequired
+}
+
 export default Animal

@@ -7,12 +7,13 @@ import {filterElements} from '../../../../../../../constants'
 
 class FilterBadge extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.renderContentBadge = this.renderContentBadge.bind(this)
+    static propTypes = {
+        name: PropTypes.string.isRequired,
+        value: PropTypes.any.isRequired,
+        deleteFilter: PropTypes.func.isRequired
     }
 
-    renderContentBadge() {
+    renderContentBadge = () => {
         const {name, value} = this.props
 
         switch (name) {
@@ -52,11 +53,5 @@ class FilterBadge extends React.Component {
             </button>
         )
     }
-}
-
-FilterBadge.propTypes = {
-    name: PropTypes.string.isRequired,
-    value: PropTypes.any.isRequired,
-    deleteFilter: PropTypes.func.isRequired
 }
 export default FilterBadge

@@ -5,8 +5,13 @@ import Title from "../Title";
 import {Translate} from 'react-redux-i18n'
 import {codeError} from '../../constants'
 import {Cat} from 'react-kawaii'
+import PropTypes from 'prop-types'
 
 class Error extends React.Component {
+
+    static propTypes = {
+        code: PropTypes.string
+    }
 
     constructor(props) {
         super(props)
@@ -21,7 +26,9 @@ class Error extends React.Component {
 
     componentDidMount() {
 
-        switch (this.props.code) {
+        const {code} = this.props
+
+        switch (code) {
             case codeError.NOT_FOUND:
             default:
                 this.setState({
@@ -45,13 +52,15 @@ class Error extends React.Component {
 
 
     render() {
+        const {code, text, mood, goHome} = this.state
+
         return (
             <div className="block-container error-container">
-                <Title>Error <span className="code-error">{this.state.code}</span></Title>
-                <p><Translate value={this.state.text} /></p>
-                <Cat size={320} mood={this.state.mood} color="#ffc107" />
-                {this.state.goHome ?
-                    <p><strong><Link to='/'><Translate value='errors.goHome' /></Link></strong></p>
+                <Title>Error <span className="code-error">{code}</span></Title>
+                <p><Translate value={text}/></p>
+                <Cat size={320} mood={mood} color="#ffc107"/>
+                {goHome ?
+                    <p><strong><Link to='/'><Translate value='errors.goHome'/></Link></strong></p>
                     : ''
                 }
 

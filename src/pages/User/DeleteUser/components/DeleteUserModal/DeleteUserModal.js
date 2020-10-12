@@ -3,6 +3,7 @@ import {Translate} from 'react-redux-i18n'
 import Modal from "../../../../../components/Modal";
 import Button from "../../../../../components/Button";
 import {buttonTypes} from "../../../../../constants";
+import PropTypes from 'prop-types'
 
 const DeleteUserModal = ({show, handleClose, handleShow, error, errorMsg, handleSubmit, isLoading}) => (
     <Modal
@@ -32,8 +33,14 @@ const DeleteUserModal = ({show, handleClose, handleShow, error, errorMsg, handle
         </div>
     </Modal>
 )
-
 DeleteUserModal.propTypes = {
-    //TODO
+    show: PropTypes.bool.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    handleShow: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired,
+    error: PropTypes.bool.isRequired,
+    errorMsg: PropTypes.string.isRequired,
+    isLoading: PropTypes.bool.isRequired
 }
+
 export default DeleteUserModal

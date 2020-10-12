@@ -1,10 +1,17 @@
 import React, {Component} from 'react'
 import Form from '../../../../../components/AnimalForm'
 import {input} from '../../../../../constants'
+import PropTypes from 'prop-types'
 
 const ACTION_ADD = "add"
 
 class AnimalForm extends Component {
+
+    static propTypes = {
+        isLoading: PropTypes.bool.isRequired,
+        loggedUser: PropTypes.object.isRequired,
+        submitForm: PropTypes.func.isRequired
+    }
 
     constructor(props) {
         super(props)
@@ -15,19 +22,16 @@ class AnimalForm extends Component {
                 region: this.props.loggedUser !== undefined ? this.props.loggedUser.region : '',
                 country: this.props.loggedUser !== undefined ? this.props.loggedUser.country : '',
                 city: this.props.loggedUser !== undefined ? this.props.loggedUser.city : '',
-            },
+            }
         }
-        this.submitForm = this.submitForm.bind(this)
-        this.updateInput = this.updateInput.bind(this)
-
     }
 
-    submitForm(e) {
+    submitForm = (e) => {
         e.preventDefault()
         this.props.submitForm(this.state.animal)
     }
 
-    updateInput(e) {
+    updateInput = (e) => {
         let value
         if (e.target.type === input.FILE) {
             const files = e.target.files

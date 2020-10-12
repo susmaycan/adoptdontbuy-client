@@ -3,6 +3,7 @@ import {Translate} from 'react-redux-i18n'
 import Modal from "../../../../../components/Modal";
 import {buttonTypes} from "../../../../../constants";
 import Button from "../../../../../components/Button";
+import PropTypes from 'prop-types'
 
 const DeleteAnimalModal = ({show, handleClose, handleSubmit}) => (
 
@@ -31,11 +32,12 @@ const DeleteAnimalModal = ({show, handleClose, handleSubmit}) => (
                 </Button>
             </div>
         </div>
-
     </Modal>
 )
-
 DeleteAnimalModal.propTypes = {
-    //TODO
+    show: PropTypes.bool.isRequired,
+    handleClose: PropTypes.func.isRequired,
+    handleSubmit: PropTypes.func.isRequired
 }
+
 export default DeleteAnimalModal

@@ -16,22 +16,22 @@ const INITIAL_STATE = {
     isLoading: false,
     add: {
         error: false,
-        errorMsg: false,
+        errorMsg: '',
         success: false
     },
     update: {
         error: false,
-        errorMsg: false,
+        errorMsg: '',
         success: false
     },
     delete: {
         error: false,
-        errorMsg: false,
+        errorMsg: '',
         success: false
     },
     fetch: {
         error: false,
-        errorMsg: false,
+        errorMsg: '',
         success: false
     },
     error: false,

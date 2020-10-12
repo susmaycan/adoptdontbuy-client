@@ -2,6 +2,7 @@ import React from 'react'
 import {Translate} from 'react-redux-i18n'
 import {sortByUpdateDate} from "../../../../../../utils/Functions";
 import {AnimalCard, Box, Message, Subtitle} from '../../../../../../components'
+import PropTypes from 'prop-types'
 
 const PetsByUser = ({user, animals, isLoggedIn, loggedUser}) => (
     <Box>
@@ -34,5 +35,10 @@ const PetsByUser = ({user, animals, isLoggedIn, loggedUser}) => (
         }
     </Box>
 )
-
+PetsByUser.propTypes = {
+    user: PropTypes.object.isRequired,
+    animals: PropTypes.array.isRequired,
+    loggedUser: PropTypes.object.isRequired,
+    isLoggedIn: PropTypes.bool.isRequired,
+}
 export default PetsByUser

@@ -6,36 +6,38 @@ import {Collapse} from 'react-collapse';
 
 class CustomCollapse extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {open: false}
-        this.click = this.click.bind(this)
+    static propTypes = {
+        name: PropTypes.string.isRequired,
+        children: PropTypes.any.isRequired,
     }
 
-    click() {
+    state = {
+        open: false
+    }
+
+    click = () => {
         this.setState({open: !this.state.open})
     }
 
     render() {
+
+        const {name, children} = this.props
+        const {open} = this.state
+
         return (
             <div className="collapse-container">
                 <span
                     className="open-collapse-link"
                     onClick={this.click}
                 >
-                    <Translate value={'search.' + this.props.name}/> <i
+                    <Translate value={'search.' + name}/> <i
                     className="fas fa-sort-down"/>
                 </span>
-                <Collapse isOpened={this.state.open}>
-                    {this.props.children}
+                <Collapse isOpened={open}>
+                    {children}
                 </Collapse>
             </div>
         )
     }
-}
-
-CustomCollapse.propTypes = {
-    name: PropTypes.string.isRequired,
-    children: PropTypes.any.isRequired,
 }
 export default CustomCollapse

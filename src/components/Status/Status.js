@@ -13,6 +13,10 @@ class Status extends React.Component {
         }
     }
 
+    static propTypes = {
+        status: PropTypes.string
+    }
+
     componentDidMount() {
         switch (this.props.status) {
             case status.IN_ADOPTION:
@@ -43,13 +47,12 @@ class Status extends React.Component {
     }
 
     render() {
+        const {variant, status} = this.state
+
         return (
-            <span className={"tag badge-custom " + this.state.variant}><Translate value={this.state.status}/></span>
+            <span className={"tag badge-custom " + variant}><Translate value={status}/></span>
         )
     }
 }
 
-Status.propTypes = {
-    status: PropTypes.string
-}
 export default Status

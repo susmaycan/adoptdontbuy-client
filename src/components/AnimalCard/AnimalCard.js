@@ -4,11 +4,10 @@ import {Gender, Location, PictureCard} from '../../components'
 import PropTypes from 'prop-types'
 import './AnimalCard.scss'
 import Favourite from '../../pages/Animal/Favourite'
-import {isAdopted, isOwner} from "../../utils/Functions";
+import {isAdopted, isOwner} from '../../utils/Functions'
 import MarkAdopt from '../../pages/Animal/MarkAdopt'
 import MarkReserved from '../../pages/Animal/MarkReserved'
-import DeleteAnimal from "../../pages/Animal/DeleteAnimal";
-import {buttonTypes} from "../../constants";
+import DeleteAnimal from '../../pages/Animal/DeleteAnimal'
 
 const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
     <div key={animal._id} className="animal-card-container">
@@ -73,34 +72,7 @@ const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
     </div>
 )
 AnimalCard.propTypes = {
-    animal: PropTypes.shape({
-        _id: PropTypes.string.isRequired,
-        name: PropTypes.string.isRequired,
-        specie: PropTypes.string.isRequired,
-        breed: PropTypes.string,
-        gender: PropTypes.string,
-        size: PropTypes.string,
-        yearBorn: PropTypes.string,
-        country: PropTypes.string,
-        region: PropTypes.string,
-        province: PropTypes.string,
-        city: PropTypes.string,
-        about: PropTypes.string,
-        castrated: PropTypes.bool,
-        vaccinated: PropTypes.bool,
-        alongWithDogs: PropTypes.bool,
-        alongWithCats: PropTypes.bool,
-        alongWithKids: PropTypes.bool,
-        socialLevel: PropTypes.number,
-        traumaLevel: PropTypes.number,
-        energyLevel: PropTypes.number,
-        picture: PropTypes.arrayOf(PropTypes.string),
-        status: PropTypes.string,
-        createdAt: PropTypes.string,
-        updatedAt: PropTypes.string,
-        __v: PropTypes.any,
-        owner: PropTypes.string.isRequired
-    }).isRequired,
+    animal: PropTypes.object.isRequired,
     addFavourite: PropTypes.func,
     editMode: PropTypes.bool
 }

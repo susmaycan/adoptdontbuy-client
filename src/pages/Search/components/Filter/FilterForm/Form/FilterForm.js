@@ -23,7 +23,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
             isNotEmpty={isNotEmpty}
         />
         <div className="centered">
-            <a href="#" onClick={clearFilter}><Translate value='filter.clearFilters'/></a>
+            <a href="/#" onClick={clearFilter}><Translate value='filter.clearFilters'/></a>
         </div>
         <form>
             <div className="field">
@@ -172,21 +172,7 @@ const FilterForm = ({filter, updateInput, clearFilter, isNotEmpty, deleteFilter}
 )
 
 FilterForm.propTypes = {
-    filter: PropTypes.shape({
-        specie: PropTypes.string,
-        gender: PropTypes.string,
-        size: PropTypes.arrayOf(PropTypes.string),
-        city: PropTypes.string,
-        province: PropTypes.string,
-        region: PropTypes.string,
-        owner: PropTypes.string,
-        age: PropTypes.arrayOf(PropTypes.string),
-        castrated: PropTypes.bool,
-        vaccinated: PropTypes.bool,
-        alongWithDogs: PropTypes.bool,
-        alongWithCats: PropTypes.bool,
-        alongWithKids: PropTypes.bool
-    }).isRequired,
+    filter: PropTypes.object.isRequired,
     updateInput: PropTypes.func.isRequired,
     isNotEmpty: PropTypes.func.isRequired,
     deleteFilter: PropTypes.func.isRequired,

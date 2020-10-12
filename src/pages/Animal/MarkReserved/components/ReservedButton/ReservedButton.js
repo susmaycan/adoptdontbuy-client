@@ -3,8 +3,19 @@ import {isReserved, isOwner} from '../../../../../utils/Functions'
 import {status} from "../../../../../constants";
 import Popover from 'react-popover'
 import {Translate} from 'react-redux-i18n'
+import PropTypes from 'prop-types'
 
 class ReservedButton extends Component {
+
+    static propTypes = {
+        animal: PropTypes.object.isRequired,
+        user: PropTypes.object.isRequired,
+        isLoggedIn: PropTypes.bool.isRequired,
+        error: PropTypes.bool.isRequired,
+        errorMsg: PropTypes.string.isRequired,
+        success: PropTypes.bool.isRequired,
+        markAsReserved: PropTypes.func.isRequired,
+    }
 
     onClick() {
         const {isLoggedIn, user, animal} = this.props
