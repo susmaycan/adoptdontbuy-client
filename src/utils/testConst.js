@@ -142,3 +142,36 @@ export const REVIEW = {
     from: "987654321",
     to: "123456789"
 }
+
+export const ANIMAL = {
+    picture: [
+        "pictureURL1",
+        "pictureURL2",
+    ],
+    _id: "111111111",
+    name: "Test cat",
+    specie: "cat",
+    breed: "Persa",
+    gender: "F",
+    size: "big",
+    yearBorn: "2011",
+    country: "Spain",
+    region: "01",
+    province: "04",
+    city: "Almería",
+    about: "This is a test about",
+    castrated: false,
+    vaccinated: true,
+    alongWithDogs: false,
+    alongWithCats: false,
+    alongWithKids: false,
+    socialLevel: 2,
+    traumaLevel: 3,
+    energyLevel: 1,
+    owner: "123456789",
+    status: "01",
+    createdAt: "2020-01-13T08:15:49.318Z",
+    updatedAt: "2020-06-05T13:30:57.320Z",
+    __v: 0,
+    age: "adult"
+}
