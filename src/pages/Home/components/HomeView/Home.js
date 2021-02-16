@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Translate} from 'react-redux-i18n'
 import {Cat} from 'react-kawaii'
 import {Box, Title} from '../../../../components'
 import PropTypes from 'prop-types'
@@ -47,10 +46,9 @@ class Home extends Component {
                 <div className="columns is-gapless is-centered">
                     <div className="column is-narrow">
                         <Title>
-                            <Translate value='home.title'/>
                             <span className="important">
                                 adoptdontbuy
-                        </span>
+                            </span>
                         </Title>
                     </div>
                     <div className="column is-narrow centered">
