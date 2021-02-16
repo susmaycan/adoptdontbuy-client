@@ -10,7 +10,7 @@ import MarkReserved from '../../pages/Animal/MarkReserved'
 import DeleteAnimal from '../../pages/Animal/DeleteAnimal'
 
 const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
-    <div key={animal._id} className="animal-card-container">
+    <div className="animal-card-container">
         <Link to={{pathname: `/animal/${animal._id}`}}>
             <PictureCard
                 name={animal.name}
@@ -73,7 +73,8 @@ const AnimalCard = ({animal, user, isLoggedIn, editMode}) => (
 )
 AnimalCard.propTypes = {
     animal: PropTypes.object.isRequired,
-    addFavourite: PropTypes.func,
-    editMode: PropTypes.bool
+    user: PropTypes.object,
+    editMode: PropTypes.bool,
+    isLoggedIn: PropTypes.bool
 }
 export default AnimalCard
