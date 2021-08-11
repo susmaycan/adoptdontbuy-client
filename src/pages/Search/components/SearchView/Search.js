@@ -21,7 +21,7 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        this.props.filterAnimals({})
+        this.props.filterAnimals('')
     }
 
     callFilter(query) {
