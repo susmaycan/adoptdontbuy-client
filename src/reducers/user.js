@@ -9,9 +9,10 @@ import {
     FETCH_SUCCESS_USERS_ANIMALS,
     FETCH_USER_ERROR,
     REQUEST_USER,
-    RESET_USER,
+    RESET_USER, UPLOAD_PHOTO_USER_ERROR,
+    UPLOAD_PHOTO_USER_SUCCESS
 } from '../actions/actionTypes'
-import {status} from "../constants";
+import { status } from '../constants'
 
 const INITIAL_STATE = {
     animalList: [],
@@ -121,6 +122,25 @@ const reducer = (state = INITIAL_STATE, action) => {
                     errorMsg: '',
                     success: true
                 },
+            }
+        case UPLOAD_PHOTO_USER_SUCCESS:
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    picture: `https://firebasestorage.googleapis.com/v0/b/adoptdontbuy-react.appspot.com/o/pictures%2F${state.user._id}?alt=media`
+                },
+                isLoading: false,
+                error: false,
+                errorMsg: ''
+            }
+        case UPLOAD_PHOTO_USER_ERROR:
+            return {
+                ...state,
+                isLoading: false,
+                error: true,
+                errorMsg: action.error,
+                success: false
             }
         case RESET_USER:
             return {

@@ -142,13 +142,13 @@ export function updatePassword(password) {
 
 export function updatePhotoUser(file, filename) {
     const ref = 'pictures/' + filename
+    console.log({ ref })
     return (dispatch) => {
         dispatch(userRequest())
         return firebaseActions.postPicture(file, ref)
             .then(response => {
-                    if (response.state === 'success')
-                        dispatch(uploadPhotoUserSuccess(response))
-
+                    if (response.state === 'success') dispatch(uploadPhotoUserSuccess(response))
+                    else dispatch(uploadPhotoUserError(response.message))
                 }
             )
             .catch(err => {

@@ -54,17 +54,10 @@ class Form extends Component {
     }
 
     onChange = (e) => {
+        e.preventDefault()
         if (e.target.type === input.FILE) {
             const file = e.target.files[0]
-            this.props.uploadPhoto(file, this.state._id)
-            this.setState({
-                ...this.state,
-                user: {
-                    ...this.state.user,
-                    picture: 'https://firebasestorage.googleapis.com/v0/b/adoptdontbuy-react.appspot.com/o/pictures%2F' + this.state._id + '?alt=media'
-                }
-            })
-
+            this.props.uploadPhoto(file, this.state.user._id)
         } else {
             const value = e.target.type === input.CHECKBOX ? e.target.checked : e.target.value
             this.setState({

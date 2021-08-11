@@ -136,8 +136,7 @@ const UserForm = ({user, password, handleChange, handleForm, handlePassword, isL
                           </span>
                         </span>
                     <span className="file-name">
-                            'No files selected yet'
-                        {/*{user.picture !== undefined ? animal.picture[0].name : 'No files selected yet.'}*/}
+                        {user.picture !== 'unknown' ? user._id : 'No files selected yet.'}
                         </span>
                 </label>
             </div>
