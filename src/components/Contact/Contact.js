@@ -20,7 +20,6 @@ class Contact extends React.Component {
 
     componentDidMount() {
         const animalName = this.props.animal !== undefined ? this.props.animal.name : undefined
-
         if (animalName !== undefined) {
             this.setState({
                 subject: 'Adoption of ' + animalName,
@@ -30,8 +29,8 @@ class Contact extends React.Component {
     }
 
     render() {
-        const {animal, emailDst, subject} = this.props
-        const {text} = this.state
+        const { animal, emailDst } = this.props
+        const { subject, text } = this.state
         if (isAdopted(animal)) {
             return (
                 <button
@@ -44,6 +43,7 @@ class Contact extends React.Component {
                 </button>
             )
         }
+
         return (
             <a
                 className="button "
